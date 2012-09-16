@@ -70,3 +70,14 @@ CREATE TABLE collection
 	nom VARCHAR(50) PRIMARY KEY,
 	proprietaire VARCHAR(100) NOT NULL -- Clé étrangère sur Personne à ajouter.
 );
+
+/* Création de la table Gisement. */
+CREATE TABLE gisement
+(
+	identifiant INTEGER PRIMARY KEY,
+	region VARCHAR(50) REFERENCES region(nom),
+	position_nord FLOAT,
+	position_est FLOAT,
+	altitude FLOAT,
+	commentaire VARCHAR(200)
+);
