@@ -118,3 +118,11 @@ CREATE TABLE objet
 	tamis BOOLEAN, -- Mettre par défaut à FALSE.
 	trouve_par VARCHAR(100) NOT NULL -- Clé étrangère sur Personne à ajouter.
 );
+
+/* Création de la table Galet. */
+CREATE TABLE galet
+(
+	nom VARCHAR(50) PRIMARY KEY,
+	type VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
+	objet VARCHAR(50) REFERENCES objet(nom)
+);
