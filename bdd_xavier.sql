@@ -100,3 +100,21 @@ CREATE TABLE prospection
 	date_prospection DATE,
 	responsable VARCHAR(50) NOT NULL,
 );
+
+/* Création de la table Objet. */
+CREATE TABLE objet
+(
+	nom VARCHAR(50) PRIMARY KEY,
+	poids FLOAT NOT NULL,
+	longueur FLOAT NOT NULL,
+	largeur FLOAT NOT NULL,
+	hauteur FLOAT NOT NULL,
+	locus varchar(50) REFERENCES locus(nom),
+	nature VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
+	fiche VARCHAR(50), -- Changer le VARCHAR pour avec des points 3D.
+	brule BOOLEAN, -- Mettre par défaut à FALSE.
+	periode DATE, -- Vérifier le type DATE.
+	commentaire varchar(200),
+	tamis BOOLEAN, -- Mettre par défaut à FALSE.
+	trouve_par VARCHAR(100) NOT NULL -- Clé étrangère sur Personne à ajouter.
+);
