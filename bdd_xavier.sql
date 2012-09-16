@@ -63,3 +63,10 @@ CREATE TABLE article
 	langue VARCHAR(50) NOT NULL,
 	sujet VARCHAR(50) NOT NULL -- Faire un trigger pour vérifier que le sujet est soit un site, soit une région ou soit une locus.
 );
+
+/* Création de la table collection. */
+CREATE TABLE collection
+(
+	nom VARCHAR(50) PRIMARY KEY,
+	proprietaire VARCHAR(100) NOT NULL -- Clé étrangère sur Personne à ajouter.
+);
