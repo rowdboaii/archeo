@@ -41,7 +41,7 @@ CREATE TABLE site
 ALTER TABLE site ADD CONSTRAINT region_fk FOREIGN KEY(region) REFERENCES region(nom) MATCH FULL;
 
 /* Création de la table Locus. */
-CREAT TABLE locus
+CREATE TABLE locus
 (
 	nom VARCHAR(50) PRIMARY KEY,
 	type VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
@@ -50,4 +50,16 @@ CREAT TABLE locus
 	altitude FLOAT,
 	trouve_par VARCHAR(50) NOT NULL, -- Clé étrangère sur Personne à ajouter.
 	appartient_a VARCHAR(50) NOT NULL -- Clé étrangère sur Personne à ajouter.
+);
+
+/* Création de la table Article. */
+CREATE TABLE article
+(
+	titre VARCHAR(100) PRIMARY KEY,
+	auteur VARCHAR(100) NOT NULL, -- Clé étrangère sur Personne à ajouter.
+	mot_cle VARCHAR(200),
+	annee DATE, -- Vérifier si le type est bon.
+	revue VARCHAR(100) NOT NULL,
+	langue VARCHAR(50) NOT NULL,
+	sujet VARCHAR(50) NOT NULL -- Faire un trigger pour vérifier que le sujet est soit un site, soit une région ou soit une locus.
 );
