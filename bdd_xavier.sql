@@ -81,3 +81,14 @@ CREATE TABLE gisement
 	altitude FLOAT,
 	commentaire VARCHAR(200)
 );
+
+/* Création de la table Lieu. */
+CREATE TABLE lieu
+(
+	nom VARCHAR(50) PRIMARY KEY,
+	region VARCHAR(50) REFERENCES region(nom),
+	position_nord float,
+	position_est float,
+	altitude float,
+	commentaire VARCHAR(200)
+);
