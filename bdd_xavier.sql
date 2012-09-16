@@ -1,4 +1,1 @@
-
-create database BDD_Xavier owner jehu;
- 
- 
+CREATE DATABASE bdd_xavier owner jehu;
