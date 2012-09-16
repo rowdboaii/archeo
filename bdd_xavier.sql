@@ -74,7 +74,7 @@ CREATE TABLE collection
 /* Création de la table Gisement. */
 CREATE TABLE gisement
 (
-	identifiant INTEGER PRIMARY KEY,
+	identifiant INTEGER PRIMARY KEY, -- Peut être changer INTEGER en VARCHAR.
 	region VARCHAR(50) REFERENCES region(nom),
 	position_nord FLOAT,
 	position_est FLOAT,
@@ -148,4 +148,12 @@ CREATE TABLE os
 	morsure BOOLEAN, -- Mettre par défaut à FALSE.
 	conservation INTEGER NOT NULL,
 	datation DATE -- Vérifier le type DATE correspond.
+); -- Vérifier qu'il n'y a pas besoin de clé primaire.
+
+/* Création de la table Silex. */
+CREATE TABLE silex
+(
+	objet VARCHAR(50) REFERENCES objet(nom),
+	provenance INTEGER REFERENCES gisement(identifiant), -- Peut être changer INTEGER en VARCHAR.
+	couleur VARCHAR(50)
 ); -- Vérifier qu'il n'y a pas besoin de clé primaire.
