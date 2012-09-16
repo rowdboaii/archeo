@@ -92,3 +92,5 @@ CREATE TABLE lieu
 	altitude float,
 	commentaire VARCHAR(200)
 );
+
+
