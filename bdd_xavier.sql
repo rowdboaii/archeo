@@ -126,3 +126,10 @@ CREATE TABLE galet
 	type VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
 	objet VARCHAR(50) REFERENCES objet(nom)
 );
+
+/* Création de la table Charbon. */
+CREATE TABLE charbon
+(
+	datation DATE NOT NULL,
+	objet VARCHAR(50) REFERENCES objet(nom)
+); -- Vérifier qu'il n'y ait pas besoin de clé primaire.
