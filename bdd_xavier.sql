@@ -133,3 +133,19 @@ CREATE TABLE charbon
 	datation DATE NOT NULL,
 	objet VARCHAR(50) REFERENCES objet(nom)
 ); -- Vérifier qu'il n'y ait pas besoin de clé primaire.
+
+/* Création de la table Os. */
+CREATE TABLE os
+(
+	objet VARCHAR(50) REFERENCES objet(nom),
+	partie VARCHAR(50) NOT NULL,
+	type VARCHAR(50) NOT NULL,
+	taxon VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
+	animal VARCHAR(50),
+	type_animal VARCHAR(50),
+	forme VARCHAR(50),
+	dissous BOOLEAN, -- Mettre par défaut à FALSE.
+	morsure BOOLEAN, -- Mettre par défaut à FALSE.
+	conservation INTEGER NOT NULL,
+	datation DATE -- Vérifier le type DATE correspond.
+); -- Vérifier qu'il n'y a pas besoin de clé primaire.
