@@ -93,4 +93,10 @@ CREATE TABLE lieu
 	commentaire VARCHAR(200)
 );
 
-
+/* Création de la table Prospection. */
+CREATE TABLE prospection
+(
+	identifiant INTEGER PRIMARY KEY,
+	date_prospection DATE,
+	responsable VARCHAR(50) NOT NULL,
+);
