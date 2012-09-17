@@ -110,10 +110,10 @@ CREATE TABLE objet
 	locus varchar(50) REFERENCES locus(nom),
 	nature VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
 	fiche VARCHAR(50), -- Changer le VARCHAR pour avec des points 3D.
-	brule BOOLEAN, -- Mettre par défaut à FALSE.
+	brule BOOLEAN NOT NULL DEFAULT FALSE,
 	periode DATE, -- Vérifier le type DATE.
 	commentaire varchar(200),
-	tamis BOOLEAN, -- Mettre par défaut à FALSE.
+	tamis BOOLEAN NOT NULL DEFAULT FALSE,
 	trouve_par INTEGER REFERENCES personne(identifiant)
 );
 
@@ -142,8 +142,8 @@ CREATE TABLE os
 	animal VARCHAR(50),
 	type_animal VARCHAR(50),
 	forme VARCHAR(50),
-	dissous BOOLEAN, -- Mettre par défaut à FALSE.
-	morsure BOOLEAN, -- Mettre par défaut à FALSE.
+	dissous BOOLEAN NOT NULL DEFAULT FALSE,
+	morsure BOOLEAN NOT NULL DEFAULT FALSE,
 	conservation INTEGER NOT NULL,
 	datation DATE -- Vérifier le type DATE correspond.
 ); -- Vérifier qu'il n'y a pas besoin de clé primaire.
