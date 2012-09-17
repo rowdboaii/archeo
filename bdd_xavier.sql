@@ -18,9 +18,9 @@ CREATE TABLE personne
 (
 	nom VARCHAR(50),
 	prenom VARCHAR(50),
+	identifiant INTEGER PRIMARY KEY, -- Ajouter un calcul de l'identifiant unique.
 	nationalite VARCHAR(50) NOT NULL,
 	fonction VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
-	CONSTRAINT personne_pkey PRIMARY KEY(nom, prenom)
 );
 
 /* Création de la table Site. */
@@ -31,8 +31,8 @@ CREATE TABLE site
 	position_nord FLOAT,
 	position_est FLOAT,
 	altitude FLOAT,
-	trouve_par VARCHAR(100) NOT NULL, -- Clé étrangère sur Personne à ajouter.
-	fouille_par VARCHAR(100) NOT NULL, -- Clé étrangère sur Personne à ajouter.
+	trouve_par INTEGER, -- Clé étrangère sur Personne à ajouter.
+	fouille_par INTEGER, -- Clé étrangère sur Personne à ajouter.
 	type VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
 	commentaire VARCHAR(500),
 );
@@ -48,15 +48,15 @@ CREATE TABLE locus
 	position_nord FLOAT,
 	position_est FLOAT,
 	altitude FLOAT,
-	trouve_par VARCHAR(50) NOT NULL, -- Clé étrangère sur Personne à ajouter.
-	appartient_a VARCHAR(50) NOT NULL -- Clé étrangère sur Personne à ajouter.
+	trouve_par INTEGER, -- Clé étrangère sur Personne à ajouter.
+	appartient_a INTEGER -- Clé étrangère sur Personne à ajouter.
 );
 
 /* Création de la table Article. */
 CREATE TABLE article
 (
 	titre VARCHAR(100) PRIMARY KEY,
-	auteur VARCHAR(100) NOT NULL, -- Clé étrangère sur Personne à ajouter.
+	auteur INTEGER, -- Clé étrangère sur Personne à ajouter.
 	mot_cle VARCHAR(200),
 	annee DATE, -- Vérifier si le type est bon.
 	revue VARCHAR(100) NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE article
 CREATE TABLE collection
 (
 	nom VARCHAR(50) PRIMARY KEY,
-	proprietaire VARCHAR(100) NOT NULL -- Clé étrangère sur Personne à ajouter.
+	proprietaire INTEGER -- Clé étrangère sur Personne à ajouter.
 );
 
 /* Création de la table Gisement. */
@@ -87,9 +87,9 @@ CREATE TABLE lieu
 (
 	nom VARCHAR(50) PRIMARY KEY,
 	region VARCHAR(50) REFERENCES region(nom),
-	position_nord float,
-	position_est float,
-	altitude float,
+	position_nord FLOAT,
+	position_est FLOAT,
+	altitude FLOAT,
 	commentaire VARCHAR(200)
 );
 
@@ -98,7 +98,7 @@ CREATE TABLE prospection
 (
 	identifiant INTEGER PRIMARY KEY,
 	date_prospection DATE,
-	responsable VARCHAR(50) NOT NULL,
+	responsable INTEGER -- Clé étrangère sur Personne à ajouter.
 );
 
 /* Création de la table Objet. */
@@ -116,7 +116,7 @@ CREATE TABLE objet
 	periode DATE, -- Vérifier le type DATE.
 	commentaire varchar(200),
 	tamis BOOLEAN, -- Mettre par défaut à FALSE.
-	trouve_par VARCHAR(100) NOT NULL -- Clé étrangère sur Personne à ajouter.
+	trouve_par INTEGER -- Clé étrangère sur Personne à ajouter.
 );
 
 /* Création de la table Galet. */
