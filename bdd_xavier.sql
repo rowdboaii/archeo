@@ -27,7 +27,7 @@ CREATE TABLE personne
 CREATE TABLE site
 (
 	nom VARCHAR(50) PRIMARY KEY,
-	region VARCHAR(50) NOT NULL,
+	region VARCHAR(50) REFERENCES region(nom),
 	position_nord FLOAT,
 	position_est FLOAT,
 	altitude FLOAT,
@@ -37,14 +37,12 @@ CREATE TABLE site
 	commentaire VARCHAR(500),
 );
 
-/* Ajout de la clé étrangère de Site.region sur Region.nom. */
-ALTER TABLE site ADD CONSTRAINT region_fk FOREIGN KEY(region) REFERENCES region(nom) MATCH FULL;
-
 /* Création de la table Locus. */
 CREATE TABLE locus
 (
 	nom VARCHAR(50) PRIMARY KEY,
 	type VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
+	site VARCHAR(50) REFERENCES site(nom),
 	position_nord FLOAT,
 	position_est FLOAT,
 	altitude FLOAT,
