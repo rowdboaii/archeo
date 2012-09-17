@@ -31,8 +31,8 @@ CREATE TABLE site
 	position_nord FLOAT,
 	position_est FLOAT,
 	altitude FLOAT,
-	trouve_par INTEGER, -- Clé étrangère sur Personne à ajouter.
-	fouille_par INTEGER, -- Clé étrangère sur Personne à ajouter.
+	trouve_par INTEGER REFERENCES personne(identifiant),
+	fouille_par INTEGER REFERENCES personne(identifiant),
 	type VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
 	commentaire VARCHAR(500),
 );
@@ -48,15 +48,15 @@ CREATE TABLE locus
 	position_nord FLOAT,
 	position_est FLOAT,
 	altitude FLOAT,
-	trouve_par INTEGER, -- Clé étrangère sur Personne à ajouter.
-	appartient_a INTEGER -- Clé étrangère sur Personne à ajouter.
+	trouve_par INTEGER REFERENCES personne(identifiant),
+	appartient_a INTEGER REFERENCES personne(identifiant)
 );
 
 /* Création de la table Article. */
 CREATE TABLE article
 (
 	titre VARCHAR(100) PRIMARY KEY,
-	auteur INTEGER, -- Clé étrangère sur Personne à ajouter.
+	auteur INTEGER REFERENCES personne(identifiant),
 	mot_cle VARCHAR(200),
 	annee DATE, -- Vérifier si le type est bon.
 	revue VARCHAR(100) NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE article
 CREATE TABLE collection
 (
 	nom VARCHAR(50) PRIMARY KEY,
-	proprietaire INTEGER -- Clé étrangère sur Personne à ajouter.
+	proprietaire INTEGER REFERENCES personne(identifiant)
 );
 
 /* Création de la table Gisement. */
@@ -98,7 +98,7 @@ CREATE TABLE prospection
 (
 	identifiant INTEGER PRIMARY KEY,
 	date_prospection DATE,
-	responsable INTEGER -- Clé étrangère sur Personne à ajouter.
+	responsable INTEGER REFERENCES personne(identifiant)
 );
 
 /* Création de la table Objet. */
@@ -116,7 +116,7 @@ CREATE TABLE objet
 	periode DATE, -- Vérifier le type DATE.
 	commentaire varchar(200),
 	tamis BOOLEAN, -- Mettre par défaut à FALSE.
-	trouve_par INTEGER -- Clé étrangère sur Personne à ajouter.
+	trouve_par INTEGER REFERENCES personne(identifiant)
 );
 
 /* Création de la table Galet. */
