@@ -6,6 +6,34 @@
 /* Création de la database. */
 CREATE DATABASE bdd_xavier owner jehu;
 
+/****************************************************************************************/
+
+/* Création de l'énumération pour la fonction d'une Personne. */
+CREATE TYPE enum_fonction AS ENUM
+('chercheur', 'fouilleur');
+
+/* Création de l'énumération pour le type de Site. */
+CREATE TYPE enum_type_site AS ENUM
+('archeologique', 'paleontologique');
+
+/* Création de l'énumération pour le type de Locus. */
+CREATE TYPE enum_type_locus AS ENUM
+('type1', 'type2');
+
+/* Création de l'énumération pour le type d'un Objet. */
+CREATE TYPE enum_type_objet AS ENUM
+('FR', 'CO');
+
+/* Création de l'énumération pour la nature d'un Objet. */
+CREATE TYPE enum_nature AS ENUM
+('silex', 'os', 'poterie', 'quartz', 'charbon', 'gamet', 'perle');
+
+/* Création de l'énumération pour le type d'un Galet. */
+CREATE TYPE enum_type_galet AS ENUM
+('schiste', 'quartz');
+
+/****************************************************************************************/
+
 /* Création de la table Région. */
 CREATE TABLE region
 (
@@ -20,7 +48,7 @@ CREATE TABLE personne
 	prenom VARCHAR(50),
 	identifiant INTEGER PRIMARY KEY, -- Ajouter un calcul de l'identifiant unique.
 	nationalite VARCHAR(50) NOT NULL,
-	fonction VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
+	fonction enum_fonction
 );
 
 /* Création de la table Site. */
@@ -33,7 +61,7 @@ CREATE TABLE site
 	altitude FLOAT,
 	trouve_par INTEGER REFERENCES personne(identifiant),
 	fouille_par INTEGER REFERENCES personne(identifiant),
-	type VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
+	type enum_type_site,
 	commentaire VARCHAR(500),
 );
 
@@ -41,7 +69,7 @@ CREATE TABLE site
 CREATE TABLE locus
 (
 	nom VARCHAR(50) PRIMARY KEY,
-	type VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
+	type enum_type_site,
 	site VARCHAR(50) REFERENCES site(nom),
 	position_nord FLOAT,
 	position_est FLOAT,
@@ -103,12 +131,13 @@ CREATE TABLE prospection
 CREATE TABLE objet
 (
 	nom VARCHAR(50) PRIMARY KEY,
+	type enum_type_objet,
 	poids FLOAT NOT NULL,
 	longueur FLOAT NOT NULL,
 	largeur FLOAT NOT NULL,
 	hauteur FLOAT NOT NULL,
 	locus varchar(50) REFERENCES locus(nom),
-	nature VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
+	nature enum_nature,
 	fiche VARCHAR(50), -- Changer le VARCHAR pour avec des points 3D.
 	brule BOOLEAN NOT NULL DEFAULT FALSE,
 	periode DATE, -- Vérifier le type DATE.
@@ -121,7 +150,7 @@ CREATE TABLE objet
 CREATE TABLE galet
 (
 	nom VARCHAR(50) PRIMARY KEY,
-	type VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
+	type enum_type_galet,
 	objet VARCHAR(50) REFERENCES objet(nom)
 );
 
@@ -132,13 +161,16 @@ CREATE TABLE charbon
 	objet VARCHAR(50) REFERENCES objet(nom)
 ); -- Vérifier qu'il n'y ait pas besoin de clé primaire.
 
+CREATE TYPE enum_taxon AS ENUM
+('mammifere', 'oiseau', 'reptile');
+
 /* Création de la table Os. */
 CREATE TABLE os
 (
 	objet VARCHAR(50) REFERENCES objet(nom),
 	partie VARCHAR(50) NOT NULL,
 	type VARCHAR(50) NOT NULL,
-	taxon VARCHAR(50) NOT NULL, -- Changer le VARCHAR en ENUM.
+	taxon enum_taxon,
 	animal VARCHAR(50),
 	type_animal VARCHAR(50),
 	forme VARCHAR(50),
