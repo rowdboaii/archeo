@@ -1,5 +1,5 @@
 /* Sujet : Projet de base de données pour des fouilles archéologiques.
- * Auteur : Xavier Mutt & Antoine Hars
+ * Auteur : Xavier Muth & Antoine Hars
  * Date : 16/09/2012
  */
 
@@ -26,11 +26,15 @@ CREATE TYPE enum_type_objet AS ENUM
 
 /* Création de l'énumération pour la nature d'un Objet. */
 CREATE TYPE enum_nature AS ENUM
-('silex', 'os', 'poterie', 'quartz', 'charbon', 'gamet', 'perle');
+('silex', 'os', 'poterie', 'quartz', 'charbon', 'galet', 'perle');
 
 /* Création de l'énumération pour le type d'un Galet. */
 CREATE TYPE enum_type_galet AS ENUM
 ('schiste', 'quartz');
+
+/* Création de l'énumération pour le type d'un Os. */
+CREATE TYPE enum_taxon AS ENUM
+('mammifere', 'oiseau', 'reptile');
 
 /****************************************************************************************/
 
@@ -160,9 +164,6 @@ CREATE TABLE charbon
 	datation DATE NOT NULL,
 	objet VARCHAR(50) REFERENCES objet(nom)
 ); -- Vérifier qu'il n'y ait pas besoin de clé primaire.
-
-CREATE TYPE enum_taxon AS ENUM
-('mammifere', 'oiseau', 'reptile');
 
 /* Création de la table Os. */
 CREATE TABLE os
