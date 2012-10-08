@@ -3,12 +3,6 @@
  *Fichier : patron.htm
  */
  
-/* Utiliser le header, le footer, la section en tant que bloc. */
-header, footer, section, nav
-{
-/*	display: inline-block;*/
-}
- 
 body
 {
 	background: yellow; /* Couleur du fond. */
@@ -16,38 +10,35 @@ body
 	border: 1px solid black;
 }
 
-#bloc_page
+#bodyLogin
 {
-	width: 900px;
-	margin: auto;
-	height: 610px;
+	width: 1000px; /* Largeur. */
+	margin: auto; /* Centrage des éléments dans le body. */
+	height: 690px; /* Hauteur. */
 }
 
-nav
+#headerLogin
 {
-	background: green;
+	margin-top: 0%; /* Distance du haut du bodyLogin. */
+	background: blue;
 	border: 1px solid black;
+	width: 1000px; /* Largeur. */
+	height: 100px; /* Hauteur. */
 }
- 
-section
+
+#sectionLogin
 {
 	background: red;
-	margin-top: 15%;
-	width: 270px;
+	margin-top: 15%; /* Distance du headerLogin. */
+	width: 270px; /* Largeur. */
 	border: 1px solid black;
-	margin-left: 35%;
+	margin-left: 35%; /* Distance du bord gauche du bodyLogin. */
 }
  
-footer
+#footerLogin
 {
-	margin-top: 25%;
+	margin-top: 28%; /* Distance du haut du sectionLogin. */
 	background: purple;
 	border: 1px solid black;
 }
  
-header
-{
-	margin-top: 2%;
-	background: blue;
-	border: 1px solid black;
-}
