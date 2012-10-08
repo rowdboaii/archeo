@@ -3,4 +3,51 @@
  *Fichier : patron.htm
  */
  
+/* Utiliser le header, le footer, la section en tant que bloc. */
+header, footer, section, nav
+{
+/*	display: inline-block;*/
+}
  
+body
+{
+	background: yellow; /* Couleur du fond. */
+	font-family: Verdana, Arial, Helvetica, sans-serif; /* Police du texte. */
+	border: 1px solid black;
+}
+
+#bloc_page
+{
+	width: 900px;
+	margin: auto;
+	height: 610px;
+}
+
+nav
+{
+	background: green;
+	border: 1px solid black;
+}
+ 
+section
+{
+	background: red;
+	margin-top: 15%;
+	width: 270px;
+	border: 1px solid black;
+	margin-left: 35%;
+}
+ 
+footer
+{
+	margin-top: 25%;
+	background: purple;
+	border: 1px solid black;
+}
+ 
+header
+{
+	margin-top: 2%;
+	background: blue;
+	border: 1px solid black;
+}
