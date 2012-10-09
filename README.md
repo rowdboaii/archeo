@@ -31,3 +31,4 @@ V3:
 - Protection du site par Login.
 - Sécuriser l'accès à la base de données en utilisant des RegExp.
 - Voir pour enregistrer les données entrées dans des cookies si besoin est pour ne pas à avoir à les retranscrire par la suite en cas d'oubli.
+- Ajout des nouvelles données automatiquement dans les select des formulaires.
