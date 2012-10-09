@@ -20,6 +20,7 @@ V1:
 - Affichage complet des tables.
 - Ajout de toutes les énumérations.
 - CSS pour avoir des blocs faciles à manipuler.
+- La création en cascade d'un Objet et de ses hérités.
 
 
 V2:

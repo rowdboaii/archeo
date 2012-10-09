@@ -1,6 +1,6 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : galetIn.htm -->
+<!-- Fichier : prospectionIn.htm -->
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>Galet</title>
+		<title>Prospection</title>
 	</head>
 
 	<body>
@@ -46,20 +46,21 @@
 				<div id = "">
 
 					<p>
-						<!-- Formulaire pour un Galet. -->
+						<!-- Formulaire pour une Prospection. -->
 						<form method = "post" action = "#">
 							<p>
-								<label for = "objet">Objet</label> : 
-								<select name = "objet" id = "objet">
+								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+								<label for = "date">Date Prospection</label> : <input type = "text" name = "date" id = "date" /><br />
+								<label for = "lieu">Lieu</label> : 
+								<select name = "lieu" id = "lieu">
 									<option value = "1">1</option>
 									<option value = "2">2</option>
 									<option value = "3">3</option>
 									<option value = "4">4</option>
 									<option value = "5">5</option>
 								</select><br />
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
-								<label for = "type">Type</label> : 
-								<select name = "type" id = "type">
+								<label for = "responsable">Responsable</label> : 
+								<select name = "responsable" id = "responsable">
 									<option value = "1">1</option>
 									<option value = "2">2</option>
 									<option value = "3">3</option>
