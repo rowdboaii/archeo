@@ -1,0 +1,339 @@
+<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
+<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Fichier : form.htm -->
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour le login et le mdp. -->	
+<form method = "post" action = "#">
+	<p>
+		<label>Pseudo</label> : <input type = "text" name = "pseudo" id = "pseudo" /><br />
+		<label>Password</label> : <input type = "password" name = "mdp" id = "mdp" /><br />
+		<input type = "submit" value = "connexion" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour un Objet. -->	
+<form method = "post" action = "#">
+	<p>
+		<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+		<label for = "type">Type</label> :
+		<select name = "type" id = "type">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "nature">nature</label> :
+		<select name = "nature" id = "nature">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "poids">Poids</label> : <input type = "text" name = "poids" id = "poids" /><br />
+		<label for = "longueur">Longueur</label> : <input type = "text" name = "longueur" id = "longueur" /><br />
+		<label for = "largeur">Largeur</label> : <input type = "text" name = "largeur" id = "largeur" /><br />
+		<label for = "position">Position</label> :
+		<select name = "position" id = "position">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "trouve">Trouvé par</label> :
+		<select name = "trouve" id = "trouve">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "collection">Collection</label> :
+		<select name = "collection" id = "collection">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "periode">Période</label> :
+		<select name = "periode" id = "periode">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		Tamis : <input type = "radio" name = "tamis" value = "oui" id = "oui" /><br />
+		Brulé : <input type = "radio" name = "tamis" value = "oui" id = "oui" /><br />
+		<label for = "commentaire">Commentaire</label> : <textarea name = "commentaire" id = "commentaire" rows = "10" cols = "50"><textarea/><br />
+		<input type = "submit" value = "Envoi" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour une Région. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+		<label for = "pays">Pays</label> : 
+		<select name = "pays" id = "pays">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<input type = "submit" value = "Envoi" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour un Site. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+		<label for = "region">Région</label> : 
+		<select name = "region" id = "region">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "nord">Position Nord</label> : <input type = "text" name = "nord" id = "nord" /><br />
+		<label for = "est">Position Est</label> : <input type = "text" name = "est" id = "est" /><br />
+		<label for = "altitude">Altitude</label> : <input type = "text" name = "altitude" id = "altitude" /><br />
+		<label for = "trouve">Trouvé par</label> : 
+		<select name = "trouve" id = "trouve">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "type">Type</label> : 
+		<select name = "type" id = "type">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "commentaire">Commentaire</label> : <textarea name = "commentaire" id = "commentaire" rows = "10" cols = "50"><textarea/><br />
+		<input type = "submit" value = "Envoi" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour un Locus. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+		<label for = "type">Type</label> : 
+		<select name = "type" id = "type">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "nord">Position Nord</label> : <input type = "text" name = "nord" id = "nord" /><br />
+		<label for = "est">Position Est</label> : <input type = "text" name = "est" id = "est" /><br />
+		<label for = "altitude">Altitude</label> : <input type = "text" name = "altitude" id = "altitude" /><br />
+		<label for = "trouve">Trouvé par</label> : 
+		<select name = "trouve" id = "trouve">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "proprietaire">Propriétaire</label> : 
+		<select name = "proprietaire" id = "proprietaire">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<input type = "submit" value = "Envoi" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour un Article. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "titre">Titre</label> : <input type = "text" name = "titre" id = "titre" /><br />
+		<label for = "auteur">Auteur</label> : 
+		<select name = "auteur" id = "auteur">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "revue">Revue</label> : <input type = "text" name = "revue" id = "revue" /><br />
+		<label for = "annee">Année</label> : <input type = "text" name = "annee" id = "annee" /><br />
+		<label for = "langue">Langue</label> : 
+		<select name = "langue" id = "langue">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "mots_cle">Mots clé</label> : <textarea name = "mot_cle" id = "mots_cle" rows = "10" cols = "50"><textarea/><br />
+		<input type = "submit" value = "Envoi" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour une Personne. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+		<label for = "prenom">Prénom</label> : <input type = "text" name = "prenom" id = "prenom" /><br />
+		<label for = "nationalite">Nationalité</label> : 
+		<select name = "nationalite" id = "nationalite">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "fonction">Fonction</label> : 
+		<select name = "fonction" id = "fonction">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<input type = "submit" value = "Envoi" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour un Charbon. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "datation">Datation</label> : <input type = "text" name = "datation" id = "datation" /><br />
+		<input type = "submit" value = "Envoi" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour une Collection. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+		<label for = "proprietaire">Propriétaire</label> : 
+		<select name = "proprietaire" id = "proprietaire">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<input type = "submit" value = "Envoi" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour un Os. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "partie">Partie Animal</label> : <input type = "text" name = "partie" id = "partie" /><br />
+		<label for = "type">Type Os</label> : <input type = "text" name = "type" id = "type" /><br />
+		<label for = "taxon">Taxon</label> : 
+		<select name = "taxon" id = "taxon">
+			<option value = "co">CO</option>
+			<option value = "fr">FR</option>
+		</select><br />
+		<label for = "animal">Animal</label> : <input type = "text" name = "animal" id = "animal" /><br />
+		<label for = "type_animal">Type d'Animal</label> : <input type = "text" name = "type_animal" id = "type_animal" /><br />
+		<label for = "forme">Forme</label> : <input type = "text" name = "forme" id = "forme" /><br />
+		Dissolution : <input type = "radio" name = "dissolution" value = "oui" id = "oui" /><br />
+		Morsure : <input type = "radio" name = "morsure" value = "oui" id = "oui" /><br />
+		<label for = "conservation">Conservation</label> : 
+		<select name = "conservation" id = "conservation">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "date">Datation</label> : <input type = "text" name = "date" id = "date" /><br />
+		<input type = "submit" value = "Envoi" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour un Gisement. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+		<label for = "nord">Position Nord</label> : <input type = "text" name = "nord" id = "nord" /><br />
+		<label for = "est">Position Est</label> : <input type = "text" name = "est" id = "est" /><br />
+		<label for = "altitude">Altitude</label> : <input type = "text" name = "altitude" id = "altitude" /><br />
+		<label for = "commentaire">Commentaire</label> : <textarea name = "commentaire" id = "commentaire" rows = "10" cols = "50"><textarea/><br />
+		<input type = "submit" value = "Envoi" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour un Silex. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "couleur">Couleur</label> : <input type = "text" name = "couleur" id = "couleur" /><br />
+		<label for = "provenance">Provenance</label> : 
+		<select name = "provenance" id = "provenance">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<input type = "submit" value = "Envoi" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour un Galet. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+		<label for = "type">Type</label> : 
+		<select name = "type" id = "type">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<input type = "submit" value = "Envoi" />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+
