@@ -70,8 +70,28 @@
 			<option value = "4">4</option>
 			<option value = "5">5</option>
 		</select><br />
-		Tamis : <input type = "radio" name = "tamis" value = "oui" id = "oui" /><br />
-		Brulé : <input type = "radio" name = "tamis" value = "oui" id = "oui" /><br />
+		Type de Recherche : <input type = "radio" name = "recherche" value = "prospection" id = "prospection" />
+				    <input type = "radio" name = "recherche" value = "fouille" id = "fouille" /><br />
+		<label for = "fouille">Fouille</label> :
+		<select name = "fouille" id = "fouille">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for = "prospection">Prospection</label> :
+		<select name = "prospection" id = "prospection">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		Tamis : <input type = "radio" name = "tamis" value = "oui" id = "oui" />
+			<input type = "radio" name = "tamis" value = "non" id = "non" /><br />
+		Brulé : <input type = "radio" name = "brule" value = "oui" id = "oui" />
+			<input type = "radio" name = "brule" value = "non" id = "non" /><br />
 		<label for = "commentaire">Commentaire</label> :<br />
 		<textarea name = "commentaire" id = "commentaire" rows = "5" cols = "40"></textarea><br />
 		<input type = "submit" value = "Envoi" />
@@ -453,3 +473,62 @@
 
 /*************************************************************************************************/
 
+<!-- Formulaire pour une Fouille. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "id">Identifiant</label> : <input type = "text" name = "id" id = "id" /><br />
+		<label for = "annee">Année</label> : <input type = "date" name = "annee" id = "annee" /><br />
+		<label for = "fouilleur">Fouilleur</label> : 
+		<select name = "fouilleur" id = "fouilleur">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+		<label for "carre">Carré</label> : 
+		<select name = "carre" id = "carre">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select><br />
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour un Carré. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "id">Identifiant</label> : <input type = "text" name = "id" id = "id" /><br />
+		<label for = "decapage">Décapage</label> : 
+		<select name = "decapage" id = "decapage">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select>
+	</p>
+</form>
+
+/*************************************************************************************************/
+
+<!-- Formulaire pour un Décapage. -->
+<form method = "post" action = "#">
+	<p>
+		<label for = "id">Identifiant</label> : <input type = "text" name = "id" id = "id" />
+		<label for = "locus">Locus</label> : 
+		<select name = "locus" id = "locus">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select>
+	</p>
+</form>
+
+/*************************************************************************************************/
