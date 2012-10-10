@@ -1,0 +1,44 @@
+/* Sujet : Projet de base de données pour des fouilles archéologiques.
+ * Auteur : Xavier Muth & Antoine Hars
+ *Fichier : patron.htm
+ */
+ 
+body
+{
+	background: yellow; /* Couleur du fond. */
+	font-family: Verdana, Arial, Helvetica, sans-serif; /* Police du texte. */
+	border: 1px solid black;
+}
+
+#bodyLogin
+{
+	width: 1000px; /* Largeur. */
+	margin: auto; /* Centrage des éléments dans le body. */
+	height: 690px; /* Hauteur. */
+}
+
+#headerLogin
+{
+	margin-top: 0%; /* Distance du haut du bodyLogin. */
+	background: blue;
+	border: 1px solid black;
+	width: 1000px; /* Largeur. */
+	height: 100px; /* Hauteur. */
+}
+
+#sectionLogin
+{
+	background: red;
+	margin-top: 15%; /* Distance du headerLogin. */
+	width: 270px; /* Largeur. */
+	border: 1px solid black;
+	margin-left: 35%; /* Distance du bord gauche du bodyLogin. */
+}
+ 
+#footerLogin
+{
+	margin-top: 28%; /* Distance du haut du sectionLogin. */
+	background: purple;
+	border: 1px solid black;
+}
+ 
