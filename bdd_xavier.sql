@@ -112,6 +112,29 @@ CREATE TABLE gisement
 	commentaire VARCHAR(200)
 );
 
+/* Création de la table Décapage. */
+CREATE TABLE decapage
+{
+	identifiant VARCHAR(50) PRIMARY KEY,
+	locus VARCHAR(50) REFERENCES locus(nom)
+}
+
+/* Création de la table Carré. */
+CREATE TABLE carre
+{
+	identifiant VARCHAR(50) PRIMARY KEY,
+	decapage VARCHAR(50) REFERENCES decapage(identifiant)
+}
+
+/* Création de la table Fouille. */
+CREATE TABLE fouille
+{
+	identifiant VARCHAR(50) PRIMARY KEY,
+	annee DATE,
+	fouilleur VARCHAR(50) REFERENCES personne(identifiant),
+	carre VARCHAR(50) REFERENCES carre(identifiant)
+}
+
 /* Création de la table Lieu. */
 CREATE TABLE lieu
 (
@@ -126,9 +149,10 @@ CREATE TABLE lieu
 /* Création de la table Prospection. */
 CREATE TABLE prospection
 (
-	identifiant INTEGER PRIMARY KEY,
+	identifiant VARCHAR(50) PRIMARY KEY,
 	date_prospection DATE,
 	responsable INTEGER REFERENCES personne(identifiant)
+	lieu VARCHAR(50) REFERENCES lieu(nom)
 );
 
 /* Création de la table Objet. */
@@ -140,7 +164,6 @@ CREATE TABLE objet
 	longueur FLOAT NOT NULL,
 	largeur FLOAT NOT NULL,
 	hauteur FLOAT NOT NULL,
-	locus varchar(50) REFERENCES locus(nom),
 	nature enum_nature,
 	fiche VARCHAR(50), -- Changer le VARCHAR pour avec des points 3D.
 	brule BOOLEAN NOT NULL DEFAULT FALSE,
@@ -148,6 +171,9 @@ CREATE TABLE objet
 	commentaire varchar(200),
 	tamis BOOLEAN NOT NULL DEFAULT FALSE,
 	trouve_par INTEGER REFERENCES personne(identifiant)
+	collection VARCHAR(50) REFERENCES collection(nom)
+	fouille VARCHAR(50) REFERENCES fouille(identifiant),
+	prospection VARCHAR(50) REFERENCES prospection(identifiant)
 );
 
 /* Création de la table Galet. */
