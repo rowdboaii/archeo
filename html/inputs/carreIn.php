@@ -34,7 +34,7 @@
 			</nav>
 
 			<aside>
-				<!-- Menu lat�ral sp�cifique au lien visit�. -->
+				<!-- Menu latéral spécifique au lien visité. -->
 				<div id="">
 
 				</div>
@@ -45,12 +45,12 @@
 				<div id="">
 
 					<p>
-						<!-- Formulaire pour un Carr�. -->
+						<!-- Formulaire pour un Carré. -->
 						</p><form method="post" action="http://cloud.github.com/downloads/antoine-hars/bdd_xavier/carreIn.htm#">
 							<p>
 								<label for="id">Identifiant</label> : <input type="text" name="id" id="id"><br>
-								<label for="decapage">D�capage</label> : 
-								<select name="decapage" id="decapage">
+								<label for="locus">Locus/label> : 
+								<select name="locus" id="locus">
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
