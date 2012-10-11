@@ -112,18 +112,18 @@ CREATE TABLE gisement
 	commentaire VARCHAR(200)
 );
 
-/* Création de la table Décapage. */
-CREATE TABLE decapage
+/* Création de la table Carré. */
+CREATE TABLE carre
 {
 	identifiant VARCHAR(50) PRIMARY KEY,
 	locus VARCHAR(50) REFERENCES locus(nom)
 }
 
-/* Création de la table Carré. */
-CREATE TABLE carre
+/* Création de la table Décapage. */
+CREATE TABLE decapage
 {
 	identifiant VARCHAR(50) PRIMARY KEY,
-	decapage VARCHAR(50) REFERENCES decapage(identifiant)
+	carre VARCHAR(50) REFERENCES carre(identifiant)
 }
 
 /* Création de la table Fouille. */
@@ -132,7 +132,7 @@ CREATE TABLE fouille
 	identifiant VARCHAR(50) PRIMARY KEY,
 	annee DATE,
 	fouilleur VARCHAR(50) REFERENCES personne(identifiant),
-	carre VARCHAR(50) REFERENCES carre(identifiant)
+	decapage VARCHAR(50) REFERENCES decapage(identifiant)
 }
 
 /* Création de la table Lieu. */
