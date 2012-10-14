@@ -73,7 +73,7 @@ CREATE TABLE site
 CREATE TABLE locus
 (
 	nom VARCHAR(50) PRIMARY KEY,
-	type enum_type_site,
+	type enum_type_locus,
 	site VARCHAR(50) REFERENCES site(nom),
 	position_nord FLOAT,
 	position_est FLOAT,
@@ -214,3 +214,147 @@ CREATE TABLE silex
 	provenance INTEGER REFERENCES gisement(identifiant), -- Peut être changer INTEGER en VARCHAR.
 	couleur VARCHAR(50)
 ); -- Vérifier qu'il n'y a pas besoin de clé primaire.
+
+
+/****************************************************************************************/
+
+/* Jeu de valeurs de test. */
+INSERT INTO personne (identifiant, nom, prenom, nationalite, fonction)
+VALUES (2, 'bob', 'patrick', 'russe', 'chercheur');
+
+INSERT INTO personne (identifiant, nom, prenom, nationalite, fonction)
+VALUES (1, 'muth', 'xavier', 'francaise', 'fouilleur');
+
+INSERT INTO region (nom, pays)
+VALUES ('region1', 'pays2');
+
+INSERT INTO region (nom, pays)
+VALUES ('region2', 'pays1');
+
+INSERT INTO site (nom, region, position_nord, position_est, altitude, trouve_par, fouille_par, type, commentaire)
+VALUES ('site1', 'region2', 32, 6, 23, 2, 1, 'archeologique', 'magnifique');
+
+INSERT INTO site (nom, region, position_nord, position_est, altitude, trouve_par, fouille_par, type, commentaire)
+VALUES ('site2', 'region1', 12, 4, 66, 1, 2, 'paleontologique', 'chanmé');
+
+INSERT INTO locus (nom, site, type, position_nord, position_est, altitude, trouve_par, appartient_a)
+VALUES ('locus1', 'site2', 'paleontologique', 3, 5, 7, 1, 2);
+
+INSERT INTO locus (nom, site, type, position_nord, position_est, altitude, trouve_par, appartient_a)
+VALUES ('locus2', 'site1', 'archeologique', 4, 5, 6, 2, 1);
+
+INSERT INTO lieu (nom, region, position_nord, position_est, altitude, commentaire)
+VALUES ('lieu1', 'region1', 3, 1, 3, 'choucroute');
+
+INSERT INTO lieu (nom, region, position_nord, position_est, altitude, commentaire)
+VALUES ('lieu2', 'region2', 76, 8, 5, 'patate');
+
+INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet)
+VALUES ('titre1', 2, 'mot1 mot2', '01/12/2012', 'revue1', 'langue1', 'site1');
+
+INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet)
+VALUES ('titre2', 1, 'mot4', '23/01/2010', 'revue3', 'langue20', 'site2');
+
+INSERT INTO gisement (identifiant, region, position_nord, position_est, altitude, commentaire)
+VALUES (1, 'region2', 43, 5, 21, '11111111111111');
+
+INSERT INTO gisement (identifiant, region, position_nord, position_est, altitude, commentaire)
+VALUES (2, 'region1', 43, 55, 777, 'ahah');
+
+INSERT INTO prospection (identifiant, date_prospection, responsable, lieu)
+VALUES ('11', '12/12/2012', 2, 'lieu1');
+
+INSERT INTO prospection (identifiant, date_prospection, responsable, lieu)
+VALUES ('22', '30/03/400', 1, 'lieu2');
+
+INSERT INTO carre (identifiant, locus)
+VALUES ('id1', 'locus2');
+
+INSERT INTO carre (identifiant, locus)
+VALUES ('id2', 'locus1');
+
+INSERT INTO decapage (identifiant, carre)
+VALUES ('id4', 'id1');
+
+INSERT INTO decapage (identifiant, carre)
+VALUES ('id2', 'id2');
+
+INSERT INTO fouille (fouilleur, identifiant, annee, decapage)
+VALUES (1, 'id3', '12/12/400', 'id4');
+
+INSERT INTO fouille (fouilleur, identifiant, annee, decapage)
+VALUES (2, 'id5', '2/2/1990', 'id2');
+
+INSERT INTO collection (nom, proprietaire)
+VALUES ('nom1', 2);
+
+INSERT INTO collection (nom, proprietaire)
+VALUES ('nom2', 2);
+
+/* **************************************** */
+
+/* Valeurs NULL. */
+INSERT INTO personne (identifiant, nom, prenom, nationalite, fonction)
+VALUES (0, 'null', 'null', 'null', 'fouilleur');
+
+INSERT INTO collection (nom, proprietaire)
+VALUES ('null', 0);
+
+INSERT INTO fouille (fouilleur, identifiant, annee, decapage)
+VALUES (0, '0', '12/12/12', 'id4');
+
+INSERT INTO prospection(identifiant, date_prospection, responsable, lieu)
+VALUES ('0', '12/12/12', 0, 'lieu1');
+
+/* **************************************** */
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection,commentaire)
+VALUES ('objet1', 'FR', 3, 4, 76, 4, 'silex', 'fiche1', TRUE, '12/4/30', FALSE, 1, 'null', 'id3', '0', 'commentaire');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection,commentaire)
+VALUES ('objet2', 'FR', 3, 4, 76, 4, 'silex', 'fi3he1', FALSE, '12/4/30', FALSE, 2, 'nom1', '0', '11', 'mentaire');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection,commentaire)
+VALUES ('objet3', 'CO', 4, 43, 1, 4, 'os', 'fich31', TRUE, '12/4/30', FALSE, 1, 'null', 'id5', '0', 'aire');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection,commentaire)
+VALUES ('objet4', 'FR', 4, 43, 1, 4, 'os', 'fiche', FALSE, '12/4/30', TRUE, 1, 'null', '0', '22', 'commen');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection,commentaire)
+VALUES ('objet5', 'CO', 4, 43, 1, 4, 'charbon', 'fich', TRUE, '12/4/30', TRUE, 2, 'nom2', 'id3', '0', 'coentaire');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection,commentaire)
+VALUES ('objet6', 'FR', 4, 43, 1, 4, 'charbon', 'che1', FALSE, '12/4/30', FALSE, 2, 'null', '0', '22', 'centaire');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection,commentaire)
+VALUES ('objet7', 'CO', 4, 43, 1, 4, 'galet', 'fie1', TRUE, '12/4/30', TRUE, 2, 'nom2', 'id5', '0', 'commente');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection,commentaire)
+VALUES ('objet8', 'FR', 4, 43, 1, 4, 'galet', 'fhe1', FALSE, '12/4/30', FALSE, 1, 'nom1', '0', '11', 'commene');
+
+INSERT INTO charbon (datation, objet)
+VALUES ('2/2/500', 'objet5');
+
+INSERT INTO charbon (datation, objet)
+VALUES ('1/1/1', 'objet6');
+
+INSERT INTO galet (nom, objet, type)
+VALUES ('galet1', 'objet7', 'quartz');
+
+INSERT INTO galet (nom, objet, type)
+VALUES ('galet2', 'objet8', 'schiste');
+
+INSERT INTO os (objet, partie, type, taxon, animal, type_animal, forme, dissous, morsure, conservation, datation)
+VALUES ('objet4', 'cul', 'type1', 'oiseau', 'truie', 'ta soeur', 'ovale', FALSE, FALSE, 6, '23/12/90');
+
+INSERT INTO os (objet, partie, type, taxon, animal, type_animal, forme, dissous, morsure, conservation, datation)
+VALUES ('objet3', 'tete', 'type2', 'reptile', 'rat', 'ta mere', 'sinusoidale', TRUE, TRUE, 4, '1/1/1');
+
+INSERT INTO silex (objet, provenance, couleur)
+VALUES ('objet2', 1, 'black');
+
+INSERT INTO silex (objet, provenance, couleur)
+VALUES ('objet1', 2, 'yellow');
+
+/****************************************************************************************/
+
