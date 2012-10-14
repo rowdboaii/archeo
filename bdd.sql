@@ -4,7 +4,7 @@
  */
 
 /* Création de la database. */
-CREATE DATABASE bdd_xavier owner jehu;
+CREATE DATABASE archeo owner jehu;
 
 /****************************************************************************************/
 
@@ -66,7 +66,7 @@ CREATE TABLE site
 	trouve_par INTEGER REFERENCES personne(identifiant),
 	fouille_par INTEGER REFERENCES personne(identifiant),
 	type enum_type_site,
-	commentaire VARCHAR(500),
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Locus. */
@@ -114,26 +114,26 @@ CREATE TABLE gisement
 
 /* Création de la table Carré. */
 CREATE TABLE carre
-{
+(
 	identifiant VARCHAR(50) PRIMARY KEY,
 	locus VARCHAR(50) REFERENCES locus(nom)
-}
+);
 
 /* Création de la table Décapage. */
 CREATE TABLE decapage
-{
+(
 	identifiant VARCHAR(50) PRIMARY KEY,
 	carre VARCHAR(50) REFERENCES carre(identifiant)
-}
+);
 
 /* Création de la table Fouille. */
 CREATE TABLE fouille
-{
+(
 	identifiant VARCHAR(50) PRIMARY KEY,
 	annee DATE,
-	fouilleur VARCHAR(50) REFERENCES personne(identifiant),
+	fouilleur INTEGER REFERENCES personne(identifiant),
 	decapage VARCHAR(50) REFERENCES decapage(identifiant)
-}
+);
 
 /* Création de la table Lieu. */
 CREATE TABLE lieu
@@ -151,7 +151,7 @@ CREATE TABLE prospection
 (
 	identifiant VARCHAR(50) PRIMARY KEY,
 	date_prospection DATE,
-	responsable INTEGER REFERENCES personne(identifiant)
+	responsable INTEGER REFERENCES personne(identifiant),
 	lieu VARCHAR(50) REFERENCES lieu(nom)
 );
 
@@ -170,8 +170,8 @@ CREATE TABLE objet
 	periode DATE, -- Vérifier le type DATE.
 	commentaire varchar(200),
 	tamis BOOLEAN NOT NULL DEFAULT FALSE,
-	trouve_par INTEGER REFERENCES personne(identifiant)
-	collection VARCHAR(50) REFERENCES collection(nom)
+	trouve_par INTEGER REFERENCES personne(identifiant),
+	collection VARCHAR(50) REFERENCES collection(nom),
 	fouille VARCHAR(50) REFERENCES fouille(identifiant),
 	prospection VARCHAR(50) REFERENCES prospection(identifiant)
 );
