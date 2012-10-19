@@ -238,10 +238,10 @@ INSERT INTO site (nom, region, position_nord, position_est, altitude, trouve_par
 VALUES ('site2', 'region1', 12, 4, 66, 1, 2, 'paleontologique', 'chanmé');
 
 INSERT INTO locus (nom, site, type, position_nord, position_est, altitude, trouve_par, appartient_a)
-VALUES ('locus1', 'site2', 'paleontologique', 3, 5, 7, 1, 2);
+VALUES ('locus1', 'site2', 'type1', 3, 5, 7, 1, 2);
 
 INSERT INTO locus (nom, site, type, position_nord, position_est, altitude, trouve_par, appartient_a)
-VALUES ('locus2', 'site1', 'archeologique', 4, 5, 6, 2, 1);
+VALUES ('locus2', 'site1', 'type2', 4, 5, 6, 2, 1);
 
 INSERT INTO lieu (nom, region, position_nord, position_est, altitude, commentaire)
 VALUES ('lieu1', 'region1', 3, 1, 3, 'choucroute');
