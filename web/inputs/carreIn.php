@@ -29,13 +29,19 @@
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id="">
+				
+					<!-- Menu principal. -->
+					<?php include('../includes/menuMain.php'); ?>
 
 				</div>
 			</nav>
 
 			<aside>
-				<!-- Menu lat�ral sp�cifique au lien visit�. -->
+				<!-- Menu latéral spécifique au lien visité. -->
 				<div id="">
+				
+					<!-- Menu pour les inputs. -->
+					<?php include('../includes/menuIn.php'); ?>
 
 				</div>
 			</aside>
@@ -49,7 +55,7 @@
 						</p><form method="post" action="http://cloud.github.com/downloads/antoine-hars/bdd_xavier/carreIn.htm#">
 							<p>
 								<label for="id">Identifiant</label> : <input type="text" name="id" id="id"><br>
-								<label for="decapage">D�capage</label> : 
+								<label for="decapage">Décapage</label> : 
 								<select name="decapage" id="decapage">
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -65,8 +71,10 @@
 			</section>
 
 			<footer>
+			
 				<!-- Pied de la page. -->
-				<?php include("piedPage.php"); ?>
+				<?php include('../includes/piedPage.php'); ?>
+
 			</footer>
 
 		</div>

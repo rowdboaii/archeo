@@ -34,12 +34,18 @@
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
 
+					<!-- Menu principal. -->
+					<?php include('../includes/menuMain.php'); ?>
+
 				</div>
 			</nav>
 
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
+
+					<!-- Menu pour les outputs. -->
+					<?php include('../includes/menuOut.php'); ?>
 
 				</div>
 			</aside>
@@ -48,7 +54,8 @@
 				<!-- Section de page. -->
 				<div id = "">
 					
-					<?php $query = $bdd->query('SELECT * FROM region'); ?>
+					<?php $query = $bdd->query('SELECT *
+																			FROM region'); ?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -94,8 +101,10 @@
 			</section>
 
 			<footer>
+			
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
+			
 			</footer>
 
 		</div>

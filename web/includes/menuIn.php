@@ -5,22 +5,22 @@
 <!-- Menu Pour les insertions de la page. -->
 <div id = "menuIn">
 	<ul>
-		<li><a href = "regionIn.htm">Région</a></li>
-		<li><a href = "lieuIn.htm">Lieu</a></li>
-		<li><a href = "siteIn.htm">Site</a></li>
-		<li><a href = "locusIn.htm">Locus</a></li>
-		<li><a href = "prospectionIn.htm">Prospection</a></li>
-		<li><a href = "articleIn.htm">Article</a></li>
-		<li><a href = "gisementIn.htm">Gisement</a></li>
-		<li><a href = "decapageIn.htm">Décapage</a></li>
-		<li><a href = "carreIn.htm">Carré</a></li>
-		<li><a href = "fouilleIn.htm">Fouille</a></li>
-		<li><a href = "personneIn.htm">Personne</a></li>
-		<li><a href = "collectionIn.htm">Collection</a></li>
-		<li><a href = "objetIn.htm">Objet</a></li>
-		<li><a href = "silexIn.htm">Silex</a></li>
-		<li><a href = "osIn.htm">Os</a></li>
-		<li><a href = "galetIn.htm">Galet</a></li>
-		<li><a href = "charbonIn.htm">Charbon</a></li>
+		<li><a href = "../inputs/regionIn.php">Région</a></li>
+		<li><a href = "../inputs/lieuIn.php">Lieu</a></li>
+		<li><a href = "../inputs/siteIn.php">Site</a></li>
+		<li><a href = "../inputs/locusIn.php">Locus</a></li>
+		<li><a href = "../inputs/prospectionIn.php">Prospection</a></li>
+		<li><a href = "../inputs/articleIn.php">Article</a></li>
+		<li><a href = "../inputs/gisementIn.php">Gisement</a></li>
+		<li><a href = "../inputs/decapageIn.php">Décapage</a></li>
+		<li><a href = "../inputs/carreIn.php">Carré</a></li>
+		<li><a href = "../inputs/fouilleIn.php">Fouille</a></li>
+		<li><a href = "../inputs/personneIn.php">Personne</a></li>
+		<li><a href = "../inputs/collectionIn.php">Collection</a></li>
+		<li><a href = "../inputs/objetIn.php">Objet</a></li>
+		<li><a href = "../inputs/silexIn.php">Silex</a></li>
+		<li><a href = "../inputs/osIn.php">Os</a></li>
+		<li><a href = "../inputs/galetIn.php">Galet</a></li>
+		<li><a href = "../inputs/charbonIn.php">Charbon</a></li>
 	</ul>
 </div>

@@ -38,6 +38,9 @@
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
 
+					<!-- Menu principal. -->
+					<?php include('includes/menuMain.php'); ?>
+
 				</div>
 			</nav>
 
@@ -52,8 +55,9 @@
 				<!-- Section de page. -->
 				<div id = "">
 
+					<h2>Site créé dans le cadre de fouilles archéologiques.</h2>
 					<p>
-						Quibus occurrere bene pertinax miles explicatis ordinibus parans hastisque feriens scuta qui habitus iram pugnantium concitat et dolorem proximos iam gestu 										terrebat sed eum in certamen alacriter consurgentem revocavere ductores rati intempestivum anceps subire certamen cum haut longe muri distarent, quorum tutela 											securitas poterat in solido locari cunctorum.
+						Page Principale.
 					</p>
 
 				</div>
@@ -75,8 +79,10 @@
 			?>
 			
 			<footer>
+			
 				<!-- Pied de la page. -->
-				<?php include("includes/piedPage.php"); ?>				
+				<?php include('includes/piedPage.php'); ?>				
+			
 			</footer>
 
 		</div>

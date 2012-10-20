@@ -1,6 +1,6 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : decapageIn.htm -->
+<!-- Fichier : contact.htm -->
 
 <!DOCTYPE html>
 <html>
@@ -13,67 +13,63 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>Décapage</title>
+		<title>Contacts</title>
 	</head>
+
 	<body>
 	  <!-- Corps de la page. -->
-		<div id="">
+		<div id = "">
 
 			<header>
 				<!-- Header de la page. -->
-				<div id="">
-
+				<div id = "">
+				
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
-				<div id="">
+				<div id = "">
 				
 					<!-- Menu principal. -->
-					<?php include('../includes/menuMain.php'); ?>
-
+					<?php include('includes/menuMain.php'); ?>
+				
 				</div>
 			</nav>
-
+			
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
-				<div id="">
+				<div id = "">
 				
-					<!-- Menu pour les inputs. -->
-					<?php include('../includes/menuIn.php'); ?>
-
 				</div>
 			</aside>
 
 			<section>
 				<!-- Section de page. -->
-				<div id="">
+				<div id = "">
 
 					<p>
-						<!-- Formulaire pour un Décapage. -->
-						</p><form method="post" action="http://cloud.github.com/downloads/antoine-hars/bdd_xavier/decapageIn.htm#">
-							<p>
-								<label for="id">Identifiant</label> : <input type="text" name="id" id="id">
-								<label for="locus">Locus</label> : 
-								<select name="locus" id="locus">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-							</p>
-						</form>
-					<p></p>
-
+						Xavier Muth<br />
+						Géomètre<br />
+						diplômé de l'INSA Strasbourg<br />
+						<a href = "mailto:xavier.muth@truc.com">xavier.muth@truc.com</a><br />
+						+33 (0) 651 515 151
+					</p>
+					
+					<p>
+						Antoine Hars<br />
+						Étudiant en Informatique à l'UTC<br />
+						<a href = "mailto:antoine.hars@truc.com">antoine.hars@truc.com</a><br />
+						+33 (0) 651 515 151
+					</p>
+	
 				</div>
 			</section>
 
 			<footer>
 			
 				<!-- Pied de la page. -->
-				<?php include('../includes/piedPage.php'); ?>
+				<?php include('includes/piedPage.php'); ?>
 			
 			</footer>
 

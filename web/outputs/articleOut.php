@@ -13,7 +13,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>ArticleOut</title>
+		<title>articleOut</title>
 	</head>
 
 	<body>
@@ -34,12 +34,18 @@
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
 
+					<!-- Menu principal. -->
+					<?php include('../includes/menuMain.php'); ?>
+
 				</div>
 			</nav>
 
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
+
+					<!-- Menu pour les outputs. -->
+					<?php include('../includes/menuOut.php'); ?>
 
 				</div>
 			</aside>
@@ -48,9 +54,8 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT a.titre, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, a.langue, a.sujet 
-																			FROM article a, personne p 
-																			WHERE a.auteur = p.identifiant'); ?>
+					<?php $query = $bdd->query('SELECT *
+																			FROM article'); ?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -60,9 +65,8 @@
 						<thead>
 							<tr>
 								<th>titre</th>
-								<th>prénom auteur</th>
-								<th>nom auteur</th>
-								<th>mot_cle</th>
+								<th>auteur</th>
+								<th>mots clé</th>
 								<th>année</th>
 								<th>revue</th>
 								<th>langue</th>
@@ -74,9 +78,8 @@
 						<tfoot>
 							<tr>
 								<th>titre</th>
-								<th>prénom auteur</th>
-								<th>nom auteur</th>
-								<th>mot_cle</th>
+								<th>auteur</th>
+								<th>mots clé</th>
 								<th>année</th>
 								<th>revue</th>
 								<th>langue</th>
@@ -93,8 +96,7 @@
 								
 								<tr>
 									<td><?php echo $data['titre']; ?></td>
-									<td><?php echo $data['prenom']; ?></td>
-									<td><?php echo $data['nom']; ?></td>
+									<td><?php echo $data['auteur']; ?></td>
 									<td><?php echo $data['mot_cle']; ?></td>
 									<td><?php echo $data['annee']; ?></td>
 									<td><?php echo $data['revue']; ?></td>
@@ -116,8 +118,10 @@
 			</section>
 
 			<footer>
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
+
 			</footer>
 
 		</div>

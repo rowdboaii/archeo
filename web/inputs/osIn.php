@@ -31,13 +31,19 @@
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
 				
+					<!-- Menu principal. -->
+					<?php include('../includes/menuMain.php'); ?>
+				
 				</div>
 			</nav>
 			
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+	
+					<!-- Menu pour les inputs. -->
+					<?php include('../includes/menuIn.php'); ?>
+					
 				</div>
 			</aside>
 
@@ -87,8 +93,10 @@
 			</section>
 
 			<footer>
+		
 				<!-- Pied de la page. -->
-				<?php include("piedPage.php"); ?>
+				<?php include('../includes/piedPage.php'); ?>
+		
 			</footer>
 
 		</div>
