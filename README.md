@@ -16,20 +16,26 @@ Sujet:
 
 
 V1:
-- Ecriture des formulaires d'insertion de champs dans les tables.
+- Insertion de champs dans les tables.
+- Protection du site par Login.
 - Affichage complet des tables.
-- Ajout de toutes les énumérations.
-- CSS pour avoir des blocs faciles à manipuler.
-- La création en cascade d'un Objet et de ses hérités.
+- Liens entre les pages du site.
+- Menus pour accéder aux pages du site.
 
 
 V2:
+- La création en cascade d'un Objet et de ses hérités.
 - Affichage d'une table en fonction d'un critère.
-- CSS plus graphique avec le positionnement des blocs entre eux.
 
 
 V3:
-- Protection du site par Login.
+- CSS pour avoir des blocs faciles à manipuler.
+- CSS plus graphique avec le positionnement des blocs entre eux.
+
+
+V4:
+- Ajout de toutes les énumérations.
+- Création des triggers pour les identifiants des champs des tables.
 - Sécuriser l'accès à la base de données en utilisant des RegExp.
 - Voir pour enregistrer les données entrées dans des cookies si besoin est pour ne pas à avoir à les retranscrire par la suite en cas d'oubli.
 - Ajout des nouvelles données automatiquement dans les select des formulaires.
