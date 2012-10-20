@@ -64,6 +64,7 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
+								<th>identifiant</th>
 								<th>nom</th>
 								<th>type</th>
 								<th>poids</th>
@@ -86,6 +87,7 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
+								<th>identifiant</th>
 								<th>nom</th>
 								<th>type</th>
 								<th>poids</th>
@@ -113,6 +115,7 @@
 							?>
 								
 								<tr>
+									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['type']; ?></td>
 									<td><?php echo $data['poids']; ?></td>

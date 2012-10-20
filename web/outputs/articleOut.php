@@ -64,6 +64,7 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
+								<th>identifiant</th>
 								<th>titre</th>
 								<th>auteur</th>
 								<th>mots clé</th>
@@ -77,6 +78,7 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
+								<th>identifiant</th>
 								<th>titre</th>
 								<th>auteur</th>
 								<th>mots clé</th>
@@ -95,6 +97,7 @@
 							?>
 								
 								<tr>
+									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['titre']; ?></td>
 									<td><?php echo $data['auteur']; ?></td>
 									<td><?php echo $data['mot_cle']; ?></td>

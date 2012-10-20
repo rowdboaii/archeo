@@ -64,6 +64,7 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
+								<th>identifiant</th>
 								<th>nom</th>
 								<th>region</th>
 								<th>type</th>
@@ -79,6 +80,7 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
+								<th>identifiant</th>
 								<th>nom</th>
 								<th>region</th>
 								<th>type</th>
@@ -99,15 +101,16 @@
 							?>
 								
 								<tr>
+									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['region']; ?></td>
 									<td><?php echo $data['type']; ?></td>
 									<td><?php echo $data['position_nord']; ?></td>
 									<td><?php echo $data['position_est']; ?></td>
 									<td><?php echo $data['altitude']; ?></td>
-									<td><?php echo $data['prenom'] . ' ' . $data['nom']; ?></td>
-									<td><?php echo $data['prenom'] . ' ' . $data['nom']; ?></td>
-									<td><?php echo $data['']; ?></td>
+									<td><?php echo $data['trouvep_par']; ?></td>
+									<td><?php echo $data['fouille_par']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 								
 							<?php

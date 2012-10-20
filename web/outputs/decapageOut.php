@@ -65,6 +65,7 @@
 						<thead>
 							<tr>
 								<th>identifiant</th>
+								<th>nom</th>
 								<th>carré</th>
 							</tr>
 						</thead>
@@ -73,6 +74,7 @@
 						<tfoot>
 							<tr>
 								<th>identifiant</th>
+								<th>nom</th>
 								<th>carré</th>
 							</tr>
 						</tfoot>
@@ -86,6 +88,7 @@
 								
 								<tr>
 									<td><?php echo $data['identifiant']; ?></td>
+									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['carre']; ?></td>
 								</tr>
 								

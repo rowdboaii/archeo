@@ -65,6 +65,7 @@
 						<thead>
 							<tr>
 								<th>identifiant</th>
+								<th>nom</th>
 								<th>lieu</th>
 								<th>responsable</th>
 								<th>date prospection</th>
@@ -75,6 +76,7 @@
 						<tfoot>
 							<tr>
 								<th>identifiant</th>
+								<th>nom</th>
 								<th>lieu</th>
 								<th>responsable</th>
 								<th>date prospection</th>
@@ -90,6 +92,7 @@
 								
 								<tr>
 									<td><?php echo $data['identifiant']; ?></td>
+									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['lieu']; ?></td>
 									<td><?php echo $data['responsable']; ?></td>
 									<td><?php echo $data['date_prospection']; ?></td>

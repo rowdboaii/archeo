@@ -64,6 +64,7 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
+								<th>identifiant</th>
 								<th>nom</th>
 								<th>region</th>
 								<th>position nord</th>
@@ -76,6 +77,7 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
+								<th>identifiant</th>
 								<th>nom</th>
 								<th>region</th>
 								<th>position nord</th>
@@ -93,6 +95,7 @@
 							?>
 								
 								<tr>
+									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['region']; ?></td>
 									<td><?php echo $data['position_nord']; ?></td>
