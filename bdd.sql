@@ -185,7 +185,7 @@ CREATE TABLE objet
 	fouille INTEGER REFERENCES fouille(identifiant),
 	prospection INTEGER REFERENCES prospection(identifiant),
 	fiche VARCHAR(50), -- Changer le VARCHAR pour avec des points 3D.
-	commentaire varchar(200)
+	commentaire VARCHAR(200)
 );
 
 /* Création de la table Galet. */
