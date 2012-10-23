@@ -51,6 +51,7 @@
 				</div>
 			</aside>
 
+			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
@@ -95,6 +96,7 @@
 	
 				</div>
 			</section>
+			<?php } ?>
 
 			<footer>
 		
