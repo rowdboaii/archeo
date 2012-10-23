@@ -1,15 +1,17 @@
-<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
+<!-- Sujet : Projet de base de donnÃ©es pour des fouilles archÃ©ologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : regionOut.htm -->
+<!-- Fichier : regionOut.php -->
+
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<!-- En-tête de la page. -->
+		<!-- En-tÃªte de la page. -->
 		<meta charset = "utf-8" />
 		<link rel = "stylesheet" href = "style.css" />
-		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
+		<!-- Dans le cas oÃ¹ le navigateur est une version antÃ©rieure Ã  IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -20,7 +22,7 @@
 	  <!-- Corps de la page. -->
 		<div id = "">
 
-			<!-- Connexion à la base de données. -->
+			<!-- Connexion Ã  la base de donnÃ©es. -->
 			<?php include('../includes/connexionBDD.php'); ?>
 			
 			<header>
@@ -41,7 +43,7 @@
 			</nav>
 
 			<aside>
-				<!-- Menu latéral spécifique au lien visité. -->
+				<!-- Menu latÃ©ral spÃ©cifique au lien visitÃ©. -->
 				<div id = "">
 
 					<!-- Menu pour les outputs. -->
@@ -61,7 +63,7 @@
 					<table>
 						<caption>REGION</caption>
 						
-						<!-- Entête du tableau. -->
+						<!-- EntÃªte du tableau. -->
 						<thead>
 							<tr>
 								<th>identifiant</th>
