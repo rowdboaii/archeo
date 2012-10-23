@@ -1,11 +1,11 @@
-<!-- Sujet : Projet de base de donn�es pour des fouilles arch�ologiques. -->
+<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : menuOut.php -->
 
 <!-- Menu Pour l'affichage des tables. -->
 <div id = "menuOut">
 	<ul>
-		<li><a href = "../outputs/regionOut.php">R�gion</a></li>
+		<li><a href = "../outputs/regionOut.php">Région</a></li>
 		<li><a href = "../outputs/lieuOut.php">Lieu</a></li>
 		<li><a href = "../outputs/siteOut.php">Site</a></li>
 		<li><a href = "../outputs/locusOut.php">Locus</a></li>
