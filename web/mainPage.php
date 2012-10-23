@@ -2,6 +2,13 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : mainIndex.htm -->
 
+<!-- Démarrage de la session pour les ids. -->
+<?php
+	session_start();
+	$_SESSION['pseudo'] = $_POST['pseudo'];
+	$_SESSION['mdp'] = $_POST['mdp'];
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -28,9 +35,9 @@
 			</header>
 
 			<?php
-				if (isset($_POST['pseudo']) AND isset($_POST['mdp']))
+				if (isset($_SESSION['pseudo']) AND isset($_SESSION['mdp']))
 				{
-					if ($_POST['pseudo'] == "sudo" AND $_POST['mdp'] == "password")
+					if (($_SESSION['pseudo'] == "sudo" AND $_SESSION['mdp'] == "password") OR ($_SESSION['pseudo'] == "user" AND $_SESSION['mdp'] == "password"))
 					{
 			?>			
 				
