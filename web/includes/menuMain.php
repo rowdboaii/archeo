@@ -6,7 +6,9 @@
 <div id = "menuMain">
 	<ul>
 		<li><a href = "../mainPage.php">Accueil</a></li>
+		<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
 		<li><a href = "../input.php">Écriture</a></li>
+		<?php } ?>
 		<li><a href = "../output.php">Lecture</a></li>
 		<li><a href = "../contact.php">Contacts</a></li>
 		<li><a href = "../deconnect.php">Déconnexion</a></li>
