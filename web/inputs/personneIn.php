@@ -1,6 +1,10 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : personneIn.htm -->
+<!-- Fichier : personneIn.php -->
+
+<?php
+	session_start();
+?>
 
 <!DOCTYPE html>
 <html>
@@ -47,6 +51,7 @@
 				</div>
 			</aside>
 
+			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
@@ -80,6 +85,7 @@
 	
 				</div>
 			</section>
+			<?php } ?>
 
 			<footer>
 			
