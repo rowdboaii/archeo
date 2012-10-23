@@ -2,6 +2,10 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : carreIn.htm -->
 
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
