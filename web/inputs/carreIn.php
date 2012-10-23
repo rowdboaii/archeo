@@ -1,6 +1,6 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : carreIn.htm -->
+<!-- Fichier : carreIn.php -->
 
 <?php
 	session_start();
