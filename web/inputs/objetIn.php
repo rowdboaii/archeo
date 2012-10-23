@@ -1,6 +1,10 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : objetIn.htm -->
+<!-- Fichier : objetIn.php -->
+
+<?php
+	session_start();
+?>
 
 <!DOCTYPE html>
 <html>
