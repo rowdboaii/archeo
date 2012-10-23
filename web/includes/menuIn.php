@@ -2,8 +2,9 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : menuIn.php -->
 
-<!-- Menu Pour les insertions de la page. -->
 <?php if ($_SESSION['pseudo'] == 'sudo') { ?>
+
+<!-- Menu Pour les insertions de la page. -->
 <div id = "menuIn">
 	<ul>
 		<li><a href = "../inputs/regionIn.php">Région</a></li>
@@ -25,4 +26,6 @@
 		<li><a href = "../inputs/charbonIn.php">Charbon</a></li>
 	</ul>
 </div>
+
 <?php } ?>
+

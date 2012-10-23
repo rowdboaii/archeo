@@ -2,6 +2,8 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : menuUp.php -->
 
+<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
+
 <!-- Menu Pour l'affichage des tables. -->
 <div id = "menuUp">
 	<ul>
@@ -24,3 +26,6 @@
 		<li><a href = "../updates/charbonUp.php">Charbon</a></li>
 	</ul>
 </div>
+
+<?php } ?>
+

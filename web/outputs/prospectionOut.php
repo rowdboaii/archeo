@@ -2,6 +2,7 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : prospectionOut.php -->
 
+<!-- Démarrage de la session pour les identifiants. -->
 <?php session_start(); ?>
 
 <!DOCTYPE html>
@@ -89,7 +90,8 @@
 						<tbody>
 						
 							<?php
-								while ($data = $query->fetch()) {
+								while ($data = $query->fetch())
+								{
 							?>
 								
 								<tr>

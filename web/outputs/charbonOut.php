@@ -2,6 +2,7 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : charbonOut.php -->
 
+<!-- Démarrage de la session pour les identifiants. -->
 <?php session_start(); ?>
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>charbonOut</title>
+		<title>CharbonOut</title>
 	</head>
 
 	<body>
@@ -83,7 +84,8 @@
 						<tbody>
 						
 							<?php
-								while ($data = $query->fetch()) {
+								while ($data = $query->fetch())
+								{
 							?>
 								
 								<tr>

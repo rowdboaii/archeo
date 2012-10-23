@@ -2,9 +2,8 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : deconnect.php -->
 
-<?php
-	session_destroy();
-?>
+<!-- Démarrage de la session pour les identifiants. -->
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -37,6 +36,10 @@
 				<div id = "">
 
 					<h2>Déconnexion</h2>
+					
+					<!-- Destruction des données de la session. -->
+					<?php session_destroy(); ?>
+					
 					<p>
 						<br />
 						<a href = "index.php">Connexion</a>

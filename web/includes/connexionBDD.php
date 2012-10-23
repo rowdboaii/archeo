@@ -1,3 +1,7 @@
+<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
+<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Fichier : connexionBDD.php -->
+
 <?php
 		$archeo = 'pgsql:host=localhost;dbname=archeo';
 		$user = 'jehu';

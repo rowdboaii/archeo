@@ -1,6 +1,6 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : patron.htm -->
+<!-- Fichier : patron.php -->
 
 <!DOCTYPE html>
 <html>
@@ -47,10 +47,6 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-
-					<p>
-						Quibus occurrere bene pertinax miles explicatis ordinibus parans hastisque feriens scuta qui habitus iram pugnantium concitat et dolorem proximos iam gestu terrebat 							sed eum in certamen alacriter consurgentem revocavere ductores rati intempestivum anceps subire certamen cum haut longe muri distarent, quorum tutela securitas 						poterat in solido locari cunctorum.
-					</p>
 	
 				</div>
 			</section>

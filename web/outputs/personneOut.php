@@ -2,6 +2,7 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : personneOut.php -->
 
+<!-- Démarrage de la session pour les identifiants. -->
 <?php session_start(); ?>
 
 <!DOCTYPE html>
@@ -52,7 +53,8 @@
 				</div>
 			</aside>
 
-			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
+			<?php	if ($_SESSION['pseudo'] == 'sudo') { ?>
+			
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
@@ -90,7 +92,8 @@
 						<tbody>
 						
 							<?php
-								while ($data = $query->fetch()) {
+								while ($data = $query->fetch())
+								{
 							?>
 								
 								<tr>

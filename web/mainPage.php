@@ -1,13 +1,9 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : mainIndex.htm -->
+<!-- Fichier : mainPage.php -->
 
-<!-- Démarrage de la session pour les ids. -->
-<?php
-	session_start();
-	$_SESSION['pseudo'] = $_POST['pseudo'];
-	$_SESSION['mdp'] = $_POST['mdp'];
-?>
+<!-- Démarrage de la session pour les identifiants. -->
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -35,8 +31,17 @@
 			</header>
 
 			<?php
+				/* Récupération des identifiants de connexion s'il y en a. */
+				if (isset($_POST['pseudo']) AND isset($_POST['mdp']))
+				{
+					$_SESSION['pseudo'] = $_POST['pseudo'];
+					$_SESSION['mdp'] = $_POST['mdp'];
+				}
+				
+				/* S'il n'y a pas d'identifiants. */
 				if (isset($_SESSION['pseudo']) AND isset($_SESSION['mdp']))
 				{
+					/* Si les identifiants sont corrects. */
 					if (($_SESSION['pseudo'] == "sudo" AND $_SESSION['mdp'] == "password") OR ($_SESSION['pseudo'] == "user" AND $_SESSION['mdp'] == "password"))
 					{
 			?>			

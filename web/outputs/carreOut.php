@@ -2,6 +2,7 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : carreOut.php -->
 
+<!-- Démarrage de la session pour les identifiants. -->
 <?php session_start(); ?>
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>carreOut</title>
+		<title>CarreOut</title>
 	</head>
 
 	<body>
@@ -85,7 +86,8 @@
 						<tbody>
 						
 							<?php
-								while ($data = $query->fetch()) {
+								while ($data = $query->fetch())
+								{
 							?>
 								
 								<tr>

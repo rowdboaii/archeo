@@ -2,6 +2,8 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : menuDel.php -->
 
+<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
+
 <!-- Menu Pour l'affichage des tables. -->
 <div id = "menuDel">
 	<ul>
@@ -24,3 +26,6 @@
 		<li><a href = "../deletes/charbonDel.php">Charbon</a></li>
 	</ul>
 </div>
+
+<?php } ?>
+

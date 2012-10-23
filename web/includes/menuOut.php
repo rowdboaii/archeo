@@ -15,9 +15,11 @@
 		<li><a href = "../outputs/decapageOut.php">Décapage</a></li>
 		<li><a href = "../outputs/carreOut.php">Carré</a></li>
 		<li><a href = "../outputs/fouilleOut.php">Fouille</a></li>
+
 		<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
 		<li><a href = "../outputs/personneOut.php">Personne</a></li>
 		<?php } ?>
+
 		<li><a href = "../outputs/collectionOut.php">Collection</a></li>
 		<li><a href = "../outputs/objetOut.php">Objet</a></li>
 		<li><a href = "../outputs/silexOut.php">Silex</a></li>
@@ -26,3 +28,4 @@
 		<li><a href = "../outputs/charbonOut.php">Charbon</a></li>
 	</ul>
 </div>
+

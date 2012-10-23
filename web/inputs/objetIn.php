@@ -2,9 +2,8 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : objetIn.php -->
 
-<?php
-	session_start();
-?>
+<!-- Démarrage de la session pour les identifiants. -->
+<?php	session_start(); ?>
 
 <!DOCTYPE html>
 <html>

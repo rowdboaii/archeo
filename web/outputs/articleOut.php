@@ -2,6 +2,7 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : articleOut.php -->
 
+<!-- Démarrage de la session pour les identifiants. -->
 <?php session_start(); ?>
 
 <!DOCTYPE html>
@@ -15,14 +16,14 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>articleOut</title>
+		<title>ArticleOut</title>
 	</head>
 
 	<body>
 	  <!-- Corps de la page. -->
 		<div id = "">
 
-			<!-- Connexion à la base de donn�es. -->
+			<!-- Connexion à la base de données. -->
 			<?php include('../includes/connexionBDD.php'); ?>
 			
 			<header>
@@ -55,7 +56,7 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-						
+					
 					<?php $query = $bdd->query('SELECT *
 																			FROM article'); ?>
 					
@@ -95,7 +96,8 @@
 						<tbody>
 						
 							<?php
-								while ($data = $query->fetch()) {
+								while ($data = $query->fetch())
+								{
 							?>
 								
 								<tr>
