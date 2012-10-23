@@ -1,6 +1,8 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : lieuOut.htm -->
+<!-- Fichier : lieuOut.php -->
+
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
