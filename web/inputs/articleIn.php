@@ -2,6 +2,10 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : articleIn.htm -->
 
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
