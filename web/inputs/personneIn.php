@@ -57,7 +57,7 @@
 
 					<p>
 						<!-- Formulaire pour une Personne. -->
-						<form method = "post" action = "#">
+						<form method = "post" action = "../inserts/personneInsert.php">
 							<p>
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "prenom">Prénom</label> : <input type = "text" name = "prenom" id = "prenom" /><br />

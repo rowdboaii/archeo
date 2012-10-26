@@ -57,7 +57,7 @@
 
 					<p>
 						<!-- Formulaire pour un Locus. -->
-						<form method = "post" action = "#">
+						<form method = "post" action = "../inserts/locusInsert.php">
 							<p>
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "type">Type</label> : 

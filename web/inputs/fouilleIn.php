@@ -56,7 +56,7 @@
 
 					<p>
 						<!-- Formulaire pour une Fouille. -->
-						</p><form method="post" action="http://cloud.github.com/downloads/antoine-hars/bdd_xavier/fouilleIn.htm#">
+						</p><form method="post" action="../inserts/fouilleInsert.php">
 							<p>
 								<label for="id">Identifiant</label> : <input type="text" name="id" id="id"><br>
 								<label for="annee">Année</label> : <input type="date" name="annee" id="annee"><br>

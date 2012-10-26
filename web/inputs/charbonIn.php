@@ -57,7 +57,7 @@
 
 					<p>
 						<!-- Formulaire pour un Charbon. -->
-						<form method = "post" action = "#">
+						<form method = "post" action = "../inserts/charbonInsert.php">
 							<p>
 								<label for = "objet">Objet</label> : 
 								<select name = "objet" id = "objet">

@@ -2,9 +2,8 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : delete.php -->
 
-<?php
-	session_destroy();
-?>
+<!-- Démarrage de la session pour les identifiants. -->
+<?php	session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -31,12 +30,29 @@
 				</div>
 			</header>
 
+			<nav>
+				<!-- Principaux liens de navigation de la page. -->
+				<div id = "">
+				
+					<!-- Menu principal. -->
+					<?php include('includes/menuMain.php'); ?>
+				
+				</div>
+			</nav>
+			
+			<aside>
+				<!-- Menu latéral spécifique au lien visité. -->
+				<div id = "">
+				
+					<!-- Menu pour les deletes. -->
+					<?php include('includes/menuDel.php'); ?>
+				
+				</div>
+			</aside>
 
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-
-					
 	
 				</div>
 			</section>

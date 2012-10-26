@@ -57,7 +57,7 @@
 
 					<p>
 						<!-- Formulaire pour un Article. -->
-						<form method = "post" action = "#">
+						<form method = "post" action = "../inserts/articleInsert.php">
 							<p>
 								<label for = "titre">Titre</label> : <input type = "text" name = "titre" id = "titre" /><br />
 								<label for = "auteur">Auteur</label> : 

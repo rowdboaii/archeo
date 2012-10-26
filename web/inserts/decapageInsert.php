@@ -1,9 +1,6 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : regionIn.php -->
-
-<!-- Démarrage de la session pour les identifiants. -->
-<?php	session_start(); ?>
+<!-- Fichier : decapageInsert.php -->
 
 <!DOCTYPE html>
 <html>
@@ -16,12 +13,15 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>Région</title>
+		<title>DecapageInsert</title>
 	</head>
 
 	<body>
 	  <!-- Corps de la page. -->
 		<div id = "">
+
+			<!-- Connexion à la base de données. -->
+			<?php include('../includes/connexionBDD.php'); ?>
 
 			<header>
 				<!-- Header de la page. -->
@@ -34,9 +34,6 @@
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
 				
-					<!-- Menu principal. -->
-					<?php include('../includes/menuMain.php'); ?>
-				
 				</div>
 			</nav>
 			
@@ -44,43 +41,34 @@
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
 				
-					<!-- Menu pour les inputs. -->
-					<?php include('../includes/menuIn.php'); ?>
-				
 				</div>
 			</aside>
-
-			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
 			<section>
+
 				<!-- Section de page. -->
 				<div id = "">
-
+	
+					<?php
+						$query = $bdd->prepare('INSERT INTO decapage (nom, carre)
+																		VALUES(:nom, :carre)');
+						$query->execute(array('nom' => $_POST['nom'],
+																	'carre' => $_POST['carre']
+																	));
+						echo 'Champ ajouté à la base.';
+					?>
+				
+					<!-- Lien de retour vers la page des inputs. -->
 					<p>
-						<!-- Formulaire pour une Région. -->
-						<form method = "post" action = "../inserts/regionInsert.php">
-							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
-								<label for = "pays">Pays</label> : 
-								<select name = "pays" id = "pays">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
-								</select><br />
-								<input type = "submit" value = "Envoi" />
-							</p>
-						</form>
+						<a href = "../input.php">Revenir</a>
 					</p>
 	
 				</div>
 			</section>
-			<?php } ?>
 
 			<footer>
 			
 				<!-- Pied de la page. -->
-				<?php include('../includes/piedPage.php'); ?>
+				<?php include('includes/piedPage.php'); ?>
 			
 			</footer>
 

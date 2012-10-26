@@ -56,7 +56,7 @@
 				<div id = "">
 
 					<p>
-						<form method = "post" action = "#">
+						<form method = "post" action = "../inserts/objetInsert.php">
 							<p>
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "type">Type</label> :

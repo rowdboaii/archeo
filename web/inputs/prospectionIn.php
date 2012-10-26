@@ -57,7 +57,7 @@
 
 					<p>
 						<!-- Formulaire pour une Prospection. -->
-						<form method = "post" action = "#">
+						<form method = "post" action = "../inserts/prospectionInsert.php">
 							<p>
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "date">Date Prospection</label> : <input type = "text" name = "date" id = "date" /><br />

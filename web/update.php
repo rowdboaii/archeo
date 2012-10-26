@@ -1,6 +1,6 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : regionIn.php -->
+<!-- Fichier : update.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
 <?php	session_start(); ?>
@@ -16,7 +16,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>Région</title>
+		<title>Update</title>
 	</head>
 
 	<body>
@@ -35,7 +35,7 @@
 				<div id = "">
 				
 					<!-- Menu principal. -->
-					<?php include('../includes/menuMain.php'); ?>
+					<?php include('includes/menuMain.php'); ?>
 				
 				</div>
 			</nav>
@@ -44,43 +44,23 @@
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
 				
-					<!-- Menu pour les inputs. -->
-					<?php include('../includes/menuIn.php'); ?>
+					<!-- Menu pour les updates. -->
+					<?php include('includes/menuUp.php'); ?>
 				
 				</div>
 			</aside>
 
-			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-
-					<p>
-						<!-- Formulaire pour une Région. -->
-						<form method = "post" action = "../inserts/regionInsert.php">
-							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
-								<label for = "pays">Pays</label> : 
-								<select name = "pays" id = "pays">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
-								</select><br />
-								<input type = "submit" value = "Envoi" />
-							</p>
-						</form>
-					</p>
 	
 				</div>
 			</section>
-			<?php } ?>
 
 			<footer>
 			
 				<!-- Pied de la page. -->
-				<?php include('../includes/piedPage.php'); ?>
+				<?php include('includes/piedPage.php'); ?>
 			
 			</footer>
 

@@ -56,7 +56,7 @@
 
 					<p>
 						<!-- Formulaire pour un Décapage. -->
-						</p><form method="post" action="http://cloud.github.com/downloads/antoine-hars/bdd_xavier/decapageIn.htm#">
+						</p><form method="post" action="../inserts/decapageInsert.php">
 							<p>
 								<label for="id">Identifiant</label> : <input type="text" name="id" id="id">
 								<label for="locus">Locus</label> : 

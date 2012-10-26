@@ -55,8 +55,8 @@
 				<div id="">
 
 					<p>
-						<!-- Formulaire pour un Carr�. -->
-						</p><form method="post" action="http://cloud.github.com/downloads/antoine-hars/bdd_xavier/carreIn.htm#">
+						<!-- Formulaire pour un Carré. -->
+						</p><form method="post" action="../inserts/carreInsert.php">
 							<p>
 								<label for="id">Identifiant</label> : <input type="text" name="id" id="id"><br>
 								<label for="decapage">Décapage</label> : 

@@ -1,9 +1,6 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : output.php -->
-
-<!-- Démarrage de la session pour les identifiants. -->
-<?php	session_start(); ?>
+<!-- Fichier : fouilleInsert.php -->
 
 <!DOCTYPE html>
 <html>
@@ -16,12 +13,15 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>Output</title>
+		<title>FouilleInsert</title>
 	</head>
 
 	<body>
 	  <!-- Corps de la page. -->
 		<div id = "">
+
+			<!-- Connexion à la base de données. -->
+			<?php include('../includes/connexionBDD.php'); ?>
 
 			<header>
 				<!-- Header de la page. -->
@@ -34,9 +34,6 @@
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
 				
-					<!-- Menu principal. -->
-					<?php include('includes/menuMain.php'); ?>
-				
 				</div>
 			</nav>
 			
@@ -44,15 +41,28 @@
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
 				
-					<!-- Menu pour les outputs. -->
-					<?php include('includes/menuOut.php'); ?>
-				
 				</div>
 			</aside>
-
 			<section>
+
 				<!-- Section de page. -->
-				<div id = "">
+				<div id = "">	
+	
+					<?php
+						$query = $bdd->prepare('INSERT INTO fouille (nom, decapage, annee, fouilleur)
+																		VALUES(:nom, :decapage, :annee, :fouilleur)');
+						$query->execute(array('nom' => $_POST['nom'],
+																	'decapage' => $_POST['decapage'],
+																	'annee' => $_POST['annee'],
+																	'fouilleur' => $_POST['fouilleur']
+																	));
+						echo 'Champ ajouté à la base.';
+					?>
+				
+					<!-- Lien de retour vers la page des inputs. -->
+					<p>
+						<a href = "../input.php">Revenir</a>
+					</p>
 	
 				</div>
 			</section>

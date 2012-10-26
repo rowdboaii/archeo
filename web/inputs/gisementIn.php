@@ -57,7 +57,7 @@
 
 					<p>
 						<!-- Formulaire pour un Gisement. -->
-						<form method = "post" action = "#">
+						<form method = "post" action = "../inserts/gisementInsert.php">
 							<p>
 								<label for = "region">Region</label> : 
 								<select name = "region" id = "region">

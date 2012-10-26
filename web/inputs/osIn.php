@@ -57,7 +57,7 @@
 
 					<p>
 						<!-- Formulaire pour un Os. -->
-						<form method = "post" action = "#">
+						<form method = "post" action = "../inserts/osInsert.php">
 							<p>
 								<label for = "objet">Objet</label> : 
 								<select name = "objet" id = "objet">

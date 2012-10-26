@@ -9,8 +9,6 @@
 			
 	try {
 		$bdd = new PDO($archeo, $user, $pass);
-		print "Connecté !";
-		$dbh = null;
 	} catch (Exception $e) {
 		die('Erreur : ' . $e->getMessage());
 	}

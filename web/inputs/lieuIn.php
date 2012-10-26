@@ -57,7 +57,7 @@
 
 					<p>
 						<!-- Formulaire pour un Lieu. -->
-						<form method = "post" action = "#">
+						<form method = "post" action = "../inserts/lieuInsert.php">
 							<p>
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "region">Région</label> : 
