@@ -53,8 +53,13 @@
 																		VALUES(:nom, :locus)');
 						$query->execute(array('nom' => $_POST['nom'],
 																	'locus' => $_POST['locus']
-																	)) or die('Error');
-						echo 'Champ ajouté à la base.';
+																	));
+						if (!$query) {
+							die("Erreur dans l'insertion : " . pg_last_error());
+						}
+						else {
+							echo 'Champ ajouté à la base.';
+						}
 					?>
 				
 					<!-- Lien de retour vers la page des inputs. -->

@@ -53,6 +53,17 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
+				
+					<?php
+						/* Connexion à la base de données. */
+						include('../includes/connexionBDD.php');
+					
+						/* Récupération des données pour le formulaire. */
+						$query = $bdd->prepare('SELECT c.locus AS id_locus, l.nom AS nom_locus
+																			FROM carre c, locus l
+																			WHERE c.locus = l.identifiant'
+																		 	);
+					?>
 
 					<p>
 						<!-- Formulaire pour un Carré. -->
@@ -61,16 +72,19 @@
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom"><br>
 								<label for = "locus">Locus</label> : 
 								<select name = "locus" id = "locus">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
-								</select>
+									<?php
+										$query->execute();
+										while ($data = $query->fetch()) {
+											echo '<option value = "' . $data['id_locus'] . '">' . $data['nom_locus'] . '</option>';
+										}
+									?>
+								</select><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
-					<p></p>
+					</p>
+					
+					<?php $query->closeCursor(); ?>
 
 				</div>
 			</section>
