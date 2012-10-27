@@ -57,8 +57,10 @@
 				<!-- Section de page. -->
 				<div id = "">
 					
-					<?php $query = $bdd->query('SELECT *
-																			FROM article'); ?>
+					<?php $query = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, a.sujet, l.langue AS nom_langue
+																			FROM article a, personne p, langue l
+																			WHERE a.auteur = p.identifiant
+																			AND a.langue = l.identifiant'); ?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -70,11 +72,11 @@
 								<th>identifiant</th>
 								<th>titre</th>
 								<th>auteur</th>
-								<th>mots clé</th>
-								<th>année</th>
 								<th>revue</th>
-								<th>langue</th>
 								<th>sujet</th>
+								<th>langue</th>
+								<th>année</th>
+								<th>mots clé</th>
 							</tr>
 						</thead>
 			
@@ -84,11 +86,11 @@
 								<th>identifiant</th>
 								<th>titre</th>
 								<th>auteur</th>
-								<th>mots clé</th>
-								<th>année</th>
 								<th>revue</th>
-								<th>langue</th>
 								<th>sujet</th>
+								<th>langue</th>
+								<th>année</th>
+								<th>mots clé</th>
 							</tr>
 						</tfoot>
 						
@@ -96,19 +98,18 @@
 						<tbody>
 						
 							<?php
-								while ($data = $query->fetch())
-								{
+								while ($data = $query->fetch()) {
 							?>
 								
 								<tr>
 									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['titre']; ?></td>
-									<td><?php echo $data['auteur']; ?></td>
-									<td><?php echo $data['mot_cle']; ?></td>
-									<td><?php echo $data['annee']; ?></td>
+									<td><?php echo $data['prenom'] . ' ' . $data['nom']; ?></td>
 									<td><?php echo $data['revue']; ?></td>
-									<td><?php echo $data['langue']; ?></td>
 									<td><?php echo $data['sujet']; ?></td>
+									<td><?php echo $data['nom_langue']; ?></td>
+									<td><?php echo $data['annee']; ?></td>
+									<td><?php echo $data['mot_cle']; ?></td>
 								</tr>
 								
 							<?php
@@ -118,8 +119,6 @@
 							
 						</tbody>
 					</table>
-
-
 
 				</div>
 			</section>

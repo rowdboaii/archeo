@@ -50,10 +50,25 @@
 				</div>
 			</aside>
 
-			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
+			<?php if ($_SESSION['pseudo'] == 'sudo') { 
+				/* Connexion à la base de données. */
+				include('../includes/connexionBDD.php');
+			?>
+			
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
+
+					<!-- Récupération des données pour le formulaire. -->
+					<?php
+						$query1 = $bdd->prepare('SELECT a.auteur, p.nom, p.prenom, a.sujet
+																			FROM article a, personne p
+																			WHERE a.auteur = p.identifiant'
+																		 	);
+						$query2 = $bdd->prepare('SELECT identifiant, langue
+																			FROM langue'
+																			);
+					?>
 
 					<p>
 						<!-- Formulaire pour un Article. -->
@@ -62,29 +77,32 @@
 								<label for = "titre">Titre</label> : <input type = "text" name = "titre" id = "titre" /><br />
 								<label for = "auteur">Auteur</label> : 
 								<select name = "auteur" id = "auteur">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query1->execute();
+										while ($data = $query1->fetch()) {
+											echo '<option value = "' . $data['auteur'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "revue">Revue</label> : <input type = "text" name = "revue" id = "revue" /><br />
 								<label for = "sujet">Sujet</label> : 
 								<select name = "sujet" id = "sujet">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query1->execute();
+										while ($data = $query1->fetch()) {
+											echo '<option value = "' . $data['sujet'] . '">' . $data['sujet'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "annee">Année</label> : <input type = "text" name = "annee" id = "annee" /><br />
 								<label for = "langue">Langue</label> : 
 								<select name = "langue" id = "langue">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query2->execute();
+										while ($data = $query2->fetch()) {
+											echo '<option value ="' . $data['identifiant'] . '">' . $data['langue'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "mots_cle">Mots clé</label> :<br />
 								<textarea name = "mots_cle" id = "mots_cle" rows = "5" cols = "40"></textarea><br />
@@ -92,7 +110,12 @@
 							</p>
 						</form>
 					</p>
-	
+					
+					<?php
+						$query1->closeCursor();
+						$query2->closeCursor();
+					?>
+				
 				</div>
 			</section>
 			<?php } ?>

@@ -58,8 +58,13 @@
 																	'annee' => $_POST['annee'],
 																	'langue' => $_POST['langue'],
 																	'mot_cle' => $_POST['mot_cle']
-																	)) or die('Error');
-						echo 'Champ ajouté à la base.';
+																	));
+						if (!$query) {
+							die("Erreur dans l'insertion : " . pg_last_error());
+						}
+						else {
+							echo 'Champ ajouté à la base.';
+						}
 					?>
 				
 					<!-- Lien de retour vers la page des inputs. -->
