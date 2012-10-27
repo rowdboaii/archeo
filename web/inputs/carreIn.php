@@ -59,9 +59,8 @@
 						include('../includes/connexionBDD.php');
 					
 						/* Récupération des données pour le formulaire. */
-						$query = $bdd->prepare('SELECT c.locus AS id_locus, l.nom AS nom_locus
-																			FROM carre c, locus l
-																			WHERE c.locus = l.identifiant'
+						$query = $bdd->prepare('SELECT l.identifiant, l.nom
+																			FROM locus l'
 																		 	);
 					?>
 
@@ -75,7 +74,7 @@
 									<?php
 										$query->execute();
 										while ($data = $query->fetch()) {
-											echo '<option value = "' . $data['id_locus'] . '">' . $data['nom_locus'] . '</option>';
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
 								</select><br />

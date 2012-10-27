@@ -54,6 +54,19 @@
 				<!-- Section de page. -->
 				<div id = "">
 
+					<?php
+						/* Connexion à la base de données. */
+						include('../includes/connexionBDD.php');
+					
+						/* Récupération des données pour le formulaire. */
+						$query1 = $bdd->prepare('SELECT d.identifiant, d.nom
+																			FROM decapage d'
+																		 	);
+						$query2 = $bdd->prepare('SELECT p.nom, p.prenom, p.identifiant
+																			FROM personne p'
+																			);
+					?>
+
 					<p>
 						<!-- Formulaire pour une Fouille. -->
 						</p><form method = "post" action = "../inserts/fouilleInsert.php">
@@ -61,25 +74,32 @@
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom"><br>
 								<label for = "decapage">Décapage</label> : 
 								<select name = "decapage" id = "decapage">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query1->execute();
+										while ($data = $query1->fetch()) {
+											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br>
 								<label for = "fouilleur">Fouilleur</label> : 
 								<select name = "fouilleur" id = "fouilleur">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query2->execute();
+										while ($data = $query2->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br>
 								<label for = "annee">Année</label> : <input type = "date" name = "annee" id = "annee"><br>
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
-					<p></p>
+					</p>
+					
+					<?php
+						$query1->closeCursor();
+						$query2->closeCursor();
+					?>
 
 				</div>
 			</section>

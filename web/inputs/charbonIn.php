@@ -60,10 +60,9 @@
 						include('../includes/connexionBDD.php');
 					
 						/* Récupération des données pour le formulaire. */
-						$query = $bdd->prepare('SELECT o.identifiant AS id_objet, o.nom AS nom_objet, c.datation
-																			FROM charbon c, objet o
-																			WHERE c.objet = o.identifiant
-																			AND o.nature = \'charbon\''
+						$query = $bdd->prepare('SELECT o.identifiant, o.nom
+																			FROM objet o
+																			WHERE o.nature = \'charbon\''
 																		 	);
 					?>
 
@@ -76,7 +75,7 @@
 									<?php
 										$query->execute();
 										while ($data = $query->fetch()) {
-											echo '<option value ="' . $data['id_objet'] . '">' . $data['nom_objet'] . '</option>';
+											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
 								</select><br />

@@ -61,7 +61,7 @@
 						include('../includes/connexionBDD.php');
 					
 						/* Récupération des données pour le formulaire. */
-						$query1 = $bdd->prepare('SELECT a.auteur, p.nom, p.prenom, a.sujet
+						$query1 = $bdd->prepare('SELECT p.identifiant AS id_personne, p.prenom, p.nom, a.sujet
 																			FROM article a, personne p
 																			WHERE a.auteur = p.identifiant'
 																		 	);
@@ -80,7 +80,7 @@
 									<?php
 										$query1->execute();
 										while ($data = $query1->fetch()) {
-											echo '<option value = "' . $data['auteur'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+											echo '<option value = "' . $data['id_personne'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
 								</select><br />

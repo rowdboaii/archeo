@@ -55,6 +55,16 @@
 				<!-- Section de page. -->
 				<div id = "">
 
+					<?php
+						/* Connexion à la base de données. */
+						include('../includes/connexionBDD.php');
+					
+						/* Récupération des données pour le formulaire. */
+						$query = $bdd->prepare('SELECT p.prenom, p.nom, p.identifiant
+																			FROM personne p'
+																			);
+					?>
+
 					<p>
 						<!-- Formulaire pour une Collection. -->
 						<form method = "post" action = "../inserts/collectionInsert.php">
@@ -62,16 +72,19 @@
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "proprietaire">Propriétaire</label> : 
 								<select name = "proprietaire" id = "proprietaire">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query->execute();
+										while ($data = $query->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
+	
+					<?php $query->closeCursor(); ?>
 	
 				</div>
 			</section>

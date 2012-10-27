@@ -54,23 +54,36 @@
 				<!-- Section de page. -->
 				<div id = "">
 
+					<?php
+						/* Connexion à la base de données. */
+						include('../includes/connexionBDD.php');
+					
+						/* Récupération des données pour le formulaire. */
+						$query = $bdd->prepare('SELECT l.identifiant, l.nom
+																		FROM locus l'
+																		);
+					?>
+
 					<p>
 						<!-- Formulaire pour un Décapage. -->
 						</p><form method = "post" action = "../inserts/decapageInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom">
+								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom"><br />
 								<label for = "carre">Carré</label> : 
 								<select name = "carre" id = "carre">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
-								</select>
+									<?php
+										$query->execute();
+										while ($data = $query->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+										}
+									?>
+								</select><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
-					<p></p>
+					</p>
+
+					<?php $query->closeCursor(); ?>
 
 				</div>
 			</section>
