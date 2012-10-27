@@ -50,17 +50,17 @@
 				</div>
 			</aside>
 
-			<?php if ($_SESSION['pseudo'] == 'sudo') { 
-				/* Connexion à la base de données. */
-				include('../includes/connexionBDD.php');
-			?>
+			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
 			
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
 
-					<!-- Récupération des données pour le formulaire. -->
 					<?php
+						/* Connexion à la base de données. */
+						include('../includes/connexionBDD.php');
+					
+						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT a.auteur, p.nom, p.prenom, a.sujet
 																			FROM article a, personne p
 																			WHERE a.auteur = p.identifiant'

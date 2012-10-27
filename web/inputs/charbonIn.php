@@ -55,23 +55,38 @@
 				<!-- Section de page. -->
 				<div id = "">
 
+					<?php
+						/* Connexion à la base de données. */
+						include('../includes/connexionBDD.php');
+					
+						/* Récupération des données pour le formulaire. */
+						$query = $bdd->prepare('SELECT o.identifiant AS id_objet, o.nom AS nom_objet, c.datation
+																			FROM charbon c, objet o
+																			WHERE c.objet = o.identifiant
+																			AND o.nature = \'charbon\''
+																		 	);
+					?>
+
 					<p>
 						<!-- Formulaire pour un Charbon. -->
 						<form method = "post" action = "../inserts/charbonInsert.php">
 							<p>
 								<label for = "objet">Objet</label> : 
 								<select name = "objet" id = "objet">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query->execute();
+										while ($data = $query->fetch()) {
+											echo '<option value ="' . $data['id_objet'] . '">' . $data['nom_objet'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "datation">Datation</label> : <input type = "text" name = "datation" id = "datation" /><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
+	
+					<?php $query->closeCursor(); ?>
 	
 				</div>
 			</section>
