@@ -53,7 +53,7 @@
 																		VALUES(:nom, :carre)');
 						$query->execute(array('nom' => $_POST['nom'],
 																	'carre' => $_POST['carre']
-																	));
+																	)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				

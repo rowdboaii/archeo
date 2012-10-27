@@ -55,7 +55,7 @@
 																	'decapage' => $_POST['decapage'],
 																	'annee' => $_POST['annee'],
 																	'fouilleur' => $_POST['fouilleur']
-																	));
+																	)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				

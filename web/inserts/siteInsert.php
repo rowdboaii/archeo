@@ -60,7 +60,7 @@
 																	'fouille_par' => $_POST['fouille'],
 																	'type' => $_POST['type'],
 																	'commentaire' => $_POST['commentaire']
-																	));
+																	)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				

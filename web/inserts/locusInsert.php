@@ -59,7 +59,7 @@
 																	'altitude' => $_POST['altitude'],
 																	'trouve_par' => $_POST['trouve'],
 																	'appatient_a' => $_POST['proprietaire']
-																	));
+																	)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				

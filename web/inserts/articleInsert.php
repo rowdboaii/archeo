@@ -58,7 +58,7 @@
 																	'annee' => $_POST['annee'],
 																	'langue' => $_POST['langue'],
 																	'mot_cle' => $_POST['mot_cle']
-																	));
+																	)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				

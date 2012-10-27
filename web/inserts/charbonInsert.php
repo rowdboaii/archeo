@@ -53,7 +53,7 @@
 																		VALUES(:objet, :datation)');
 						$query->execute(array('objet' => $_POST['objet'],
 																	'datation' => $_POST['datation']
-																	));
+																	)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				

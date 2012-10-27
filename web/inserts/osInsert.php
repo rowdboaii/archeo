@@ -62,7 +62,7 @@
 																	'morsure' => $_POST['morsure'],
 																	'conservation' => $_POST['conservation'],
 																	'datation' => $_POST['date']
-																	));
+																	)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				

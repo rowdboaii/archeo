@@ -67,7 +67,7 @@
 																	'prospection' => $_POST['prospection'],
 																	'fiche' => $_POST['fiche'],
 																	'commentaire' => $_POST['commentaire'],
-																	));
+																	)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				

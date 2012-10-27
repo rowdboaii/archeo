@@ -54,7 +54,7 @@
 						$query->execute(array('objet' => $_POST['objet'],
 																	'provenance' => $_POST['provenance'],
 																	'couleur' => $_POST['couleur']
-																	));
+																	)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				

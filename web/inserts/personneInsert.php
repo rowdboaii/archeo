@@ -55,7 +55,7 @@
 																	'prenom' => $_POST['prenom'],
 																	'nationalite' => $_POST['nationalite'],
 																	'fonction' => $_POST['fonction']
-																	));
+																	)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				

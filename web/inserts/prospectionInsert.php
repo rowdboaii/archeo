@@ -55,7 +55,7 @@
 																	'responsable' => $_POST['responsable'],
 																	'lieu' => $_POST['lieu'],
 																	'date_prospection' => $_POST['date'],
-																	));
+																	)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				

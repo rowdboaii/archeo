@@ -57,7 +57,7 @@
 																	'position_est' => $_POST['est'],
 																	'altitude' => $_POST['altitude'],
 																	'commentaire' => $_POST['commentaire'],
-																	));
+																	)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				
