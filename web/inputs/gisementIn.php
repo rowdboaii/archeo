@@ -16,7 +16,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>Gisement</title>
+		<title>GisementIn</title>
 	</head>
 
 	<body>
@@ -59,6 +59,7 @@
 						<!-- Formulaire pour un Gisement. -->
 						<form method = "post" action = "../inserts/gisementInsert.php">
 							<p>
+								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "region">Region</label> : 
 								<select name = "region" id = "region">
 									<option value = "1">1</option>

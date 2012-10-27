@@ -16,7 +16,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>Collection</title>
+		<title>CollectionIn</title>
 	</head>
 
 	<body>

@@ -51,13 +51,15 @@
 					<?php
 						$query = $bdd->prepare('INSERT INTO site (nom, region, position_nord, position_est, altitude, trouve_par, fouille_par, type, commentaire)
 																		VALUES(:nom, :region, :position_nord, :position_est, :altitude, :trouve_par, fouille_par, type, :commentaire)');
-						$query->execute(array('titre' => $_POST['titre'],
-																	'auteur' => $_POST['auteur'],
-																	'revue' => $_POST['revue'],
-																	'sujet' => $_POST['sujet'],
-																	'annee' => $_POST['annee'],
-																	'langue' => $_POST['langue'],
-																	'mot_cle' => $_POST['mot_cle']
+						$query->execute(array('nom' => $_POST['nom'],
+																	'region' => $_POST['region'],
+																	'position_nord' => $_POST['nord'],
+																	'position_est' => $_POST['est'],
+																	'altitude' => $_POST['altitude'],
+																	'trouve_par' => $_POST['trouve'],
+																	'fouille_par' => $_POST['fouille'],
+																	'type' => $_POST['type'],
+																	'commentaire' => $_POST['commentaire']
 																	));
 						echo 'Champ ajouté à la base.';
 					?>

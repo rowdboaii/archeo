@@ -54,11 +54,11 @@
 						$query->execute(array('nom' => $_POST['nom'],
 																	'type' => $_POST['type'],
 																	'site' => $_POST['site'],
-																	'position_nord' => $_POST['position_nord'],
-																	'position_est' => $_POST['position_est'],
+																	'position_nord' => $_POST['nord'],
+																	'position_est' => $_POST['est'],
 																	'altitude' => $_POST['altitude'],
-																	'trouve_par' => $_POST['trouve_par'],
-																	'appatient_a' => $_POST['appartient_a']
+																	'trouve_par' => $_POST['trouve'],
+																	'appatient_a' => $_POST['proprietaire']
 																	));
 						echo 'Champ ajouté à la base.';
 					?>

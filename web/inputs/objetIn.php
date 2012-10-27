@@ -16,7 +16,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>Objet</title>
+		<title>ObjetIn</title>
 	</head>
 
 	<body>
@@ -78,14 +78,7 @@
 								<label for = "poids">Poids</label> : <input type = "text" name = "poids" id = "poids" /><br />
 								<label for = "longueur">Longueur</label> : <input type = "text" name = "longueur" id = "longueur" /><br />
 								<label for = "largeur">Largeur</label> : <input type = "text" name = "largeur" id = "largeur" /><br />
-								<label for = "position">Position</label> :
-								<select name = "position" id = "position">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
-								</select><br />
+								<label for = "hauteur">Hauteur</label> : <input type = "text" name = "hauteur" id = "hauteur" /><br />
 								<label for = "trouve">Trouvé par</label> :
 								<select name = "trouve" id = "trouve">
 									<option value = "1">1</option>
@@ -132,6 +125,7 @@
 									<input type = "radio" name = "tamis" value = "non" id = "non" /><br />
 								Brulé : <input type = "radio" name = "brule" value = "oui" id = "oui" />
 									<input type = "radio" name = "brule" value = "non" id = "non" /><br />
+								<label for = "fiche">Fiche</label> : <input type = "text" name = "fiche" id = "fiche" /><br />
 								<label for = "commentaire">Commentaire</label> :<br />
 								<textarea name = "commentaire" id = "commentaire" rows = "5" cols = "40"></textarea><br />
 								<input type = "submit" value = "Envoi" />

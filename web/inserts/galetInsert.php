@@ -49,9 +49,10 @@
 				<div id = "">	
 	
 					<?php
-						$query = $bdd->prepare('INSERT INTO galet (nom, type)
-																		VALUES(:nom, :type)');
-						$query->execute(array('nom' => $_POST['nom'],
+						$query = $bdd->prepare('INSERT INTO galet (objet, nom, type)
+																		VALUES(:objet, :nom, :type)');
+						$query->execute(array('objet' => $_POST['objet'],
+																	'nom' => $_POST['nom'],
 																	'type' => $_POST['type']
 																	));
 						echo 'Champ ajouté à la base.';

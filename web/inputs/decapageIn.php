@@ -16,22 +16,22 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>Décapage</title>
+		<title>DecapageIn</title>
 	</head>
 	<body>
 	  <!-- Corps de la page. -->
-		<div id="">
+		<div id = "">
 
 			<header>
 				<!-- Header de la page. -->
-				<div id="">
+				<div id = "">
 
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
-				<div id="">
+				<div id = "">
 				
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
@@ -41,7 +41,7 @@
 
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
-				<div id="">
+				<div id = "">
 				
 					<!-- Menu pour les inputs. -->
 					<?php include('../includes/menuIn.php'); ?>
@@ -52,21 +52,22 @@
 			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
 			<section>
 				<!-- Section de page. -->
-				<div id="">
+				<div id = "">
 
 					<p>
 						<!-- Formulaire pour un Décapage. -->
-						</p><form method="post" action="../inserts/decapageInsert.php">
+						</p><form method = "post" action = "../inserts/decapageInsert.php">
 							<p>
-								<label for="id">Identifiant</label> : <input type="text" name="id" id="id">
-								<label for="locus">Locus</label> : 
-								<select name="locus" id="locus">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
+								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom">
+								<label for = "carre">Carré</label> : 
+								<select name = "carre" id = "carre">
+									<option value = "1">1</option>
+									<option value = "2">2</option>
+									<option value = "3">3</option>
+									<option value = "4">4</option>
+									<option value = "5">5</option>
 								</select>
+								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					<p></p>

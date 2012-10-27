@@ -2,7 +2,7 @@
 # Auteurs : Xavier Muth & Antoine Hars
 # Fichier : delete.sh
 
-git rm web/test.php &&
-git commit -m 'Suppression de test.php.' &&
+git rm web/inputs/form.htm &&
+git commit -m 'Suppression fichier form.htm.' &&
 git push origin master
 

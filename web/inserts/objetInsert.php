@@ -61,7 +61,7 @@
 																	'brule' => $_POST['brule'],
 																	'periode' => $_POST['periode'],
 																	'tamis' => $_POST['tamis'],
-																	'trouve_par' => $_POST['trouve_par'],
+																	'trouve_par' => $_POST['trouve'],
 																	'collection' => $_POST['collection'],
 																	'fouille' => $_POST['fouille'],
 																	'prospection' => $_POST['prospection'],

@@ -58,10 +58,10 @@
 																	'animal' => $_POST['animal'],
 																	'type_animal' => $_POST['type_animal'],
 																	'forme' => $_POST['forme'],
-																	'dissous' => $_POST['dissous'],
+																	'dissous' => $_POST['dissolution'],
 																	'morsure' => $_POST['morsure'],
 																	'conservation' => $_POST['conservation'],
-																	'datation' => $_POST['datation']
+																	'datation' => $_POST['date']
 																	));
 						echo 'Champ ajouté à la base.';
 					?>

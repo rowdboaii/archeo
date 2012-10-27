@@ -16,7 +16,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>Charbon</title>
+		<title>CharbonIn</title>
 	</head>
 
 	<body>

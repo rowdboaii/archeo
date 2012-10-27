@@ -54,7 +54,7 @@
 						$query->execute(array('nom' => $_POST['nom'],
 																	'responsable' => $_POST['responsable'],
 																	'lieu' => $_POST['lieu'],
-																	'date_prospection' => $_POST['date_prospection'],
+																	'date_prospection' => $_POST['date'],
 																	));
 						echo 'Champ ajouté à la base.';
 					?>
