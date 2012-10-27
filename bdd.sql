@@ -38,6 +38,13 @@ CREATE TYPE enum_taxon AS ENUM
 
 /****************************************************************************************/
 
+/* Création de la table Langue. */
+CREATE TABLE langue
+(
+	identifiant SERIAL PRIMARY KEY,
+	langue VARCHAR(50) NOT NULL
+);
+
 /* Création de la table Région. */
 CREATE TABLE region
 (
@@ -94,7 +101,7 @@ CREATE TABLE article
 	mot_cle VARCHAR(200),
 	annee DATE NOT NULL, -- Vérifier si le type est bon.
 	revue VARCHAR(100) NOT NULL,
-	langue VARCHAR(50) NOT NULL,
+	langue INTEGER REFERENCES langue(identifiant),
 	sujet VARCHAR(50) NOT NULL -- Faire un trigger pour vérifier que le sujet est soit un site, soit une région ou soit une locus.
 );
 
@@ -247,6 +254,24 @@ VALUES (0, '0', '12/12/12', 0, 1);
 /****************************************************************************************/
 
 /* Jeu de valeurs de test. */
+INSERT INTO langue (langue)
+VALUES ('allemand');
+
+INSERT INTO langue (langue)
+VALUES ('anglais');
+
+INSERT INTO langue (langue)
+VALUES ('espagnol');
+
+INSERT INTO langue (langue)
+VALUES ('français');
+
+INSERT INTO langue (langue)
+VALUES ('japonais');
+
+INSERT INTO langue (langue)
+VALUES ('portuguais');
+
 INSERT INTO personne (nom, prenom, nationalite, fonction)
 VALUES ('bob', 'patrick', 'russe', 'chercheur');
 
@@ -278,10 +303,10 @@ INSERT INTO lieu (nom, region, position_nord, position_est, altitude, commentair
 VALUES ('lieu2', 2, 76, 8, 5, 'patate');
 
 INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet)
-VALUES ('titre1', 2, 'mot1 mot2', '01/12/2012', 'revue1', 'langue1', 'site1');
+VALUES ('titre1', 2, 'mot1 mot2', '01/12/2012', 'revue1', 4, 'site1');
 
 INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet)
-VALUES ('titre2', 1, 'mot4', '23/01/2010', 'revue3', 'langue20', 'site2');
+VALUES ('titre2', 1, 'mot4', '23/01/2010', 'revue3', 1, 'site2');
 
 INSERT INTO gisement (nom, region, position_nord, position_est, altitude, commentaire)
 VALUES ('gisement1', 2, 43, 5, 21, '11111111111111');
