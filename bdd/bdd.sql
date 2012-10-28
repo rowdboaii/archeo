@@ -8,35 +8,54 @@ CREATE DATABASE archeo owner jehu;
 
 /****************************************************************************************/
 
-/* Création de l'énumération pour la fonction d'une Personne. */
-CREATE TYPE enum_fonction AS ENUM
-('chercheur', 'fouilleur');
+/* Création de la table OsTaxon. */
+CREATE TABLE osTaxon
+(
+	identifiant SERIAL PRIMARY KEY,
+	taxon VARCHAR(50) NOT NULL
+);
 
-/* Création de l'énumération pour le type de Site. */
-CREATE TYPE enum_type_site AS ENUM
-('archeologique', 'paleontologique');
+/* Création de la table ObjetNature. */
+CREATE TABLE objetNature
+(
+	identifiant SERIAL PRIMARY KEY,
+	nature VARCHAR(50) NOT NULL
+);
 
-/* Création de l'énumération pour le type de Locus. */
-CREATE TYPE enum_type_locus AS ENUM
-('type1', 'type2');
+/* Création de la table Fonction. */
+CREATE TABLE fonction
+(
+	identifiant SERIAL PRIMARY KEY,
+	fonction VARCHAR(50) NOT NULL
+);
 
-/* Création de l'énumération pour le type d'un Objet. */
-CREATE TYPE enum_type_objet AS ENUM
-('FR', 'CO');
+/* Création de la table ObjetType. */
+CREATE TABLE objetType
+(
+	identifiant SERIAL PRIMARY KEY,
+	type VARCHAR(50) NOT NULL
+);
 
-/* Création de l'énumération pour la nature d'un Objet. */
-CREATE TYPE enum_nature AS ENUM
-('silex', 'os', 'poterie', 'quartz', 'charbon', 'galet', 'perle');
+/* Création de la table LocusType. */
+CREATE TABLE locusType
+(
+	identifiant SERIAL PRIMARY KEY,
+	type VARCHAR(50) NOT NULL
+);
 
-/* Création de l'énumération pour le type d'un Galet. */
-CREATE TYPE enum_type_galet AS ENUM
-('schiste', 'quartz');
+/* Création de la table SiteType. */
+CREATE TABLE siteType
+(
+	identifiant SERIAL PRIMARY KEY,
+	type VARCHAR(50) NOT NULL
+);
 
-/* Création de l'énumération pour le type d'un Os. */
-CREATE TYPE enum_taxon AS ENUM
-('mammifere', 'oiseau', 'reptile');
-
-/****************************************************************************************/
+/* Création de la table GaletType. */
+CREATE TABLE galetType
+(
+	identifiant SERIAL PRIMARY KEY,
+	type VARCHAR(50) NOT NULL
+);
 
 /* Création de la table Langue. */
 CREATE TABLE langue
@@ -44,6 +63,15 @@ CREATE TABLE langue
 	identifiant SERIAL PRIMARY KEY,
 	langue VARCHAR(50) NOT NULL
 );
+
+/* Création de la table Nationalite. */
+CREATE TABLE nationalite
+(
+	identifiant SERIAL PRIMARY KEY,
+	nationalite VARCHAR(50) NOT NULL
+);
+
+/****************************************************************************************/
 
 /* Création de la table Région. */
 CREATE TABLE region
@@ -59,8 +87,8 @@ CREATE TABLE personne
 	identifiant SERIAL PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
 	prenom VARCHAR(50) NOT NULL,
-	nationalite VARCHAR(50) NOT NULL,
-	fonction enum_fonction NOT NULL
+	nationalite INTEGER REFERENCES nationalite(identifiant),
+	fonction INTEGER REFERENCES fonction(identifiant)
 );
 
 /* Création de la table Site. */
@@ -74,7 +102,7 @@ CREATE TABLE site
 	altitude FLOAT NOT NULL,
 	trouve_par INTEGER REFERENCES personne(identifiant),
 	fouille_par INTEGER REFERENCES personne(identifiant),
-	type enum_type_site NOT NULL,
+	type INTEGER REFERENCES siteType(identifiant),
 	commentaire VARCHAR(500)
 );
 
@@ -83,7 +111,7 @@ CREATE TABLE locus
 (
 	identifiant SERIAL PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
-	type enum_type_locus NOT NULL,
+	type INTEGER REFERENCES locusType(identifiant),
 	site INTEGER REFERENCES site(identifiant),
 	position_nord FLOAT NOT NULL,
 	position_est FLOAT NOT NULL,
@@ -130,7 +158,7 @@ CREATE TABLE carre
 (
 	identifiant SERIAL PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
-	locus integer REFERENCES locus(identifiant)
+	locus INTEGER REFERENCES locus(identifiant)
 );
 
 /* Création de la table Décapage. */
@@ -173,17 +201,19 @@ CREATE TABLE prospection
 	lieu INTEGER REFERENCES lieu(identifiant)
 );
 
+/****************************************************************************************/
+
 /* Création de la table Objet. */
 CREATE TABLE objet
 (
 	identifiant SERIAL PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
-	type enum_type_objet NOT NULL,
+	type INTEGER REFERENCES objetType(identifiant),
 	poids FLOAT NOT NULL,
 	longueur FLOAT NOT NULL,
 	largeur FLOAT NOT NULL,
 	hauteur FLOAT NOT NULL,
-	nature enum_nature NOT NULL,
+	nature INTEGER REFERENCES objetNature(identifiant),
 	brule BOOLEAN NOT NULL DEFAULT FALSE,
 	periode DATE NOT NULL, -- Vérifier le type DATE.
 	tamis BOOLEAN NOT NULL DEFAULT FALSE,
@@ -201,7 +231,7 @@ CREATE TABLE galet
 	identifiant SERIAL PRIMARY KEY,
 	objet INTEGER REFERENCES objet(identifiant),
 	nom VARCHAR(50) NOT NULL,
-	type enum_type_galet NOT NULL
+	type INTEGER REFERENCES galetType(identifiant)
 );
 
 /* Création de la table Charbon. */
@@ -217,7 +247,7 @@ CREATE TABLE os
 	objet INTEGER REFERENCES objet(identifiant),
 	partie VARCHAR(50) NOT NULL,
 	type VARCHAR(50) NOT NULL,
-	taxon enum_taxon NOT NULL,
+	taxon INTEGER REFERENCES osTaxon(identifiant),
 	animal VARCHAR(50),
 	type_animal VARCHAR(50),
 	forme VARCHAR(50) NOT NULL,
@@ -234,22 +264,6 @@ CREATE TABLE silex
 	provenance INTEGER REFERENCES gisement(identifiant),
 	couleur VARCHAR(50) NOT NULL
 ); -- Vérifier qu'il n'y a pas besoin de clé primaire.
-
-
-/****************************************************************************************/
-
-/* Valeurs NULL. */
-INSERT INTO personne (identifiant, nom, prenom, nationalite, fonction)
-VALUES (0, 'null', 'null', 'null', 'fouilleur');
-
-INSERT INTO collection (identifiant, nom, proprietaire)
-VALUES (0, 'null', 0);
-
-INSERT INTO fouille (fouilleur, identifiant, nom, annee, decapage)
-VALUES (0, '0', 'null', '12/12/12', 1);
-
-INSERT INTO prospection(identifiant, nom, date_prospection, responsable, lieu)
-VALUES (0, '0', '12/12/12', 0, 1);
 
 /****************************************************************************************/
 
@@ -272,29 +286,115 @@ VALUES ('japonais');
 INSERT INTO langue (langue)
 VALUES ('portuguais');
 
-INSERT INTO personne (nom, prenom, nationalite, fonction)
-VALUES ('bob', 'patrick', 'russe', 'chercheur');
+INSERT INTO galetType (type)
+VALUES ('schiste');
+
+INSERT INTO galetType (type)
+VALUES ('quartz');
+
+INSERT INTO locusType (type)
+VALUES ('type1');
+
+INSERT INTO locusType (type)
+VALUES ('type2');
+
+INSERT INTO siteType (type)
+VALUES ('archeologique');
+
+INSERT INTO siteType (type)
+VALUES ('paleontologique');
+
+INSERT INTO fonction (fonction)
+VALUES ('chercheur');
+
+INSERT INTO fonction (fonction)
+VALUES ('fouilleur');
+
+INSERT INTO objetType (type)
+VALUES ('FR');
+
+INSERT INTO objetType (type)
+VALUES ('CO');
+
+INSERT INTO objetNature (nature)
+VALUES ('silex');
+
+INSERT INTO objetNature (nature)
+VALUES ('os');
+
+INSERT INTO objetNature (nature)
+VALUES ('poterie');
+
+INSERT INTO objetNature (nature)
+VALUES ('quartz');
+
+INSERT INTO objetNature (nature)
+VALUES ('charbon');
+
+INSERT INTO objetNature (nature)
+VALUES ('galet');
+
+INSERT INTO objetNature (nature)
+VALUES ('perle');
+
+INSERT INTO osTaxon (taxon)
+VALUES ('mammifère');
+
+INSERT INTO osTaxon (taxon)
+VALUES ('oiseau');
+
+INSERT INTO osTaxon (taxon)
+VALUES ('reptile');
+
+INSERT INTO nationalite (nationalite)
+VALUES ('française');
+
+INSERT INTO nationalite (nationalite)
+VALUES ('anglaise');
+
+INSERT INTO nationalite (nationalite)
+VALUES ('allemande');
+
+INSERT INTO nationalite (nationalite)
+VALUES ('américaine');
+
+INSERT INTO nationalite (nationalite)
+VALUES ('japonaise');
+
+INSERT INTO nationalite (nationalite)
+VALUES ('chinoise');
+
+INSERT INTO nationalite (nationalite)
+VALUES ('roumaine');
+
+INSERT INTO nationalite (nationalite)
+VALUES ('russe');
+
+/****************************************************************************************/
 
 INSERT INTO personne (nom, prenom, nationalite, fonction)
-VALUES ('muth', 'xavier', 'francaise', 'fouilleur');
+VALUES ('bob', 'patrick', 2, 2);
+
+INSERT INTO personne (nom, prenom, nationalite, fonction)
+VALUES ('muth', 'xavier', 1, 1);
 
 INSERT INTO region (nom, pays)
-VALUES ('region1', 'pays2');
+VALUES ('region1', 'Russie');
 
 INSERT INTO region (nom, pays)
-VALUES ('region2', 'pays1');
+VALUES ('region2', 'France');
 
 INSERT INTO site (nom, region, position_nord, position_est, altitude, trouve_par, fouille_par, type, commentaire)
-VALUES ('site1', 2, 32, 6, 23, 2, 1, 'archeologique', 'magnifique');
+VALUES ('site1', 2, 32, 6, 23, 2, 1, 1, 'magnifique');
 
 INSERT INTO site (nom, region, position_nord, position_est, altitude, trouve_par, fouille_par, type, commentaire)
-VALUES ('site2', 1, 12, 4, 66, 1, 2, 'paleontologique', 'chanmé');
+VALUES ('site2', 1, 12, 4, 66, 1, 2, 2, 'chanmé');
 
 INSERT INTO locus (nom, site, type, position_nord, position_est, altitude, trouve_par, appartient_a)
-VALUES ('locus1', 1, 'type1', 3, 5, 7, 1, 2);
+VALUES ('locus1', 1, 1, 3, 5, 7, 1, 2);
 
 INSERT INTO locus (nom, site, type, position_nord, position_est, altitude, trouve_par, appartient_a)
-VALUES ('locus2', 2, 'type2', 4, 5, 6, 2, 1);
+VALUES ('locus2', 2, 2, 4, 5, 6, 2, 1);
 
 INSERT INTO lieu (nom, region, position_nord, position_est, altitude, commentaire)
 VALUES ('lieu1', 1, 3, 1, 3, 'choucroute');
@@ -344,29 +444,29 @@ VALUES ('nom1', 2);
 INSERT INTO collection (nom, proprietaire)
 VALUES ('nom2', 2);
 
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection, commentaire)
-VALUES ('objet1', 'FR', 3, 4, 76, 4, 'silex', 'fiche', TRUE, '12/4/30', FALSE, 1, 0, 1, 0, 'commentaire');
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, fouille, commentaire)
+VALUES ('objet1', 1, 3, 4, 76, 4, 1, 'fiche', TRUE, '12/4/30', FALSE, 1, 1, 'commentaire');
 
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection, commentaire)
-VALUES ('objet2', 'FR', 3, 4, 76, 4, 'silex', 'fi3he1', FALSE, '12/4/30', FALSE, 2, 2, 0, 1, 'mentaire');
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, prospection, commentaire)
+VALUES ('objet2', 2, 3, 4, 76, 4, 1, 'fi3he1', FALSE, '12/4/30', FALSE, 2, 2, 1, 'mentaire');
 
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection, commentaire)
-VALUES ('objet3', 'CO', 4, 43, 1, 4, 'os', 'fich31', TRUE, '12/4/30', FALSE, 1, 0, 2, 0, 'aire');
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, fouille, commentaire)
+VALUES ('objet3', 2, 4, 43, 1, 4, 2, 'fich31', TRUE, '12/4/30', FALSE, 1, 2, 'aire');
 
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection, commentaire)
-VALUES ('objet4', 'FR', 4, 43, 1, 4, 'os', 'fiche', FALSE, '12/4/30', TRUE, 1, 0, 0, 2, 'commen');
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, prospection, commentaire)
+VALUES ('objet4', 1, 4, 43, 1, 4, 2, 'fiche', FALSE, '12/4/30', TRUE, 1, 2, 'commen');
 
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection, commentaire)
-VALUES ('objet5', 'CO', 4, 43, 1, 4, 'charbon', 'fich', TRUE, '12/4/30', TRUE, 2, 2, 1, 0, 'coentaire');
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, commentaire)
+VALUES ('objet5', 2, 4, 43, 1, 4, 5, 'fich', TRUE, '12/4/30', TRUE, 2, 2, 1, 'coentaire');
 
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection, commentaire)
-VALUES ('objet6', 'FR', 4, 43, 1, 4, 'charbon', 'che1', FALSE, '12/4/30', FALSE, 2, 0, 0, 1, 'centaire');
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, prospection, commentaire)
+VALUES ('objet6', 1, 4, 43, 1, 4, 5, 'che1', FALSE, '12/4/30', FALSE, 2, 1, 'centaire');
 
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection, commentaire)
-VALUES ('objet7', 'CO', 4, 43, 1, 4, 'galet', 'fie1', TRUE, '12/4/30', TRUE, 2, 2, 2, 0, 'commente');
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, commentaire)
+VALUES ('objet7', 2, 4, 43, 1, 4, 6, 'fie1', TRUE, '12/4/30', TRUE, 2, 2, 2, 'commente');
 
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, prospection, commentaire)
-VALUES ('objet8', 'FR', 4, 43, 1, 4, 'galet', 'fhe1', FALSE, '12/4/30', FALSE, 1, 1, 0, 1, 'commene');
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, prospection, commentaire)
+VALUES ('objet8', 1, 4, 43, 1, 4, 6, 'fhe1', FALSE, '12/4/30', FALSE, 1, 1, 1, 'commene');
 
 INSERT INTO charbon (datation, objet)
 VALUES ('2/2/500', 5);
@@ -375,16 +475,16 @@ INSERT INTO charbon (datation, objet)
 VALUES ('1/1/1', 6);
 
 INSERT INTO galet (nom, objet, type)
-VALUES ('galet1', 7, 'quartz');
+VALUES ('galet1', 7, 1);
 
 INSERT INTO galet (nom, objet, type)
-VALUES ('galet2', 8, 'schiste');
+VALUES ('galet2', 8, 2);
 
 INSERT INTO os (objet, partie, type, taxon, animal, type_animal, forme, dissous, morsure, conservation, datation)
-VALUES (4, 'cul', 'type1', 'oiseau', 'truie', 'ta soeur', 'ovale', FALSE, FALSE, 6, '23/12/90');
+VALUES (4, 'cul', 1, 1, 'truie', 'ta soeur', 'ovale', FALSE, FALSE, 6, '23/12/90');
 
 INSERT INTO os (objet, partie, type, taxon, animal, type_animal, forme, dissous, morsure, conservation, datation)
-VALUES (3, 'tete', 'type2', 'reptile', 'rat', 'ta mere', 'sinusoidale', TRUE, TRUE, 4, '1/1/1');
+VALUES (3, 'tete', 2, 2, 'rat', 'ta mere', 'sinusoidale', TRUE, TRUE, 4, '1/1/1');
 
 INSERT INTO silex (objet, provenance, couleur)
 VALUES (2, 1, 'black');
@@ -394,3 +494,32 @@ VALUES (1, 2, 'yellow');
 
 /****************************************************************************************/
 
+/* Suppression des tables. */
+DROP TABLE os;
+DROP TABLE charbon;
+DROP TABLE silex;
+DROP TABLE galet;
+DROP TABLE objet;
+DROP TABLE gisement;
+DROP TABLE collection;
+DROP TABLE fouille;
+DROP TABLE decapage;
+DROP TABLE carre;
+DROP TABLE prospection;
+DROP TABLE lieu;
+DROP TABLE article;
+DROP TABLE locus;
+DROP TABLE site;
+DROP TABLE region;
+DROP TABLE personne;
+DROP TABLE langue;
+DROP TABLE nationalite;
+DROP TABLE objetnature;
+DROP TABLE objettype;
+DROP TABLE galettype;
+DROP TABLE ostaxon;
+DROP TABLE sitetype;
+DROP TABLE fonction;
+DROP TABLE locustype;
+
+/****************************************************************************************/
