@@ -71,6 +71,13 @@ CREATE TABLE nationalite
 	nationalite VARCHAR(50) NOT NULL
 );
 
+/* Création de la table Période. */
+CREATE TABLE periode
+(
+	identifiant SERIAL PRIMARY KEY,
+	periode VARCHAR(50) NOT NULL
+);
+
 /****************************************************************************************/
 
 /* Création de la table Région. */
@@ -215,7 +222,7 @@ CREATE TABLE objet
 	hauteur FLOAT NOT NULL,
 	nature INTEGER REFERENCES objetNature(identifiant),
 	brule BOOLEAN NOT NULL DEFAULT FALSE,
-	periode DATE NOT NULL, -- Vérifier le type DATE.
+	periode INTEGER REFERENCES periode(identifiant),
 	tamis BOOLEAN NOT NULL DEFAULT FALSE,
 	trouve_par INTEGER REFERENCES personne(identifiant),
 	collection INTEGER REFERENCES collection(identifiant),
@@ -370,6 +377,12 @@ VALUES ('roumaine');
 INSERT INTO nationalite (nationalite)
 VALUES ('russe');
 
+INSERT INTO periode (periode)
+VALUES ('periode2');
+
+INSERT INTO periode (periode)
+VALUES ('periode1');
+
 /****************************************************************************************/
 
 INSERT INTO personne (nom, prenom, nationalite, fonction)
@@ -444,29 +457,31 @@ VALUES ('nom1', 2);
 INSERT INTO collection (nom, proprietaire)
 VALUES ('nom2', 2);
 
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, fouille, commentaire)
-VALUES ('objet1', 1, 3, 4, 76, 4, 1, 'fiche', TRUE, '12/4/30', FALSE, 1, 1, 'commentaire');
-
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, prospection, commentaire)
-VALUES ('objet2', 2, 3, 4, 76, 4, 1, 'fi3he1', FALSE, '12/4/30', FALSE, 2, 2, 1, 'mentaire');
+/****************************************************************************************/
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, fouille, commentaire)
-VALUES ('objet3', 2, 4, 43, 1, 4, 2, 'fich31', TRUE, '12/4/30', FALSE, 1, 2, 'aire');
-
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, prospection, commentaire)
-VALUES ('objet4', 1, 4, 43, 1, 4, 2, 'fiche', FALSE, '12/4/30', TRUE, 1, 2, 'commen');
-
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, commentaire)
-VALUES ('objet5', 2, 4, 43, 1, 4, 5, 'fich', TRUE, '12/4/30', TRUE, 2, 2, 1, 'coentaire');
-
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, prospection, commentaire)
-VALUES ('objet6', 1, 4, 43, 1, 4, 5, 'che1', FALSE, '12/4/30', FALSE, 2, 1, 'centaire');
-
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, commentaire)
-VALUES ('objet7', 2, 4, 43, 1, 4, 6, 'fie1', TRUE, '12/4/30', TRUE, 2, 2, 2, 'commente');
+VALUES ('objet1', 1, 3, 4, 76, 4, 1, 'fiche', TRUE, 1, FALSE, 1, 1, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, prospection, commentaire)
-VALUES ('objet8', 1, 4, 43, 1, 4, 6, 'fhe1', FALSE, '12/4/30', FALSE, 1, 1, 1, 'commene');
+VALUES ('objet2', 2, 3, 4, 76, 4, 1, 'fi3he1', FALSE, 2, FALSE, 2, 2, 1, 'mentaire');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, fouille, commentaire)
+VALUES ('objet3', 2, 4, 43, 1, 4, 2, 'fich31', TRUE, 1, FALSE, 1, 2, 'aire');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, prospection, commentaire)
+VALUES ('objet4', 1, 4, 43, 1, 4, 2, 'fiche', FALSE, 2, TRUE, 1, 2, 'commen');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, commentaire)
+VALUES ('objet5', 2, 4, 43, 1, 4, 5, 'fich', TRUE, 1, TRUE, 2, 2, 1, 'coentaire');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, prospection, commentaire)
+VALUES ('objet6', 1, 4, 43, 1, 4, 5, 'che1', FALSE, 2, FALSE, 2, 1, 'centaire');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, fouille, commentaire)
+VALUES ('objet7', 2, 4, 43, 1, 4, 6, 'fie1', TRUE, 1, TRUE, 2, 2, 2, 'commente');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, fiche, brule, periode, tamis, trouve_par, collection, prospection, commentaire)
+VALUES ('objet8', 1, 4, 43, 1, 4, 6, 'fhe1', FALSE, 2, FALSE, 1, 1, 1, 'commene');
 
 INSERT INTO charbon (datation, objet)
 VALUES ('2/2/500', 5);
@@ -521,5 +536,6 @@ DROP TABLE ostaxon;
 DROP TABLE sitetype;
 DROP TABLE fonction;
 DROP TABLE locustype;
+DROP TABLE periode;
 
 /****************************************************************************************/
