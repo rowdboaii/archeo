@@ -115,7 +115,32 @@
 							</p>
 						</form>
 					</p>
-				
+					
+					<!-- Modification d'un Type de Galet. -->
+					<h2>Modification</h2>
+					<p>
+						<!-- Formulaire pour une Fonction. -->
+						<form method = "post" action = "../updates/galetTypeUp.php">
+							<p>
+								<label for = "old">Type à remplacer</label> : <input type = "text" name = "old" id = "old"><br>
+								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br>
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+					
+					<!-- Suppression d'un Type de Galet. -->
+					<h2>Suppression</h2>
+					<p>
+						<!-- Formulaire pour une Fonction. -->
+						<form method = "post" action = "../deletes/galetTypeDel.php">
+							<p>
+								<label for = "delete">Type à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br>
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+
 				</div>
 			</section>
 
