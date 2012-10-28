@@ -1,6 +1,6 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : decapageInsert.php -->
+<!-- Fichier : galetTypeInsert.php -->
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>DecapageInsert</title>
+		<title>GaletTypeInsert</title>
 	</head>
 
 	<body>
@@ -46,20 +46,24 @@
 			<section>
 
 				<!-- Section de page. -->
-				<div id = "">
+				<div id = "">	
 	
 					<?php
-						$query = $bdd->prepare('INSERT INTO decapage (nom, carre)
-																		VALUES(:nom, :carre)');
-						$query->execute(array('nom' => $_POST['nom'],
-																	'carre' => $_POST['carre']
-																	)) or die('Error');
-						echo 'Champ ajouté à la base.';
+						$query = $bdd->prepare('INSERT INTO galettype (type)
+																		VALUES(:type)');
+						$query->execute(array('type' => $_POST['type']));
+
+						if (!$query) {
+							die("Erreur dans l'insertion : " . pg_last_error());
+						}
+						else {
+							echo 'Champ ajouté à la base.';
+						}
 					?>
 				
-					<!-- Lien de retour vers la page des inputs. -->
+					<!-- Lien de retour. -->
 					<p>
-						<a href = "../input.php">Revenir</a>
+						<a href = "../parameters/galetType.php">Revenir</a>
 					</p>
 	
 				</div>

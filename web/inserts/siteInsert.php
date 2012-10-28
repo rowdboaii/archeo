@@ -75,7 +75,7 @@
 			<footer>
 			
 				<!-- Pied de la page. -->
-				<?php include('includes/piedPage.php'); ?>
+				<?php include('../includes/piedPage.php'); ?>
 			
 			</footer>
 

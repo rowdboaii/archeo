@@ -13,6 +13,7 @@
 		<li><a href = "../input.php">Écriture</a></li>
 		<li><a href = "../update.php">Modification</a></li>
 		<li><a href = "../delete.php">Suppression</a></li>
+		<li><a href = "../parameter.php">Paramètres</a></li>
 		<?php } ?>
 		
 		<li><a href = "../contact.php">Contacts</a></li>
