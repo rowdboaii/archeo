@@ -78,6 +78,13 @@ CREATE TABLE periode
 	periode VARCHAR(50) NOT NULL
 );
 
+/* Création de la table Pays. */
+CREATE TABLE pays
+(
+	identifiant SERIAL PRIMARY KEY,
+	nom VARCHAR(50) NOT NULL
+);
+
 /****************************************************************************************/
 
 /* Création de la table Région. */
@@ -85,7 +92,7 @@ CREATE TABLE region
 (
 	identifiant SERIAL PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
-	pays VARCHAR(50) NOT NULL
+	pays INTEGER REFERENCES pays(identifiant)
 );
 
 /* Création de la table Personne. */
@@ -383,6 +390,12 @@ VALUES ('periode2');
 INSERT INTO periode (periode)
 VALUES ('periode1');
 
+INSERT INTO pays (nom)
+VALUES ('France');
+
+INSERT INTO pays (nom)
+VALUES ('Allemagne');
+
 /****************************************************************************************/
 
 INSERT INTO personne (nom, prenom, nationalite, fonction)
@@ -392,10 +405,10 @@ INSERT INTO personne (nom, prenom, nationalite, fonction)
 VALUES ('muth', 'xavier', 1, 1);
 
 INSERT INTO region (nom, pays)
-VALUES ('region1', 'Russie');
+VALUES ('region1', 1);
 
 INSERT INTO region (nom, pays)
-VALUES ('region2', 'France');
+VALUES ('region2', 2);
 
 INSERT INTO site (nom, region, position_nord, position_est, altitude, trouve_par, fouille_par, type, commentaire)
 VALUES ('site1', 2, 32, 6, 23, 2, 1, 1, 'magnifique');
@@ -537,5 +550,6 @@ DROP TABLE sitetype;
 DROP TABLE fonction;
 DROP TABLE locustype;
 DROP TABLE periode;
+DROP TABLE pays;
 
 /****************************************************************************************/
