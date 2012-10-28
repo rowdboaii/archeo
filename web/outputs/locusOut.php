@@ -57,8 +57,15 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT * 
-																			FROM locus'); ?>
+					<?php
+						$query = $bdd->query('SELECT l.identifiant, l.nom, s.nom AS nom_site, t.type AS nom_type, l.position_nord, l.position_est, l.altitude, f.prenom AS prenom_f , f.nom AS nom_f, p.prenom AS prenom_p, p.nom AS nom_p
+																	FROM locus l, site s, locustype t, personne p, personne f
+																	WHERE l.site = s.identifiant
+																	AND l.type = t.identifiant
+																	AND l.trouve_par = f.identifiant
+																	AND l.appartient_a = p.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -105,13 +112,13 @@
 								<tr>
 									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['site']; ?></td>
-									<td><?php echo $data['type']; ?></td>
+									<td><?php echo $data['nom_site']; ?></td>
+									<td><?php echo $data['nom_type']; ?></td>
 									<td><?php echo $data['position_nord']; ?></td>
 									<td><?php echo $data['position_est']; ?></td>
 									<td><?php echo $data['altitude']; ?></td>
-									<td><?php echo $data['trouve_par']; ?></td>
-									<td><?php echo $data['appartient_a']; ?></td>
+									<td><?php echo $data['prenom_f'] . ' ' . $data['nom_f']; ?></td>
+									<td><?php echo $data['prenom_p'] . ' ' . $data['nom_p']; ?></td>
 								</tr>
 								
 							<?php

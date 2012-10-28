@@ -509,10 +509,10 @@ INSERT INTO galet (nom, objet, type)
 VALUES ('galet2', 8, 2);
 
 INSERT INTO os (objet, partie, type, taxon, animal, type_animal, forme, dissous, morsure, conservation, datation)
-VALUES (4, 'cul', 1, 1, 'truie', 'ta soeur', 'ovale', FALSE, FALSE, 6, '23/12/90');
+VALUES (4, 'cul', 'type1', 1, 'truie', 'ta soeur', 'ovale', FALSE, FALSE, 6, '23/12/90');
 
 INSERT INTO os (objet, partie, type, taxon, animal, type_animal, forme, dissous, morsure, conservation, datation)
-VALUES (3, 'tete', 2, 2, 'rat', 'ta mere', 'sinusoidale', TRUE, TRUE, 4, '1/1/1');
+VALUES (3, 'tete', 'type2', 2, 'rat', 'ta mere', 'sinusoidale', TRUE, TRUE, 4, '1/1/1');
 
 INSERT INTO silex (objet, provenance, couleur)
 VALUES (2, 1, 'black');

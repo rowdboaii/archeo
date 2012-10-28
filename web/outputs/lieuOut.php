@@ -57,8 +57,12 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT *
-																			FROM lieu'); ?>
+					<?php
+						$query = $bdd->query('SELECT l.identifiant, l.nom, r.nom AS nom_region, l.position_nord, l.position_est, l.altitude, l.commentaire
+																	FROM lieu l, region r
+																	WHERE l.region = r.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -101,7 +105,7 @@
 								<tr>
 									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['region']; ?></td>
+									<td><?php echo $data['nom_region']; ?></td>
 									<td><?php echo $data['position_nord']; ?></td>
 									<td><?php echo $data['position_est']; ?></td>
 									<td><?php echo $data['altitude']; ?></td>

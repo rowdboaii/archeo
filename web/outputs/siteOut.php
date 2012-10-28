@@ -57,8 +57,15 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT *
-																			FROM site'); ?>
+					<?php
+						$query = $bdd->query('SELECT s.identifiant, s.nom, r.nom AS nom_region, t.type AS nom_type, s.position_nord, s.position_est, s.altitude, p.prenom AS prenom_p, p.nom AS nom_p, f.prenom AS prenom_f, f.nom AS nom_f, s.commentaire
+																	FROM site s, region r, sitetype t, personne p, personne f
+																	WHERE s.region = r.identifiant
+																	AND s.type = t.identifiant
+																	AND s.trouve_par = p.identifiant
+																	AND s.fouille_par = f.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -107,13 +114,13 @@
 								<tr>
 									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['region']; ?></td>
-									<td><?php echo $data['type']; ?></td>
+									<td><?php echo $data['nom_region']; ?></td>
+									<td><?php echo $data['nom_type']; ?></td>
 									<td><?php echo $data['position_nord']; ?></td>
 									<td><?php echo $data['position_est']; ?></td>
 									<td><?php echo $data['altitude']; ?></td>
-									<td><?php echo $data['trouvep_par']; ?></td>
-									<td><?php echo $data['fouille_par']; ?></td>
+									<td><?php echo $data['prenom_p'] . ' ' . $data['nom_p']; ?></td>
+									<td><?php echo $data['prenom_f'] . ' ' . $data['nom_f']; ?></td>
 									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 								

@@ -57,8 +57,18 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT *
-																			FROM objet'); ?>
+					<?php
+						$query = $bdd->query('SELECT o.identifiant, o.nom, t.type AS nom_type, o.poids, o.longueur, o.largeur, o.hauteur, n.nature AS nom_nature, o.fiche, o.brule, p.periode AS nom_periode, f.prenom AS prenom_f, f.nom AS nom_f, c.nom AS nom_collection, o.tamis, r.nom AS nom_prospection, u.nom AS nom_fouille, o.commentaire
+																	FROM objet o, objettype t, objetnature n, periode p, personne f, collection c, prospection r, fouille u
+																	WHERE o.type = t.identifiant
+																	AND o.nature = n.identifiant
+																	AND o.periode = p.identifiant
+																	AND o.trouve_par = f.identifiant
+																	AND o.collection = c.identifiant
+																	AND o.prospection = r.identifiant
+																	AND o.fouille = u.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -121,20 +131,20 @@
 								<tr>
 									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['type']; ?></td>
+									<td><?php echo $data['nom_type']; ?></td>
 									<td><?php echo $data['poids']; ?></td>
 									<td><?php echo $data['longueur']; ?></td>
 									<td><?php echo $data['largeur']; ?></td>
 									<td><?php echo $data['hauteur']; ?></td>
-									<td><?php echo $data['nature']; ?></td>
+									<td><?php echo $data['nom_nature']; ?></td>
 									<td><?php echo $data['fiche']; ?></td>
 									<td><?php echo $data['brule']; ?></td>
-									<td><?php echo $data['periode']; ?></td>
-									<td><?php echo $data['trouve_par']; ?></td>
-									<td><?php echo $data['collection']; ?></td>
+									<td><?php echo $data['nom_periode']; ?></td>
+									<td><?php echo $data['prenom_f'] . ' ' . $data['nom_f']; ?></td>
+									<td><?php echo $data['nom_collection']; ?></td>
 									<td><?php echo $data['tamis']; ?></td>
-									<td><?php echo $data['prospection']; ?></td>
-									<td><?php echo $data['fouille']; ?></td>
+									<td><?php echo $data['nom_td']; ?></prospection>
+									<td><?php echo $data['nom_fouille']; ?></td>
 									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 								

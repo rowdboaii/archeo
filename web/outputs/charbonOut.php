@@ -57,9 +57,12 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT o.nom AS nom_objet, c.datation
-																			FROM charbon c, objet o
-																			WHERE c.objet = o.identifiant'); ?>
+					<?php
+						$query = $bdd->query('SELECT o.nom AS nom_objet, c.datation
+																	FROM charbon c, objet o
+																	WHERE c.objet = o.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>

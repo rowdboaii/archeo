@@ -57,8 +57,13 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT *
-																			FROM prospection'); ?>
+					<?php 
+						$query = $bdd->query('SELECT p.identifiant, p.nom, l.nom AS nom_lieu, r.prenom AS prenom_r, r.nom AS nom_r, p.date_prospection
+																	FROM prospection p, personne r, lieu l
+																	WHERE p.responsable = r.identifiant
+																	AND p.lieu = l.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -97,8 +102,8 @@
 								<tr>
 									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['lieu']; ?></td>
-									<td><?php echo $data['responsable']; ?></td>
+									<td><?php echo $data['nom_lieu']; ?></td>
+									<td><?php echo $data['prenom_r'] . ' ' . $data['nom_r']; ?></td>
 									<td><?php echo $data['date_prospection']; ?></td>
 								</tr>
 								

@@ -57,8 +57,13 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT *
-																			FROM os'); ?>
+					<?php
+						$query = $bdd->query('SELECT o.nom AS nom_objet, s.partie, s.type, t.taxon AS nom_taxon, s.animal, s.type_animal, s.forme, s.dissous, s.morsure, s.conservation, 		s.datation
+																	FROM os s, objet o, ostaxon t
+																	WHERE s.objet = o.identifiant
+																	AND s.taxon = t.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -107,10 +112,10 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['objet']; ?></td>
+									<td><?php echo $data['nom_objet']; ?></td>
 									<td><?php echo $data['partie']; ?></td>
 									<td><?php echo $data['type']; ?></td>
-									<td><?php echo $data['taxon']; ?></td>
+									<td><?php echo $data['nom_taxon']; ?></td>
 									<td><?php echo $data['animal']; ?></td>
 									<td><?php echo $data['type_animal']; ?></td>
 									<td><?php echo $data['forme']; ?></td>

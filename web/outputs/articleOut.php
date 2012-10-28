@@ -57,10 +57,13 @@
 				<!-- Section de page. -->
 				<div id = "">
 					
-					<?php $query = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, a.sujet, l.langue AS nom_langue
-																			FROM article a, personne p, langue l
-																			WHERE a.auteur = p.identifiant
-																			AND a.langue = l.identifiant'); ?>
+					<?php
+						$query = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, a.sujet, l.langue AS nom_langue
+																	FROM article a, personne p, langue l
+																	WHERE a.auteur = p.identifiant
+																	AND a.langue = l.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>

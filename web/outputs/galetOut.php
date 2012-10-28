@@ -57,8 +57,13 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT *
-																			FROM galet'); ?>
+					<?php
+						$query = $bdd->query('SELECT o.nom AS nom_objet, g.nom, t.type AS nom_type
+																	FROM galet g, galettype t, objet o
+																	WHERE g.objet = o.identifiant
+																	AND g.type = t.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -91,9 +96,9 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['objet']; ?></td>
+									<td><?php echo $data['nom_objet']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['type']; ?></td>
+									<td><?php echo $data['nom_type']; ?></td>
 								</tr>
 								
 							<?php

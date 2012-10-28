@@ -59,8 +59,13 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT *
-																			FROM personne'); ?>
+					<?php
+						$query = $bdd->query('SELECT p.identifiant, p.prenom, p.nom, n.nationalite, f.fonction
+																	FROM personne p, nationalite n, fonction f
+																	WHERE p.nationalite = n.identifiant
+																	AND p.fonction = f.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>

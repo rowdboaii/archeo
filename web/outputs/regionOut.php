@@ -57,8 +57,12 @@
 				<!-- Section de page. -->
 				<div id = "">
 					
-					<?php $query = $bdd->query('SELECT *
-																			FROM region'); ?>
+					<?php
+						$query = $bdd->query('SELECT r.identifiant, r.nom, p.nom AS nom_pays
+																	FROM region r, pays p
+																	WHERE r.pays = p.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -93,7 +97,7 @@
 								<tr>
 									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['pays']; ?></td>
+									<td><?php echo $data['nom_pays']; ?></td>
 								</tr>
 								
 							<?php

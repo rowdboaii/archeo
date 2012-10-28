@@ -57,8 +57,12 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT *
-																			FROM collection'); ?>
+					<?php
+						$query = $bdd->query('SELECT c.identifiant, p.prenom, c.nom, p.nom AS nom_personne
+																	FROM collection c, personne p
+																	WHERE c.proprietaire = p.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -93,7 +97,7 @@
 								<tr>
 									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['proprietaire']; ?></td>
+									<td><?php echo $data['prenom'] . ' ' . $data['nom_personne']; ?></td>
 								</tr>
 								
 							<?php

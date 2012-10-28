@@ -57,8 +57,13 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT *
-																			FROM fouille'); ?>
+					<?php
+						$query = $bdd->query('SELECT f.identifiant, f.nom, p.prenom, p.nom AS nom_personne, d.nom AS nom_decapage, f.annee
+																	FROM fouille f, personne p, decapage d
+																	WHERE f.fouilleur = p.identifiant
+																	AND f.decapage = d.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -97,8 +102,8 @@
 								<tr>
 									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['fouilleur']; ?></td>
-									<td><?php echo $data['decapage']; ?></td>
+									<td><?php echo $data['prenom'] . ' ' . $data['nom_personne']; ?></td>
+									<td><?php echo $data['nom_decapage']; ?></td>
 									<td><?php echo $data['annee']; ?></td>
 								</tr>
 								

@@ -57,8 +57,13 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT *
-																			FROM silex'); ?>
+					<?php
+						$query = $bdd->query('SELECT o.nom AS nom_objet, g.nom AS nom_gisement, s.couleur
+																	FROM silex s, gisement g, objet o
+																	WHERE s.provenance = g.identifiant
+																	AND s.objet = o.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -91,8 +96,8 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['objet']; ?></td>
-									<td><?php echo $data['provenance']; ?></td>
+									<td><?php echo $data['nom_objet']; ?></td>
+									<td><?php echo $data['nom_gisement']; ?></td>
 									<td><?php echo $data['couleur']; ?></td>
 								</tr>
 								

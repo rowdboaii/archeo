@@ -57,8 +57,12 @@
 				<!-- Section de page. -->
 				<div id = "">
 						
-					<?php $query = $bdd->query('SELECT *
-																			FROM decapage'); ?>
+					<?php
+						$query = $bdd->query('SELECT d.identifiant, d.nom, c.nom AS nom_carre
+																	FROM decapage d, carre c
+																	WHERE d.carre = c.identifiant'
+																	);
+					?>
 					
 					<!-- Tableau d'affichage de la table. -->
 					<table>
@@ -93,7 +97,7 @@
 								<tr>
 									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['carre']; ?></td>
+									<td><?php echo $data['nom_carre']; ?></td>
 								</tr>
 								
 							<?php
