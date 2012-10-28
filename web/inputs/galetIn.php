@@ -60,11 +60,13 @@
 						include('../includes/connexionBDD.php');
 					
 						/* Récupération des données pour le formulaire. */
-						$query1 = $bdd->prepare('SELECT identifiant, nom
-																			FROM objet'
+						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
+																			FROM objet o, objetnature n
+																			WHERE o.nature = n.identifiant
+																			AND n.nature = \'galet\''
 																		 	);
 						$query2 = $bdd->prepare('SELECT identifiant, type
-																			FROM typeGalet'
+																			FROM galettype'
 																			);
 					?>
 
