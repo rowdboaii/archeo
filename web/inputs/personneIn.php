@@ -55,6 +55,19 @@
 				<!-- Section de page. -->
 				<div id = "">
 
+					<?php
+						/* Connexion à la base de données. */
+						include('../includes/connexionBDD.php');
+					
+						/* Récupération des données pour le formulaire. */
+						$query1 = $bdd->prepare('SELECT identifiant, nationalite
+																			FROM nationalite'
+																		 	);
+						$query2 = $bdd->prepare('SELECT identifiant, fonction
+																			FROM fonction'
+																			);
+					?>
+
 					<p>
 						<!-- Formulaire pour une Personne. -->
 						<form method = "post" action = "../inserts/personneInsert.php">
@@ -63,24 +76,31 @@
 								<label for = "prenom">Prénom</label> : <input type = "text" name = "prenom" id = "prenom" /><br />
 								<label for = "nationalite">Nationalité</label> : 
 								<select name = "nationalite" id = "nationalite">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query1->execute();
+										while ($data = $query1->fetch()) {
+											echo '<option value ="' . $data['identifiant'] . '">' . $data['nationalite'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "fonction">Fonction</label> : 
 								<select name = "fonction" id = "fonction">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query2->execute();
+										while ($data = $query2->fetch()) {
+											echo '<option value ="' . $data['identifiant'] . '">' . $data['fonction'] . '</option>';
+										}
+									?>
 								</select><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
+					
+					<?php
+						$query1->closeCursor();
+						$query2->closeCursor();
+					?>
 	
 				</div>
 			</section>

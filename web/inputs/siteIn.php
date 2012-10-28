@@ -54,7 +54,23 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-
+				
+					<?php
+						/* Connexion à la base de données. */
+						include('../includes/connexionBDD.php');
+					
+						/* Récupération des données pour le formulaire. */
+						$query1 = $bdd->prepare('SELECT identifiant, nom
+																			FROM region'
+																		 	);
+						$query2 = $bdd->prepare('SELECT identifiant, prenom, nom
+																			FROM personne'
+																			);
+						$query3 = $bdd->prepare('SELECT identifiant, type
+																			FROM sitetype'
+																			);
+					?>
+				
 					<p>
 						<!-- Formulaire pour un Site. -->
 						<form method = "post" action = "../inserts/siteInsert.php">
@@ -62,38 +78,42 @@
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "region">Région</label> : 
 								<select name = "region" id = "region">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query1->execute();
+										while ($data = $query1->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "nord">Position Nord</label> : <input type = "text" name = "nord" id = "nord" /><br />
 								<label for = "est">Position Est</label> : <input type = "text" name = "est" id = "est" /><br />
 								<label for = "altitude">Altitude</label> : <input type = "text" name = "altitude" id = "altitude" /><br />
 								<label for = "trouve">Trouvé par</label> : 
 								<select name = "trouve" id = "trouve">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query2->execute();
+										while ($data = $query2->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "fouille">Fouillé par</label> : 
 								<select name = "fouille" id = "fouille">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query2->execute();
+										while ($data = $query2->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "type">Type</label> : 
 								<select name = "type" id = "type">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query3->execute();
+										while ($data = $query3->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "commentaire">Commentaire</label> :<br />								
 								<textarea name = "commentaire" id = "commentaire" rows = "5" cols = "40"></textarea><br />
@@ -101,7 +121,13 @@
 							</p>
 						</form>
 					</p>
-	
+					
+					<?php
+						$query1->closeCursor();
+						$query2->closeCursor();
+						$query3->closeCursor();
+					?>
+					
 				</div>
 			</section>
 			<?php } ?>

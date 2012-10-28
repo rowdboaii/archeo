@@ -55,31 +55,53 @@
 				<!-- Section de page. -->
 				<div id = "">
 
+					<?php
+						/* Connexion à la base de données. */
+						include('../includes/connexionBDD.php');
+					
+						/* Récupération des données pour le formulaire. */
+						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
+																			FROM objet o, objetnature n
+																			WHERE o.nature = n.identifiant
+																			AND n.nature = \'silex\''
+																		 	);
+						$query2 = $bdd->prepare('SELECT identifiant, nom
+																			FROM gisement'
+																			);
+					?>
+					
 					<p>
 						<!-- Formulaire pour un Silex. -->
 						<form method = "post" action = "../inserts/silexInsert.php">
 							<p>
 								<label for = "objet">Objet</label> : 
 								<select name = "objet" id = "objet">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query1->execute();
+										while ($data = $query1->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "couleur">Couleur</label> : <input type = "text" name = "couleur" id = "couleur" /><br />
 								<label for = "provenance">Provenance</label> : 
 								<select name = "provenance" id = "provenance">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query2->execute();
+										while ($data = $query2->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
+	
+					<?php
+						$query1->closeCursor();
+						$query2->closeCursor();
+					?>
 	
 				</div>
 			</section>

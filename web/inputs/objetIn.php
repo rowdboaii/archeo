@@ -54,26 +54,56 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-
+				
+					<?php
+						/* Connexion à la base de données. */
+						include('../includes/connexionBDD.php');
+					
+						/* Récupération des données pour le formulaire. */
+						$query1 = $bdd->prepare('SELECT identifiant, type
+																			FROM objetType'
+																		 	);
+						$query2 = $bdd->prepare('SELECT identifiant, nature
+																			FROM objetNature'
+																			);
+						$query3 = $bdd->prepare('SELECT identifiant, prenom, nom
+																			FROM personne'
+																			);
+						$query4 = $bdd->prepare('SELECT identifiant, nom
+																			FROM collection'
+																			);
+						$query5 = $bdd->prepare('SELECT identifiant, periode
+																			FROM periode'
+																			);
+						$query6 = $bdd->prepare('SELECT identifiant, nom
+																			FROM fouille'
+																			);
+						$query7 = $bdd->prepare('SELECT identifiant, nom
+																			FROM prospection'
+																			);
+					?>
+				
 					<p>
 						<form method = "post" action = "../inserts/objetInsert.php">
 							<p>
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "type">Type</label> :
 								<select name = "type" id = "type">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query1->execute();
+										while ($data = $query1->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "nature">nature</label> :
 								<select name = "nature" id = "nature">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query2->execute();
+										while ($data = $query2->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nature'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "poids">Poids</label> : <input type = "text" name = "poids" id = "poids" /><br />
 								<label for = "longueur">Longueur</label> : <input type = "text" name = "longueur" id = "longueur" /><br />
@@ -81,45 +111,50 @@
 								<label for = "hauteur">Hauteur</label> : <input type = "text" name = "hauteur" id = "hauteur" /><br />
 								<label for = "trouve">Trouvé par</label> :
 								<select name = "trouve" id = "trouve">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query3->execute();
+										while ($data = $query3->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "collection">Collection</label> :
 								<select name = "collection" id = "collection">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query4->execute();
+										while ($data = $query4->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "periode">Période</label> :
 								<select name = "periode" id = "periode">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query5->execute();
+										while ($data = $query5->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['periode'] . '</option>';
+										}
+									?>
 								</select><br />
 								Type de Recherche : <input type = "radio" name = "recherche" value = "prospection" id = "prospection" />
 										    <input type = "radio" name = "recherche" value = "fouille" id = "fouille" /><br />
 								<label for = "fouille">Fouille</label> :
 								<select name = "fouille" id = "fouille">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query6->execute();
+										while ($data = $query6->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "prospection">Prospection</label> :
 								<select name = "prospection" id = "prospection">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query7->execute();
+										while ($data = $query7->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br />
 								Tamis : <input type = "radio" name = "tamis" value = "oui" id = "oui" />
 									<input type = "radio" name = "tamis" value = "non" id = "non" /><br />
@@ -132,7 +167,17 @@
 							</p>
 						</form>
 					</p>
-	
+					
+					<?php
+						$query1->closeCursor();
+						$query2->closeCursor();
+						$query3->closeCursor();
+						$query4->closeCursor();
+						$query5->closeCursor();
+						$query6->closeCursor();
+						$query7->closeCursor();
+					?>
+					
 				</div>
 			</section>
 			<?php } ?>

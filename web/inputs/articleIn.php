@@ -61,11 +61,13 @@
 						include('../includes/connexionBDD.php');
 					
 						/* Récupération des données pour le formulaire. */
-						$query1 = $bdd->prepare('SELECT p.identifiant AS id_personne, p.prenom, p.nom, a.sujet
-																			FROM article a, personne p
-																			WHERE a.auteur = p.identifiant'
+						$query1 = $bdd->prepare('SELECT identifiant, prenom, nom
+																			FROM personne'
 																		 	);
-						$query2 = $bdd->prepare('SELECT identifiant, langue
+						$query2 = $bdd->prepare('SELECT identifiant, nom
+																			FROM locus'
+																			);
+						$query3 = $bdd->prepare('SELECT identifiant, langue
 																			FROM langue'
 																			);
 					?>
@@ -80,7 +82,7 @@
 									<?php
 										$query1->execute();
 										while ($data = $query1->fetch()) {
-											echo '<option value = "' . $data['id_personne'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
 								</select><br />
@@ -88,9 +90,9 @@
 								<label for = "sujet">Sujet</label> : 
 								<select name = "sujet" id = "sujet">
 									<?php
-										$query1->execute();
-										while ($data = $query1->fetch()) {
-											echo '<option value = "' . $data['sujet'] . '">' . $data['sujet'] . '</option>';
+										$query2->execute();
+										while ($data = $query2->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
 								</select><br />
@@ -98,8 +100,8 @@
 								<label for = "langue">Langue</label> : 
 								<select name = "langue" id = "langue">
 									<?php
-										$query2->execute();
-										while ($data = $query2->fetch()) {
+										$query3->execute();
+										while ($data = $query3->fetch()) {
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['langue'] . '</option>';
 										}
 									?>
@@ -114,6 +116,7 @@
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
+						$query3->closeCursor();
 					?>
 				
 				</div>

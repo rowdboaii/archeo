@@ -55,6 +55,16 @@
 				<!-- Section de page. -->
 				<div id = "">
 
+					<?php
+						/* Connexion à la base de données. */
+						include('../includes/connexionBDD.php');
+					
+						/* Récupération des données pour le formulaire. */
+						$query = $bdd->prepare('SELECT identifiant, nom
+																			FROM region'
+																		 	);
+					?>
+
 					<p>
 						<!-- Formulaire pour un Lieu. -->
 						<form method = "post" action = "../inserts/lieuInsert.php">
@@ -62,11 +72,12 @@
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "region">Région</label> : 
 								<select name = "region" id = "region">
-									<option value = "1">1</option>
-									<option value = "2">2</option>
-									<option value = "3">3</option>
-									<option value = "4">4</option>
-									<option value = "5">5</option>
+									<?php
+										$query->execute();
+										while ($data = $query->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+										}
+									?>
 								</select><br />
 								<label for = "nord">Position Nord</label> : <input type = "text" name = "nord" id = "nord" /><br />
 								<label for = "est">Position Est</label> : <input type = "text" name = "est" id = "est" /><br />
@@ -77,6 +88,8 @@
 							</p>
 						</form>
 					</p>
+	
+					<?php	$query->closeCursor(); ?>
 	
 				</div>
 			</section>
