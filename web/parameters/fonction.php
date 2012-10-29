@@ -110,7 +110,7 @@
 						<!-- Formulaire pour une Fonction. -->
 						<form method = "post" action = "../inserts/fonctionInsert.php">
 							<p>
-								<label for = "fonction">Fonction</label> : <input type = "text" name = "fonction" id = "fonction"><br>
+								<label for = "fonction">Fonction</label> : <input type = "text" name = "fonction" id = "fonction"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
@@ -122,8 +122,8 @@
 						<!-- Formulaire pour une Fonction. -->
 						<form method = "post" action = "../updates/fonctionUp.php">
 							<p>
-								<label for = "old">Fonction à remplacer</label> : <input type = "text" name = "old" id = "old"><br>
-								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br>
+								<label for = "old">Fonction à remplacer</label> : <input type = "text" name = "old" id = "old"><br />
+								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
@@ -135,7 +135,7 @@
 						<!-- Formulaire pour une Fonction. -->
 						<form method = "post" action = "../deletes/fonctionDel.php">
 							<p>
-								<label for = "delete">Fonction à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br>
+								<label for = "delete">Fonction à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

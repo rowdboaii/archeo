@@ -110,7 +110,32 @@
 						<!-- Formulaire pour une Langue. -->
 						</p><form method = "post" action = "../inserts/langueInsert.php">
 							<p>
-								<label for = "langue">Langue</label> : <input type = "text" name = "langue" id = "langue"><br>
+								<label for = "langue">Langue</label> : <input type = "text" name = "langue" id = "langue"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+				
+					<!-- Modification d'une Langue. -->
+					<h2>Modification</h2>
+					<p>
+						<!-- Formulaire pour une Langue. -->
+						<form method = "post" action = "../updates/langueUp.php">
+							<p>
+								<label for = "old">Langue à remplacer</label> : <input type = "text" name = "old" id = "old"><br />
+								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+					
+					<!-- Suppression d'une Langue. -->
+					<h2>Suppression</h2>
+					<p>
+						<!-- Formulaire pour une Langue. -->
+						<form method = "post" action = "../deletes/langueDel.php">
+							<p>
+								<label for = "delete">Langue à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

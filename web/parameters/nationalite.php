@@ -110,7 +110,32 @@
 						<!-- Formulaire pour une Nationalité. -->
 						</p><form method = "post" action = "../inserts/nationaliteInsert.php">
 							<p>
-								<label for = "nationalite">Nationalité</label> : <input type = "text" name = "natinalite" id = "nationalite"><br>
+								<label for = "nationalite">Nationalité</label> : <input type = "text" name = "nationalite" id = "nationalite"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+				
+					<!-- Modification d'une Nationalité. -->
+					<h2>Modification</h2>
+					<p>
+						<!-- Formulaire pour une Nationalité. -->
+						<form method = "post" action = "../updates/nationaliteUp.php">
+							<p>
+								<label for = "old">Nationalité à remplacer</label> : <input type = "text" name = "old" id = "old"><br />
+								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+					
+					<!-- Suppression d'une Nationalité. -->
+					<h2>Suppression</h2>
+					<p>
+						<!-- Formulaire pour une Nationalité. -->
+						<form method = "post" action = "../deletes/nationaliteDel.php">
+							<p>
+								<label for = "delete">Nationalité à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

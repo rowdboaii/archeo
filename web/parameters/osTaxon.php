@@ -110,7 +110,32 @@
 						<!-- Formulaire pour un Taxon d'un Os. -->
 						</p><form method = "post" action = "../inserts/osTaxonInsert.php">
 							<p>
-								<label for = "taxon">Taxon</label> : <input type = "text" name = "taxon" id = "taxon"><br>
+								<label for = "taxon">Taxon</label> : <input type = "text" name = "taxon" id = "taxon"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+				
+					<!-- Modification d'un Taxon d'un Os. -->
+					<h2>Modification</h2>
+					<p>
+						<!-- Formulaire pour un Taxon d'un Os. -->
+						<form method = "post" action = "../updates/osTaxonUp.php">
+							<p>
+								<label for = "old">Taxon à remplacer</label> : <input type = "text" name = "old" id = "old"><br />
+								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+					
+					<!-- Suppression d'un Taxon d'un Os. -->
+					<h2>Suppression</h2>
+					<p>
+						<!-- Formulaire pour un Taxon d'un Os. -->
+						<form method = "post" action = "../deletes/osTaxonDel.php">
+							<p>
+								<label for = "delete">Taxon à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

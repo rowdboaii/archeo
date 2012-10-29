@@ -110,7 +110,32 @@
 						<!-- Formulaire pour un Type d'un Objet. -->
 						</p><form method = "post" action = "../inserts/objetTypeInsert.php">
 							<p>
-								<label for = "type">Type</label> : <input type = "text" name = "type" id = "type"><br>
+								<label for = "type">Type</label> : <input type = "text" name = "type" id = "type"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+				
+					<!-- Modification d'un Type d'Objet. -->
+					<h2>Modification</h2>
+					<p>
+						<!-- Formulaire pour un Type d'Objet. -->
+						<form method = "post" action = "../updates/objetTypeUp.php">
+							<p>
+								<label for = "old">Type à remplacer</label> : <input type = "text" name = "old" id = "old"><br />
+								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+					
+					<!-- Suppression d'un Type d'Objet. -->
+					<h2>Suppression</h2>
+					<p>
+						<!-- Formulaire pour un Type d'Objet. -->
+						<form method = "post" action = "../deletes/objetTypeDel.php">
+							<p>
+								<label for = "delete">Type à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

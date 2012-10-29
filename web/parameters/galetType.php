@@ -110,7 +110,7 @@
 						<!-- Formulaire pour un Type de Galet. -->
 						</p><form method = "post" action = "../inserts/galetTypeInsert.php">
 							<p>
-								<label for = "fonction">Type</label> : <input type = "text" name = "type" id = "type"><br>
+								<label for = "fonction">Type</label> : <input type = "text" name = "type" id = "type"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
@@ -119,11 +119,11 @@
 					<!-- Modification d'un Type de Galet. -->
 					<h2>Modification</h2>
 					<p>
-						<!-- Formulaire pour une Fonction. -->
+						<!-- Formulaire pour un Type de Galet. -->
 						<form method = "post" action = "../updates/galetTypeUp.php">
 							<p>
-								<label for = "old">Type à remplacer</label> : <input type = "text" name = "old" id = "old"><br>
-								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br>
+								<label for = "old">Type à remplacer</label> : <input type = "text" name = "old" id = "old"><br />
+								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
@@ -132,10 +132,10 @@
 					<!-- Suppression d'un Type de Galet. -->
 					<h2>Suppression</h2>
 					<p>
-						<!-- Formulaire pour une Fonction. -->
+						<!-- Formulaire pour un Type de Galet. -->
 						<form method = "post" action = "../deletes/galetTypeDel.php">
 							<p>
-								<label for = "delete">Type à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br>
+								<label for = "delete">Type à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

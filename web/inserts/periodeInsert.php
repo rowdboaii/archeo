@@ -51,7 +51,7 @@
 					<?php
 						$query = $bdd->prepare('INSERT INTO periode (periode)
 																		VALUES(:periode)');
-						$query->execute(array('fonction' => $_POST['periode']));
+						$query->execute(array('periode' => $_POST['periode']));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());

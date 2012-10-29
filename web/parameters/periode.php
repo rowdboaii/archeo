@@ -110,7 +110,32 @@
 						<!-- Formulaire pour une Période. -->
 						</p><form method = "post" action = "../inserts/periodeInsert.php">
 							<p>
-								<label for = "periode">Période</label> : <input type = "text" name = "periode" id = "periode"><br>
+								<label for = "periode">Période</label> : <input type = "text" name = "periode" id = "periode"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+				
+					<!-- Modification d'une Période. -->
+					<h2>Modification</h2>
+					<p>
+						<!-- Formulaire pour une Période. -->
+						<form method = "post" action = "../updates/periodeUp.php">
+							<p>
+								<label for = "old">Période à remplacer</label> : <input type = "text" name = "old" id = "old"><br />
+								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+					
+					<!-- Suppression d'une Période. -->
+					<h2>Suppression</h2>
+					<p>
+						<!-- Formulaire pour une Période. -->
+						<form method = "post" action = "../deletes/periodeDel.php">
+							<p>
+								<label for = "delete">Période à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

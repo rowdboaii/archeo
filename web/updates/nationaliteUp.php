@@ -1,6 +1,6 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : nationaliteInsert.php -->
+<!-- Fichier : nationaliteUp.php -->
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>NationaliteInsert</title>
+		<title>NationaliteUpdate</title>
 	</head>
 
 	<body>
@@ -47,17 +47,21 @@
 
 				<!-- Section de page. -->
 				<div id = "">	
-	
+
 					<?php
-						$query = $bdd->prepare('INSERT INTO nationalite (nationalite)
-																		VALUES (:nationalite)');
-						$query->execute(array('nationalite' => $_POST['nationalite']));
+						$query = $bdd->prepare('UPDATE nationalite
+																		SET nationalite = :new
+																		WHERE nationalite = :old'
+																		);
+						$query->execute(array('new' => $_POST['new'],
+																	'old' => $_POST['old']
+																	));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
 						}
 						else {
-							echo 'Champ ajouté à la base.';
+							echo 'Champ modifié à la base.';
 						}
 					?>
 				

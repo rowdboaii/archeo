@@ -104,13 +104,38 @@
 						</tbody>
 					</table>
 				
-					<!-- Insertion d'une Fonction. -->
+					<!-- Insertion d'un Pays. -->
 					<h2>Ajout</h2>
 					<p>
-						<!-- Formulaire pour une Fonction. -->
+						<!-- Formulaire pour un Pays. -->
 						</p><form method = "post" action = "../inserts/paysInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom"><br>
+								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+				
+					<!-- Modification d'un Pays. -->
+					<h2>Modification</h2>
+					<p>
+						<!-- Formulaire pour un Pays. -->
+						<form method = "post" action = "../updates/paysUp.php">
+							<p>
+								<label for = "old">Pays à remplacer</label> : <input type = "text" name = "old" id = "old"><br />
+								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+					
+					<!-- Suppression d'un Pays. -->
+					<h2>Suppression</h2>
+					<p>
+						<!-- Formulaire pour un Pays. -->
+						<form method = "post" action = "../deletes/paysDel.php">
+							<p>
+								<label for = "delete">Pays à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

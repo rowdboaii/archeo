@@ -110,12 +110,37 @@
 						<!-- Formulaire pour une Nature d'un Objet. -->
 						</p><form method = "post" action = "../inserts/objetNatureInsert.php">
 							<p>
-								<label for = "nature">Nature</label> : <input type = "text" name = "nature" id = "nature"><br>
+								<label for = "nature">Nature</label> : <input type = "text" name = "nature" id = "nature"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
-	
+					
+					<!-- Modification d'une Nature d'un Objet. -->
+					<h2>Modification</h2>
+					<p>
+						<!-- Formulaire pour une Nature d'un Objet. -->
+						<form method = "post" action = "../updates/objetNatureUp.php">
+							<p>
+								<label for = "old">Nature à remplacer</label> : <input type = "text" name = "old" id = "old"><br />
+								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+					
+					<!-- Suppression d'une Natude d'un Objet. -->
+					<h2>Suppression</h2>
+					<p>
+						<!-- Formulaire pour une Nature d'un Objet. -->
+						<form method = "post" action = "../deletes/objetNatureDel.php">
+							<p>
+								<label for = "delete">Nature à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+					
 				</div>
 			</section>
 
