@@ -30,8 +30,6 @@ V1:
 - Ajout d'un utilisateur normal avec accès à la lecture seule. (DONE)
 - Modification des valeurs des champs des tables de la base.
 - Suppression des champs des tables de la base.
-- Ajout d'un super super utilisateur pour détruire toute la base.
-- Suppression totale de la base.
 
 
 V2:
