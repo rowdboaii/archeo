@@ -1,6 +1,6 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : charbonUp.php -->
+<!-- Fichier : decapageUp.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
 <?php session_start(); ?>
@@ -16,7 +16,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>CharbonUp</title>
+		<title>DécapageUp</title>
 	</head>
 
 	<body>
@@ -61,52 +61,51 @@
 						include('../includes/connexionBDD.php');
 
 						/* Récupération des données pour le formulaire. */
-						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-																			FROM objet o, objetnature n
-																			WHERE o.nature = n.identifiant
-																			AND n.nature = \'charbon\''
-																		 	);
-						$query2 = $bdd->prepare('SELECT o.nom AS nom_objet, c.datation
-																			FROM charbon c, objet o
-																			WHERE c.objet = o.identifiant'
+						$query1 = $bdd->prepare('SELECT c.identifiant, c.nom
+																			FROM carre c'
+																			);
+						$query2 = $bdd->prepare('SELECT d.identifiant, d.nom, c.nom AS nom_carre
+																			FROM decapage d, carre c
+																			WHERE d.carre = c.identifiant'
 																			);
 					?>
 
 					<p>
-						<!-- Formulaire pour l'Update d'un Charbon. -->
-						<form method = "post" action = "../exec/charbonUpdate.php">
+						<!-- Formulaire pour l'Update d'un Décapage. -->
+						<form method = "post" action = "../exec/decapageUpdate.php">
 							<p>
-								<label for = "old_objet">Objet</label> : 
-								<select name = "old_objet" id = "old_objet">
+								<label for = "old_nom">Nom</label> : 
+								<select name = "old_nom" id = "old_nom">
 									<option value = "0"></option>
 									<?php
 										$query2->execute();
 										while ($data = $query2->fetch()) {
-											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_objet'] . '</option>';
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
 								</select>
-								<label for = "new_objet"> remplacé par</label> : 
-								<select name = "new_objet" id = "new_objet">
+								<label for = "new_nom"> remplacé par</label> : 
+								<input type = "text" name = "new_nom" id = "new_nom"><br />
+								<label for = "old_carre">Carré</label> : 
+								<select name = "old_carre" id = "old_carre">
+									<option value = "0"></option>
+									<?php
+										$query2->execute();
+										while ($data = $query2->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_carre'] . '</option>';
+										}
+									?>
+								</select>
+								<label for = "new_carre"> remplacé par</label> : 
+								<select name = "new_carre" id = "new_carre">
 									<option value = "0"></option>
 									<?php
 										$query1->execute();
 										while ($data = $query1->fetch()) {
-											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
 								</select><br />
-								<label for = "old_datation">Datation</label> : 
-								<select name = "old_datation" id = "old_datation">
-									<option value = "0"></option>
-									<?php
-										$query2->execute();
-										while ($data = $query2->fetch()) {
-											echo '<option value ="' . $data['identifiant'] . '">' . $data['datation'] . '</option>';
-										}
-									?>
-								</select>
-								<input type = "text" name = "new_datation" id = "new_datation" /><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
