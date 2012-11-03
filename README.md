@@ -35,6 +35,8 @@ V1:
 V2:
 - CSS display bloc pour manipuler facilement les éléments des pages.
 - CSS réalisation esthétique des pages du site.
+- Gestion plus avancée des textarea.
+- Ajout possibilité de choix du sujet d'un article (Locus ou Site ou Région).
 
 
 V3:
