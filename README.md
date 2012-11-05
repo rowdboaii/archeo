@@ -35,7 +35,9 @@ V1:
 V2:
 - CSS display bloc pour manipuler facilement les éléments des pages.
 - CSS réalisation esthétique des pages du site.
-- Gestion plus avancée des textarea.
+- Gestion plus avancée de la modification des textarea.
+- Ajout gestion d'upload de fichier dans le champ Fiche d'Objet.
+- Gestion plus avancée de la modification des booleans.
 - Ajout possibilité de choix du sujet d'un article (Locus ou Site ou Région).
 
 
