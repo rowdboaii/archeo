@@ -133,7 +133,7 @@
 					<h2>Suppression</h2>
 					<p>
 						<!-- Formulaire pour une Nationalité. -->
-						<form method = "post" action = "../deletes/nationaliteDel.php">
+						<form method = "post" action = "../exec/nationaliteDelete.php">
 							<p>
 								<label for = "delete">Nationalité à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />

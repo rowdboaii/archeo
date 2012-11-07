@@ -133,7 +133,7 @@
 					<h2>Suppression</h2>
 					<p>
 						<!-- Formulaire pour un Taxon d'un Os. -->
-						<form method = "post" action = "../deletes/osTaxonDel.php">
+						<form method = "post" action = "../exec/osTaxonDelete.php">
 							<p>
 								<label for = "delete">Taxon à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />

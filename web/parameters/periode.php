@@ -133,7 +133,7 @@
 					<h2>Suppression</h2>
 					<p>
 						<!-- Formulaire pour une Période. -->
-						<form method = "post" action = "../deletes/periodeDel.php">
+						<form method = "post" action = "../exec/periodeDelete.php">
 							<p>
 								<label for = "delete">Période à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />

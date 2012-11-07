@@ -133,7 +133,7 @@
 					<h2>Suppression</h2>
 					<p>
 						<!-- Formulaire pour une Fonction. -->
-						<form method = "post" action = "../deletes/fonctionDel.php">
+						<form method = "post" action = "../exec/fonctionDelete.php">
 							<p>
 								<label for = "delete">Fonction à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />

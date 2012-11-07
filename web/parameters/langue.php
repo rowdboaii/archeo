@@ -133,7 +133,7 @@
 					<h2>Suppression</h2>
 					<p>
 						<!-- Formulaire pour une Langue. -->
-						<form method = "post" action = "../deletes/langueDel.php">
+						<form method = "post" action = "../exec/langueDelete.php">
 							<p>
 								<label for = "delete">Langue à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />

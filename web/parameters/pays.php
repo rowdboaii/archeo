@@ -133,7 +133,7 @@
 					<h2>Suppression</h2>
 					<p>
 						<!-- Formulaire pour un Pays. -->
-						<form method = "post" action = "../deletes/paysDel.php">
+						<form method = "post" action = "../exec/paysDelete.php">
 							<p>
 								<label for = "delete">Pays à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />

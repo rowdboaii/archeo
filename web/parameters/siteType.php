@@ -133,7 +133,7 @@
 					<h2>Suppression</h2>
 					<p>
 						<!-- Formulaire pour un Type de Site. -->
-						<form method = "post" action = "../deletes/siteTypeDel.php">
+						<form method = "post" action = "../exec/siteTypeDelete.php">
 							<p>
 								<label for = "delete">Type à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />

@@ -133,7 +133,7 @@
 					<h2>Suppression</h2>
 					<p>
 						<!-- Formulaire pour une Nature d'un Objet. -->
-						<form method = "post" action = "../deletes/objetNatureDel.php">
+						<form method = "post" action = "../exec/objetNatureDelete.php">
 							<p>
 								<label for = "delete">Nature à supprimer</label> : <input type = "text" name = "delete" id = "delete"><br />
 								<input type = "submit" value = "Envoi" />
