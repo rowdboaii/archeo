@@ -61,8 +61,8 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT p.prenom, p.nom, p.identifiant
-																			FROM personne p'
-																			);
+																		FROM personne p'
+																		);
 					?>
 
 					<p>
