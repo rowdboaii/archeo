@@ -32,13 +32,18 @@
 				<div id = "sectionLogin">
 			
 					<!-- Formulaire pour le login et le mdp. -->	
-					<form method = "post" action = "mainPage.php">
+					<form class = "login" method = "post" action = "mainPage.php">
+						<h1>Login</h1>
 						<p>
-							<label>Pseudo</label> : <input type = "text" name = "pseudo" id = "pseudo" />
-							<br />
-							<label>Password</label> : <input type = "password" name = "mdp" id = "mdp" />
-							<br />
-							<input type = "submit" value = "connexion" />
+							<label for = "pseudo">Pseudo</label>
+							<input type = "text" name = "pseudo" id = "pseudo" placeholder = "Username" required />
+						</p>
+						<p>
+							<label for = "mdp">Password</label>
+							<input type = "password" name = "mdp" id = "mdp" placeholder = "Password" required />
+						</p>
+						<p>
+							<input type = "submit" value = "Continue" />
 						</p>
 					</form>
 				
