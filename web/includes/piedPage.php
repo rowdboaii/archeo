@@ -1,15 +1,16 @@
-<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
+<!-- Sujet : Projet de base de donnÃ©es pour des fouilles archÃ©ologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : piedPage.php -->
 
-<!-- Pied de la page. -->
-<div id = "piedPage">
+<div id = "container">
+	<div id = "content"></div>
+</div>
 
-	<!-- Accès aux contacts. -->
+<div id = "footer">
 	<p>
-		Contacts : <a href = "mailto:xavier.muth@truc.com">Xavier Muth</a> &
+		Archeo - Contacts : 
+		<a href = "mailto:xavier.muth@truc.com">Xavier Muth</a> &
 		<a href = "mailto:antoine.hars@truc.com">Antoine Hars</a>
 	</p>
-
 </div>
 
