@@ -188,5 +188,28 @@ body
 	margin-top: -3em;
 }
 
-/* ************************************* CSS pour la page .php ************************************* */
+/* ************************************* CSS pour la page menuMain.php ************************************* */
 
+#menuMain {
+	width: 600px;
+	height: 25px;
+	list-style-type: none; /* Eviter que les puces se placent n'importe où. */
+}
+
+#menuMain li {
+	padding: 0 0.5em; /* Espace entre les boutons. */
+}
+
+.buttonLeft {
+	float: left;
+}
+
+.buttonRight {
+	float: right;
+}
+
+#menuMain a:hover {
+	text-decoration: underline;
+}
+
+/* ************************************* CSS pour la page .php ************************************* */
