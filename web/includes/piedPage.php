@@ -3,7 +3,7 @@
 <!-- Fichier : piedPage.php -->
 
 <div id = "container">
-	<div id = "content"></div>
+	<div id = "content" class = "clearfix"></div>
 </div>
 
 <div id = "footer">
