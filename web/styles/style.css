@@ -176,16 +176,32 @@ body
 
 /* ************************************* CSS pour la page piedPage.php ************************************* */
 
+body > #container {
+	height: 100%;
+}
+
 #content {
-	padding-bottom: 3em;
+	padding-bottom: 150px;
 }
 
 #footer {
 	clear: both;
 	position: relative;
-	z-index: 10;
-	height: 3em;
-	margin-top: -3em;
+	height: 150px;
+	margin-top: -150px;
+}
+
+/* CLEAR FIX */
+.clearfix:after {
+	content: ".";
+	display: block;
+	height; 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clearfix {
+	display: inline-block;
 }
 
 /* ************************************* CSS pour la page menuMain.php ************************************* */
