@@ -204,6 +204,15 @@ body > #container {
 	display: inline-block;
 }
 
+/* Hides from IE-max. */
+# html .clearfix {
+	height: 1%;
+}
+
+.clearfix {
+	display: block;
+}
+
 /* ************************************* CSS pour la page menuMain.php ************************************* */
 
 #menuMain {
