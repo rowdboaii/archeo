@@ -1,18 +1,18 @@
-<!-- Sujet : Projet de base de donnÈes pour des fouilles archÈologiques. -->
+<!-- Sujet : Projet de base de donn√©es pour des fouilles arch√©ologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : fouilleUp.php -->
 
-<!-- DÈmarrage de la session pour les identifiants. -->
+<!-- D√©marrage de la session pour les identifiants. -->
 <?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<!-- En-tÍte de la page. -->
+		<!-- En-t√™te de la page. -->
 		<meta charset = "utf-8" />
 		<link rel = "stylesheet" href = "style.css" />
-		<!-- Dans le cas o˘ le navigateur est une version antÈrieure ‡ IE9 -->
+		<!-- Dans le cas o√π le navigateur est une version ant√©rieure √† IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -41,7 +41,7 @@
 			</nav>
 			
 			<aside>
-				<!-- Menu latÈral spÈcifique au lien visitÈ. -->
+				<!-- Menu lat√©ral sp√©cifique au lien visit√©. -->
 				<div id = "">
 				
 					<!-- Menu pour les Updates. -->
@@ -57,59 +57,71 @@
 				<div id = "">
 
 					<?php
-						/* Connexion ‡ la base de donnÈes. */
+						/* Connexion √† la base de donn√©es. */
 						include('../includes/connexionBDD.php');
 
-						/* RÈcupÈration des donnÈes pour le formulaire. */
+						/* R√©cup√©ration des donn√©es pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT d.identifiant, d.nom
-													FROM decapage d'
-													);
+										FROM decapage d'
+										);
 						$query2 = $bdd->prepare('SELECT p.nom, p.prenom, p.identifiant
-													FROM personne p'
-													);
+										FROM personne p'
+										);
 						$query3 = $bdd->prepare('SELECT f.identifiant, f.nom, p.prenom, p.nom AS nom_personne, d.nom AS nom_decapage, f.annee
-													FROM fouille f, personne p, decapage d
-													WHERE f.fouilleur = p.identifiant
-													AND f.decapage = d.identifiant'
-													);
+										FROM fouille f, personne p, decapage d
+										WHERE f.fouilleur = p.identifiant
+										AND f.decapage = d.identifiant'
+										);
 					?>
 
+					<p>
+						<!-- Formulaire sur le choix du champ √† modifier. -->
+						<form method = "post" action = "fouilleUp.php">
+							<p>
+								<label for = "champ">Champ √† modifier</label> : 
+								<select name = "champ" id = "champ">
+									<option value = "0"></option>
+									<option value = "nom">nom</option>
+									<option value = "fouilleur">fouilleur</option>
+									<option value = "decapage">d√©capage</option>
+									<option value = "annee">ann√©e</option>
+								</select><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+
+					<?php
+						/* R√©cup√©ration du champ √† modifier. */
+						$_SESSION['champ'] = 0;
+						if (isset($_POST['champ'])) {	
+							$_SESSION['champ'] = $_POST['champ'];
+						}
+	
+						/* Affichage du champ souhait√©. */
+						if ($champ != 0) {
+					?>
+					
 					<p>
 						<!-- Formulaire pour l'Update d'une Fouille. -->
 						<form method = "post" action = "../exec/fouilleUpdate.php">
 							<p>
-								<label for = "old_nom">Nom</label> : 
-								<select name = "old_nom" id = "old_nom">
-									<option value = "0"></option>
-									<?php
-										$query3->execute();
-										while ($data = $query3->fetch()) {
-											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_nom"> remplacÈ par</label> : 
-								<input type = "text" name = "new_nom" id = "new_nom"><br />
-								<label for = "old_decapage">DÈcapage</label> : 
-								<select name = "old_decapage" id = "old_decapage">
-									<option value = "0"></option>
-									<?php
-										$query3->execute();
-										while ($data = $query3->fetch()) {
-											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_decapage'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "old_decapage">DÈcapage</label> : 
-								<select name = "old_decapage" id = "old_decapage">
-									<option value = "0"></option>
-									<?php
-										$query1->execute();
-										while ($data = $query1->fetch()) {
-											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-										}
-									?>
-								</select><br />
+								<?php if ($champ == "nom") { ?>
+									<label for = "old_nom">Nom</label> : 
+									<select name = "old_nom" id = "old_nom">
+										<option value = "0"></option>
+										<?php
+											$query3->execute();
+											while ($data = $query3->fetch()) {
+												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_nom"> remplac√© par</label> : 
+									<input type = "text" name = "new_nom" id = "new_nom"><br />
+							<?php } ?>
+			
+							<?php> if ($champ == "fouilleur") { ?>
 								<label for = "old_fouilleur">Fouilleur</label> : 
 								<select name = "old_fouilleur" id = "old_fouilleur">
 									<option value = "0"></option>
@@ -120,7 +132,7 @@
 										}
 									?>
 								</select>
-								<label for = "new_fouilleur"> remplacÈ par</label> : 
+								<label for = "new_fouilleur"> remplac√© par</label> : 
 								<select name = "new_fouilleur" id = "new_fouilleur">
 									<option value = "0"></option>
 									<?php
@@ -130,23 +142,52 @@
 										}
 									?>
 								</select><br />
-								<label for = "old_annee">AnnÈe</label> : 
-								<select name = "old_annee" id = "old_annee">
+							<?php } ?>
+			
+							<?php> if ($champ == "decapage") { ?>
+								<label for = "old_decapage">D√©capage</label> : 
+								<select name = "old_decapage" id = "old_decapage">
 									<option value = "0"></option>
 									<?php
 										$query3->execute();
 										while ($data = $query3->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['annee'] . '</option>';
+											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_decapage'] . '</option>';
 										}
 									?>
 								</select>
-								<label for = "new_annee"> remplacÈ par</label> : 
-								<input type = "date" name = "new_annee" id = "new_annee"><br />
+								<label for = "new_decapage">D√©capage</label> : 
+								<select name = "new_decapage" id = "new_decapage">
+									<option value = "0"></option>
+									<?php
+										$query1->execute();
+										while ($data = $query1->fetch()) {
+											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+										}
+									?>
+									</select><br />
+								<?php } ?>
+			
+								<?php> if ($champ == "annee") { ?>
+									<label for = "old_annee">Ann√©e</label> : 
+									<select name = "old_annee" id = "old_annee">
+										<option value = "0"></option>
+										<?php
+											$query3->execute();
+											while ($data = $query3->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['annee'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_annee"> remplac√© par</label> : 
+									<input type = "date" name = "new_annee" id = "new_annee"><br />
+								<?php } ?>
+					
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
-					
+					<?php } ?>
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
