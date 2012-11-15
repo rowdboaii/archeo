@@ -71,46 +71,78 @@
 					?>
 
 					<p>
-						<!-- Formulaire pour l'Update d'une Collection. -->
-						<form method = "post" action = "../exec/collectionUpdate.php">
+						<form method = "post" action = "collectionUp.php">
 							<p>
-								<label for = "old_nom">Nom</label> : 
-								<select name = "old_nom" id = "old_nom">
+								<label for = "champ">Champ à modifier</label> : 
+								<select name = "champ" id = "champ">
 									<option value = "0"></option>
-									<?php
-										$query2->execute();
-										while ($data = $query2->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_nom"> remplacé par</label> : 
-								<input type = "text" name = "new_nom" id = "new_nom" /><br />
-								<label for = "old_proprietaire">Propriétaire</label> : 
-								<select name = "old_proprietaire" id = "old_proprietaire">
-									<option value = "0"></option>
-									<?php
-										$query2->execute();
-										while ($data = $query2->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom_personne'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_proprietaire"> remplacé par</label> : 
-								<select name = "new_proprietaire" id = "new_proprietaire">
-									<option value = "0"></option>
-									<?php
-										$query1->execute();
-										while ($data = $query1->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
-										}
-									?>
+									<option value = "nom">nom</option>
+									<option value = "proprietaire">propriétaire</option>
 								</select><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
 					
+					<?php
+						/* Récupération du champ à modifier. */
+						$_SESSION['champ'] = 0;
+						if (isset($_POST['champ'])) {	
+							$_SESSION['champ'] = $_POST['champ'];
+						}
+	
+						/* Affichage du champ souhaité. */
+						if ($champ != 0) {
+					?>
+
+					<p>
+						/* Formulaire pour l'Update d'une Collection. */
+						<form method = "post" action = "../exec/collectionUpdate.php">
+							<p>
+								<?php if ($champ == "nom") { ?>
+									<label for = "old_nom">Nom</label> : 
+									<select name = "old_nom" id = "old_nom">
+										<option value = "0"></option>
+										<?php
+											$query2->execute();
+											while ($data = $query2->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_nom"> remplacé par</label> : 
+									<input type = "text" name = "new_nom" id = "new_nom" /><br />
+								<?php } ?>
+			
+								<?php> if ($champ == "proprietaire") { ?>
+									<label for = "old_proprietaire">Propriétaire</label> : 
+									<select name = "old_proprietaire" id = "old_proprietaire">
+										<option value = "0"></option>
+										<?php
+											$query2->execute();
+											while ($data = $query2->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom_personne'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_proprietaire"> remplacé par</label> : 
+									<select name = "new_proprietaire" id = "new_proprietaire">
+										<option value = "0"></option>
+										<?php
+											$query1->execute();
+											while ($data = $query1->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+											}
+										?>
+									</select><br />
+								<?php } ?>
+				
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+					<?php } ?>
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
