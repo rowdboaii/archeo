@@ -1,18 +1,18 @@
-<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
+<!-- Sujet : Projet de base de donnÃ©es pour des fouilles archÃ©ologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : galetUp.php -->
 
-<!-- Démarrage de la session pour les identifiants. -->
+<!-- DÃ©marrage de la session pour les identifiants. -->
 <?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<!-- En-tête de la page. -->
+		<!-- En-tÃªte de la page. -->
 		<meta charset = "utf-8" />
 		<link rel = "stylesheet" href = "style.css" />
-		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
+		<!-- Dans le cas oÃ¹ le navigateur est une version antÃ©rieure Ã  IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -41,7 +41,7 @@
 			</nav>
 			
 			<aside>
-				<!-- Menu latéral spécifique au lien visité. -->
+				<!-- Menu latÃ©ral spÃ©cifique au lien visitÃ©. -->
 				<div id = "">
 				
 					<!-- Menu pour les Updates. -->
@@ -57,85 +57,122 @@
 				<div id = "">
 
 					<?php
-						/* Connexion à la base de données. */
+						/* Connexion Ã  la base de donnÃ©es. */
 						include('../includes/connexionBDD.php');
 
-						/* Récupération des données pour le formulaire. */
+						/* RÃ©cupÃ©ration des donnÃ©es pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-													FROM objet o, objetnature n
-													WHERE o.nature = n.identifiant
-													AND n.nature = \'galet\''
-													);
+										FROM objet o, objetnature n
+										WHERE o.nature = n.identifiant
+										AND n.nature = \'galet\''
+										);
 						$query2 = $bdd->prepare('SELECT identifiant, type
-													FROM galettype'
-													);
+										FROM galettype'
+										);
 						$query3 = $bdd->prepare('SELECT o.nom AS nom_objet, g.nom, t.type AS nom_type
-													FROM galet g, galettype t, objet o
-													WHERE g.objet = o.identifiant
-													AND g.type = t.identifiant'
-													);
+										FROM galet g, galettype t, objet o
+										WHERE g.objet = o.identifiant
+										AND g.type = t.identifiant'
+										);
+					?>
+
+					<p>
+						<!-- Formulaire sur le choix du champ Ã  modifier. -->
+						<form method = "post" action = "galetUp.php">
+							<p>
+								<label for = "champ">Champ Ã  modifier</label> : 
+								<select name = "champ" id = "champ">
+									<option value = "0"></option>
+									<option value = "nom">nom</option>
+									<option value = "objet">objet</option>
+									<option value = "type">type</option>
+								</select><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+
+					<?php
+						/* RÃ©cupÃ©ration du champ Ã  modifier. */
+						$_SESSION['champ'] = 0;
+						if (isset($_POST['champ'])) {	
+							$_SESSION['champ'] = $_POST['champ'];
+						}
+						
+						/* Affichage du champ souhaitÃ©. */
+						if ($champ != 0) {
 					?>
 
 					<p>
 						<!-- Formulaire pour l'Update d'un Galet. -->
 						<form method = "post" action = "../exec/galetUpdate.php">
 							<p>
-								<label for = "old_objet">Objet</label> : 
-								<select name = "old_objet" id = "old_objet">
-									<option value = "0"></option>
-									<?php
-										$query3->execute();
-										while ($data = $query3->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_objet'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_objet"> remplacé par</label> : 
-								<select name = "new_objet" id = "new_objet">
-									<option value = "0"></option>
-									<?php
-										$query1->execute();
-										while ($data = $query1->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-										}
-									?>
-								</select><br />
-								<label for = "old_nom">Nom</label> : 
-								<select name = "old_nom" id = "old_nom">
-									<option value = "0"></option>
-									<?php
-										$query3->execute();
-										while ($data = $query3->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_nom"> remplacé par</label> : 
-								<input type = "text" name = "new_nom" id = "new_nom" /><br />
-								<label for = "old_type">Type</label> : 
-								<select name = "old_type" id = "old_type">
-									<option value = "0"></option>
-									<?php
-										$query3->execute();
-										while ($data = $query3->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_type'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_type"> remplacé par</label> : 
-								<select name = "new_type" id = "new_type">
-									<option value = "0"></option>
-									<?php
-										$query2->execute();
-										while ($data = $query2->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
-										}
-									?>
-								</select><br />
+								<?php if ($champ == "nom") { ?>
+									<label for = "old_nom">Nom</label> : 
+									<select name = "old_nom" id = "old_nom">
+										<option value = "0"></option>
+										<?php
+											$query3->execute();
+											while ($data = $query3->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_nom"> remplacÃ© par</label> : 
+									<input type = "text" name = "new_nom" id = "new_nom" /><br />
+								<?php } ?>
+								
+								<?php> if ($champ == "objet") { ?>
+									<label for = "old_objet">Objet</label> : 
+									<select name = "old_objet" id = "old_objet">
+										<option value = "0"></option>
+										<?php
+											$query3->execute();
+											while ($data = $query3->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_objet'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_objet"> remplacÃ© par</label> : 
+									<select name = "new_objet" id = "new_objet">
+										<option value = "0"></option>
+										<?php
+											$query1->execute();
+											while ($data = $query1->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+											}
+										?>
+									</select><br />
+								<?php } ?>
+								
+								<?php> if ($champ == "type") { ?>
+									<label for = "old_type">Type</label> : 
+									<select name = "old_type" id = "old_type">
+										<option value = "0"></option>
+										<?php
+											$query3->execute();
+											while ($data = $query3->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_type'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_type"> remplacÃ© par</label> : 
+									<select name = "new_type" id = "new_type">
+										<option value = "0"></option>
+										<?php
+											$query2->execute();
+											while ($data = $query2->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
+											}
+										?>
+									</select><br />
+								<?php } ?>
+							
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
+					<?php } ?>
 					
 					<?php
 						$query1->closeCursor();
