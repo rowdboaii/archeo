@@ -106,126 +106,127 @@
 						if ($champ != 0) {
 					?>
 					
-					/* Formulaire pour l'Update d'un article. */
-					<form method = "post" action = "../exec/articleUpdate.php">
-						<p>
-							<?php if ($champ == "titre") { ?>
-								<label for = "old_titre">Titre</label> : 
-								<select name = "old_titre" id = "old_titre">
-									<option value = "0"></option>
-									<?php
-										$query4->execute();
-										while ($data = $query4->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['titre'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_titre"> remplacé par</label> :
-								<input type = "text" name = "new_titre" id = "new_titre" /><br />
-							<?php } ?>
-				
-							<?php> if ($champ == "auteur") { ?>
-								<label for = "old_auteur">Auteur</label> : 
-								<select name = "auteur" id = "auteur">
-									<option value = "0"></option>
-									<?php
-										$query4->execute();
-										while ($data = $query4->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_auteur"> remplacé par</label> : 
-								<select name = "new_auteur" id = "new_auteur">
-									<option value = "0"></option>
-									<?php
-										$query1->execute();
-										while ($data = $query1->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
-										}
-									?>
-								</select><br />
-							<?php } ?>
-				
-							<?php if ($champ == "annee") { ?>
-								<label for = "old_annee">Année</label> : 
-								<select name = "old_annee" id = "old_annee">
-									<option value = "0"></option>
-									<?php
-										$query4->execute();
-										while ($data = $query4->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['annee'] . '</option>';
-										}
-									?>
-								</select>
-								<input type = "text" name = "new_annee" id = "new_annee" /><br />
-							<?php } ?>
-				
-							<?php if ($champ == "revue") { ?>
-								<label for = "old_revue">Revue</label> : 
-								<select name = "old_revue" id = "old_revue">
-									<option value = "0"></option>
-									<?php
-										$query4->execute();
-										while ($data = $query4->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['revue'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_revue"> remplacé par</label> : 
-								<input type = "text" name = "revue" id = "revue" /><br />
-							<?php } ?>
-						
-							<?php if ($champ == "sujet") { ?>
-								<label for = "old_sujet">Sujet</label> : 
-								<select name = "old_sujet" id = "old_sujet">
-									<option value = "0"></option>
-									<?php
-										$query4->execute();
-										while ($data = $query4->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['sujet'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_sujet"> remplacé par</label> : 
-								<select name = "new_sujet" id = "new_sujet">
-									<option value = "0"></option>
-									<?php
-										$query2->execute();
-										while ($data = $query2->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-										}
-									?>
-								</select><br />
-							<?php } ?>
+					<p>
+						<!-- Formulaire pour l'Update d'un article. -->
+						<form method = "post" action = "../exec/articleUpdate.php">
+							<p>
+								<?php if ($champ == "titre") { ?>
+									<label for = "old_titre">Titre</label> : 
+									<select name = "old_titre" id = "old_titre">
+										<option value = "0"></option>
+										<?php
+											$query4->execute();
+											while ($data = $query4->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['titre'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_titre"> remplacé par</label> :
+									<input type = "text" name = "new_titre" id = "new_titre" /><br />
+								<?php } ?>
 					
-							<?php if ($champ == "langue") { ?>
-								<label for = "old_langue">Langue</label> : 
-								<select name = "old_langue" id = "old_langue">
-									<option value = "0"></option>
-									<?php
-										$query4->execute();
-										while ($data = $query4->fetch()) {
-											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_langue'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_langue"> remplacé par</label> : 
-								<select name = "new_langue" id = "new_langue">
-									<option value = "0"></option>
-									<?php
-										$query3->execute();
-										while ($data = $query3->fetch()) {
-											echo '<option value ="' . $data['identifiant'] . '">' . $data['langue'] . '</option>';
-										}
-									?>
-								</select><br />
-							<?php } ?>
+								<?php> if ($champ == "auteur") { ?>
+									<label for = "old_auteur">Auteur</label> : 
+									<select name = "auteur" id = "auteur">
+										<option value = "0"></option>
+										<?php
+											$query4->execute();
+											while ($data = $query4->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_auteur"> remplacé par</label> : 
+									<select name = "new_auteur" id = "new_auteur">
+										<option value = "0"></option>
+										<?php
+											$query1->execute();
+											while ($data = $query1->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+											}
+										?>
+									</select><br />
+								<?php } ?>
+					
+								<?php if ($champ == "annee") { ?>
+									<label for = "old_annee">Année</label> : 
+									<select name = "old_annee" id = "old_annee">
+										<option value = "0"></option>
+										<?php
+											$query4->execute();
+											while ($data = $query4->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['annee'] . '</option>';
+											}
+										?>
+									</select>
+									<input type = "text" name = "new_annee" id = "new_annee" /><br />
+								<?php } ?>
+					
+								<?php if ($champ == "revue") { ?>
+									<label for = "old_revue">Revue</label> : 
+									<select name = "old_revue" id = "old_revue">
+										<option value = "0"></option>
+										<?php
+											$query4->execute();
+											while ($data = $query4->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['revue'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_revue"> remplacé par</label> : 
+									<input type = "text" name = "revue" id = "revue" /><br />
+								<?php } ?>
+							
+								<?php if ($champ == "sujet") { ?>
+									<label for = "old_sujet">Sujet</label> : 
+									<select name = "old_sujet" id = "old_sujet">
+										<option value = "0"></option>
+										<?php
+											$query4->execute();
+											while ($data = $query4->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['sujet'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_sujet"> remplacé par</label> : 
+									<select name = "new_sujet" id = "new_sujet">
+										<option value = "0"></option>
+										<?php
+											$query2->execute();
+											while ($data = $query2->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+											}
+										?>
+									</select><br />
+								<?php } ?>
+						
+								<?php if ($champ == "langue") { ?>
+									<label for = "old_langue">Langue</label> : 
+									<select name = "old_langue" id = "old_langue">
+										<option value = "0"></option>
+										<?php
+											$query4->execute();
+											while ($data = $query4->fetch()) {
+												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_langue'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_langue"> remplacé par</label> : 
+									<select name = "new_langue" id = "new_langue">
+										<option value = "0"></option>
+										<?php
+											$query3->execute();
+											while ($data = $query3->fetch()) {
+												echo '<option value ="' . $data['identifiant'] . '">' . $data['langue'] . '</option>';
+											}
+										?>
+									</select><br />
+								<?php } ?>
 			
-							<input type = "submit" value = "Envoi" />
-						</p>
-					</form>
-				
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
 					<?php } ?>
 
 					<?php
