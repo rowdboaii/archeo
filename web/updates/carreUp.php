@@ -1,18 +1,18 @@
-<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
+<!-- Sujet : Projet de base de donnÃ©es pour des fouilles archÃ©ologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : carreUp.php -->
 
-<!-- Démarrage de la session pour les identifiants. -->
+<!-- DÃ©marrage de la session pour les identifiants. -->
 <?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<!-- En-tête de la page. -->
+		<!-- En-tÃªte de la page. -->
 		<meta charset = "utf-8" />
 		<link rel = "stylesheet" href = "style.css" />
-		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
+		<!-- Dans le cas oÃ¹ le navigateur est une version antÃ©rieure Ã  IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -41,7 +41,7 @@
 			</nav>
 			
 			<aside>
-				<!-- Menu latéral spécifique au lien visité. -->
+				<!-- Menu latÃ©ral spÃ©cifique au lien visitÃ©. -->
 				<div id = "">
 				
 					<!-- Menu pour les Updates. -->
@@ -57,10 +57,10 @@
 				<div id = "">
 
 					<?php
-						/* Connexion à la base de données. */
+						/* Connexion Ã  la base de donnÃ©es. */
 						include('../includes/connexionBDD.php');
 
-						/* Récupération des données pour le formulaire. */
+						/* RÃ©cupÃ©ration des donnÃ©es pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT l.identifiant, l.nom
 																			FROM locus l'
 																			);
@@ -71,55 +71,87 @@
 						?>
 
 					<p>
-						<!-- Formulaire pour un Carré. -->
-						</p><form method = "post" action = "../exec/carreUpdate.php">
+						<form method = "post" action = "carreUp.php">
 							<p>
-								<label for = "old_nom">Nom</label> : 
-								<select name = "old_nom" id = "old_nom">
+								<label for = "champ">Champ Ã  modifier</label> : 
+								<select name = "champ" id = "champ">
 									<option value = "0"></option>
-									<?php
-										$query2->execute();
-										while ($data = $query2->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_nom"> remplacé par</label> : 
-								<input type = "text" name = "new_nom" id = "new_nom"><br>
-								<label for = "old_locus">Locus</label> : 
-								<select name = "old_locus" id = "old_locus">
-									<option value = "0"></option>
-									<?php
-										$query2->execute();
-										while ($data = $query2->fetch()) {
-											echo '<option value = "' . $data['locus'] . '">' . $data['nom_locus'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_locus"> remplacé par</label> : 
-								<select name = "new_locus" id = "new_locus">
-									<option value = "0"></option>
-									<?php
-										$query1->execute();
-										while ($data = $query1->fetch()) {
-											echo '<option value = "' . $data['locus'] . '">' . $data['nom'] . '</option>';
-										}
-									?>
+									<option value = "nom">carre</option>
+									<option value = "locus">locus</option>
 								</select><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
-					
+
+					<?php
+						/* RÃ©cupÃ©ration du champ Ã  modifier. */
+						$_SESSION['champ'] = 0;
+						if (isset($_POST['champ'])) {	
+							$_SESSION['champ'] = $_POST['champ'];
+						}
+	
+						/* Affichage du champ souhaitÃ©. */
+						if ($champ != 0) {
+					?>
+
+						<p>
+							/* Formulaire pour l'Update d'un carre. */
+							<form method = "post" action = "../exec/carreUpdate.php">
+								<p>
+									<?php if ($champ == "nom") { ?>
+										<label for = "old_nom">Nom</label> : 
+										<select name = "old_nom" id = "old_nom">
+											<option value = "0"></option>
+											<?php
+												$query2->execute();
+												while ($data = $query2->fetch()) {
+													echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												}
+											?>
+										</select>
+										<label for = "new_nom"> remplacÃ© par</label> : 
+										<input type = "text" name = "new_nom" id = "new_nom"><br />
+									<?php } ?>
+				
+									<?php> if ($champ == "locus") { ?>
+										<label for = "old_locus">Locus</label> : 
+										<select name = "old_locus" id = "old_locus">
+											<option value = "0"></option>
+											<?php
+												$query2->execute();
+												while ($data = $query2->fetch()) {
+													echo '<option value = "' . $data['locus'] . '">' . $data['nom_locus'] . '</option>';
+												}
+											?>
+										</select>
+										<label for = "new_locus"> remplacÃ© par</label> : 
+										<select name = "new_locus" id = "new_locus">
+											<option value = "0"></option>
+											<?php
+												$query1->execute();
+												while ($data = $query1->fetch()) {
+													echo '<option value = "' . $data['locus'] . '">' . $data['nom'] . '</option>';
+												}
+											?>
+										</select><br />
+									<?php } ?>
+			
+									<input type = "submit" value = "Envoi" />
+								</p>
+							</form>
+						</p>
+					<?php } ?>
+				
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
 					?>
-					
+				
 				</div>
 			</section>
 			<?php } ?>
-
+			
 			<footer>
 				
 				<!-- Pied de la page. -->
