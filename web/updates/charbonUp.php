@@ -73,6 +73,7 @@
 					?>
 
 					<p>
+						<!-- Formulaire sur le choix du champ à modifier. -->
 						<form method = "post" action = "charbonUp.php">
 							<p>
 								<label for = "champ">Champ à modifier</label> : 
@@ -98,7 +99,7 @@
 					?>
 
 					<p>
-						/* Formulaire pour l'Update d'un charbon. */
+						<!-- Formulaire pour l'Update d'un charbon. -->
 						<form method = "post" action = "../exec/charbonUpdate.php">
 							<p>
 								<?php if ($champ == "objet") { ?>
