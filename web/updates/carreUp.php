@@ -71,6 +71,7 @@
 						?>
 
 					<p>
+						<!-- Formulaire sur le choix du champ à modifier. -->
 						<form method = "post" action = "carreUp.php">
 							<p>
 								<label for = "champ">Champ à modifier</label> : 
@@ -95,52 +96,52 @@
 						if ($champ != 0) {
 					?>
 
-						<p>
-							/* Formulaire pour l'Update d'un carre. */
-							<form method = "post" action = "../exec/carreUpdate.php">
-								<p>
-									<?php if ($champ == "nom") { ?>
-										<label for = "old_nom">Nom</label> : 
-										<select name = "old_nom" id = "old_nom">
-											<option value = "0"></option>
-											<?php
-												$query2->execute();
-												while ($data = $query2->fetch()) {
-													echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-												}
-											?>
-										</select>
-										<label for = "new_nom"> remplacé par</label> : 
-										<input type = "text" name = "new_nom" id = "new_nom"><br />
-									<?php } ?>
+					<p>
+						<!-- Formulaire pour l'Update d'un carre. -->
+						<form method = "post" action = "../exec/carreUpdate.php">
+							<p>
+								<?php if ($champ == "nom") { ?>
+									<label for = "old_nom">Nom</label> : 
+									<select name = "old_nom" id = "old_nom">
+										<option value = "0"></option>
+										<?php
+											$query2->execute();
+											while ($data = $query2->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_nom"> remplacé par</label> : 
+									<input type = "text" name = "new_nom" id = "new_nom"><br />
+								<?php } ?>
 				
-									<?php> if ($champ == "locus") { ?>
-										<label for = "old_locus">Locus</label> : 
-										<select name = "old_locus" id = "old_locus">
-											<option value = "0"></option>
-											<?php
-												$query2->execute();
-												while ($data = $query2->fetch()) {
-													echo '<option value = "' . $data['locus'] . '">' . $data['nom_locus'] . '</option>';
-												}
-											?>
-										</select>
-										<label for = "new_locus"> remplacé par</label> : 
-										<select name = "new_locus" id = "new_locus">
-											<option value = "0"></option>
-											<?php
-												$query1->execute();
-												while ($data = $query1->fetch()) {
-													echo '<option value = "' . $data['locus'] . '">' . $data['nom'] . '</option>';
-												}
-											?>
-										</select><br />
-									<?php } ?>
+								<?php> if ($champ == "locus") { ?>
+									<label for = "old_locus">Locus</label> : 
+									<select name = "old_locus" id = "old_locus">
+										<option value = "0"></option>
+										<?php
+											$query2->execute();
+											while ($data = $query2->fetch()) {
+												echo '<option value = "' . $data['locus'] . '">' . $data['nom_locus'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_locus"> remplacé par</label> : 
+									<select name = "new_locus" id = "new_locus">
+										<option value = "0"></option>
+										<?php
+											$query1->execute();
+											while ($data = $query1->fetch()) {
+												echo '<option value = "' . $data['locus'] . '">' . $data['nom'] . '</option>';
+											}
+										?>
+									</select><br />
+								<?php } ?>
 			
-									<input type = "submit" value = "Envoi" />
-								</p>
-							</form>
-						</p>
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
 					<?php } ?>
 				
 					<?php
