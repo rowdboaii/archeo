@@ -62,55 +62,88 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT c.identifiant, c.nom
-																			FROM carre c'
-																			);
+										FROM carre c'
+										);
 						$query2 = $bdd->prepare('SELECT d.identifiant, d.nom, c.nom AS nom_carre
-																			FROM decapage d, carre c
-																			WHERE d.carre = c.identifiant'
-																			);
+										FROM decapage d, carre c
+										WHERE d.carre = c.identifiant'
+										);
 					?>
 
 					<p>
-						<!-- Formulaire pour l'Update d'un Décapage. -->
-						<form method = "post" action = "../exec/decapageUpdate.php">
+						<!-- Formulaire sur le choix du champ à modifier. -->
+						<form method = "post" action = "decapageUp.php">
 							<p>
-								<label for = "old_nom">Nom</label> : 
-								<select name = "old_nom" id = "old_nom">
+								<label for = "champ">Champ à modifier</label> : 
+								<select name = "champ" id = "champ">
 									<option value = "0"></option>
-									<?php
-										$query2->execute();
-										while ($data = $query2->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_nom"> remplacé par</label> : 
-								<input type = "text" name = "new_nom" id = "new_nom"><br />
-								<label for = "old_carre">Carré</label> : 
-								<select name = "old_carre" id = "old_carre">
-									<option value = "0"></option>
-									<?php
-										$query2->execute();
-										while ($data = $query2->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_carre'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new_carre"> remplacé par</label> : 
-								<select name = "new_carre" id = "new_carre">
-									<option value = "0"></option>
-									<?php
-										$query1->execute();
-										while ($data = $query1->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-										}
-									?>
+									<option value = "nom">nom</option>
+									<option value = "carre">carré</option>
 								</select><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
 					
+					<?php
+						/* Récupération du champ à modifier. */
+						$_SESSION['champ'] = 0;
+						if (isset($_POST['champ'])) {	
+							$_SESSION['champ'] = $_POST['champ'];
+						}
+	
+						/* Affichage du champ souhaité. */
+						if ($champ != 0) {
+					?>
+
+					<p>
+						<!-- Formulaire pour l'Update d'un Décapage. -->
+						<form method = "post" action = "../exec/decapageUpdate.php">
+							<p>
+								<?php if ($champ == "nom") { ?>
+									<label for = "old_nom">Nom</label> : 
+									<select name = "old_nom" id = "old_nom">
+										<option value = "0"></option>
+										<?php
+											$query2->execute();
+											while ($data = $query2->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_nom"> remplacé par</label> : 
+									<input type = "text" name = "new_nom" id = "new_nom"><br />
+								<?php } ?>
+			
+								<?php> if ($champ == "carre") { ?>
+									<label for = "old_carre">Carré</label> : 
+									<select name = "old_carre" id = "old_carre">
+										<option value = "0"></option>
+										<?php
+											$query2->execute();
+											while ($data = $query2->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_carre'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new_carre"> remplacé par</label> : 
+									<select name = "new_carre" id = "new_carre">
+										<option value = "0"></option>
+										<?php
+											$query1->execute();
+											while ($data = $query1->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+											}
+										?>
+									</select><br />
+								<?php } ?>
+			
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+					<?php } ?>
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
