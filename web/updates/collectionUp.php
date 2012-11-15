@@ -62,15 +62,16 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT p.prenom, p.nom, p.identifiant
-																			FROM personne p'
-																			);
+										FROM personne p'
+										);
 						$query2 = $bdd->prepare('SELECT c.identifiant, p.prenom, c.nom, p.nom AS nom_personne
-																			FROM collection c, personne p
-																			WHERE c.proprietaire = p.identifiant'
-																			);
+										FROM collection c, personne p
+										WHERE c.proprietaire = p.identifiant'
+										);
 					?>
 
 					<p>
+						<!-- Formulaire sur le choix du champ à modifier. -->
 						<form method = "post" action = "collectionUp.php">
 							<p>
 								<label for = "champ">Champ à modifier</label> : 
@@ -96,7 +97,7 @@
 					?>
 
 					<p>
-						/* Formulaire pour l'Update d'une Collection. */
+						<!-- Formulaire pour l'Update d'une Collection. -->
 						<form method = "post" action = "../exec/collectionUpdate.php">
 							<p>
 								<?php if ($champ == "nom") { ?>
