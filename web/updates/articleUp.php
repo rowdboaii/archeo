@@ -78,6 +78,7 @@
 					?>
 
 					<p>
+						<!-- Formulaire sur le choix du champ à modifier. -->
 						<form method = "post" action = "articleUp.php">
 							<p>
 								<label for = "champ">Champ à modifier</label> : 
