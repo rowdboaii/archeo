@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -59,10 +59,10 @@
 						
 					<?php
 						$query = $bdd->query('SELECT o.nom AS nom_objet, g.nom AS nom_gisement, s.couleur
-																	FROM silex s, gisement g, objet o
-																	WHERE s.provenance = g.identifiant
-																	AND s.objet = o.identifiant'
-																	);
+												FROM silex s, gisement g, objet o
+												WHERE s.provenance = g.identifiant
+												AND s.objet = o.identifiant'
+												);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
@@ -108,8 +108,6 @@
 							
 						</tbody>
 					</table>
-
-
 
 				</div>
 			</section>

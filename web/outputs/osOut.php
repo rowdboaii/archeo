@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -58,11 +58,12 @@
 				<div id = "">
 						
 					<?php
-						$query = $bdd->query('SELECT o.nom AS nom_objet, s.partie, s.type, t.taxon AS nom_taxon, s.animal, s.type_animal, s.forme, s.dissous, s.morsure, s.conservation, 		s.datation
-																	FROM os s, objet o, ostaxon t
-																	WHERE s.objet = o.identifiant
-																	AND s.taxon = t.identifiant'
-																	);
+						$query = $bdd->query('SELECT o.nom AS nom_objet, s.partie, s.type, t.taxon AS nom_taxon, s.animal, s.type_animal,
+												s.forme, s.dissous, s.morsure, s.conservation, s.datation
+												FROM os s, objet o, ostaxon t
+												WHERE s.objet = o.identifiant
+												AND s.taxon = t.identifiant'
+												);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
@@ -132,8 +133,6 @@
 							
 						</tbody>
 					</table>
-
-
 
 				</div>
 			</section>

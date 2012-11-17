@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -59,8 +59,8 @@
 						include('../includes/connexionBDD.php');
 						
 						$query = $bdd->query('SELECT *
-																	FROM objetnature'
-																	);
+												FROM objetnature'
+												);
 					?>
 				
 					<h2>Affichage</h2>
@@ -71,7 +71,6 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
-								<th>identifiant</th>
 								<th>nature</th>
 							</tr>
 						</thead>
@@ -79,7 +78,6 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
-								<th>identifiant</th>
 								<th>nature</th>
 							</tr>
 						</tfoot>
@@ -92,7 +90,6 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nature']; ?></td>
 								</tr>
 								
@@ -108,7 +105,7 @@
 					<h2>Ajout</h2>
 					<p>
 						<!-- Formulaire pour une Nature d'un Objet. -->
-						</p><form method = "post" action = "../inserts/objetNatureInsert.php">
+						<form method = "post" action = "../inserts/objetNatureInsert.php">
 							<p>
 								<label for = "nature">Nature</label> : <input type = "text" name = "nature" id = "nature"><br />
 								<input type = "submit" value = "Envoi" />
@@ -120,7 +117,7 @@
 					<h2>Modification</h2>
 					<p>
 						<!-- Formulaire pour une Nature d'un Objet. -->
-						<form method = "post" action = "../updates/objetNatureUp.php">
+						<form method = "post" action = "../exec/objetNatureUpdate.php">
 							<p>
 								<label for = "old">Nature à remplacer</label> : <input type = "text" name = "old" id = "old"><br />
 								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br />

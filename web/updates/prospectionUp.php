@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,16 +62,16 @@
 
 						/* Répération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nom
-										FROM lieu'
-										);
+													FROM lieu'
+													);
 						$query2 = $bdd->prepare('SELECT identifiant, prenom, nom
-										FROM personne'
-										);
+													FROM personne'
+													);
 						$query3 = $bdd->prepare('SELECT p.identifiant, p.nom, l.nom AS nom_lieu, r.prenom AS prenom_r, r.nom AS nom_r, p.date_prospection
-										FROM prospection p, personne r, lieu l
-										WHERE p.responsable = r.identifiant
-										AND p.lieu = l.identifiant'
-										);
+													FROM prospection p, personne r, lieu l
+													WHERE p.responsable = r.identifiant
+													AND p.lieu = l.identifiant'
+													);
 					?>
 
 					<p>
@@ -107,8 +107,8 @@
 						<form method = "post" action = "../exec/prospectionUpdate.php">
 							<p>
 								<?php if ($champ == "nom") { ?>
-									<label for = "old_nom">Nom</label> : 
-									<select name = "old_nom" id = "old_nom">
+									<label for = "old">Nom</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -117,13 +117,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_nom"> remplacé par</label> : 
-									<input type = "text" name = "new_nom" id = "new_nom" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php if ($champ == "lieu") { ?>
-									<label for = "old_lieu">Lieu</label> : 
-									<select name = "old_lieu" id = "old_lieu">
+									<label for = "old">Lieu</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -132,8 +132,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_lieu"> remplacé par</label> : 
-									<select name = "new_lieu" id = "new_lieu">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query1->execute();
@@ -145,8 +145,8 @@
 								<?php } ?>
 								
 								<?php if ($champ == "responsable") { ?>
-									<label for = "old_responsable">Responsable</label> : 
-									<select name = "old_responsable" id = "old_responsable">
+									<label for = "old">Responsable</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -155,8 +155,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_responsable"> remplacé par</label> : 
-									<select name = "new_responsable" id = "new_responsable">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -168,8 +168,8 @@
 								<?php } ?>
 								
 								<?php if ($champ == "date_prospection") { ?>
-									<label for = "old_date">Date Prospection</label> : 
-									<select name = "old_date" id = "old_date">
+									<label for = "old">Date Prospection</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -178,8 +178,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_date"> remplacé par</label> : 
-									<input type = "text" name = "new_date" id = "new_date" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 							
 								<input type = "submit" value = "Envoi" />

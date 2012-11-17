@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,14 +62,14 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-										FROM objet o, objetnature n
-										WHERE o.nature = n.identifiant
-										AND n.nature = \'charbon\''
-									 	);
+													FROM objet o, objetnature n
+													WHERE o.nature = n.identifiant
+													AND n.nature = \'charbon\''
+												 	);
 						$query2 = $bdd->prepare('SELECT o.nom AS nom_objet, c.datation
-										FROM charbon c, objet o
-										WHERE c.objet = o.identifiant'
-										);
+													FROM charbon c, objet o
+													WHERE c.objet = o.identifiant'
+													);
 					?>
 
 					<p>
@@ -103,8 +103,8 @@
 						<form method = "post" action = "../exec/charbonUpdate.php">
 							<p>
 								<?php if ($champ == "objet") { ?>
-									<label for = "old_objet">Objet</label> : 
-									<select name = "old_objet" id = "old_objet">
+									<label for = "old">Objet</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -113,8 +113,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_objet"> remplacé par</label> : 
-									<select name = "new_objet" id = "new_objet">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query1->execute();
@@ -126,8 +126,8 @@
 								<?php } ?>
 			
 								<?php> if ($champ == "datation") { ?>
-									<label for = "old_datation">Datation</label> : 
-									<select name = "old_datation" id = "old_datation">
+									<label for = "old">Datation</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -136,7 +136,8 @@
 											}
 										?>
 									</select>
-									<input type = "text" name = "new_datation" id = "new_datation" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 		
 								<input type = "submit" value = "Envoi" />

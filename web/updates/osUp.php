@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,18 +63,18 @@
 						/* Récupération des données de la base. */
 
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-										FROM objet o, objetnature n
-										WHERE o.nature = n.identifiant
-										AND n.nature = \'os\''
-										);
+													FROM objet o, objetnature n
+													WHERE o.nature = n.identifiant
+													AND n.nature = \'os\''
+													);
 						$query2 = $bdd->prepare('SELECT identifiant, taxon
-										FROM osTaxon'
-										);
+													FROM osTaxon'
+													);
 						$query3 = $bdd->prepare('SELECT o.nom AS nom_objet, s.partie, s.type, t.taxon AS nom_taxon, s.animal, s.type_animal, s.forme, s.dissous, s.morsure, s.conservation, s.datation
-										FROM os s, objet o, ostaxon t
-										WHERE s.objet = o.identifiant
-										AND s.taxon = t.identifiant'
-										);
+													FROM os s, objet o, ostaxon t
+													WHERE s.objet = o.identifiant
+													AND s.taxon = t.identifiant'
+													);
 					?>
 
 					<p>
@@ -114,8 +114,8 @@
 						<form method = "post" action = "../exec/osUpdate.php">
 							<p>
 								<?php if ($champ == "objet") { ?>
-									<label for = "old_objet">Objet</label> : 
-									<select name = "old_objet" id = "old_objet">
+									<label for = "old">Objet</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -124,8 +124,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_objet"> remplacé par</label> : 
-									<select name = "new_objet" id = "new_objet">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query1->execute();
@@ -137,8 +137,8 @@
 								<?php } ?>
 								
 								<?php if ($champ == "partie") { ?>
-									<label for = "old_partie">Partie Animal</label> : 
-									<select name = "old_partie" id = "old_partie">
+									<label for = "old">Partie Animal</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -147,13 +147,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_partie"> remplacé par</label> : 
-									<input type = "text" name = "new_partie" id = "new_partie" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php if ($champ == "type") { ?>
-									<label for = "old_type">Type Os</label> : 
-									<select name = "old_type" id = "old_type">
+									<label for = "old">Type Os</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -162,13 +162,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_type"> remplacé par</label> : 
-									<input type = "text" name = "new_type" id = "new_type" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php if ($champ == "taxon") { ?>
-									<label for = "old_taxon">Taxon</label> : 
-									<select name = "old_taxon" id = "old_taxon">
+									<label for = "old">Taxon</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -177,8 +177,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_taxon"> remplacé par</label> : 
-									<select name = "new_taxon" id = "new_taxon">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -190,8 +190,8 @@
 								<?php } ?>
 								
 								<?php if ($champ == "animal") { ?>
-									<label for = "old_animal">Animal</label> : 
-									<select name = "old_animal" id = "old_animal">
+									<label for = "old">Animal</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -200,13 +200,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_animal"> remplacé par</label> : 
-									<input type = "text" name = "new_animal" id = "new_animal" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php if ($champ == "type_animal") { ?>
-									<label for = "old_type_animal">Type d'Animal</label> : 
-									<select name = "old_type_animal" id = "old_type_animal">
+									<label for = "old">Type d'Animal</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -215,13 +215,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_type_animal"> remplacé par</label> : 
-									<input type = "text" name = "new_type_animal" id = "new_type_animal" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php if ($champ == "forme") { ?>
-									<label for = "old_forme">Forme</label> : 
-									<select name = "old_forme" id = "old_forme">
+									<label for = "old">Forme</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -230,13 +230,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_forme"> remplacé par</label> : 
-									<input type = "text" name = "new_forme" id = "new_forme" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 										
 								<?php if ($champ == "datation") { ?>
-									<label for = "old_date">Datation</label> : 
-									<select name = "old_date" id = "old_date">
+									<label for = "old">Datation</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -245,7 +245,8 @@
 											}
 										?>
 									</select>
-									<input type = "text" name = "new_date" id = "new_date" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 							
 								<input type = "submit" value = "Envoi" />

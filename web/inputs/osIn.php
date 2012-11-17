@@ -3,7 +3,7 @@
 <!-- Fichier : osIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
-<?php	session_start(); ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -61,18 +61,18 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-																			FROM objet o, objetnature n
-																			WHERE o.nature = n.identifiant
-																			AND n.nature = \'os\''
-																		 	);
+													FROM objet o, objetnature n
+													WHERE o.nature = n.identifiant
+													AND n.nature = \'os\''
+												 	);
 						$query2 = $bdd->prepare('SELECT identifiant, taxon
-																			FROM osTaxon'
-																			);
+													FROM osTaxon'
+													);
 					?>
 				
 					<p>
 						<!-- Formulaire pour un Os. -->
-						<form method = "post" action = "../inserts/osInsert.php">
+						<form method = "post" action = "../exec/osInsert.php">
 							<p>
 								<label for = "objet">Objet</label> : 
 								<select name = "objet" id = "objet">

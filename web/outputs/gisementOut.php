@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -59,9 +59,9 @@
 						
 					<?php
 						$query = $bdd->query('SELECT g.identifiant, g.nom, r.nom AS nom_region, g.position_nord, g.position_est, g.altitude, g.commentaire
-																	FROM gisement g, region r
-																	WHERE g.region = r.identifiant'
-																	);
+												FROM gisement g, region r
+												WHERE g.region = r.identifiant'
+												);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
@@ -71,7 +71,6 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
-								<th>identifiant</th>
 								<th>nom</th>
 								<th>region</th>
 								<th>position nord</th>
@@ -84,7 +83,6 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
-								<th>identifiant</th>
 								<th>nom</th>
 								<th>region</th>
 								<th>position nord</th>
@@ -103,7 +101,6 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['nom_region']; ?></td>
 									<td><?php echo $data['position_nord']; ?></td>
@@ -119,8 +116,6 @@
 							
 						</tbody>
 					</table>
-
-
 
 				</div>
 			</section>

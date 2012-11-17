@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,12 +62,12 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nom
-										FROM region'
-									 	);
+													FROM region'
+												 	);
 						$query2 = $bdd->prepare('SELECT g.identifiant, g.nom, r.nom AS nom_region, g.position_nord, g.position_est, g.altitude, g.commentaire
-										FROM gisement g, region r
-										WHERE g.region = r.identifiant'
-										);
+													FROM gisement g, region r
+													WHERE g.region = r.identifiant'
+													);
 					?>
 
 					<p>
@@ -104,8 +104,8 @@
 						<form method = "post" action = "../exec/gisementUpdate.php">
 							<p>
 								<?php if ($champ == "nom") { ?>
-									<label for = "old_nom">Nom</label> : 
-									<select name = "old_nom" id = "old_nom">
+									<label for = "old">Nom</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -114,13 +114,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_nom"> remplacé par</label> : 
-									<input type = "text" name = "new_nom" id = "new_nom" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php> if ($champ == "region") { ?>
-									<label for = "old_region">Region</label> : 
-									<select name = "old_region" id = "old_region">
+									<label for = "old">Region</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -129,8 +129,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_region"> remplacé par</label> : 
-									<select name = "new_region" id = "new_region">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query1->execute();
@@ -142,8 +142,8 @@
 								<?php } ?>
 								
 								<?php> if ($champ == "position_nord") { ?>
-									<label for = "old_nord">Position Nord</label> : 
-									<select name = "old_nord" id = "old_nord">
+									<label for = "old">Position Nord</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -152,13 +152,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_nord"> remplacé par</label> : 
-									<input type = "text" name = "new_nord" id = "new_nord" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php> if ($champ == "position_est") { ?>
-									<label for = "old_est">Position Est</label> : 
-									<select name = "old_est" id = "old_est">
+									<label for = "old">Position Est</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -167,13 +167,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_est"> remplacé par</label> : 
-									<input type = "text" name = "new_est" id = "new_est" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php> if ($champ == "altitude") { ?>
-									<label for = "altitude">Altitude</label> : 
-									<select name = "old_altitude" id = "old_altitude">
+									<label for = "old">Altitude</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -182,8 +182,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_altitude"> remplacé par</label>
-									<input type = "text" name = "new_altitude" id = "new_altitude" /><br />
+									<label for = "new"> remplacé par</label>
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 							
 								<input type = "submit" value = "Envoi" />

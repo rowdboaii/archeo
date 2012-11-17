@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -58,13 +58,15 @@
 				<div id = "">
 						
 					<?php
-						$query = $bdd->query('SELECT s.identifiant, s.nom, r.nom AS nom_region, t.type AS nom_type, s.position_nord, s.position_est, s.altitude, p.prenom AS prenom_p, p.nom AS nom_p, f.prenom AS prenom_f, f.nom AS nom_f, s.commentaire
-																	FROM site s, region r, sitetype t, personne p, personne f
-																	WHERE s.region = r.identifiant
-																	AND s.type = t.identifiant
-																	AND s.trouve_par = p.identifiant
-																	AND s.fouille_par = f.identifiant'
-																	);
+						$query = $bdd->query('SELECT s.identifiant, s.nom, r.nom AS nom_region, t.type AS nom_type, s.position_nord,
+												s.position_est, s.altitude, p.prenom AS prenom_p, p.nom AS nom_p, f.prenom AS prenom_f,
+												f.nom AS nom_f, s.commentaire
+												FROM site s, region r, sitetype t, personne p, personne f
+												WHERE s.region = r.identifiant
+												AND s.type = t.identifiant
+												AND s.trouve_par = p.identifiant
+												AND s.fouille_par = f.identifiant'
+												);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
@@ -74,7 +76,6 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
-								<th>identifiant</th>
 								<th>nom</th>
 								<th>region</th>
 								<th>type</th>
@@ -90,7 +91,6 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
-								<th>identifiant</th>
 								<th>nom</th>
 								<th>region</th>
 								<th>type</th>
@@ -112,7 +112,6 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['nom_region']; ?></td>
 									<td><?php echo $data['nom_type']; ?></td>
@@ -131,8 +130,6 @@
 							
 						</tbody>
 					</table>
-
-
 
 				</div>
 			</section>

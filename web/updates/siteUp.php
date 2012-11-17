@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,22 +62,22 @@
 
 						/* Répération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nom
-										FROM region'
-										);
+													FROM region'
+													);
 						$query2 = $bdd->prepare('SELECT identifiant, prenom, nom
-										FROM personne'
-										);
+													FROM personne'
+													);
 						$query3 = $bdd->prepare('SELECT identifiant, type
-										FROM sitetype'
-										);
+													FROM sitetype'
+													);
 						$query4 = $bdd->prepare('SELECT s.identifiant, s.nom, r.nom AS nom_region, t.type AS nom_type, s.position_nord, s.position_est, s.altitude,
-										p.prenom AS prenom_p, p.nom AS nom_p, f.prenom AS prenom_f, f.nom AS nom_f, s.commentaire
-										FROM site s, region r, sitetype t, personne p, personne f
-										WHERE s.region = r.identifiant
-										AND s.type = t.identifiant
-										AND s.trouve_par = p.identifiant
-										AND s.fouille_par = f.identifiant'
-										);
+													p.prenom AS prenom_p, p.nom AS nom_p, f.prenom AS prenom_f, f.nom AS nom_f, s.commentaire
+													FROM site s, region r, sitetype t, personne p, personne f
+													WHERE s.region = r.identifiant
+													AND s.type = t.identifiant
+													AND s.trouve_par = p.identifiant
+													AND s.fouille_par = f.identifiant'
+													);
 					?>
 
 					<p>
@@ -117,8 +117,8 @@
 						<form method = "post" action = "../exec/siteUpdate.php">
 							<p>
 								<?php if ($champ == "nom") { ?>
-									<label for = "old_nom">Nom</label> : 
-									<select name = "old_nom" id = "old_nom">
+									<label for = "old">Nom</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -127,13 +127,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_nom"> remplacé par</label> : 
-									<input type = "text" name = "new_nom" id = "new_nom" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php if ($champ == "region") { ?>
-									<label for = "old_region">Région</label> : 
-									<select name = "old_region" id = "old_region">
+									<label for = "old">Région</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -142,8 +142,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_region"> remplacé par</label> : 
-									<select name = "new_region" id = "new_region">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query1->execute();
@@ -155,8 +155,8 @@
 								<?php } ?>
 								
 								<?php if ($champ == "type") { ?>
-									<label for = "old_type">Type</label> : 
-									<select name = "old_type" id = "old_type">
+									<label for = "old">Type</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -165,8 +165,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_type"> remplacé par</label> : 
-									<select name = "new_type" id = "new_type">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -178,8 +178,8 @@
 								<?php } ?>
 								
 								<?php if ($champ == "position_nord") { ?>
-									<label for = "old_nord">Position Nord</label> : 
-									<select name = "old_nord" id = "old_nord">
+									<label for = "old">Position Nord</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -188,13 +188,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_nord"> remplacé par</label> : 
-									<input type = "text" name = "new_nord" id = "new_nord" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php if ($champ == "position_est") { ?>
-									<label for = "old_est">Position Est</label> : 
-									<select name = "old_est" id = "old_est">
+									<label for = "old">Position Est</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -203,13 +203,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_est"> remplacé par</label> : 
-									<input type = "text" name = "new_est" id = "new_est" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php if ($champ == "altitude") { ?>
-									<label for = "old_altitude">Altitude</label> : 
-									<select name = "old_altitude" id = "old_altitude">
+									<label for = "old">Altitude</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -218,13 +218,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_altitude"> remplacé par</label> : 
-									<input type = "text" name = "new_altitude" id = "new_altitude" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php if ($champ == "trouve_par") { ?>
-									<label for = "old_trouve">Trouvé par</label> : 
-									<select name = "old_trouve" id = "old_trouve">
+									<label for = "old">Trouvé par</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -233,8 +233,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_trouve"> remplacé par</label> : 
-									<select name = "new_trouve" id = "new_trouve">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -246,8 +246,8 @@
 								<?php } ?>
 								
 								<?php if ($champ == "fouille_par") { ?>
-									<label for = "old_fouille">Fouillé par</label> : 
-									<select name = "old_fouille" id = "old_fouille">
+									<label for = "old">Fouillé par</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -256,8 +256,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_fouille"> remplacé par</label> : 
-									<select name = "new_fouille" id = "new_fouille">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();

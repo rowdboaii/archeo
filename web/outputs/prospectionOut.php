@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -59,10 +59,10 @@
 						
 					<?php 
 						$query = $bdd->query('SELECT p.identifiant, p.nom, l.nom AS nom_lieu, r.prenom AS prenom_r, r.nom AS nom_r, p.date_prospection
-																	FROM prospection p, personne r, lieu l
-																	WHERE p.responsable = r.identifiant
-																	AND p.lieu = l.identifiant'
-																	);
+												FROM prospection p, personne r, lieu l
+												WHERE p.responsable = r.identifiant
+												AND p.lieu = l.identifiant'
+												);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
@@ -72,7 +72,6 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
-								<th>identifiant</th>
 								<th>nom</th>
 								<th>lieu</th>
 								<th>responsable</th>
@@ -83,7 +82,6 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
-								<th>identifiant</th>
 								<th>nom</th>
 								<th>lieu</th>
 								<th>responsable</th>
@@ -100,7 +98,6 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['nom_lieu']; ?></td>
 									<td><?php echo $data['prenom_r'] . ' ' . $data['nom_r']; ?></td>
@@ -114,8 +111,6 @@
 							
 						</tbody>
 					</table>
-
-
 
 				</div>
 			</section>

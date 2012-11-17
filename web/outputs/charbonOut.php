@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -59,9 +59,9 @@
 						
 					<?php
 						$query = $bdd->query('SELECT o.nom AS nom_objet, c.datation
-																	FROM charbon c, objet o
-																	WHERE c.objet = o.identifiant'
-																	);
+												FROM charbon c, objet o
+												WHERE c.objet = o.identifiant'
+												);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
@@ -104,8 +104,6 @@
 							
 						</tbody>
 					</table>
-
-
 
 				</div>
 			</section>

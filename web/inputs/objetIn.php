@@ -3,7 +3,7 @@
 <!-- Fichier : objetIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
-<?php	session_start(); ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -61,30 +61,30 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, type
-																			FROM objetType'
-																		 	);
+													FROM objetType'
+												 	);
 						$query2 = $bdd->prepare('SELECT identifiant, nature
-																			FROM objetNature'
-																			);
+													FROM objetNature'
+													);
 						$query3 = $bdd->prepare('SELECT identifiant, prenom, nom
-																			FROM personne'
-																			);
+													FROM personne'
+													);
 						$query4 = $bdd->prepare('SELECT identifiant, nom
-																			FROM collection'
-																			);
+													FROM collection'
+													);
 						$query5 = $bdd->prepare('SELECT identifiant, periode
-																			FROM periode'
-																			);
+													FROM periode'
+													);
 						$query6 = $bdd->prepare('SELECT identifiant, nom
-																			FROM fouille'
-																			);
+													FROM fouille'
+													);
 						$query7 = $bdd->prepare('SELECT identifiant, nom
-																			FROM prospection'
-																			);
+													FROM prospection'
+													);
 					?>
 				
 					<p>
-						<form method = "post" action = "../inserts/objetInsert.php">
+						<form method = "post" action = "../exec/objetInsert.php">
 							<p>
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "type">Type</label> :

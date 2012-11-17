@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -59,10 +59,10 @@
 					
 					<?php
 						$query = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, a.sujet, l.langue AS nom_langue
-																	FROM article a, personne p, langue l
-																	WHERE a.auteur = p.identifiant
-																	AND a.langue = l.identifiant'
-																	);
+												FROM article a, personne p, langue l
+												WHERE a.auteur = p.identifiant
+												AND a.langue = l.identifiant'
+												);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
@@ -72,7 +72,6 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
-								<th>identifiant</th>
 								<th>titre</th>
 								<th>auteur</th>
 								<th>revue</th>
@@ -86,7 +85,6 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
-								<th>identifiant</th>
 								<th>titre</th>
 								<th>auteur</th>
 								<th>revue</th>
@@ -105,7 +103,6 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['titre']; ?></td>
 									<td><?php echo $data['prenom'] . ' ' . $data['nom']; ?></td>
 									<td><?php echo $data['revue']; ?></td>

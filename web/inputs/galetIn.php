@@ -3,7 +3,7 @@
 <!-- Fichier : galetIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
-<?php	session_start(); ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -61,18 +61,18 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-																			FROM objet o, objetnature n
-																			WHERE o.nature = n.identifiant
-																			AND n.nature = \'galet\''
-																		 	);
+													FROM objet o, objetnature n
+													WHERE o.nature = n.identifiant
+													AND n.nature = \'galet\''
+												 	);
 						$query2 = $bdd->prepare('SELECT identifiant, type
-																			FROM galettype'
-																			);
+													FROM galettype'
+													);
 					?>
 
 					<p>
 						<!-- Formulaire pour un Galet. -->
-						<form method = "post" action = "../inserts/galetInsert.php">
+						<form method = "post" action = "../exec/galetInsert.php">
 							<p>
 								<label for = "objet">Objet</label> : 
 								<select name = "objet" id = "objet">

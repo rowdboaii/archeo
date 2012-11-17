@@ -3,7 +3,7 @@
 <!-- Fichier : charbonIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
-<?php	session_start(); ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -61,14 +61,14 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT o.identifiant, o.nom
-																			FROM objet o
-																			WHERE o.nature = \'charbon\''
-																		 	);
+												FROM objet o
+												WHERE o.nature = \'charbon\''
+											 	);
 					?>
 
 					<p>
 						<!-- Formulaire pour un Charbon. -->
-						<form method = "post" action = "../inserts/charbonInsert.php">
+						<form method = "post" action = "../exec/charbonInsert.php">
 							<p>
 								<label for = "objet">Objet</label> : 
 								<select name = "objet" id = "objet">

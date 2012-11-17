@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -59,9 +59,9 @@
 						
 					<?php
 						$query = $bdd->query('SELECT c.identifiant, c.nom, l.nom AS locus
-																	FROM carre c, locus l
-																	WHERE c.locus = l.identifiant'
-																	);
+												FROM carre c, locus l
+												WHERE c.locus = l.identifiant'
+												);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
@@ -71,7 +71,6 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
-								<th>identifiant</th>
 								<th>nom</th>
 								<th>locus</th>
 							</tr>
@@ -80,7 +79,6 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
-								<th>identifiant</th>
 								<th>nom</th>
 								<th>locus</th>
 							</tr>
@@ -95,7 +93,6 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['locus']; ?></td>
 								</tr>
@@ -107,8 +104,6 @@
 							
 						</tbody>
 					</table>
-
-
 
 				</div>
 			</section>

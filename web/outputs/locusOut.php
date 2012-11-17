@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -58,13 +58,14 @@
 				<div id = "">
 						
 					<?php
-						$query = $bdd->query('SELECT l.identifiant, l.nom, s.nom AS nom_site, t.type AS nom_type, l.position_nord, l.position_est, l.altitude, f.prenom AS prenom_f, f.nom AS 																	nom_f, p.prenom AS prenom_p, p.nom AS nom_p
-																	FROM locus l, site s, locustype t, personne p, personne f
-																	WHERE l.site = s.identifiant
-																	AND l.type = t.identifiant
-																	AND l.trouve_par = f.identifiant
-																	AND l.appartient_a = p.identifiant'
-																	);
+						$query = $bdd->query('SELECT l.identifiant, l.nom, s.nom AS nom_site, t.type AS nom_type, l.position_nord,
+												l.position_est, l.altitude, f.prenom AS prenom_f, f.nom AS nom_f, p.prenom AS prenom_p, p.nom AS nom_p
+												FROM locus l, site s, locustype t, personne p, personne f
+												WHERE l.site = s.identifiant
+												AND l.type = t.identifiant
+												AND l.trouve_par = f.identifiant
+												AND l.appartient_a = p.identifiant'
+												);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
@@ -74,7 +75,6 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
-								<th>identifiant</th>
 								<th>nom</th>
 								<th>site</th>
 								<th>type</th>
@@ -89,7 +89,6 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
-								<th>identifiant</th>
 								<th>nom</th>
 								<th>site</th>
 								<th>type</th>
@@ -110,7 +109,6 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['nom_site']; ?></td>
 									<td><?php echo $data['nom_type']; ?></td>
@@ -128,8 +126,6 @@
 							
 						</tbody>
 					</table>
-
-
 
 				</div>
 			</section>

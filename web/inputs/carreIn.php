@@ -3,7 +3,7 @@
 <!-- Fichier : carreIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
-<?php	session_start(); ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -60,13 +60,13 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT l.identifiant, l.nom
-																			FROM locus l'
-																		 	);
+												FROM locus l'
+											 	);
 					?>
 
 					<p>
 						<!-- Formulaire pour un Carré. -->
-						</p><form method = "post" action = "../inserts/carreInsert.php">
+						</p><form method = "post" action = "../exec/carreInsert.php">
 							<p>
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom"><br>
 								<label for = "locus">Locus</label> : 

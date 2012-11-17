@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,8 +62,8 @@
 
 						/* Répération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT s.identifiant, s.nom
-													FROM site s'
-													);
+												FROM site s'
+												);
 					?>
 
 					<p>

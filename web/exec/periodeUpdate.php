@@ -1,6 +1,9 @@
-﻿<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
+<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : periodeUpdate.php -->
+
+<!-- Démarrage de la session pour les identifiants. -->
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -8,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -47,20 +50,21 @@
 
 				<!-- Section de page. -->
 				<div id = "">	
-	
+
 					<?php
 						$query = $bdd->prepare('UPDATE periode
-												SET periode = :new_periode
-												WHERE identifiant = :identifiant
-												AND identifiant > 0');
-						$query->execute(array('new_periode' => $_POST['new_periode'],
-												'identifiant' => $_POST['identifiant']));
+												SET periode = :new
+												WHERE periode = :old'
+												);
+						$query->execute(array('new' => $_POST['new'],
+												'old' => $_POST['old']
+												));
 
 						if (!$query) {
-							die("Erreur dans la modification de champ : " . pg_last_error());
+							die("Erreur dans l'insertion : " . pg_last_error());
 						}
 						else {
-							echo 'Champ modifié.';
+							echo 'Champ modifié à la base.';
 						}
 					?>
 				

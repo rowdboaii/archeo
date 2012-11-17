@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,16 +62,16 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT d.identifiant, d.nom
-										FROM decapage d'
-										);
+													FROM decapage d'
+													);
 						$query2 = $bdd->prepare('SELECT p.nom, p.prenom, p.identifiant
-										FROM personne p'
-										);
+													FROM personne p'
+													);
 						$query3 = $bdd->prepare('SELECT f.identifiant, f.nom, p.prenom, p.nom AS nom_personne, d.nom AS nom_decapage, f.annee
-										FROM fouille f, personne p, decapage d
-										WHERE f.fouilleur = p.identifiant
-										AND f.decapage = d.identifiant'
-										);
+													FROM fouille f, personne p, decapage d
+													WHERE f.fouilleur = p.identifiant
+													AND f.decapage = d.identifiant'
+													);
 					?>
 
 					<p>
@@ -107,8 +107,8 @@
 						<form method = "post" action = "../exec/fouilleUpdate.php">
 							<p>
 								<?php if ($champ == "nom") { ?>
-									<label for = "old_nom">Nom</label> : 
-									<select name = "old_nom" id = "old_nom">
+									<label for = "old">Nom</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -117,13 +117,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_nom"> remplacé par</label> : 
-									<input type = "text" name = "new_nom" id = "new_nom"><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new"><br />
 							<?php } ?>
 			
 							<?php> if ($champ == "fouilleur") { ?>
-								<label for = "old_fouilleur">Fouilleur</label> : 
-								<select name = "old_fouilleur" id = "old_fouilleur">
+								<label for = "old">Fouilleur</label> : 
+								<select name = "old" id = "old">
 									<option value = "0"></option>
 									<?php
 										$query3->execute();
@@ -132,8 +132,8 @@
 										}
 									?>
 								</select>
-								<label for = "new_fouilleur"> remplacé par</label> : 
-								<select name = "new_fouilleur" id = "new_fouilleur">
+								<label for = "new"> remplacé par</label> : 
+								<select name = "new" id = "new">
 									<option value = "0"></option>
 									<?php
 										$query2->execute();
@@ -145,8 +145,8 @@
 							<?php } ?>
 			
 							<?php> if ($champ == "decapage") { ?>
-								<label for = "old_decapage">Décapage</label> : 
-								<select name = "old_decapage" id = "old_decapage">
+								<label for = "old">Décapage</label> : 
+								<select name = "old" id = "old">
 									<option value = "0"></option>
 									<?php
 										$query3->execute();
@@ -155,8 +155,8 @@
 										}
 									?>
 								</select>
-								<label for = "new_decapage">Décapage</label> : 
-								<select name = "new_decapage" id = "new_decapage">
+								<label for = "new">Décapage</label> : 
+								<select name = "new" id = "new">
 									<option value = "0"></option>
 									<?php
 										$query1->execute();
@@ -168,8 +168,8 @@
 								<?php } ?>
 			
 								<?php> if ($champ == "annee") { ?>
-									<label for = "old_annee">Année</label> : 
-									<select name = "old_annee" id = "old_annee">
+									<label for = "old">Année</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -178,8 +178,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_annee"> remplacé par</label> : 
-									<input type = "date" name = "new_annee" id = "new_annee"><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "date" name = "new" id = "new"><br />
 								<?php } ?>
 					
 								<input type = "submit" value = "Envoi" />

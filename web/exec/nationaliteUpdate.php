@@ -1,6 +1,9 @@
-﻿<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
+<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : nationaliteUpdate.php -->
+
+<!-- Démarrage de la session pour les identifiants. -->
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -8,12 +11,12 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>NationalitéUpdate</title>
+		<title>NationaliteUpdate</title>
 	</head>
 
 	<body>
@@ -47,20 +50,21 @@
 
 				<!-- Section de page. -->
 				<div id = "">	
-	
+
 					<?php
 						$query = $bdd->prepare('UPDATE nationalite
-												SET nationalite = :new_nationalite
-												WHERE identifiant = :identifiant
-												AND identifiant > 0');
-						$query->execute(array('new_nationalite' => $_POST['new_nationalite'],
-												'identifiant' => $_POST['identifiant']));
+												SET nationalite = :new
+												WHERE nationalite = :old'
+												);
+						$query->execute(array('new' => $_POST['new'],
+												'old' => $_POST['old']
+												));
 
 						if (!$query) {
-							die("Erreur dans la modification de champ : " . pg_last_error());
+							die("Erreur dans l'insertion : " . pg_last_error());
 						}
 						else {
-							echo 'Champ modifié.';
+							echo 'Champ modifié à la base.';
 						}
 					?>
 				

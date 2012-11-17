@@ -2,13 +2,16 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : objetTypeDel.php -->
 
+<!-- Démarrage de la session pour les identifiants. -->
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -50,8 +53,8 @@
 
 					<?php
 						$query = $bdd->prepare('DELETE FROM objettype
-																		WHERE type = :delete'
-																		);
+												WHERE type = :delete'
+												);
 						$query->execute(array('delete' => $_POST['delete']));
 
 						if (!$query) {

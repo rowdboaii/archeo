@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,12 +62,12 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT p.prenom, p.nom, p.identifiant
-										FROM personne p'
-										);
+													FROM personne p'
+													);
 						$query2 = $bdd->prepare('SELECT c.identifiant, p.prenom, c.nom, p.nom AS nom_personne
-										FROM collection c, personne p
-										WHERE c.proprietaire = p.identifiant'
-										);
+													FROM collection c, personne p
+													WHERE c.proprietaire = p.identifiant'
+													);
 					?>
 
 					<p>
@@ -101,8 +101,8 @@
 						<form method = "post" action = "../exec/collectionUpdate.php">
 							<p>
 								<?php if ($champ == "nom") { ?>
-									<label for = "old_nom">Nom</label> : 
-									<select name = "old_nom" id = "old_nom">
+									<label for = "old">Nom</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -111,13 +111,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_nom"> remplacé par</label> : 
-									<input type = "text" name = "new_nom" id = "new_nom" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 			
 								<?php> if ($champ == "proprietaire") { ?>
-									<label for = "old_proprietaire">Propriétaire</label> : 
-									<select name = "old_proprietaire" id = "old_proprietaire">
+									<label for = "old">Propriétaire</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -126,8 +126,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_proprietaire"> remplacé par</label> : 
-									<select name = "new_proprietaire" id = "new_proprietaire">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query1->execute();

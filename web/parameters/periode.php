@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -59,8 +59,8 @@
 						include('../includes/connexionBDD.php');
 						
 						$query = $bdd->query('SELECT *
-																	FROM periode'
-																	);
+												FROM periode'
+												);
 					?>
 				
 					<h2>Affichage</h2>
@@ -71,7 +71,6 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
-								<th>identifiant</th>
 								<th>période</th>
 							</tr>
 						</thead>
@@ -79,7 +78,6 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
-								<th>identifiant</th>
 								<th>période</th>
 							</tr>
 						</tfoot>
@@ -92,7 +90,6 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['periode']; ?></td>
 								</tr>
 								
@@ -108,7 +105,7 @@
 					<h2>Ajout</h2>
 					<p>
 						<!-- Formulaire pour une Période. -->
-						</p><form method = "post" action = "../inserts/periodeInsert.php">
+						<form method = "post" action = "../inserts/periodeInsert.php">
 							<p>
 								<label for = "periode">Période</label> : <input type = "text" name = "periode" id = "periode"><br />
 								<input type = "submit" value = "Envoi" />
@@ -120,7 +117,7 @@
 					<h2>Modification</h2>
 					<p>
 						<!-- Formulaire pour une Période. -->
-						<form method = "post" action = "../updates/periodeUp.php">
+						<form method = "post" action = "../exec/periodeUpdate.php">
 							<p>
 								<label for = "old">Période à remplacer</label> : <input type = "text" name = "old" id = "old"><br />
 								<label for = "new">Par</label> : <input type = "text" name = "new" id = "new"><br />

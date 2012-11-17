@@ -3,7 +3,7 @@
 <!-- Fichier : fouilleIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
-<?php	session_start(); ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -60,16 +60,16 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT d.identifiant, d.nom
-																			FROM decapage d'
-																		 	);
+													FROM decapage d'
+												 	);
 						$query2 = $bdd->prepare('SELECT p.nom, p.prenom, p.identifiant
-																			FROM personne p'
-																			);
+													FROM personne p'
+													);
 					?>
 
 					<p>
 						<!-- Formulaire pour une Fouille. -->
-						</p><form method = "post" action = "../inserts/fouilleInsert.php">
+						</p><form method = "post" action = "../exec/fouilleInsert.php">
 							<p>
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom"><br>
 								<label for = "decapage">Décapage</label> : 

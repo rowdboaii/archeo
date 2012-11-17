@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antéeure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,16 +62,16 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nationalite
-										FROM nationalite'
-										);
+													FROM nationalite'
+													);
 						$query2 = $bdd->prepare('SELECT identifiant, fonction
-										FROM fonction'
-										);
+													FROM fonction'
+													);
 						$query3 = $bdd->prepare('SELECT p.identifiant, p.prenom, p.nom, n.nationalite, f.fonction
-										FROM personne p, nationalite n, fonction f
-										WHERE p.nationalite = n.identifiant
-										AND p.fonction = f.identifiant'
-										);
+													FROM personne p, nationalite n, fonction f
+													WHERE p.nationalite = n.identifiant
+													AND p.fonction = f.identifiant'
+													);
 					?>
 
 					<p>
@@ -107,8 +107,8 @@
 						<form method = "post" action = "../exec/personneUpdate.php">
 							<p>
 								<?php if ($champ == "prenom") { ?>
-									<label for = "old_prenom">Prénom</label> : 
-									<select name = "old_prenom" id = "old_prenom">
+									<label for = "old">Prénom</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>4
 										<?php
 											$query3->execute();
@@ -117,13 +117,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_prenom"> remplacé par</label> : 
-									<input type = "text" name = "new_prenom" id = "new_prenom" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php if ($champ == "nom") { ?>
-									<label for = "old_nom">Nom</label> : 
-									<select name = "old_nom" id = "old_nom">
+									<label for = "old">Nom</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>4
 										<?php
 											$query3->execute();
@@ -132,13 +132,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_nom"> remplacé par</label> :
-									<input type = "text" name = "new_nom" id = "new_nom" /><br />
+									<label for = "new"> remplacé par</label> :
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php if ($champ == "nationalite") { ?>
-									<label for = "old_nationalite">Nationalité</label> : 
-									<select name = "old_nationalite" id = "old_nationalite">
+									<label for = "old">Nationalité</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>4
 										<?php
 											$query3->execute();
@@ -147,8 +147,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_nationalite"> remplacé par</label> : 
-									<select name = "new_nationalite" id = "new_nationalite">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>4
 										<?php
 											$query1->execute();
@@ -160,8 +160,8 @@
 								<?php } ?>
 								
 								<?php if ($champ == "fonction") { ?>
-									<label for = "old_fonction">Fonction</label> : 
-									<select name = "old_fonction" id = "old_fonction">
+									<label for = "old">Fonction</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>4
 										<?php
 											$query3->execute();
@@ -170,8 +170,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_fonction"> remplacé par</label> : 
-									<select name = "new_fonction" id = "new_fonction">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>4
 										<?php
 											$query2->execute();

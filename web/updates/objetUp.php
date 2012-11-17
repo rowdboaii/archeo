@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,37 +62,37 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, type
-										FROM objetType'
-										);
+													FROM objetType'
+													);
 						$query2 = $bdd->prepare('SELECT identifiant, nature
-										FROM objetNature'
-										);
+													FROM objetNature'
+													);
 						$query3 = $bdd->prepare('SELECT identifiant, prenom, nom
-										FROM personne'
-										);
+													FROM personne'
+													);
 						$query4 = $bdd->prepare('SELECT identifiant, nom
-										FROM collection'
-										);
+													FROM collection'
+													);
 						$query5 = $bdd->prepare('SELECT identifiant, periode
-										FROM periode'
-										);
+													FROM periode'
+													);
 						$query6 = $bdd->prepare('SELECT identifiant, nom
-										FROM fouille'
-										);
+													FROM fouille'
+													);
 						$query7 = $bdd->prepare('SELECT identifiant, nom
-										FROM prospection'
-										);
+													FROM prospection'
+													);
 						$query8 = $bdd->prepare('SELECT o.identifiant, o.nom, t.type AS nom_type, o.poids, o.longueur, o.largeur, o.hauteur, n.nature AS nom_nature, o.fiche, o.brule, p.periode AS nom_periode,
-										f.prenom AS prenom_f, f.nom AS nom_f, c.nom AS nom_collection, o.tamis, r.nom AS nom_prospection, u.nom AS nom_fouille, o.commentaire
-										FROM objet o, objettype t, objetnature n, periode p, personne f, collection c, prospection r, fouille u
-										WHERE o.type = t.identifiant
-										AND o.nature = n.identifiant
-										AND o.periode = p.identifiant
-										AND o.trouve_par = f.identifiant
-										AND o.collection = c.identifiant
-										AND o.prospection = r.identifiant
-										AND o.fouille = u.identifiant'
-										);
+													f.prenom AS prenom_f, f.nom AS nom_f, c.nom AS nom_collection, o.tamis, r.nom AS nom_prospection, u.nom AS nom_fouille, o.commentaire
+													FROM objet o, objettype t, objetnature n, periode p, personne f, collection c, prospection r, fouille u
+													WHERE o.type = t.identifiant
+													AND o.nature = n.identifiant
+													AND o.periode = p.identifiant
+													AND o.trouve_par = f.identifiant
+													AND o.collection = c.identifiant
+													AND o.prospection = r.identifiant
+													AND o.fouille = u.identifiant'
+													);
 					?>
 
 					<p>
@@ -133,8 +133,8 @@
 						<form method = "post" action = "../exec/objetUpdate.php">
 							<p>
 								<?php if ($champ == "nom") { ?>
-									<label for = "old_nom">Nom</label> : 
-									<select name = "old_nom" id = "old_nom">
+									<label for = "old">Nom</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query8->execute();
@@ -143,13 +143,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_nom"> remplacé par</label> : 
-									<input type = "text" name = "new_nom" id = "new_nom" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php> if ($champ == "type") { ?>
-									<label for = "old_type">Type</label> :
-									<select name = "old_type" id = "old_type">
+									<label for = "old">Type</label> :
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query8->execute();
@@ -158,8 +158,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_type"> remplacé par</label> : 
-									<select name = "new_type" id = "new_type">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query1->execute();
@@ -171,8 +171,8 @@
 								<?php } ?>
 								
 								<?php> if ($champ == "poids") { ?>
-									<label for = "old_poids">Poids</label> : 
-									<select name = "old_poids" id = "old_poids">
+									<label for = "old">Poids</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query8->execute();
@@ -181,13 +181,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_poids"> remplacé par</label> : 
-									<input type = "text" name = "new_poids" id = "new_poids" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php> if ($champ == "nature") { ?>
-									<label for = "old_nature">nature</label> :
-									<select name = "old_nature" id = "old_nature">
+									<label for = "old">nature</label> :
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query8->execute();
@@ -196,8 +196,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_nature"> remplacé par</label> : 
-									<select name = "new_nature" id = "new_nature">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -209,8 +209,8 @@
 								<?php } ?>
 								
 								<?php> if ($champ == "longueur") { ?>
-									<label for = "old_longueur">Longueur</label> : 
-									<select name = "old_longueur" id = "old_longueur">
+									<label for = "old">Longueur</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query8->execute();
@@ -219,13 +219,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_longueur"> remplacé par</label> : 
-									<input type = "text" name = "new_longueur" id = "new_longueur" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php> if ($champ == "largeur") { ?>
-									<label for = "old_largeur">Largeur</label> : 
-									<select name = "old_largeur" id = "old_largeur">
+									<label for = "old">Largeur</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query8->execute();
@@ -234,13 +234,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_largeur"> remplacé par</label> : 
-									<input type = "text" name = "new_largeur" id = "new_largeur" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php> if ($champ == "hauteur") { ?>
-									<label for = "old_hauteur">Hauteur</label> : 
-									<select name = "old_hauteur" id = "old_hauteur">
+									<label for = "old">Hauteur</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query8->execute();
@@ -249,13 +249,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_hauteur"> remplacé par</label> : 
-									<input type = "text" name = "new_hauteur" id = "new_hauteur" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
 								<?php> if ($champ == "periode") { ?>
-									<label for = "old_periode">Période</label> : 
-									<select name = "old_periode" id = "old_periode">
+									<label for = "old">Période</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query8->execute();
@@ -264,8 +264,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_periode"> remplacé par</label> : 
-									<select name = "new_periode" id = "new_periode">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query5->execute();
@@ -277,8 +277,8 @@
 								<?php } ?>
 								
 								<?php> if ($champ == "trouve_par") { ?>
-									<label for = "old_trouve">Trouvé par</label> : 
-									<select name = "old_trouve" id = "old_trouve">
+									<label for = "old">Trouvé par</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query8->execute();
@@ -287,8 +287,8 @@
 											}
 										?>
 									</select> 
-									<label for = "new_trouve"> remplacé par</label> : 
-									<select name = "new_trouve" id = "new_trouve">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();

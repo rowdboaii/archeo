@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -58,16 +58,18 @@
 				<div id = "">
 						
 					<?php
-						$query = $bdd->query('SELECT o.identifiant, o.nom, t.type AS nom_type, o.poids, o.longueur, o.largeur, o.hauteur, n.nature AS nom_nature, o.fiche, o.brule, p.periode AS nom_periode, f.prenom AS prenom_f, f.nom AS nom_f, c.nom AS nom_collection, o.tamis, r.nom AS nom_prospection, u.nom AS nom_fouille, o.commentaire
-																	FROM objet o, objettype t, objetnature n, periode p, personne f, collection c, prospection r, fouille u
-																	WHERE o.type = t.identifiant
-																	AND o.nature = n.identifiant
-																	AND o.periode = p.identifiant
-																	AND o.trouve_par = f.identifiant
-																	AND o.collection = c.identifiant
-																	AND o.prospection = r.identifiant
-																	AND o.fouille = u.identifiant'
-																	);
+						$query = $bdd->query('SELECT o.identifiant, o.nom, t.type AS nom_type, o.poids, o.longueur, o.largeur, o.hauteur,
+												n.nature AS nom_nature, o.fiche, o.brule, p.periode AS nom_periode, f.prenom AS prenom_f,
+												f.nom AS nom_f, c.nom AS nom_collection, o.tamis, r.nom AS nom_prospection, u.nom AS nom_fouille, o.commentaire
+												FROM objet o, objettype t, objetnature n, periode p, personne f, collection c, prospection r, fouille u
+												WHERE o.type = t.identifiant
+												AND o.nature = n.identifiant
+												AND o.periode = p.identifiant
+												AND o.trouve_par = f.identifiant
+												AND o.collection = c.identifiant
+												AND o.prospection = r.identifiant
+												AND o.fouille = u.identifiant'
+												);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
@@ -77,7 +79,6 @@
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
-								<th>identifiant</th>
 								<th>nom</th>
 								<th>type</th>
 								<th>poids</th>
@@ -100,7 +101,6 @@
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
-								<th>identifiant</th>
 								<th>nom</th>
 								<th>type</th>
 								<th>poids</th>
@@ -129,7 +129,6 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['identifiant']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['nom_type']; ?></td>
 									<td><?php echo $data['poids']; ?></td>

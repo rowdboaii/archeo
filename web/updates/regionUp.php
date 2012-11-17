@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,12 +62,12 @@
 
 						/* Répération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nom
-										FROM pays'
-									 	);
+													FROM pays'
+												 	);
 						$query2 = $bdd->prepare('SELECT r.identifiant, r.nom, p.nom AS nom_pays
-										FROM region r, pays p
-										WHERE r.pays = p.identifiant'
-										);
+													FROM region r, pays p
+													WHERE r.pays = p.identifiant'
+													);
 					?>
 
 					<p>
@@ -101,8 +101,8 @@
 						<form method = "post" action = "../exec/regionUpdate.php">
 							<p>
 								<?php if ($champ == "nom") { ?>
-									<label for = "old_nom">Nom</label> : 
-									<select name = "old_nom" id = "old_nom">
+									<label for = "old">Nom</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -111,13 +111,13 @@
 											}
 										?>
 									</select>
-									<label for = "new_nom"> remplacé par</label> : 
-									<input type = "text" name = "new_nom" id = "new_nom" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new_nom" /><br />
 								<?php } ?>
 								
 								<?php if ($champ == "pays") { ?>
-									<label for = "old_pays">Pays</label> : 
-									<select name = "old_pays" id = "old_pays">
+									<label for = "old">Pays</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -126,8 +126,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_pays"> remplacé par</label> : 
-									<select name = "new_pays" id = "new_pays">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query1->execute();

@@ -3,7 +3,7 @@
 <!-- Fichier : articleIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
-<?php	session_start(); ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,19 +62,19 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, prenom, nom
-																			FROM personne'
-																		 	);
+													FROM personne'
+												 	);
 						$query2 = $bdd->prepare('SELECT identifiant, nom
-																			FROM locus'
-																			);
+													FROM locus'
+													);
 						$query3 = $bdd->prepare('SELECT identifiant, langue
-																			FROM langue'
-																			);
+													FROM langue'
+													);
 					?>
 
 					<p>
 						<!-- Formulaire pour un Article. -->
-						<form method = "post" action = "../inserts/articleInsert.php">
+						<form method = "post" action = "../exec/articleInsert.php">
 							<p>
 								<label for = "titre">Titre</label> : <input type = "text" name = "titre" id = "titre" /><br />
 								<label for = "auteur">Auteur</label> : 

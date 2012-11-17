@@ -11,7 +11,7 @@
 	<head>
 		<!-- En-tête de la page. -->
 		<meta charset = "utf-8" />
-		<link rel = "stylesheet" href = "style.css" />
+		<link rel = "stylesheet" href = "../styles/style.css" />
 		<!-- Dans le cas où le navigateur est une version antérieure à IE9 -->
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,18 +62,18 @@
 
 						/* Répération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-										FROM objet o, objetnature n
-										WHERE o.nature = n.identifiant
-										AND n.nature = \'silex\''
-										);
+													FROM objet o, objetnature n
+													WHERE o.nature = n.identifiant
+													AND n.nature = \'silex\''
+													);
 						$query2 = $bdd->prepare('SELECT identifiant, nom
-										FROM gisement'
-										);
+													FROM gisement'
+													);
 						$query3 = $bdd->prepare('SELECT o.nom AS nom_objet, g.nom AS nom_gisement, s.couleur
-										FROM silex s, gisement g, objet o
-										WHERE s.provenance = g.identifiant
-										AND s.objet = o.identifiant'
-										);
+													FROM silex s, gisement g, objet o
+													WHERE s.provenance = g.identifiant
+													AND s.objet = o.identifiant'
+													);
 					?>
 
 					<p>
@@ -108,8 +108,8 @@
 						<form method = "post" action = "../exec/silexUpdate.php">
 							<p>
 								<?php if ($champ == "objet") { ?>
-									<label for = "old_objet">Objet</label> : 
-									<select name = "old_objet" id = "old_objet">
+									<label for = "old">Objet</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -118,8 +118,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_objet"> remplacé par</label> : 
-									<select name = "new_objet" id = "new_objet">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query1->execute();
@@ -131,8 +131,8 @@
 								<?php } ?>
 								
 								<?php if ($champ == "provenance") { ?>
-									<label for = "old_provenance">Provenance</label> : 
-									<select name = "old_provenance" id = "old_provenance">
+									<label for = "old">Provenance</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -141,8 +141,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_provenance"> remplacé par</label> : 
-									<select name = "new_provenance" id = "new_provenance">
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
@@ -154,8 +154,8 @@
 								<?php } ?>
 								
 								<?php if ($champ == "couleur") { ?>
-									<label for = "old_couleur">Couleur</label> : 
-									<select name = "old_couleur" id = "old_couleur">
+									<label for = "old">Couleur</label> : 
+									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
@@ -164,8 +164,8 @@
 											}
 										?>
 									</select>
-									<label for = "new_couleur"> remplacé par</label> : 
-									<input type = "text" name = "new_couleur" id = "new_couleur" /><br />
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 							
 								<input type = "submit" value = "Envoi" />
