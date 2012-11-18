@@ -78,7 +78,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "../parameters/pays.php">Ajouter un nouveau Pays ?</a><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

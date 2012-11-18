@@ -2,6 +2,9 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : regionUpdate.php -->
 
+<!-- Démarrage de la session pour les identifiants. -->
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -51,15 +54,23 @@
 					<?php
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
-							$query = $bdd->prepare('UPDATE region
-													SET :champ = :new
-													WHERE :champ = :old'
-													);
+							if ($_SESSION['champ'] == 'nom') {
+
+								$query = $bdd->prepare('UPDATE region
+														SET nom = :new
+														WHERE nom = :old'
+														);
+							}
+							else if ($_SESSION['champ'] == 'pays') {
 							
+								$query = $bdd->prepare('UPDATE region
+														SET pays = :new
+														WHERE pays = :old'
+														);
+							}
 						}
 						
-						$query->execute(array('champ' => $_SESSION['champ'],
-												'new' => $_POST['new'],
+						$query->execute(array('new' => $_POST['new'],
 												'old' => $_POST['old']
 												));
 

@@ -2,6 +2,9 @@
 <!-- Auteur : Xavier Muth & Antoine Hars -->
 <!-- Fichier : osUpdate.php -->
 
+<!-- Démarrage de la session pour les identifiants. -->
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 

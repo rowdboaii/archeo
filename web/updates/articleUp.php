@@ -104,14 +104,14 @@
 						}
 	
 						/* Affichage du champ souhaité. */
-						if ($champ != 0) {
+						if ($_SESSION['champ'] != '0') {
 					?>
 					
 					<p>
 						<!-- Formulaire pour l'Update d'un article. -->
 						<form method = "post" action = "../exec/articleUpdate.php">
 							<p>
-								<?php if ($champ == "titre") { ?>
+								<?php if ($_SESSION['champ'] == "titre") { ?>
 									<label for = "old">Titre</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -126,7 +126,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 					
-								<?php> if ($champ == "auteur") { ?>
+								<?php> if ($_SESSION['champ'] == "auteur") { ?>
 									<label for = "old">Auteur</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -149,7 +149,7 @@
 									</select><br />
 								<?php } ?>
 					
-								<?php if ($champ == "annee") { ?>
+								<?php if ($_SESSION['champ'] == "annee") { ?>
 									<label for = "old">Année</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -164,7 +164,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 					
-								<?php if ($champ == "revue") { ?>
+								<?php if ($_SESSION['champ'] == "revue") { ?>
 									<label for = "old">Revue</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -179,7 +179,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 							
-								<?php if ($champ == "sujet") { ?>
+								<?php if ($_SESSION['champ'] == "sujet") { ?>
 									<label for = "old">Sujet</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -202,7 +202,7 @@
 									</select><br />
 								<?php } ?>
 						
-								<?php if ($champ == "langue") { ?>
+								<?php if ($_SESSION['champ'] == "langue") { ?>
 									<label for = "old">Langue</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>

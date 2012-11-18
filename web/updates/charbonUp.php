@@ -95,14 +95,14 @@
 						}
 			
 						/* Affichage du champ souhaité. */
-						if ($champ != 0) {
+						if ($_SESSION['champ'] != '0') {
 					?>
 
 					<p>
 						<!-- Formulaire pour l'Update d'un charbon. -->
 						<form method = "post" action = "../exec/charbonUpdate.php">
 							<p>
-								<?php if ($champ == "objet") { ?>
+								<?php if ($_SESSION['champ'] == "objet") { ?>
 									<label for = "old">Objet</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -125,7 +125,7 @@
 									</select><br />
 								<?php } ?>
 			
-								<?php> if ($champ == "datation") { ?>
+								<?php> if ($_SESSION['champ'] == "datation") { ?>
 									<label for = "old">Datation</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>

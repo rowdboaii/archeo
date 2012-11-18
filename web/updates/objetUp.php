@@ -125,14 +125,14 @@
 						}
 						
 						/* Affichage du champ souhaité. */
-						if ($champ != 0) {
+						if ($_SESSION['champ'] != '0') {
 					?>
 
 					<p>
 						<!-- Formulaire pour l'Update d'un Objet. -->
 						<form method = "post" action = "../exec/objetUpdate.php">
 							<p>
-								<?php if ($champ == "nom") { ?>
+								<?php if ($_SESSION['champ'] == "nom") { ?>
 									<label for = "old">Nom</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -147,7 +147,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "type") { ?>
+								<?php> if ($_SESSION['champ'] == "type") { ?>
 									<label for = "old">Type</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -170,7 +170,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "poids") { ?>
+								<?php> if ($_SESSION['champ'] == "poids") { ?>
 									<label for = "old">Poids</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -185,7 +185,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "nature") { ?>
+								<?php> if ($_SESSION['champ'] == "nature") { ?>
 									<label for = "old">nature</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -208,7 +208,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "longueur") { ?>
+								<?php> if ($_SESSION['champ'] == "longueur") { ?>
 									<label for = "old">Longueur</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -223,7 +223,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "largeur") { ?>
+								<?php> if ($_SESSION['champ'] == "largeur") { ?>
 									<label for = "old">Largeur</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -238,7 +238,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "hauteur") { ?>
+								<?php> if ($_SESSION['champ'] == "hauteur") { ?>
 									<label for = "old">Hauteur</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -253,7 +253,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "periode") { ?>
+								<?php> if ($_SESSION['champ'] == "periode") { ?>
 									<label for = "old">Période</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -276,7 +276,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "trouve_par") { ?>
+								<?php> if ($_SESSION['champ'] == "trouve_par") { ?>
 									<label for = "old">Trouvé par</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>

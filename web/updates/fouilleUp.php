@@ -99,14 +99,14 @@
 						}
 	
 						/* Affichage du champ souhaité. */
-						if ($champ != 0) {
+						if ($_SESSION['champ'] != '0') {
 					?>
 					
 					<p>
 						<!-- Formulaire pour l'Update d'une Fouille. -->
 						<form method = "post" action = "../exec/fouilleUpdate.php">
 							<p>
-								<?php if ($champ == "nom") { ?>
+								<?php if ($_SESSION['champ'] == "nom") { ?>
 									<label for = "old">Nom</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -121,7 +121,7 @@
 									<input type = "text" name = "new" id = "new"><br />
 							<?php } ?>
 			
-							<?php> if ($champ == "fouilleur") { ?>
+							<?php> if ($_SESSION['champ'] == "fouilleur") { ?>
 								<label for = "old">Fouilleur</label> : 
 								<select name = "old" id = "old">
 									<option value = "0"></option>
@@ -144,7 +144,7 @@
 								</select><br />
 							<?php } ?>
 			
-							<?php> if ($champ == "decapage") { ?>
+							<?php> if ($_SESSION['champ'] == "decapage") { ?>
 								<label for = "old">Décapage</label> : 
 								<select name = "old" id = "old">
 									<option value = "0"></option>
@@ -167,7 +167,7 @@
 									</select><br />
 								<?php } ?>
 			
-								<?php> if ($champ == "annee") { ?>
+								<?php> if ($_SESSION['champ'] == "annee") { ?>
 									<label for = "old">Année</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>

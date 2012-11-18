@@ -99,14 +99,14 @@
 						}
 						
 						/* Affichage du champ souhaité. */
-						if ($champ != 0) {
+						if ($_SESSION['champ'] != '0') {
 					?>
 					
 					<p>
 						<!-- Formulaire pour l'Update d'une Prospection. -->
 						<form method = "post" action = "../exec/prospectionUpdate.php">
 							<p>
-								<?php if ($champ == "nom") { ?>
+								<?php if ($_SESSION['champ'] == "nom") { ?>
 									<label for = "old">Nom</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -121,7 +121,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php if ($champ == "lieu") { ?>
+								<?php if ($_SESSION['champ'] == "lieu") { ?>
 									<label for = "old">Lieu</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -144,7 +144,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php if ($champ == "responsable") { ?>
+								<?php if ($_SESSION['champ'] == "responsable") { ?>
 									<label for = "old">Responsable</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -167,7 +167,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php if ($champ == "date_prospection") { ?>
+								<?php if ($_SESSION['champ'] == "date_prospection") { ?>
 									<label for = "old">Date Prospection</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>

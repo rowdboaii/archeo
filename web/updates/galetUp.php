@@ -100,14 +100,14 @@
 						}
 						
 						/* Affichage du champ souhaité. */
-						if ($champ != 0) {
+						if ($_SESSION['champ'] != '0') {
 					?>
 
 					<p>
 						<!-- Formulaire pour l'Update d'un Galet. -->
 						<form method = "post" action = "../exec/galetUpdate.php">
 							<p>
-								<?php if ($champ == "nom") { ?>
+								<?php if ($_SESSION['champ'] == "nom") { ?>
 									<label for = "old">Nom</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -122,7 +122,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "objet") { ?>
+								<?php> if ($_SESSION['champ'] == "objet") { ?>
 									<label for = "old">Objet</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -145,7 +145,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "type") { ?>
+								<?php> if ($_SESSION['champ'] == "type") { ?>
 									<label for = "old">Type</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>

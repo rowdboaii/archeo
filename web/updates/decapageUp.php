@@ -93,14 +93,14 @@
 						}
 	
 						/* Affichage du champ souhaité. */
-						if ($champ != 0) {
+						if ($_SESSION['champ'] != '0') {
 					?>
 
 					<p>
 						<!-- Formulaire pour l'Update d'un Décapage. -->
 						<form method = "post" action = "../exec/decapageUpdate.php">
 							<p>
-								<?php if ($champ == "nom") { ?>
+								<?php if ($_SESSION['champ'] == "nom") { ?>
 									<label for = "old">Nom</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -115,7 +115,7 @@
 									<input type = "text" name = "new" id = "new"><br />
 								<?php } ?>
 			
-								<?php> if ($champ == "carre") { ?>
+								<?php> if ($_SESSION['champ'] == "carre") { ?>
 									<label for = "old">Carré</label> : 
 									<select name = "old_" id = "old">
 										<option value = "0"></option>

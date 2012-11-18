@@ -106,14 +106,14 @@
 						}
 						
 						/* Affichage du champ souhaité. */
-						if ($champ != 0) {
+						if ($_SESSION['champ'] != '0') {
 					?>
 					
 					<p>
 						<!-- Formulaire pour l'Update d'un Os. -->
 						<form method = "post" action = "../exec/osUpdate.php">
 							<p>
-								<?php if ($champ == "objet") { ?>
+								<?php if ($_SESSION['champ'] == "objet") { ?>
 									<label for = "old">Objet</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -136,7 +136,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php if ($champ == "partie") { ?>
+								<?php if ($_SESSION['champ'] == "partie") { ?>
 									<label for = "old">Partie Animal</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -151,7 +151,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php if ($champ == "type") { ?>
+								<?php if ($_SESSION['champ'] == "type") { ?>
 									<label for = "old">Type Os</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -166,7 +166,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php if ($champ == "taxon") { ?>
+								<?php if ($_SESSION['champ'] == "taxon") { ?>
 									<label for = "old">Taxon</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -189,7 +189,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php if ($champ == "animal") { ?>
+								<?php if ($_SESSION['champ'] == "animal") { ?>
 									<label for = "old">Animal</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -204,7 +204,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php if ($champ == "type_animal") { ?>
+								<?php if ($_SESSION['champ'] == "type_animal") { ?>
 									<label for = "old">Type d'Animal</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -219,7 +219,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php if ($champ == "forme") { ?>
+								<?php if ($_SESSION['champ'] == "forme") { ?>
 									<label for = "old">Forme</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -234,7 +234,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 										
-								<?php if ($champ == "datation") { ?>
+								<?php if ($_SESSION['champ'] == "datation") { ?>
 									<label for = "old">Datation</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>

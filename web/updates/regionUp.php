@@ -64,7 +64,7 @@
 						$query1 = $bdd->prepare('SELECT identifiant, nom
 													FROM pays'
 												 	);
-						$query2 = $bdd->prepare('SELECT r.identifiant, r.nom, p.nom AS nom_pays
+						$query2 = $bdd->prepare('SELECT r.identifiant, r.nom, p.nom AS nom_pays, r.pays
 													FROM region r, pays p
 													WHERE r.pays = p.identifiant'
 													);
@@ -86,6 +86,7 @@
 					</p>
 					
 					<?php
+					
 						/* Récupération du champ à modifier. */
 						$_SESSION['champ'] = 0;
 						if (isset($_POST['champ'])) {	
@@ -93,21 +94,21 @@
 						}
 						
 						/* Affichage du champ souhaité. */
-						if ($champ != 0) {
+						if ($_SESSION['champ'] != '0') {
 					?>
 					
 					<p>
 						<!-- Formulaire pour l'Update d'une Région. -->
 						<form method = "post" action = "../exec/regionUpdate.php">
 							<p>
-								<?php if ($champ == "nom") { ?>
+								<?php if ($_SESSION['champ'] == "nom") { ?>
 									<label for = "old">Nom</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												echo '<option value = "' . $data['nom'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -115,14 +116,14 @@
 									<input type = "text" name = "new" id = "new_nom" /><br />
 								<?php } ?>
 								
-								<?php if ($champ == "pays") { ?>
+								<?php if ($_SESSION['champ'] == "pays") { ?>
 									<label for = "old">Pays</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_pays'] . '</option>';
+												echo '<option value = "' . $data['pays'] . '">' . $data['nom'] . ' : ' . $data['nom_pays'] . '</option>';
 											}
 										?>
 									</select>
@@ -135,7 +136,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../parameters/pays.php">Ajouter un nouveau Pays ?</a><br />
 								<?php } ?>
 							
 								<input type = "submit" value = "Envoi" />

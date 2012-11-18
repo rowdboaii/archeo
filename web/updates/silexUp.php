@@ -100,14 +100,14 @@
 						}
 						
 						/* Affichage du champ souhaité. */
-						if ($champ != 0) {
+						if ($_SESSION['champ'] != '0') {
 					?>
 					
 					<p>
 						<!-- Formulaire pour l'Update d'un Silex. -->
 						<form method = "post" action = "../exec/silexUpdate.php">
 							<p>
-								<?php if ($champ == "objet") { ?>
+								<?php if ($_SESSION['champ'] == "objet") { ?>
 									<label for = "old">Objet</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -130,7 +130,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php if ($champ == "provenance") { ?>
+								<?php if ($_SESSION['champ'] == "provenance") { ?>
 									<label for = "old">Provenance</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -153,7 +153,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php if ($champ == "couleur") { ?>
+								<?php if ($_SESSION['champ'] == "couleur") { ?>
 									<label for = "old">Couleur</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>

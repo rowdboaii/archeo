@@ -109,14 +109,14 @@
 						}
 						
 						/* Affichage du champ souhaité. */
-						if ($champ != 0) {
+						if ($_SESSION['champ'] != '0') {
 					?>
 
 					<p>
 						<!-- Formulaire pour l'Update d'un Locus. -->
 						<form method = "post" action = "../exec/locusUpdate.php">
 							<p>
-								<?php if ($champ == "nom") { ?>
+								<?php if ($_SESSION['champ'] == "nom") { ?>
 									<label for = "old">Nom</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -131,7 +131,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "site") { ?>
+								<?php> if ($_SESSION['champ'] == "site") { ?>
 									<label for = "old">Site</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -154,7 +154,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "type") { ?>
+								<?php> if ($_SESSION['champ'] == "type") { ?>
 									<label for = "old">Type</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -177,7 +177,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "position_nord") { ?>
+								<?php> if ($_SESSION['champ'] == "position_nord") { ?>
 									<label for = "old">Position Nord</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -192,7 +192,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "position_est") { ?>
+								<?php> if ($_SESSION['champ'] == "position_est") { ?>
 									<label for = "old">Position Est</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -207,7 +207,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "altitude") { ?>
+								<?php> if ($_SESSION['champ'] == "altitude") { ?>
 									<label for = "old">Altitude</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -222,7 +222,7 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "trouve_par") { ?>
+								<?php> if ($_SESSION['champ'] == "trouve_par") { ?>
 									<label for = "old">Trouvé par</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
@@ -245,7 +245,7 @@
 									</select><br />
 								<?php } ?>
 								
-								<?php> if ($champ == "appartient_a") { ?>
+								<?php> if ($_SESSION['champ'] == "appartient_a") { ?>
 									<label for = "old">Propriétaire</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
