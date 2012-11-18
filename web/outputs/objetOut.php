@@ -58,17 +58,29 @@
 				<div id = "">
 						
 					<?php
-						$query = $bdd->query('SELECT o.identifiant, o.nom, t.type AS nom_type, o.poids, o.longueur, o.largeur, o.hauteur,
-												n.nature AS nom_nature, o.fiche, o.brule, p.periode AS nom_periode, f.prenom AS prenom_f,
-												f.nom AS nom_f, c.nom AS nom_collection, o.tamis, r.nom AS nom_prospection, u.nom AS nom_fouille, o.commentaire
-												FROM objet o, objettype t, objetnature n, periode p, personne f, collection c, prospection r, fouille u
+						$query1 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis, o.fiche, 													o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode, 													f.prenom AS prenom_f, f.nom AS nom_f, c.nom AS nom_collection
+												FROM objet o, objettype t, objetnature n, periode p, personne f, collection c
 												WHERE o.type = t.identifiant
 												AND o.nature = n.identifiant
 												AND o.periode = p.identifiant
 												AND o.trouve_par = f.identifiant
-												AND o.collection = c.identifiant
-												AND o.prospection = r.identifiant
+												AND o.collection = c.identifiant'
+												);
+						$query2 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis, o.fiche, 													o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode, 													f.prenom AS prenom_f, f.nom AS nom_f, u.nom AS nom_fouille
+												FROM objet o, objettype t, objetnature n, periode p, personne f, fouille u
+												WHERE o.type = t.identifiant
+												AND o.nature = n.identifiant
+												AND o.periode = p.identifiant
+												AND o.trouve_par = f.identifiant
 												AND o.fouille = u.identifiant'
+												);
+						$query3 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis, o.fiche, 													o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode, 													f.prenom AS prenom_f, f.nom AS nom_f, r.nom AS nom_prospection
+												FROM objet o, objettype t, objetnature n, periode p, personne f, prospection r
+												WHERE o.type = t.identifiant
+												AND o.nature = n.identifiant
+												AND o.periode = p.identifiant
+												AND o.trouve_par = f.identifiant
+												AND o.prospection = r.identifiant'
 												);
 					?>
 					
@@ -124,7 +136,7 @@
 						<tbody>
 						
 							<?php
-								while ($data = $query->fetch())
+								while ($data = $query1->fetch())
 								{
 							?>
 								
@@ -142,14 +154,68 @@
 									<td><?php echo $data['prenom_f'] . ' ' . $data['nom_f']; ?></td>
 									<td><?php echo $data['nom_collection']; ?></td>
 									<td><?php echo $data['tamis']; ?></td>
-									<td><?php echo $data['nom_td']; ?></prospection>
+									<td></td>
+									<td></td>
+									<td><?php echo $data['commentaire']; ?></td>
+								</tr>
+								
+							<?php
+								}
+								$query1->closeCursor();
+
+								while ($data = $query2->fetch())
+								{
+							?>
+								
+								<tr>
+									<td><?php echo $data['nom']; ?></td>
+									<td><?php echo $data['nom_type']; ?></td>
+									<td><?php echo $data['poids']; ?></td>
+									<td><?php echo $data['longueur']; ?></td>
+									<td><?php echo $data['largeur']; ?></td>
+									<td><?php echo $data['hauteur']; ?></td>
+									<td><?php echo $data['nom_nature']; ?></td>
+									<td><?php echo $data['fiche']; ?></td>
+									<td><?php echo $data['brule']; ?></td>
+									<td><?php echo $data['nom_periode']; ?></td>
+									<td><?php echo $data['prenom_f'] . ' ' . $data['nom_f']; ?></td>
+									<td></td>
+									<td><?php echo $data['tamis']; ?></td>
+									<td></td>
 									<td><?php echo $data['nom_fouille']; ?></td>
 									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 								
 							<?php
 								}
-								$query->closeCursor();
+								$query2->closeCursor();
+
+								while ($data = $query3->fetch())
+								{
+							?>
+								
+								<tr>
+									<td><?php echo $data['nom']; ?></td>
+									<td><?php echo $data['nom_type']; ?></td>
+									<td><?php echo $data['poids']; ?></td>
+									<td><?php echo $data['longueur']; ?></td>
+									<td><?php echo $data['largeur']; ?></td>
+									<td><?php echo $data['hauteur']; ?></td>
+									<td><?php echo $data['nom_nature']; ?></td>
+									<td><?php echo $data['fiche']; ?></td>
+									<td><?php echo $data['brule']; ?></td>
+									<td><?php echo $data['nom_periode']; ?></td>
+									<td><?php echo $data['prenom_f'] . ' ' . $data['nom_f']; ?></td>
+									<td></td>
+									<td><?php echo $data['tamis']; ?></td>
+									<td><?php echo $data['nom_prospection']; ?></td>
+									<td></td>
+									<td><?php echo $data['commentaire']; ?></td>
+								</tr>
+								
+							<?php
+								}
+								$query3->closeCursor();
 							?>
 							
 						</tbody>
