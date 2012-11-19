@@ -53,7 +53,8 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO objetnature (nature)
-									VALUES (:nature)');
+									VALUES (:nature)'
+									);
 						$query->execute(array('nature' => $_POST['nature']));
 
 						if (!$query) {
