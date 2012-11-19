@@ -53,7 +53,7 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO langue (langue)
-												VALUES (:langue)');
+									VALUES (:langue)');
 						$query->execute(array('langue' => $_POST['langue']));
 
 						if (!$query) {
