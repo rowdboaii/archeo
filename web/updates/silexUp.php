@@ -62,18 +62,18 @@
 
 						/* Répération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-													FROM objet o, objetnature n
-													WHERE o.nature = n.identifiant
-													AND n.nature = \'silex\''
-													);
+										FROM objet o, objetnature n
+										WHERE o.nature = n.identifiant
+										AND n.nature = \'silex\''
+										);
 						$query2 = $bdd->prepare('SELECT identifiant, nom
-													FROM gisement'
-													);
+										FROM gisement'
+										);
 						$query3 = $bdd->prepare('SELECT o.nom AS nom_objet, g.nom AS nom_gisement, s.couleur, s.objet, s.provenance
-													FROM silex s, gisement g, objet o
-													WHERE s.provenance = g.identifiant
-													AND s.objet = o.identifiant'
-													);
+										FROM silex s, gisement g, objet o
+										WHERE s.provenance = g.identifiant
+										AND s.objet = o.identifiant'
+										);
 					?>
 
 					<p>
@@ -138,7 +138,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['provenance'] . '">' . $data['nom_gisement'] . '</option>';
+												echo '<option value = "' . $data['provenance'] . '">' . $data['nom_objet'] . ' : ' . $data['nom_gisement'] . '</option>';
 											}
 										?>
 									</select>
@@ -162,7 +162,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['couleur'] . '">' . $data['couleur'] . '</option>';
+												echo '<option value = "' . $data['couleur'] . '">' . $data['nom_objet'] . ' : ' . $data['couleur'] . '</option>';
 											}
 										?>
 									</select>
