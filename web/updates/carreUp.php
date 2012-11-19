@@ -62,12 +62,12 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT l.identifiant, l.nom
-													FROM locus l'
-													);
-						$query2 = $bdd->prepare('SELECT c.identifiant, c.nom, l.nom AS nom_locus
-													FROM carre c, locus l
-													WHERE c.locus = l.identifiant'
-													);
+										FROM locus l'
+										);
+						$query2 = $bdd->prepare('SELECT c.identifiant, c.nom, l.nom AS nom_locus, c.locus
+										FROM carre c, locus l
+										WHERE c.locus = l.identifiant'
+										);
 						?>
 
 					<p>
@@ -107,7 +107,7 @@
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												echo '<option value = "' . $data['nom'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -115,14 +115,14 @@
 									<input type = "text" name = "new" id = "new"><br />
 								<?php } ?>
 				
-								<?php> if ($_SESSION['champ'] == "locus") { ?>
+								<?php if ($_SESSION['champ'] == "locus") { ?>
 									<label for = "old">Locus</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value = "' . $data['locus'] . '">' . $data['nom_locus'] . '</option>';
+												echo '<option value = "' . $data['locus'] . '">' . $data['nom'] . ' : ' . $data['nom_locus'] . '</option>';
 											}
 										?>
 									</select>
@@ -132,10 +132,11 @@
 										<?php
 											$query1->execute();
 											while ($data = $query1->fetch()) {
-												echo '<option value = "' . $data['locus'] . '">' . $data['nom'] . '</option>';
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/locusIn.php">Ajouter un nouveau Locus ?</a><br />
 								<?php } ?>
 			
 								<input type = "submit" value = "Envoi" />
