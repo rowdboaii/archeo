@@ -62,18 +62,18 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-													FROM objet o, objetnature n
-													WHERE o.nature = n.identifiant
-													AND n.nature = \'galet\''
+										FROM objet o, objetnature n
+										WHERE o.nature = n.identifiant
+										AND n.nature = \'galet\''
 										);
 						$query2 = $bdd->prepare('SELECT identifiant, type
-													FROM galettype'
-													);
-						$query3 = $bdd->prepare('SELECT o.nom AS nom_objet, g.nom, t.type AS nom_type
-²													FROM galet g, galettype t, objet o
-													WHERE g.objet = o.identifiant
-													AND g.type = t.identifiant'
-													);
+										FROM galettype'
+										);
+						$query3 = $bdd->prepare('SELECT o.nom AS nom_objet, g.nom, t.type AS nom_type, g.objet, g.type
+²										FROM galet g, galettype t, objet o
+										WHERE g.objet = o.identifiant
+										AND g.type = t.identifiant'
+										);
 					?>
 
 					<p>
@@ -114,7 +114,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												echo '<option value = "' . $data['nom'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -122,14 +122,14 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "objet") { ?>
+								<?php if ($_SESSION['champ'] == "objet") { ?>
 									<label for = "old">Objet</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_objet'] . '</option>';
+												echo '<option value = "' . $data['objet'] . '">' . $data['nom'] . ' : ' . $data['nom_objet'] . '</option>';
 											}
 										?>
 									</select>
@@ -142,17 +142,18 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/objetIn.php">Ajouter un nouvel Objet ?</a><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "type") { ?>
+								<?php if ($_SESSION['champ'] == "type") { ?>
 									<label for = "old">Type</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_type'] . '</option>';
+												echo '<option value = "' . $data['type'] . '">' . $data['nom'] . ' : ' . $data['nom_type'] . '</option>';
 											}
 										?>
 									</select>
@@ -165,7 +166,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../parameters/galetType.php">Ajouter un nouveau Type de Galet ?</a><br />
 								<?php } ?>
 							
 								<input type = "submit" value = "Envoi" />
