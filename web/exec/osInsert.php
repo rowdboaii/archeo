@@ -53,7 +53,8 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO os (objet, partie, type, taxon, animal, type_animal, forme, dissous, morsure, conservation, datation)
-									VALUES (:objet, :partie, :type, :taxon, :animal, :type_animal, :forme, :dissous, :morsure, :conservation, :datation)');
+									VALUES (:objet, :partie, :type, :taxon, :animal, :type_animal, :forme, :dissous, :morsure, :conservation, :datation)'
+									);
 						$query->execute(array('objet' => $_POST['objet'],
 									'partie' => $_POST['partie'],
 									'type' => $_POST['type'],
