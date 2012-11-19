@@ -54,17 +54,31 @@
 					<?php
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
-							$query = $bdd->prepare('UPDATE silex
-													SET :champ = :new
-													WHERE :champ = :old'
-													);
+							if ($_SESSION['champ'] == 'objet')
+								$query = $bdd->prepare('UPDATE silex
+											SET objet = :new
+											WHERE objet = :old'
+											);
+							}
 							
+							if ($_SESSION['champ'] == 'provenance')
+								$query = $bdd->prepare('UPDATE silex
+											SET provenance = :new
+											WHERE provenance = :old'
+											);
+							}
+
+							if ($_SESSION['champ'] == 'couleur')
+								$query = $bdd->prepare('UPDATE silex
+											SET couleur = :new
+											WHERE couleur = :old'
+											);
+							}
 						}
 						
-						$query->execute(array('champ' => $_SESSION['champ'],
-												'new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+						$query->execute(array('new' => $_POST['new'],
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
