@@ -53,7 +53,7 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO ostaxon (taxon)
-												VALUES (:taxon)');
+									VALUES (:taxon)');
 						$query->execute(array('taxon' => $_POST['taxon']));
 
 						if (!$query) {
