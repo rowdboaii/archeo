@@ -53,15 +53,16 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO article (titre, auteur, revue, sujet, annee, langue, mot_cle)
-												VALUES (:titre, :auteur, :revue, :sujet, :annee, :langue, :mot_cle)');
+									VALUES (:titre, :auteur, :revue, :sujet, :annee, :langue, :mot_cle)'
+									);
 						$query->execute(array('titre' => $_POST['titre'],
-												'auteur' => $_POST['auteur'],
-												'revue' => $_POST['revue'],
-												'sujet' => $_POST['sujet'],
-												'annee' => $_POST['annee'],
-												'langue' => $_POST['langue'],
-												'mot_cle' => $_POST['mot_cle']
-												));
+									'auteur' => $_POST['auteur'],
+									'revue' => $_POST['revue'],
+									'sujet' => $_POST['sujet'],
+									'annee' => $_POST['annee'],
+									'langue' => $_POST['langue'],
+									'mot_cle' => $_POST['mot_cle']
+									));
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
 						}
