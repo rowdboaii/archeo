@@ -53,10 +53,10 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO region (nom, pays)
-												VALUES (:nom, :pays)');
+									VALUES (:nom, :pays)');
 						$query->execute(array('nom' => $_POST['nom'],
-												'pays' => $_POST['pays'],
-												)) or die('Error');
+									'pays' => $_POST['pays'],
+								)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				
