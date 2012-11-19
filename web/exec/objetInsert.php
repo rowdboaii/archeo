@@ -53,7 +53,8 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, brule, periode, tamis, trouve_par, collection, fouille, prospection, fiche, commentaire)
-									VALUES (:nom, :type, :poids, :longueur, :largeur, :hauteur, :nature, :brule, :periode, :tamis, :trouve_par, :collection, :fouille, :prospection, :fiche, :commentaire)');
+									VALUES (:nom, :type, :poids, :longueur, :largeur, :hauteur, :nature, :brule, :periode, :tamis, :trouve_par, :collection, :fouille, :prospection, :fiche, :commentaire)'
+									);
 						$query->execute(array('nom' => $_POST['nom'],
 									'type' => $_POST['type'],
 									'poids' => $_POST['poids'],
