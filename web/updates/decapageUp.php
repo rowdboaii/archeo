@@ -62,12 +62,12 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT c.identifiant, c.nom
-													FROM carre c'
-													);
-						$query2 = $bdd->prepare('SELECT d.identifiant, d.nom, c.nom AS nom_carre
-													FROM decapage d, carre c
-													WHERE d.carre = c.identifiant'
-													);
+										FROM carre c'
+										);
+						$query2 = $bdd->prepare('SELECT d.identifiant, d.nom, c.nom AS nom_carre, d.carre
+										FROM decapage d, carre c
+										WHERE d.carre = c.identifiant'
+										);
 					?>
 
 					<p>
@@ -107,7 +107,7 @@
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												echo '<option value = "' . $data['nom'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -115,14 +115,14 @@
 									<input type = "text" name = "new" id = "new"><br />
 								<?php } ?>
 			
-								<?php> if ($_SESSION['champ'] == "carre") { ?>
+								<?php if ($_SESSION['champ'] == "carre") { ?>
 									<label for = "old">Carré</label> : 
 									<select name = "old_" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_carre'] . '</option>';
+												echo '<option value = "' . $data['carre'] . '">' . $data['carre'] . ' : ' . $data['nom_carre'] . '</option>';
 											}
 										?>
 									</select>
@@ -135,7 +135,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/carreIn.php">Ajouter un nouveau Carré ?</a><br />
 								<?php } ?>
 			
 								<input type = "submit" value = "Envoi" />
