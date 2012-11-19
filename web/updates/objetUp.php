@@ -62,37 +62,38 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, type
-													FROM objetType'
-													);
+										FROM objetType'
+										);
 						$query2 = $bdd->prepare('SELECT identifiant, nature
-													FROM objetNature'
-													);
+										FROM objetNature'
+										);
 						$query3 = $bdd->prepare('SELECT identifiant, prenom, nom
-													FROM personne'
-													);
+										FROM personne'
+										);
 						$query4 = $bdd->prepare('SELECT identifiant, nom
-													FROM collection'
-													);
+										FROM collection'
+										);
 						$query5 = $bdd->prepare('SELECT identifiant, periode
-													FROM periode'
-													);
+										FROM periode'
+										);
 						$query6 = $bdd->prepare('SELECT identifiant, nom
-													FROM fouille'
-													);
+										FROM fouille'
+										);
 						$query7 = $bdd->prepare('SELECT identifiant, nom
-													FROM prospection'
-													);
+										FROM prospection'
+										);
 						$query8 = $bdd->prepare('SELECT o.identifiant, o.nom, t.type AS nom_type, o.poids, o.longueur, o.largeur, o.hauteur, n.nature AS nom_nature, o.fiche, o.brule, p.periode AS nom_periode,
-													f.prenom AS prenom_f, f.nom AS nom_f, c.nom AS nom_collection, o.tamis, r.nom AS nom_prospection, u.nom AS nom_fouille, o.commentaire
-													FROM objet o, objettype t, objetnature n, periode p, personne f, collection c, prospection r, fouille u
-													WHERE o.type = t.identifiant
-													AND o.nature = n.identifiant
-													AND o.periode = p.identifiant
-													AND o.trouve_par = f.identifiant
-													AND o.collection = c.identifiant
-													AND o.prospection = r.identifiant
-													AND o.fouille = u.identifiant'
-													);
+										f.prenom AS prenom_f, f.nom AS nom_f, c.nom AS nom_collection, o.tamis, r.nom AS nom_prospection, u.nom AS nom_fouille, o.commentaire,
+										o.type, o.nature, o.periode, o.trouve_par, o.collection, o.prospection, o.fouille,
+										FROM objet o, objettype t, objetnature n, periode p, personne f, collection c, prospection r, fouille u
+										WHERE o.type = t.identifiant
+										AND o.nature = n.identifiant
+										AND o.periode = p.identifiant
+										AND o.trouve_par = f.identifiant
+										AND o.collection = c.identifiant
+										AND o.prospection = r.identifiant
+										AND o.fouille = u.identifiant'
+										);
 					?>
 
 					<p>
@@ -139,7 +140,7 @@
 										<?php
 											$query8->execute();
 											while ($data = $query8->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												echo '<option value = "' . $data['nom'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -154,7 +155,7 @@
 										<?php
 											$query8->execute();
 											while ($data = $query8->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_type'] . '</option>';
+												echo '<option value = "' . $data['type'] . '">' . $data['nom'] . ' : ' . $data['nom_type'] . '</option>';
 											}
 										?>
 									</select>
@@ -167,7 +168,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../parameters/objetType.php">Ajouter un nouveau Type ?<br />
 								<?php } ?>
 								
 								<?php> if ($_SESSION['champ'] == "poids") { ?>
@@ -177,7 +179,7 @@
 										<?php
 											$query8->execute();
 											while ($data = $query8->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['poids'] . '</option>';
+												echo '<option value = "' . $data['poids'] . '">' . $data['nom'] . ' : ' . $data['poids'] . '</option>';
 											}
 										?>
 									</select>
@@ -192,7 +194,7 @@
 										<?php
 											$query8->execute();
 											while ($data = $query8->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_nature'] . '</option>';
+												echo '<option value = "' . $data['nature'] . '">' . $data['nom'] . ' : ' . $data['nom_nature'] . '</option>';
 											}
 										?>
 									</select>
@@ -205,7 +207,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['nature'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../parameters/nature.php">Ajouter une nouvelle Nature ?</a><br />
 								<?php } ?>
 								
 								<?php> if ($_SESSION['champ'] == "longueur") { ?>
@@ -215,7 +218,7 @@
 										<?php
 											$query8->execute();
 											while ($data = $query8->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['longueur'] . '</option>';
+												echo '<option value = "' . $data['longueur'] . '">' . $data['nom'] . ' : ' . $data['longueur'] . '</option>';
 											}
 										?>
 									</select>
@@ -230,7 +233,7 @@
 										<?php
 											$query8->execute();
 											while ($data = $query8->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['largeur'] . '</option>';
+												echo '<option value = "' . $data['largeur'] . '">' . $data['nom'] . ' : ' . $data['largeur'] . '</option>';
 											}
 										?>
 									</select>
@@ -245,7 +248,7 @@
 										<?php
 											$query8->execute();
 											while ($data = $query8->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['hauteur'] . '</option>';
+												echo '<option value = "' . $data['hauteur'] . '">' . $data['nom'] . ' : ' . $data['hauteur'] . '</option>';
 											}
 										?>
 									</select>
@@ -260,7 +263,7 @@
 										<?php
 											$query8->execute();
 											while ($data = $query8->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_periode'] . '</option>';
+												echo '<option value = "' . $data['periode'] . '">' . $data['nom'] . ' : ' . $data['nom_periode'] . '</option>';
 											}
 										?>
 									</select>
@@ -273,7 +276,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['periode'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../parameters/periode.php">Ajouter une nouvelle Période ?</a><br />
 								<?php } ?>
 								
 								<?php> if ($_SESSION['champ'] == "trouve_par") { ?>
@@ -283,7 +287,7 @@
 										<?php
 											$query8->execute();
 											while ($data = $query8->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom_f'] . ' ' . $data['nom_f'] . '</option>';
+												echo '<option value = "' . $data['trouve_par'] . '">' . $data['nom'] . ' : ' . $data['prenom_f'] . ' ' . $data['nom_f'] . '</option>';
 											}
 										?>
 									</select> 
@@ -296,7 +300,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<?php } ?>
 									
 								<input type = "submit" value = "Envoi" />
