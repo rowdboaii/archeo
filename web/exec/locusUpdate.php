@@ -54,17 +54,59 @@
 					<?php
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
-							$query = $bdd->prepare('UPDATE locus
-													SET :champ = :new
-													WHERE :champ = :old'
-													);
-							
+							if ($_SESSION['champ'] == 'nom') {
+								$query = $bdd->prepare('UPDATE locus
+											SET nom = :new
+											WHERE nom = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'site') {
+								$query = $bdd->prepare('UPDATE locus
+											SET site = :new
+											WHERE site = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'type') {
+								$query = $bdd->prepare('UPDATE locus
+											SET type = :new
+											WHERE type = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'position_nord') {
+								$query = $bdd->prepare('UPDATE locus
+											SET position_nord = :new
+											WHERE position_nord = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'position_est') {
+								$query = $bdd->prepare('UPDATE locus
+											SET position_est = :new
+											WHERE position_est = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'altitude') {
+								$query = $bdd->prepare('UPDATE locus
+											SET altitude = :new
+											WHERE altitude = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'trouve_par') {
+								$query = $bdd->prepare('UPDATE locus
+											SET trouve_par = :new
+											WHERE trouve_par = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'appartient_a') {
+								$query = $bdd->prepare('UPDATE locus
+											SET appartient_a = :new
+											WHERE appartient_a = :old'
+											);
+							}
 						}
 						
-						$query->execute(array('champ' => $_SESSION['champ'],
-												'new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+						$query->execute(array('new' => $_POST['new'],
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
