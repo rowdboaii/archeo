@@ -60,15 +60,13 @@
 											WHERE objet = :old'
 											);
 							}
-							
-							if ($_SESSION['champ'] == 'provenance')
+							else if ($_SESSION['champ'] == 'provenance')
 								$query = $bdd->prepare('UPDATE silex
 											SET provenance = :new
 											WHERE provenance = :old'
 											);
 							}
-
-							if ($_SESSION['champ'] == 'couleur')
+							else if ($_SESSION['champ'] == 'couleur')
 								$query = $bdd->prepare('UPDATE silex
 											SET couleur = :new
 											WHERE couleur = :old'
