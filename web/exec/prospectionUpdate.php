@@ -55,16 +55,16 @@
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
 							$query = $bdd->prepare('UPDATE prospection
-													SET :champ = :new
-													WHERE :champ = :old'
-													);
+										SET :champ = :new
+										WHERE :champ = :old'
+										);
 							
 						}
 						
 						$query->execute(array('champ' => $_SESSION['champ'],
-												'new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+									'new' => $_POST['new'],
+									'old' => $_POST['old']
+								));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
