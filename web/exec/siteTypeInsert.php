@@ -53,7 +53,8 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO sitetype (type)
-									VALUES (:type)');
+									VALUES (:type)'
+									);
 						$query->execute(array('type' => $_POST['type']));
 
 						if (!$query) {
