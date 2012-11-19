@@ -53,7 +53,8 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO fonction (fonction)
-												VALUES (:fonction)');
+									VALUES (:fonction)'
+									);
 						$query->execute(array('fonction' => $_POST['fonction']));
 
 						if (!$query) {
