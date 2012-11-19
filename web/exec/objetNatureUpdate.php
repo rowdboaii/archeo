@@ -53,12 +53,12 @@
 
 					<?php
 						$query = $bdd->prepare('UPDATE objetnature
-												SET nature = :new
-												WHERE nature = :old'
-												);
+									SET nature = :new
+									WHERE nature = :old'
+									);
 						$query->execute(array('new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
