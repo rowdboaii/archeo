@@ -55,14 +55,12 @@
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
 							if ($_SESSION['champ'] == 'nom') {
-
 								$query = $bdd->prepare('UPDATE region
 											SET nom = :new
 											WHERE nom = :old'
 											);
 							}
 							else if ($_SESSION['champ'] == 'pays') {
-							
 								$query = $bdd->prepare('UPDATE region
 											SET pays = :new
 											WHERE pays = :old'
