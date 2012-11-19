@@ -54,12 +54,12 @@
 
 					<?php
 						$query = $bdd->prepare('UPDATE objettype
-												SET type = :new
-												WHERE type = :old'
-												);
+									SET type = :new
+									WHERE type = :old'
+									);
 						$query->execute(array('new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
