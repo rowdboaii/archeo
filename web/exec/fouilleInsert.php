@@ -53,12 +53,13 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO fouille (nom, decapage, annee, fouilleur)
-												VALUES (:nom, :decapage, :annee, :fouilleur)');
+									VALUES (:nom, :decapage, :annee, :fouilleur)'
+									);
 						$query->execute(array('nom' => $_POST['nom'],
-												'decapage' => $_POST['decapage'],
-												'annee' => $_POST['annee'],
-												'fouilleur' => $_POST['fouilleur']
-												)) or die('Error');
+									'decapage' => $_POST['decapage'],
+									'annee' => $_POST['annee'],
+									'fouilleur' => $_POST['fouilleur']
+								)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				
