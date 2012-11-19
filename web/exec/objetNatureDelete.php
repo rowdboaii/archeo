@@ -53,8 +53,8 @@
 
 					<?php
 						$query = $bdd->prepare('DELETE FROM objetnature
-												WHERE nature = :delete'
-												);
+									WHERE nature = :delete'
+									);
 						$query->execute(array('delete' => $_POST['delete']));
 
 						if (!$query) {
