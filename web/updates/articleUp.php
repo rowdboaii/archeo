@@ -62,19 +62,20 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, prenom, nom
-													FROM personne'
-													);
+										FROM personne'
+										);
 						$query2 = $bdd->prepare('SELECT identifiant, nom
-													FROM locus'
-													);
+										FROM locus'
+										);
 						$query3 = $bdd->prepare('SELECT identifiant, langue
-													FROM langue'
-													);
-						$query4 = $bdd->prepare('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, a.sujet, l.langue AS nom_langue
-													FROM article a, personne p, langue l
-													WHERE a.auteur = p.identifiant
-													AND a.langue = l.identifiant'
-													);
+										FROM langue'
+										);
+						$query4 = $bdd->prepare('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, a.sujet,
+										l.langue AS nom_langue, a.auteur, a.langue
+										FROM article a, personne p, langue l
+										WHERE a.auteur = p.identifiant
+										AND a.langue = l.identifiant'
+										);
 					?>
 
 					<p>
@@ -118,7 +119,7 @@
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['titre'] . '</option>';
+												echo '<option value = "' . $data['titre'] . '">' . $data['titre'] . '</option>';
 											}
 										?>
 									</select>
@@ -126,14 +127,14 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 					
-								<?php> if ($_SESSION['champ'] == "auteur") { ?>
+								<?php if ($_SESSION['champ'] == "auteur") { ?>
 									<label for = "old">Auteur</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+												echo '<option value = "' . $data['auteur'] . '">' . $data['titre'] . ' : ' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -146,7 +147,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/personneIn.php">Ajouter un nouvelle Personne ?</a><br />
 								<?php } ?>
 					
 								<?php if ($_SESSION['champ'] == "annee") { ?>
@@ -156,12 +158,12 @@
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['annee'] . '</option>';
+												echo '<option value = "' . $data['annee'] . '">' . $data['titre'] . ' : ' . $data['annee'] . '</option>';
 											}
 										?>
 									</select>
 									<label for = "new"> remplacé par</label> : 
-									<input type = "text" name = "new" id = "new" /><br />
+									<input type = "date" name = "new" id = "new" /> (jj/mm/aaaa)<br />
 								<?php } ?>
 					
 								<?php if ($_SESSION['champ'] == "revue") { ?>
@@ -171,7 +173,7 @@
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['revue'] . '</option>';
+												echo '<option value = "' . $data['revue'] . '">' . $data['titre'] . ' : ' . $data['revue'] . '</option>';
 											}
 										?>
 									</select>
@@ -186,7 +188,7 @@
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['sujet'] . '</option>';
+												echo '<option value = "' . $data['sujet'] . '">' . $data['titre'] . ' : ' . $data['sujet'] . '</option>';
 											}
 										?>
 									</select>
@@ -199,7 +201,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/locusIn.php">Ajouter un nouveau Locus ?</a><br />
 								<?php } ?>
 						
 								<?php if ($_SESSION['champ'] == "langue") { ?>
@@ -209,7 +212,7 @@
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_langue'] . '</option>';
+												echo '<option value ="' . $data['langue'] . '">' . $data['titre'] . ' : ' . $data['nom_langue'] . '</option>';
 											}
 										?>
 									</select>
@@ -222,7 +225,8 @@
 												echo '<option value ="' . $data['identifiant'] . '">' . $data['langue'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../parameters/langue.php">Ajouter une nouvelle Langue ?</a><br />
 								<?php } ?>
 			
 								<input type = "submit" value = "Envoi" />
