@@ -53,7 +53,7 @@
 
 					<?php
 						$query = $bdd->prepare('DELETE FROM region
-												WHERE identifiant = :delete'
+									WHERE identifiant = :delete'
 												);
 						$query->execute(array('delete' => $_POST['delete']));
 
