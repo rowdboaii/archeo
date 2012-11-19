@@ -53,12 +53,12 @@
 
 					<?php
 						$query = $bdd->prepare('UPDATE nationalite
-												SET nationalite = :new
-												WHERE nationalite = :old'
-												);
+									SET nationalite = :new
+									WHERE nationalite = :old'
+									);
 						$query->execute(array('new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
