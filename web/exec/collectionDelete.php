@@ -53,8 +53,8 @@
 
 					<?php
 						$query = $bdd->prepare('DELETE FROM collection
-												WHERE identifiant = :delete'
-												);
+									WHERE identifiant = :delete'
+									);
 						$query->execute(array('delete' => $_POST['delete']));
 
 						if (!$query) {
