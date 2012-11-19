@@ -70,8 +70,8 @@
 						$query3 = $bdd->prepare('SELECT identifiant, type
 													FROM sitetype'
 													);
-						$query4 = $bdd->prepare('SELECT s.identifiant, s.nom, r.nom AS nom_region, t.type AS nom_type, s.position_nord, s.position_est, s.altitude,
-													p.prenom AS prenom_p, p.nom AS nom_p, f.prenom AS prenom_f, f.nom AS nom_f, s.commentaire
+						$query4 = $bdd->prepare('SELECT s.identifiant, s.nom, r.nom AS nom_region, t.type AS nom_type, s.position_nord, s.position_est, s.altitude, s.trouve_par, s.fouille_par,
+													p.prenom AS prenom_p, p.nom AS nom_p, f.prenom AS prenom_f, f.nom AS nom_f, s.commentaire, s.region, s.type
 													FROM site s, region r, sitetype t, personne p, personne f
 													WHERE s.region = r.identifiant
 													AND s.type = t.identifiant
@@ -123,7 +123,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												echo '<option value = "' . $data['nom'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -138,7 +138,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_region'] . '</option>';
+												echo '<option value = "' . $data['region'] . '">' . $data['nom_region'] . '</option>';
 											}
 										?>
 									</select>
@@ -151,7 +151,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/regionIn.php">Ajouter une nouvelle Région ?</a><br />
 								<?php } ?>
 								
 								<?php if ($_SESSION['champ'] == "type") { ?>
@@ -161,7 +162,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_type'] . '</option>';
+												echo '<option value = "' . $data['type'] . '">' . $data['nom_type'] . '</option>';
 											}
 										?>
 									</select>
@@ -174,7 +175,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../parameters/siteType.php">Ajouter un nouveau Type de Site ?</a><br />
 								<?php } ?>
 								
 								<?php if ($_SESSION['champ'] == "position_nord") { ?>
@@ -184,7 +186,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['position_nord'] . '</option>';
+												echo '<option value = "' . $data['position_nord'] . '">' . $data['position_nord'] . '</option>';
 											}
 										?>
 									</select>
@@ -199,7 +201,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['position_est'] . '</option>';
+												echo '<option value = "' . $data['position_est'] . '">' . $data['position_est'] . '</option>';
 											}
 										?>
 									</select>
@@ -214,7 +216,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['altitude'] . '</option>';
+												echo '<option value = "' . $data['altitude'] . '">' . $data['altitude'] . '</option>';
 											}
 										?>
 									</select>
@@ -229,7 +231,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom_p'] . ' ' . $data['nom_p'] . '</option>';
+												echo '<option value = "' . $data['trouve_par'] . '">' . $data['prenom_p'] . ' ' . $data['nom_p'] . '</option>';
 											}
 										?>
 									</select>
@@ -242,7 +244,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<?php } ?>
 								
 								<?php if ($_SESSION['champ'] == "fouille_par") { ?>
@@ -252,7 +255,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom_f'] . ' ' . $data['nom_f'] . '</option>';
+												echo '<option value = "' . $data['fouille_par'] . '">' . $data['prenom_f'] . ' ' . $data['nom_f'] . '</option>';
 											}
 										?>
 									</select>
@@ -265,7 +268,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<?php } ?>
 							
 								<input type = "submit" value = "Envoi" />
