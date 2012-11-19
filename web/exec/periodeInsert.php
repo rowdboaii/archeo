@@ -53,7 +53,8 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO periode (periode)
-									VALUES (:periode)');
+									VALUES (:periode)'
+									);
 						$query->execute(array('periode' => $_POST['periode']));
 
 						if (!$query) {
