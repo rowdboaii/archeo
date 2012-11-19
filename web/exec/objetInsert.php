@@ -53,24 +53,24 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, brule, periode, tamis, trouve_par, collection, fouille, prospection, fiche, commentaire)
-												VALUES (:nom, :type, :poids, :longueur, :largeur, :hauteur, :nature, :brule, :periode, :tamis, :trouve_par, :collection, :fouille, :prospection, :fiche, :commentaire)');
+									VALUES (:nom, :type, :poids, :longueur, :largeur, :hauteur, :nature, :brule, :periode, :tamis, :trouve_par, :collection, :fouille, :prospection, :fiche, :commentaire)');
 						$query->execute(array('nom' => $_POST['nom'],
-												'type' => $_POST['type'],
-												'poids' => $_POST['poids'],
-												'longueur' => $_POST['longueur'],
-												'largeur' => $_POST['largeur'],
-												'hauteur' => $_POST['hauteur'],
-												'nature' => $_POST['nature'],
-												'brule' => $_POST['brule'],
-												'periode' => $_POST['periode'],
-												'tamis' => $_POST['tamis'],
-												'trouve_par' => $_POST['trouve'],
-												'collection' => $_POST['collection'],
-												'fouille' => $_POST['fouille'],
-												'prospection' => $_POST['prospection'],
-												'fiche' => $_POST['fiche'],
-												'commentaire' => $_POST['commentaire'],
-												)) or die('Error');
+									'type' => $_POST['type'],
+									'poids' => $_POST['poids'],
+									'longueur' => $_POST['longueur'],
+									'largeur' => $_POST['largeur'],
+									'hauteur' => $_POST['hauteur'],
+									'nature' => $_POST['nature'],
+									'brule' => $_POST['brule'],
+									'periode' => $_POST['periode'],
+									'tamis' => $_POST['tamis'],
+									'trouve_par' => $_POST['trouve'],
+									'collection' => $_POST['collection'],
+									'fouille' => $_POST['fouille'],
+									'prospection' => $_POST['prospection'],
+									'fiche' => $_POST['fiche'],
+									'commentaire' => $_POST['commentaire'],
+								)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				
