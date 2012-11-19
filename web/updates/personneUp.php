@@ -67,7 +67,7 @@
 						$query2 = $bdd->prepare('SELECT identifiant, fonction
 													FROM fonction'
 													);
-						$query3 = $bdd->prepare('SELECT p.identifiant, p.prenom, p.nom, n.nationalite, f.fonction
+						$query3 = $bdd->prepare('SELECT p.identifiant, p.prenom, p.nom, n.nationalite AS nationalite_nom, f.fonction AS fonction_nom, p.nationalite, p.fonction
 													FROM personne p, nationalite n, fonction f
 													WHERE p.nationalite = n.identifiant
 													AND p.fonction = f.identifiant'
@@ -113,7 +113,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['prenom'] . '</option>';
+												echo '<option value ="' . $data['prenom'] . '">' . $data['prenom'] . '</option>';
 											}
 										?>
 									</select>
@@ -128,7 +128,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												echo '<option value ="' . $data['nom'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -143,7 +143,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['nationalite'] . '</option>';
+												echo '<option value ="' . $data['nationalite'] . '">' . $data['nationalite_nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -156,7 +156,8 @@
 												echo '<option value ="' . $data['identifiant'] . '">' . $data['nationalite'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../parameters/nationalite.php">Ajouter une nouvelle Nationalité ?</a><br />
 								<?php } ?>
 								
 								<?php if ($_SESSION['champ'] == "fonction") { ?>
@@ -166,7 +167,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['fonction'] . '</option>';
+												echo '<option value ="' . $data['fonction'] . '">' . $data['fonction_nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -179,7 +180,8 @@
 												echo '<option value ="' . $data['identifiant'] . '">' . $data['fonction'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../parameters/fonction.php">Ajouter une nouvelle Fonction ?</a><br />
 								<?php } ?>
 							
 								<input type = "submit" value = "Envoi" />
