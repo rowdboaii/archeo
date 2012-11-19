@@ -54,17 +54,47 @@
 					<?php
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
-							$query = $bdd->prepare('UPDATE article
-													SET :champ = :new
-													WHERE :champ = :old'
-													);
-							
+							if ($_SESSION['champ'] == 'titre') {
+								$query = $bdd->prepare('UPDATE article
+											SET titre = :new
+											WHERE titre = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'auteur') {
+								$query = $bdd->prepare('UPDATE article
+											SET auteur = :new
+											WHERE auteur = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'annee') {
+								$query = $bdd->prepare('UPDATE article
+											SET annee = :new
+											WHERE annee = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'revue') {
+								$query = $bdd->prepare('UPDATE article
+											SET revue = :new
+											WHERE revue = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'sujet') {
+								$query = $bdd->prepare('UPDATE article
+											SET sujet = :new
+											WHERE sujet = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'langue') {
+								$query = $bdd->prepare('UPDATE article
+											SET langue = :new
+											WHERE langue = :old'
+											);
+							}
 						}
 						
-						$query->execute(array('champ' => $_SESSION['champ'],
-												'new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+						$query->execute(array('new' => $_POST['new'],
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
