@@ -62,16 +62,16 @@
 
 						/* Répération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nom
-													FROM lieu'
-													);
+										FROM lieu'
+										);
 						$query2 = $bdd->prepare('SELECT identifiant, prenom, nom
-													FROM personne'
-													);
+										FROM personne'
+										);
 						$query3 = $bdd->prepare('SELECT p.identifiant, p.nom, l.nom AS nom_lieu, r.prenom AS prenom_r, r.nom AS nom_r, p.date_prospection, p.responsable, p.lieu
-													FROM prospection p, personne r, lieu l
-													WHERE p.responsable = r.identifiant
-													AND p.lieu = l.identifiant'
-													);
+										FROM prospection p, personne r, lieu l
+										WHERE p.responsable = r.identifiant
+										AND p.lieu = l.identifiant'
+										);
 					?>
 
 					<p>
@@ -128,7 +128,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['lieu'] . '">' . $data['nom_lieu'] . '</option>';
+												echo '<option value ="' . $data['lieu'] . '">' . $data['nom'] . ' : ' . $data['nom_lieu'] . '</option>';
 											}
 										?>
 									</select>
@@ -152,7 +152,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['responsable'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+												echo '<option value ="' . $data['responsable'] . '">' . $data['nom'] . ' : ' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -176,7 +176,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['date_prospection'] . '</option>';
+												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . ' : ' . $data['date_prospection'] . '</option>';
 											}
 										?>
 									</select>
