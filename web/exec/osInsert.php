@@ -53,19 +53,19 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO os (objet, partie, type, taxon, animal, type_animal, forme, dissous, morsure, conservation, datation)
-												VALUES (:objet, :partie, :type, :taxon, :animal, :type_animal, :forme, :dissous, :morsure, :conservation, :datation)');
+									VALUES (:objet, :partie, :type, :taxon, :animal, :type_animal, :forme, :dissous, :morsure, :conservation, :datation)');
 						$query->execute(array('objet' => $_POST['objet'],
-												'partie' => $_POST['partie'],
-												'type' => $_POST['type'],
-												'taxon' => $_POST['taxon'],
-												'animal' => $_POST['animal'],
-												'type_animal' => $_POST['type_animal'],
-												'forme' => $_POST['forme'],
-												'dissous' => $_POST['dissolution'],
-												'morsure' => $_POST['morsure'],
-												'conservation' => $_POST['conservation'],
-												'datation' => $_POST['date']
-												)) or die('Error');
+									'partie' => $_POST['partie'],
+									'type' => $_POST['type'],
+									'taxon' => $_POST['taxon'],
+									'animal' => $_POST['animal'],
+									'type_animal' => $_POST['type_animal'],
+									'forme' => $_POST['forme'],
+									'dissous' => $_POST['dissolution'],
+									'morsure' => $_POST['morsure'],
+									'conservation' => $_POST['conservation'],
+									'datation' => $_POST['date']
+								)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				
