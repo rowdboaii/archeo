@@ -69,7 +69,7 @@
 						$query2 = $bdd->prepare('SELECT identifiant, nom
 													FROM gisement'
 													);
-						$query3 = $bdd->prepare('SELECT o.nom AS nom_objet, g.nom AS nom_gisement, s.couleur
+						$query3 = $bdd->prepare('SELECT o.nom AS nom_objet, g.nom AS nom_gisement, s.couleur, s.objet, s.provenance
 													FROM silex s, gisement g, objet o
 													WHERE s.provenance = g.identifiant
 													AND s.objet = o.identifiant'
@@ -114,7 +114,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_objet'] . '</option>';
+												echo '<option value = "' . $data['objet'] . '">' . $data['nom_objet'] . '</option>';
 											}
 										?>
 									</select>
@@ -127,7 +127,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/objetIn.php">Ajouter un nouvel objet ?</a><br />
 								<?php } ?>
 								
 								<?php if ($_SESSION['champ'] == "provenance") { ?>
@@ -137,7 +138,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_gisement'] . '</option>';
+												echo '<option value = "' . $data['provenance'] . '">' . $data['nom_gisement'] . '</option>';
 											}
 										?>
 									</select>
@@ -150,7 +151,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/gisementIn.php">Ajouter un nouveau Gisement ?</a><br />
 								<?php } ?>
 								
 								<?php if ($_SESSION['champ'] == "couleur") { ?>
@@ -160,7 +162,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['couleur'] . '</option>';
+												echo '<option value = "' . $data['couleur'] . '">' . $data['couleur'] . '</option>';
 											}
 										?>
 									</select>
