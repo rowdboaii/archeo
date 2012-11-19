@@ -62,16 +62,16 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT d.identifiant, d.nom
-													FROM decapage d'
-													);
+										FROM decapage d'
+										);
 						$query2 = $bdd->prepare('SELECT p.nom, p.prenom, p.identifiant
-													FROM personne p'
-													);
-						$query3 = $bdd->prepare('SELECT f.identifiant, f.nom, p.prenom, p.nom AS nom_personne, d.nom AS nom_decapage, f.annee
-													FROM fouille f, personne p, decapage d
-													WHERE f.fouilleur = p.identifiant
-													AND f.decapage = d.identifiant'
-													);
+										FROM personne p'
+										);
+						$query3 = $bdd->prepare('SELECT f.identifiant, f.nom, p.prenom, p.nom AS nom_personne, d.nom AS nom_decapage, f.annee, f.fouilleur, f.decapage
+										FROM fouille f, personne p, decapage d
+										WHERE f.fouilleur = p.identifiant
+										AND f.decapage = d.identifiant'
+										);
 					?>
 
 					<p>
@@ -119,69 +119,69 @@
 									</select>
 									<label for = "new"> remplacé par</label> : 
 									<input type = "text" name = "new" id = "new"><br />
-							<?php } ?>
-			
-							<?php> if ($_SESSION['champ'] == "fouilleur") { ?>
-								<label for = "old">Fouilleur</label> : 
-								<select name = "old" id = "old">
-									<option value = "0"></option>
-									<?php
-										$query3->execute();
-										while ($data = $query3->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom_personne'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new"> remplacé par</label> : 
-								<select name = "new" id = "new">
-									<option value = "0"></option>
-									<?php
-										$query2->execute();
-										while ($data = $query2->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
-										}
-									?>
-								</select><br />
-							<?php } ?>
-			
-							<?php> if ($_SESSION['champ'] == "decapage") { ?>
-								<label for = "old">Décapage</label> : 
-								<select name = "old" id = "old">
-									<option value = "0"></option>
-									<?php
-										$query3->execute();
-										while ($data = $query3->fetch()) {
-											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_decapage'] . '</option>';
-										}
-									?>
-								</select>
-								<label for = "new">Décapage</label> : 
-								<select name = "new" id = "new">
-									<option value = "0"></option>
-									<?php
-										$query1->execute();
-										while ($data = $query1->fetch()) {
-											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-										}
-									?>
-									</select><br />
 								<?php } ?>
 			
-								<?php> if ($_SESSION['champ'] == "annee") { ?>
+								<?php if ($_SESSION['champ'] == "fouilleur") { ?>
+									<label for = "old">Fouilleur</label> : 
+									<select name = "old" id = "old">
+										<option value = "0"></option>
+										<?php
+											$query3->execute();
+											while ($data = $query3->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom_personne'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
+										<option value = "0"></option>
+										<?php
+											$query2->execute();
+											while ($data = $query2->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+											}
+										?>
+									</select><br />
+								<?php } ?>
+				
+								<?php if ($_SESSION['champ'] == "decapage") { ?>
+									<label for = "old">Décapage</label> : 
+									<select name = "old" id = "old">
+										<option value = "0"></option>
+										<?php
+											$query3->execute();
+											while ($data = $query3->fetch()) {
+												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_decapage'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new">Décapage</label> : 
+									<select name = "new" id = "new">
+										<option value = "0"></option>
+										<?php
+											$query1->execute();
+											while ($data = $query1->fetch()) {
+												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+											}
+										?>
+									</select><br />
+								<?php } ?>
+				
+								<?php if ($_SESSION['champ'] == "annee") { ?>
 									<label for = "old">Année</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['annee'] . '</option>';
+												echo '<option value = "' . $data['annee'] . '">' . $data['nom'] . ' : ' . $data['annee'] . '</option>';
 											}
 										?>
-									</select>
-									<label for = "new"> remplacé par</label> : 
-									<input type = "date" name = "new" id = "new"><br />
+										</select>
+										<label for = "new"> remplacé par</label> : 
+									<input type = "date" name = "new" id = "new"> (jj/mm/aaaa)<br />
 								<?php } ?>
-					
+						
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
