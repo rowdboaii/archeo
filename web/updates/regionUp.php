@@ -62,12 +62,12 @@
 
 						/* Répération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nom
-													FROM pays'
-												 	);
+										FROM pays'
+									 	);
 						$query2 = $bdd->prepare('SELECT r.identifiant, r.nom, p.nom AS nom_pays, r.pays
-													FROM region r, pays p
-													WHERE r.pays = p.identifiant'
-													);
+										FROM region r, pays p
+										WHERE r.pays = p.identifiant'
+										);
 					?>
 
 					<p>
