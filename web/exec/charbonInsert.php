@@ -53,10 +53,11 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO charbon (objet, datation)
-												VALUES (:objet, :datation)');
+									VALUES (:objet, :datation)'
+									);
 						$query->execute(array('objet' => $_POST['objet'],
-												'datation' => $_POST['datation']
-												));
+									'datation' => $_POST['datation']
+									));
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
 						}
