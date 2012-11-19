@@ -53,7 +53,8 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO silex (objet, provenance, couleur)
-									VALUES (:objet, :provenance, :couleur)');
+									VALUES (:objet, :provenance, :couleur)'
+									);
 						$query->execute(array('objet' => $_POST['objet'],
 									'provenance' => $_POST['provenance'],
 									'couleur' => $_POST['couleur']
