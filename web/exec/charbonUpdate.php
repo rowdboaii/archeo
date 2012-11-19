@@ -54,17 +54,23 @@
 					<?php
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
-							$query = $bdd->prepare('UPDATE charbon
-													SET :champ = :new
-													WHERE :champ = :old'
-													);
-							
+							if ($_SESSION[] == 'objet') {
+								$query = $bdd->prepare('UPDATE charbon
+											SET objet = :new
+											WHERE objet = :old'
+											);
+							}
+							else if ($_SESSION[] == 'datation') {
+								$query = $bdd->prepare('UPDATE charbon
+											SET datation = :new
+											WHERE datation = :old'
+											);
+							}
 						}
 						
-						$query->execute(array('champ' => $_SESSION['champ'],
-												'new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+						$query->execute(array('new' => $_POST['new'],
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
