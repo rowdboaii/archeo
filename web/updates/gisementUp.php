@@ -62,12 +62,12 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nom
-													FROM region'
-												 	);
-						$query2 = $bdd->prepare('SELECT g.identifiant, g.nom, r.nom AS nom_region, g.position_nord, g.position_est, g.altitude, g.commentaire
-													FROM gisement g, region r
-													WHERE g.region = r.identifiant'
-													);
+										FROM region'
+									 	);
+						$query2 = $bdd->prepare('SELECT g.identifiant, g.nom, r.nom AS nom_region, g.position_nord, g.position_est, g.altitude, g.commentaire, g.region
+										FROM gisement g, region r
+										WHERE g.region = r.identifiant'
+										);
 					?>
 
 					<p>
@@ -110,7 +110,7 @@
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												echo '<option value ="' . $data['nom'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -118,14 +118,14 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "region") { ?>
+								<?php if ($_SESSION['champ'] == "region") { ?>
 									<label for = "old">Region</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_region'] . '</option>';
+												echo '<option value ="' . $data['region'] . '">' . $data['nom'] . ' : ' . $data['nom_region'] . '</option>';
 											}
 										?>
 									</select>
@@ -138,17 +138,18 @@
 												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/regionIn.php">Ajouter une nouvelle Région ?</a><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "position_nord") { ?>
+								<?php if ($_SESSION['champ'] == "position_nord") { ?>
 									<label for = "old">Position Nord</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['position_nord'] . '</option>';
+												echo '<option value ="' . $data['position_nord'] . '">' . $data['nom'] . ' : ' . $data['position_nord'] . '</option>';
 											}
 										?>
 									</select>
@@ -156,14 +157,14 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "position_est") { ?>
+								<?php if ($_SESSION['champ'] == "position_est") { ?>
 									<label for = "old">Position Est</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['position_est'] . '</option>';
+												echo '<option value ="' . $data['position_est'] . '">' . $data['nom'] . ' : ' . $data['position_est'] . '</option>';
 											}
 										?>
 									</select>
@@ -171,14 +172,14 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "altitude") { ?>
+								<?php if ($_SESSION['champ'] == "altitude") { ?>
 									<label for = "old">Altitude</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['altitude'] . '</option>';
+												echo '<option value ="' . $data['altitude'] . '">' . $data['nom'] . ' : ' . $data['altitude'] . '</option>';
 											}
 										?>
 									</select>
