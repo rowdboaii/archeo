@@ -62,14 +62,14 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-													FROM objet o, objetnature n
-													WHERE o.nature = n.identifiant
-													AND n.nature = \'charbon\''
-												 	);
-						$query2 = $bdd->prepare('SELECT o.nom AS nom_objet, c.datation
-													FROM charbon c, objet o
-													WHERE c.objet = o.identifiant'
-													);
+										FROM objet o, objetnature n
+										WHERE o.nature = n.identifiant
+										AND n.nature = \'charbon\''
+										);
+						$query2 = $bdd->prepare('SELECT o.nom AS nom_objet, c.datation, o.objet
+										FROM charbon c, objet o
+										WHERE c.objet = o.identifiant'
+										);
 					?>
 
 					<p>
@@ -109,7 +109,7 @@
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_objet'] . '</option>';
+												echo '<option value ="' . $data['objet'] . '">' . $data['nom_objet'] . '</option>';
 											}
 										?>
 									</select>
@@ -122,22 +122,23 @@
 												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/objetIn.php">Ajouter un nouvel Objet ?</a><br />
 								<?php } ?>
 			
-								<?php> if ($_SESSION['champ'] == "datation") { ?>
+								<?php if ($_SESSION['champ'] == "datation") { ?>
 									<label for = "old">Datation</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['datation'] . '</option>';
+												echo '<option value ="' . $data['datation'] . '">' . $data['nom_objet'] . ' : ' . $data['datation'] . '</option>';
 											}
 										?>
 									</select>
 									<label for = "new"> remplacé par</label> : 
-									<input type = "text" name = "new" id = "new" /><br />
+									<input type = "date" name = "new" id = "new" /> (jj/mm/aaa)<br />
 								<?php } ?>
 		
 								<input type = "submit" value = "Envoi" />
