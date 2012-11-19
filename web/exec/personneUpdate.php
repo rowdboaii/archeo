@@ -54,11 +54,30 @@
 					<?php
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
-							$query = $bdd->prepare('UPDATE personne
-													SET :champ = :new
-													WHERE :champ = :old'
-													);
-							
+							if ($_SESSION['champ'] == 'prenom') {
+								$query = $bdd->prepare('UPDATE personne
+											SET prenom = :new
+											WHERE prenom = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'nom') {
+								$query = $bdd->prepare('UPDATE personne
+											SET nom = :new
+											WHERE nom = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'nationalite') {
+								$query = $bdd->prepare('UPDATE personne
+											SET nationalite = :new
+											WHERE nationalite = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'fonction') {
+								$query = $bdd->prepare('UPDATE personne
+											SET fonction = :new
+											WHERE fonction = :old'
+											);
+							}
 						}
 						
 						$query->execute(array('champ' => $_SESSION['champ'],
