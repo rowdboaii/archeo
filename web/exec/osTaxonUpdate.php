@@ -54,12 +54,12 @@
 
 					<?php
 						$query = $bdd->prepare('UPDATE ostaxon
-												SET taxon = :new
-												WHERE taxon = :old'
-												);
+									SET taxon = :new
+									WHERE taxon = :old'
+									);
 						$query->execute(array('new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
