@@ -62,16 +62,16 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nationalite
-													FROM nationalite'
-													);
+										FROM nationalite'
+										);
 						$query2 = $bdd->prepare('SELECT identifiant, fonction
-													FROM fonction'
-													);
+										FROM fonction'
+										);
 						$query3 = $bdd->prepare('SELECT p.identifiant, p.prenom, p.nom, n.nationalite AS nationalite_nom, f.fonction AS fonction_nom, p.nationalite, p.fonction
-													FROM personne p, nationalite n, fonction f
-													WHERE p.nationalite = n.identifiant
-													AND p.fonction = f.identifiant'
-													);
+										FROM personne p, nationalite n, fonction f
+										WHERE p.nationalite = n.identifiant
+										AND p.fonction = f.identifiant'
+										);
 					?>
 
 					<p>
@@ -113,7 +113,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['prenom'] . '">' . $data['prenom'] . '</option>';
+												echo '<option value ="' . $data['prenom'] . '">' . $data['prenom'] . ' ' . $data['nom'] . ' : ' . $data['prenom'] . '</option>';
 											}
 										?>
 									</select>
@@ -128,7 +128,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['nom'] . '">' . $data['nom'] . '</option>';
+												echo '<option value ="' . $data['nom'] . '">' . $data['prenom'] . ' ' . $data['nom'] . ' : ' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -143,7 +143,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['nationalite'] . '">' . $data['nationalite_nom'] . '</option>';
+												echo '<option value ="' . $data['nationalite'] . '">' . $data['prenom'] . ' ' . $data['nom'] . ' : ' . $data['nationalite_nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -167,7 +167,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['fonction'] . '">' . $data['fonction_nom'] . '</option>';
+												echo '<option value ="' . $data['fonction'] . '">' . $data['prenom'] . ' ' . $data['nom'] . ' : ' . $data['fonction_nom'] . '</option>';
 											}
 										?>
 									</select>
