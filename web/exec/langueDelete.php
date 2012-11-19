@@ -53,8 +53,8 @@
 
 					<?php
 						$query = $bdd->prepare('DELETE FROM langue
-												WHERE langue = :delete'
-												);
+									WHERE langue = :delete'
+									);
 						$query->execute(array('delete' => $_POST['delete']));
 
 						if (!$query) {
