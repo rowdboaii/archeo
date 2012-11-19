@@ -62,22 +62,22 @@
 
 						/* Répération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nom
-													FROM region'
-													);
+										FROM region'
+										);
 						$query2 = $bdd->prepare('SELECT identifiant, prenom, nom
-													FROM personne'
-													);
+										FROM personne'
+										);
 						$query3 = $bdd->prepare('SELECT identifiant, type
-													FROM sitetype'
-													);
+										FROM sitetype'
+										);
 						$query4 = $bdd->prepare('SELECT s.identifiant, s.nom, r.nom AS nom_region, t.type AS nom_type, s.position_nord, s.position_est, s.altitude, s.trouve_par, s.fouille_par,
-													p.prenom AS prenom_p, p.nom AS nom_p, f.prenom AS prenom_f, f.nom AS nom_f, s.commentaire, s.region, s.type
-													FROM site s, region r, sitetype t, personne p, personne f
-													WHERE s.region = r.identifiant
-													AND s.type = t.identifiant
-													AND s.trouve_par = p.identifiant
-													AND s.fouille_par = f.identifiant'
-													);
+										p.prenom AS prenom_p, p.nom AS nom_p, f.prenom AS prenom_f, f.nom AS nom_f, s.commentaire, s.region, s.type
+										FROM site s, region r, sitetype t, personne p, personne f
+										WHERE s.region = r.identifiant
+										AND s.type = t.identifiant
+										AND s.trouve_par = p.identifiant
+										AND s.fouille_par = f.identifiant'
+										);
 					?>
 
 					<p>
@@ -138,7 +138,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['region'] . '">' . $data['nom_region'] . '</option>';
+												echo '<option value = "' . $data['region'] . '">' . $data['nom'] . ' : ' . $data['nom_region'] . '</option>';
 											}
 										?>
 									</select>
@@ -162,7 +162,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['type'] . '">' . $data['nom_type'] . '</option>';
+												echo '<option value = "' . $data['type'] . '">' . $data['nom'] . ' : ' . $data['nom_type'] . '</option>';
 											}
 										?>
 									</select>
@@ -186,7 +186,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['position_nord'] . '">' . $data['position_nord'] . '</option>';
+												echo '<option value = "' . $data['position_nord'] . '">' . $data['nom'] . ' : ' . $data['position_nord'] . '</option>';
 											}
 										?>
 									</select>
@@ -201,7 +201,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['position_est'] . '">' . $data['position_est'] . '</option>';
+												echo '<option value = "' . $data['position_est'] . '">' . $data['nom'] . ' : ' . $data['position_est'] . '</option>';
 											}
 										?>
 									</select>
@@ -216,7 +216,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['altitude'] . '">' . $data['altitude'] . '</option>';
+												echo '<option value = "' . $data['altitude'] . '">' . $data['nom'] . ' : ' . $data['altitude'] . '</option>';
 											}
 										?>
 									</select>
@@ -231,7 +231,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['trouve_par'] . '">' . $data['prenom_p'] . ' ' . $data['nom_p'] . '</option>';
+												echo '<option value = "' . $data['trouve_par'] . '">' . $data['nom'] . ' : ' . $data['prenom_p'] . ' ' . $data['nom_p'] . '</option>';
 											}
 										?>
 									</select>
@@ -255,7 +255,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['fouille_par'] . '">' . $data['prenom_f'] . ' ' . $data['nom_f'] . '</option>';
+												echo '<option value = "' . $data['fouille_par'] . '">' . $data['nom'] . ' : ' . $data['prenom_f'] . ' ' . $data['nom_f'] . '</option>';
 											}
 										?>
 									</select>
