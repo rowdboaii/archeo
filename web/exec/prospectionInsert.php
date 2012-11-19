@@ -53,7 +53,8 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO prospection (nom, responsable, lieu, date_prospection)
-									VALUES (:nom, :responsable, :lieu, :date_prospection)');
+									VALUES (:nom, :responsable, :lieu, :date_prospection)'
+									);
 						$query->execute(array('nom' => $_POST['nom'],
 									'responsable' => $_POST['responsable'],
 									'lieu' => $_POST['lieu'],
