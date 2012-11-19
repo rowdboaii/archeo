@@ -62,22 +62,23 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, type
-													FROM locusType'
-													);
+										FROM locusType'
+										);
 						$query2 = $bdd->prepare('SELECT identifiant, nom
-													FROM site'
-													);
+										FROM site'
+										);
 						$query3 = $bdd->prepare('SELECT identifiant, prenom, nom
-													FROM personne'
-													);
+										FROM personne'
+										);
 						$query4 = $bdd->prepare('SELECT l.identifiant, l.nom, s.nom AS nom_site, t.type AS nom_type, l.position_nord, l.position_est, 
-													l.altitude, f.prenom AS prenom_f,f.nom AS nom_f, p.prenom AS prenom_p, p.nom AS nom_p
-													FROM locus l, site s, locustype t, personne p, personne f
-													WHERE l.site = s.identifiant
-													AND l.type = t.identifiant
-													AND l.trouve_par = f.identifiant
-													AND l.appartient_a = p.identifiant'
-													);
+										l.altitude, f.prenom AS prenom_f,f.nom AS nom_f, p.prenom AS prenom_p, p.nom AS nom_p,
+										l.type, l.trouve_par, l.appartient_a, l.site
+										FROM locus l, site s, locustype t, personne p, personne f
+										WHERE l.site = s.identifiant
+										AND l.type = t.identifiant
+										AND l.trouve_par = f.identifiant
+										AND l.appartient_a = p.identifiant'
+										);
 					?>
 
 					<p>
@@ -123,7 +124,7 @@
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												echo '<option value = "' . $data['nom'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -131,14 +132,14 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "site") { ?>
+								<?php if ($_SESSION['champ'] == "site") { ?>
 									<label for = "old">Site</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_site'] . '</option>';
+												echo '<option value = "' . $data['site'] . '">' . $data['nom'] . ' : ' . $data['nom_site'] . '</option>';
 											}
 										?>
 									</select>
@@ -151,17 +152,18 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/siteIn.php">Ajouter un nouveau Site ?</a><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "type") { ?>
+								<?php if ($_SESSION['champ'] == "type") { ?>
 									<label for = "old">Type</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom_type'] . '</option>';
+												echo '<option value = "' . $data['type'] . '">' . $data['nom'] . ' : ' . $data['nom_type'] . '</option>';
 											}
 										?>
 									</select>
@@ -174,17 +176,18 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../parameters/locusType.php">Ajouter un nouveau Type ?</a><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "position_nord") { ?>
+								<?php if ($_SESSION['champ'] == "position_nord") { ?>
 									<label for = "old">Position Nord</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['position_nord'] . '</option>';
+												echo '<option value = "' . $data['position_nord'] . '">' . $data['nom'] . ' : ' . $data['position_nord'] . '</option>';
 											}
 										?>
 									</select>
@@ -192,14 +195,14 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "position_est") { ?>
+								<?php if ($_SESSION['champ'] == "position_est") { ?>
 									<label for = "old">Position Est</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['position_est'] . '</option>';
+												echo '<option value = "' . $data['position_est'] . '">' . $data['nom'] . ' : ' . $data['position_est'] . '</option>';
 											}
 										?>
 									</select>
@@ -207,14 +210,14 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "altitude") { ?>
+								<?php if ($_SESSION['champ'] == "altitude") { ?>
 									<label for = "old">Altitude</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['altitude'] . '</option>';
+												echo '<option value = "' . $data['altitude'] . '">' . $data['nom'] . ' : ' . $data['altitude'] . '</option>';
 											}
 										?>
 									</select>
@@ -222,14 +225,14 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "trouve_par") { ?>
+								<?php if ($_SESSION['champ'] == "trouve_par") { ?>
 									<label for = "old">Trouvé par</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom_f'] . ' ' . $data['nom_f'] . '</option>';
+												echo '<option value = "' . $data['trouve_par'] . '">' . $data['nom'] . ' : ' . $data['prenom_f'] . ' ' . $data['nom_f'] . '</option>';
 											}
 										?>
 									</select>
@@ -242,17 +245,18 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/personneIn.php">Ajouter une nouvelle personne ?</a><br />
 								<?php } ?>
 								
-								<?php> if ($_SESSION['champ'] == "appartient_a") { ?>
+								<?php if ($_SESSION['champ'] == "appartient_a") { ?>
 									<label for = "old">Propriétaire</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom_p'] . ' ' . $data['nom_p'] . '</option>';
+												echo '<option value = "' . $data['appartient_a'] . '">' . $data['nom'] . ' : ' . $data['prenom_p'] . ' ' . $data['nom_p'] . '</option>';
 											}
 										?>
 									</select>
@@ -265,7 +269,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<?php } ?>
 							
 								<input type = "submit" value = "Envoi" />
