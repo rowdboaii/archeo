@@ -54,17 +54,35 @@
 					<?php
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
-							$query = $bdd->prepare('UPDATE fouille
-													SET :champ = :new
-													WHERE :champ = :old'
-													);
-							
+							if ($_SESSION['champ'] == 'nom') {
+								$query = $bdd->prepare('UPDATE fouille
+											SET nom = :new
+											WHERE nom = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'fouilleur') {
+								$query = $bdd->prepare('UPDATE fouille
+											SET fouilleur = :new
+											WHERE fouilleur = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'decapage') {
+								$query = $bdd->prepare('UPDATE fouille
+											SET decapage = :new
+											WHERE decapage = :old'
+											);
+							}
+							if ($_SESSION['champ'] == 'annee') {
+								$query = $bdd->prepare('UPDATE fouille
+											SET annee = :new
+											WHERE annee = :old'
+											);
+							}
 						}
 						
-						$query->execute(array('champ' => $_SESSION['champ'],
-												'new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+						$query->execute(array('new' => $_POST['new'],
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
