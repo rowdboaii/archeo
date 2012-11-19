@@ -53,10 +53,11 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO collection (nom, proprietaire)
-												VALUES (:nom, :proprietaire)');
+									VALUES (:nom, :proprietaire)'
+									);
 						$query->execute(array('nom' => $_POST['nom'],
-												'proprietaire' => $_POST['proprietaire']
-												)) or die('Error');
+									'proprietaire' => $_POST['proprietaire']
+								)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
 				
