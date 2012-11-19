@@ -63,18 +63,19 @@
 						/* Récupération des données de la base. */
 
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-													FROM objet o, objetnature n
-													WHERE o.nature = n.identifiant
-													AND n.nature = \'os\''
-													);
+										FROM objet o, objetnature n
+										WHERE o.nature = n.identifiant
+										AND n.nature = \'os\''
+										);
 						$query2 = $bdd->prepare('SELECT identifiant, taxon
-													FROM osTaxon'
-													);
-						$query3 = $bdd->prepare('SELECT o.nom AS nom_objet, s.partie, s.type, t.taxon AS nom_taxon, s.animal, s.type_animal, s.forme, s.dissous, s.morsure, s.conservation, s.datation
-													FROM os s, objet o, ostaxon t
-													WHERE s.objet = o.identifiant
-													AND s.taxon = t.identifiant'
-													);
+										FROM osTaxon'
+										);
+						$query3 = $bdd->prepare('SELECT o.nom AS nom_objet, s.partie, s.type, t.taxon AS nom_taxon, s.animal, s.type_animal, s.forme, s.dissous,
+										s.morsure, s.conservation, s.datation, s.objet, s.taxon
+										FROM os s, objet o, ostaxon t
+										WHERE s.objet = o.identifiant
+										AND s.taxon = t.identifiant'
+										);
 					?>
 
 					<p>
@@ -120,7 +121,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_objet'] . '</option>';
+												echo '<option value ="' . $data['objet'] . '">' . $data['nom_objet'] . '</option>';
 											}
 										?>
 									</select>
@@ -133,7 +134,8 @@
 												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/objetIn.php">Ajouter un nouvel Objet ?</a><br />
 								<?php } ?>
 								
 								<?php if ($_SESSION['champ'] == "partie") { ?>
@@ -143,7 +145,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['partie'] . '</option>';
+												echo '<option value ="' . $data['partie'] . '">' . $data['nom_objet'] . ' : ' . $data['partie'] . '</option>';
 											}
 										?>
 									</select>
@@ -158,7 +160,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['type'] . '</option>';
+												echo '<option value ="' . $data['type'] . '">' . $data['nom_objet'] . ' : ' . $data['type'] . '</option>';
 											}
 										?>
 									</select>
@@ -173,7 +175,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_taxon'] . '</option>';
+												echo '<option value ="' . $data['taxon'] . '">' . $data['nom_objet'] . ' : ' . $data['nom_taxon'] . '</option>';
 											}
 										?>
 									</select>
@@ -186,7 +188,8 @@
 												echo '<option value ="' . $data['identifiant'] . '">' . $data['taxon'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../parameters/taxon.php">Ajouter un nouveau Taxon ?</a><br />
 								<?php } ?>
 								
 								<?php if ($_SESSION['champ'] == "animal") { ?>
@@ -196,7 +199,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['animal'] . '</option>';
+												echo '<option value ="' . $data['animal'] . '">' . $data['nom_objet'] . ' : ' . $data['animal'] . '</option>';
 											}
 										?>
 									</select>
@@ -211,7 +214,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['type_animal'] . '</option>';
+												echo '<option value ="' . $data['type_animal'] . '">' . $data['nom_objet'] . ' : ' . $data['type_animal'] . '</option>';
 											}
 										?>
 									</select>
@@ -226,7 +229,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['forme'] . '</option>';
+												echo '<option value ="' . $data['forme'] . '">' . $data['nom_objet'] . ' : ' . $data['forme'] . '</option>';
 											}
 										?>
 									</select>
@@ -241,12 +244,12 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['datation'] . '</option>';
+												echo '<option value ="' . $data['datation'] . '">' . $data['nom_objet'] . ' : ' . $data['datation'] . '</option>';
 											}
 										?>
 									</select>
 									<label for = "new"> remplacé par</label> : 
-									<input type = "text" name = "new" id = "new" /><br />
+									<input type = "date" name = "new" id = "new" /> (jj/mm/aaaa)<br />
 								<?php } ?>
 							
 								<input type = "submit" value = "Envoi" />
