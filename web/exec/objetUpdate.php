@@ -54,17 +54,65 @@
 					<?php
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
-							$query = $bdd->prepare('UPDATE objet
-													SET :champ = :new
-													WHERE :champ = :old'
-													);
-							
+							if ($_SESSION['champ'] == 'nom') {
+								$query = $bdd->prepare('UPDATE objet
+											SET nom = :new
+											WHERE nom = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'type') {
+								$query = $bdd->prepare('UPDATE objet
+											SET type = :new
+											WHERE type = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'poids') {
+								$query = $bdd->prepare('UPDATE objet
+											SET poids = :new
+											WHERE poids = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'longueur') {
+								$query = $bdd->prepare('UPDATE objet
+											SET longueur = :new
+											WHERE longueur = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'largeur') {
+								$query = $bdd->prepare('UPDATE objet
+											SET largeur = :new
+											WHERE largeur = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'hauteur') {
+								$query = $bdd->prepare('UPDATE objet
+											SET hauteur = :new
+											WHERE hauteur = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'nature') {
+								$query = $bdd->prepare('UPDATE objet
+											SET nature = :new
+											WHERE nature = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'periode') {
+								$query = $bdd->prepare('UPDATE objet
+											SET periode = :new
+											WHERE periode = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'trouve_par') {
+								$query = $bdd->prepare('UPDATE objet
+											SET trouve_par = :new
+											WHERE trouve_par = :old'
+											);
+							}
 						}
 						
-						$query->execute(array('champ' => $_SESSION['champ'],
-												'new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+						$query->execute(array('new' => $_POST['new'],
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
