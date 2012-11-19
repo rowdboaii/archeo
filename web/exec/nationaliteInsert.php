@@ -53,7 +53,7 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO nationalite (nationalite)
-												VALUES (:nationalite)');
+									VALUES (:nationalite)');
 						$query->execute(array('nationalite' => $_POST['nationalite']));
 
 						if (!$query) {
