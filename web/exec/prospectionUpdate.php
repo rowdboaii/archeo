@@ -80,8 +80,7 @@
 							}
 						}
 						
-						$query->execute(array('champ' => $_SESSION['champ'],
-									'new' => $_POST['new'],
+						$query->execute(array('new' => $_POST['new'],
 									'old' => $_POST['old']
 								));
 
