@@ -67,7 +67,7 @@
 						$query2 = $bdd->prepare('SELECT identifiant, prenom, nom
 													FROM personne'
 													);
-						$query3 = $bdd->prepare('SELECT p.identifiant, p.nom, l.nom AS nom_lieu, r.prenom AS prenom_r, r.nom AS nom_r, p.date_prospection
+						$query3 = $bdd->prepare('SELECT p.identifiant, p.nom, l.nom AS nom_lieu, r.prenom AS prenom_r, r.nom AS nom_r, p.date_prospection, p.responsable, p.lieu
 													FROM prospection p, personne r, lieu l
 													WHERE p.responsable = r.identifiant
 													AND p.lieu = l.identifiant'
@@ -113,7 +113,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												echo '<option value ="' . $data['nom'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -128,7 +128,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom_lieu'] . '</option>';
+												echo '<option value ="' . $data['lieu'] . '">' . $data['nom_lieu'] . '</option>';
 											}
 										?>
 									</select>
@@ -141,7 +141,8 @@
 												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/lieuIn.php">Ajouter un nouveau Lieu ?</a><br />
 								<?php } ?>
 								
 								<?php if ($_SESSION['champ'] == "responsable") { ?>
@@ -151,7 +152,7 @@
 										<?php
 											$query3->execute();
 											while ($data = $query3->fetch()) {
-												echo '<option value ="' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
+												echo '<option value ="' . $data['responsable'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -164,7 +165,8 @@
 												echo '<option value ="' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/personneIn.php">Ajouter un nouveau Responsable ?</a><br />
 								<?php } ?>
 								
 								<?php if ($_SESSION['champ'] == "date_prospection") { ?>
@@ -179,7 +181,7 @@
 										?>
 									</select>
 									<label for = "new"> remplacé par</label> : 
-									<input type = "text" name = "new" id = "new" /><br />
+									<input type = "date" name = "new" id = "new" /> (jj/mm/aaaa)<br />
 								<?php } ?>
 							
 								<input type = "submit" value = "Envoi" />
