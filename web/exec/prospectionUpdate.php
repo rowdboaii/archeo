@@ -54,11 +54,30 @@
 					<?php
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
-							$query = $bdd->prepare('UPDATE prospection
-										SET :champ = :new
-										WHERE :champ = :old'
-										);
-							
+							if ($_SESSION['champ'] == 'nom') {
+								$query = $bdd->prepare('UPDATE prospection
+											SET nom = :new
+											WHERE nom = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'lieu') {
+								$query = $bdd->prepare('UPDATE prospection
+											SET lieu = :new
+											WHERE lieu = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'responsable') {
+								$query = $bdd->prepare('UPDATE prospection
+											SET responsable = :new
+											WHERE responsable = :old'
+											);
+							}
+							else if ($_SESSION['champ'] == 'date_prospection') {
+								$query = $bdd->prepare('UPDATE prospection
+											SET date_prospection = :new
+											WHERE date_prospection = :old'
+											);
+							}
 						}
 						
 						$query->execute(array('champ' => $_SESSION['champ'],
