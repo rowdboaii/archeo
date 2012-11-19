@@ -80,10 +80,9 @@
 							}
 						}
 						
-						$query->execute(array('champ' => $_SESSION['champ'],
-												'new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+						$query->execute(array('new' => $_POST['new'],
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
