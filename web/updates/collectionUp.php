@@ -62,12 +62,12 @@
 
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT p.prenom, p.nom, p.identifiant
-													FROM personne p'
-													);
-						$query2 = $bdd->prepare('SELECT c.identifiant, p.prenom, c.nom, p.nom AS nom_personne
-													FROM collection c, personne p
-													WHERE c.proprietaire = p.identifiant'
-													);
+										FROM personne p'
+										);
+						$query2 = $bdd->prepare('SELECT c.identifiant, p.prenom, c.nom, p.nom AS nom_personne, c.proprietaire
+										FROM collection c, personne p
+										WHERE c.proprietaire = p.identifiant'
+										);
 					?>
 
 					<p>
@@ -107,7 +107,7 @@
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												echo '<option value = "' . $data['nom'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
 									</select>
@@ -115,14 +115,14 @@
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 			
-								<?php> if ($_SESSION['champ'] == "proprietaire") { ?>
+								<?php if ($_SESSION['champ'] == "proprietaire") { ?>
 									<label for = "old">Propriétaire</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom_personne'] . '</option>';
+												echo '<option value = "' . $data['proprietaire'] . '">' . $data['nom'] . ' : ' . $data['prenom'] . ' ' . $data['nom_personne'] . '</option>';
 											}
 										?>
 									</select>
@@ -135,7 +135,8 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
-									</select><br />
+									</select> 
+									<a href = "../inputs/personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<?php } ?>
 				
 								<input type = "submit" value = "Envoi" />
