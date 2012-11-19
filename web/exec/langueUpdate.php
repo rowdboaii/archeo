@@ -55,7 +55,7 @@
 						$query = $bdd->prepare('UPDATE langue
 									SET langue = :new
 									WHERE langue = :old'
-												);
+									);
 						$query->execute(array('new' => $_POST['new'],
 									'old' => $_POST['old']
 									));
