@@ -53,7 +53,8 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO gisement (nom, region, position_nord, position_est, altitude, commentaire)
-									VALUES (:nom, :region, :position_nord, :position_est, :altitude, :commentaire)');
+									VALUES (:nom, :region, :position_nord, :position_est, :altitude, :commentaire)'
+									);
 						$query->execute(array('nom' => $_POST['nom'],
 									'region' => $_POST['region'],
 									'position_nord' => $_POST['nord'],
