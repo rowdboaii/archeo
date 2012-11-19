@@ -57,22 +57,22 @@
 							if ($_SESSION['champ'] == 'nom') {
 
 								$query = $bdd->prepare('UPDATE region
-														SET nom = :new
-														WHERE nom = :old'
-														);
+											SET nom = :new
+											WHERE nom = :old'
+											);
 							}
 							else if ($_SESSION['champ'] == 'pays') {
 							
 								$query = $bdd->prepare('UPDATE region
-														SET pays = :new
-														WHERE pays = :old'
-														);
+											SET pays = :new
+											WHERE pays = :old'
+											);
 							}
 						}
 						
 						$query->execute(array('new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
