@@ -53,7 +53,8 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO site (nom, region, position_nord, position_est, altitude, trouve_par, fouille_par, type, commentaire)
-									VALUES (:nom, :region, :position_nord, :position_est, :altitude, :trouve_par, fouille_par, type, :commentaire)');
+									VALUES (:nom, :region, :position_nord, :position_est, :altitude, :trouve_par, fouille_par, type, :commentaire)'
+									);
 						$query->execute(array('nom' => $_POST['nom'],
 									'region' => $_POST['region'],
 									'position_nord' => $_POST['nord'],
