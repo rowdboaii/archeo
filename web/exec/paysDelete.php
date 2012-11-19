@@ -53,8 +53,8 @@
 
 					<?php
 						$query = $bdd->prepare('DELETE FROM pays
-												WHERE nom = :delete'
-												);
+									WHERE nom = :delete'
+									);
 						$query->execute(array('delete' => $_POST['delete']));
 
 						if (!$query) {
