@@ -53,8 +53,8 @@
 
 					<?php
 						$query = $bdd->prepare('DELETE FROM ostaxon
-												WHERE taxon = :delete'
-												);
+									WHERE taxon = :delete'
+									);
 						$query->execute(array('delete' => $_POST['delete']));
 
 						if (!$query) {
