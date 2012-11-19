@@ -53,7 +53,8 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO locus (nom, type, site, position_nord, position_est, altitude, trouve_par, appartient_a)
-									VALUES (:nom, :type, :site, :position_nord, :position_est, :altitude, :trouve_par, :appartient_a)');
+									VALUES (:nom, :type, :site, :position_nord, :position_est, :altitude, :trouve_par, :appartient_a)'
+									);
 						$query->execute(array('nom' => $_POST['nom'],
 									'type' => $_POST['type'],
 									'site' => $_POST['site'],
