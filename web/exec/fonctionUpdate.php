@@ -53,12 +53,12 @@
 
 					<?php
 						$query = $bdd->prepare('UPDATE fonction
-												SET fonction = :new
-												WHERE fonction = :old'
-												);
+									SET fonction = :new
+									WHERE fonction = :old'
+									);
 						$query->execute(array('new' => $_POST['new'],
-												'old' => $_POST['old']
-												));
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
