@@ -53,10 +53,11 @@
 	
 					<?php
 						$query = $bdd->prepare('INSERT INTO carre (nom, locus)
-												VALUES (:nom, :locus)');
+									VALUES (:nom, :locus)'
+									);
 						$query->execute(array('nom' => $_POST['nom'],
-												'locus' => $_POST['locus']
-												));
+									'locus' => $_POST['locus']
+									));
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
 						}
