@@ -169,7 +169,7 @@
 									<input type = "radio" name = "brule" value = "non" id = "non" /><br />
 								<label for = "fiche">Fiche</label> : <input type = "text" name = "fiche" id = "fiche" /><br />
 								<label for = "commentaire">Commentaire</label> :<br />
-								<textarea name = "commentaire" id = "commentaire" rows = "5" cols = "40"></textarea><br />
+								<input type = "text" name = "commentaire" id = "commentaire" width = "30px" height = "5px" /><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
