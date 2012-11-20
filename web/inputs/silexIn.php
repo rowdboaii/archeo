@@ -61,13 +61,13 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-													FROM objet o, objetnature n
-													WHERE o.nature = n.identifiant
-													AND n.nature = \'silex\''
-												 	);
+										FROM objet o, objetnature n
+										WHERE o.nature = n.identifiant
+										AND n.nature = \'silex\''
+									 	);
 						$query2 = $bdd->prepare('SELECT identifiant, nom
-													FROM gisement'
-													);
+										FROM gisement'
+										);
 					?>
 					
 					<p>
@@ -82,7 +82,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "objetIn.php">Ajouter un nouvel objet ?</a><br />
 								<label for = "couleur">Couleur</label> : <input type = "text" name = "couleur" id = "couleur" /><br />
 								<label for = "provenance">Provenance</label> : 
 								<select name = "provenance" id = "provenance">
@@ -92,7 +93,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "gisementIn.php">Ajouter un nouveau Gisement ?</a><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
