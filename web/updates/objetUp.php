@@ -112,6 +112,7 @@
 									<option value = "nature">nature</option>
 									<option value = "periode">période</option>
 									<option value = "trouve_par">trouvé par</option>
+									<option value = "commentaire">commentaires</option>
 								</select><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
@@ -302,6 +303,21 @@
 										?>
 									</select> 
 									<a href = "../inputs/personneIn.php">Ajouter une nouvelle Personne ?</a><br />
+								<?php } ?>
+
+								<?php if ($_SESSION['champ'] == "commentaire") { ?>
+									<label for = "old">Commentaires</label> : 
+									<select name = "old" id = "old">
+										<option value = "0"></option>
+										<?php
+											$query8->execute();
+											while ($data = $query8->fetch()) {
+												echo '<option value = "' . $data['commentaire'] . '">' . $data['nom'] . ' : ' . $data['commentaire'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" width = "30px" height = "5px" /><br />
 								<?php } ?>
 									
 								<input type = "submit" value = "Envoi" />
