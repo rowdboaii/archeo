@@ -59,9 +59,9 @@
 						
 					<?php
 						$query = $bdd->query('SELECT c.identifiant, c.nom, l.nom AS locus
-												FROM carre c, locus l
-												WHERE c.locus = l.identifiant'
-												);
+									FROM carre c, locus l
+									WHERE c.locus = l.identifiant'
+									);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
