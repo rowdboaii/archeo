@@ -59,10 +59,10 @@
 						
 					<?php
 						$query = $bdd->query('SELECT o.nom AS nom_objet, g.nom AS nom_gisement, s.couleur
-												FROM silex s, gisement g, objet o
-												WHERE s.provenance = g.identifiant
-												AND s.objet = o.identifiant'
-												);
+									FROM silex s, gisement g, objet o
+									WHERE s.provenance = g.identifiant
+									AND s.objet = o.identifiant'
+									);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
