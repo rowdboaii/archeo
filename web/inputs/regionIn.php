@@ -61,8 +61,8 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT identifiant, nom
-												FROM pays'
-											 	);
+									FROM pays'
+									);
 					?>
 
 					<p>
