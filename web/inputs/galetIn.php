@@ -61,13 +61,13 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-													FROM objet o, objetnature n
-													WHERE o.nature = n.identifiant
-													AND n.nature = \'galet\''
-												 	);
+										FROM objet o, objetnature n
+										WHERE o.nature = n.identifiant
+										AND n.nature = \'galet\''
+									 	);
 						$query2 = $bdd->prepare('SELECT identifiant, type
-													FROM galettype'
-													);
+										FROM galettype'
+										);
 					?>
 
 					<p>
@@ -82,7 +82,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "objetIn.php">Ajouter un nouvel Objet ?</a><br />
 								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "type">Type</label> : 
 								<select name = "type" id = "type">
@@ -92,7 +93,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "../parameters/galetType.php">Ajouter un nouveau Type de Galet ?</a><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
