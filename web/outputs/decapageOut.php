@@ -59,9 +59,9 @@
 						
 					<?php
 						$query = $bdd->query('SELECT d.identifiant, d.nom, c.nom AS nom_carre
-												FROM decapage d, carre c
-												WHERE d.carre = c.identifiant'
-												);
+									FROM decapage d, carre c
+									WHERE d.carre = c.identifiant'
+									);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
