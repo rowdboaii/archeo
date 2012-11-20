@@ -61,9 +61,9 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT o.identifiant, o.nom
-												FROM objet o
-												WHERE o.nature = \'charbon\''
-											 	);
+									FROM objet o
+									WHERE o.nature = \'charbon\''
+								 	);
 					?>
 
 					<p>
@@ -78,7 +78,8 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "objetIn.php">Ajouter un nouvel Objet ?</a><br />
 								<label for = "datation">Datation</label> : <input type = "text" name = "datation" id = "datation" /><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
