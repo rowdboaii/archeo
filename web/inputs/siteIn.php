@@ -120,7 +120,7 @@
 								</select> 
 								<a href = "../parameters/siteType.php">Ajouter un nouveau Type de Site ?</a><br />
 								<label for = "commentaire">Commentaire</label> :<br />								
-								<textarea name = "commentaire" id = "commentaire" rows = "5" cols = "40"></textarea><br />
+								<input type = "text" name = "commentaire" id = "commentaire" width = "20px" height = "5px"><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
