@@ -60,8 +60,8 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT l.identifiant, l.nom
-												FROM locus l'
-												);
+									FROM locus l'
+									);
 					?>
 
 					<p>
@@ -77,7 +77,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "carreIn.php">Ajouter un nouveau Carré ?</a><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
