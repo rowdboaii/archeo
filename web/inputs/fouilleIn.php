@@ -60,11 +60,11 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT d.identifiant, d.nom
-													FROM decapage d'
-												 	);
+										FROM decapage d'
+									 	);
 						$query2 = $bdd->prepare('SELECT p.nom, p.prenom, p.identifiant
-													FROM personne p'
-													);
+										FROM personne p'
+										);
 					?>
 
 					<p>
@@ -80,7 +80,8 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br>
+								</select> 
+								<a href = "decapageIn.php">Ajouter un nouveau Décapage ?</a><br>
 								<label for = "fouilleur">Fouilleur</label> : 
 								<select name = "fouilleur" id = "fouilleur">
 									<?php
@@ -89,7 +90,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br>
+								</select> 
+								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br>
 								<label for = "annee">Année</label> : <input type = "date" name = "annee" id = "annee"><br>
 								<input type = "submit" value = "Envoi" />
 							</p>
