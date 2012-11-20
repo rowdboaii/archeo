@@ -59,13 +59,13 @@
 						
 					<?php
 						$query = $bdd->query('SELECT l.identifiant, l.nom, s.nom AS nom_site, t.type AS nom_type, l.position_nord,
-												l.position_est, l.altitude, f.prenom AS prenom_f, f.nom AS nom_f, p.prenom AS prenom_p, p.nom AS nom_p
-												FROM locus l, site s, locustype t, personne p, personne f
-												WHERE l.site = s.identifiant
-												AND l.type = t.identifiant
-												AND l.trouve_par = f.identifiant
-												AND l.appartient_a = p.identifiant'
-												);
+									l.position_est, l.altitude, f.prenom AS prenom_f, f.nom AS nom_f, p.prenom AS prenom_p, p.nom AS nom_p
+									FROM locus l, site s, locustype t, personne p, personne f
+									WHERE l.site = s.identifiant
+									AND l.type = t.identifiant
+									AND l.trouve_par = f.identifiant
+									AND l.appartient_a = p.identifiant'
+									);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
