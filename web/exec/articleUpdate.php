@@ -90,6 +90,12 @@
 											WHERE langue = :old'
 											);
 							}
+							else if ($_SESSION['champ'] == 'mot_cle') {
+								$query = $bdd->prepare('UPDATE article
+											SET mot_cle = :new
+											WHERE mot_cle = :old'
+											);
+							}
 						}
 						
 						$query->execute(array('new' => $_POST['new'],
