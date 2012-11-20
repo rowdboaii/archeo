@@ -61,8 +61,8 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT identifiant, nom
-												FROM region'
-											 	);
+									FROM region'
+								 	);
 					?>
 					
 					<p>
@@ -78,7 +78,8 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "regionIn.php">Ajouter une nouvelle Région ?</a><br />
 								<label for = "nord">Position Nord</label> : <input type = "text" name = "nord" id = "nord" /><br />
 								<label for = "est">Position Est</label> : <input type = "text" name = "est" id = "est" /><br />
 								<label for = "altitude">Altitude</label> : <input type = "text" name = "altitude" id = "altitude" /><br />
