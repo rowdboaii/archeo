@@ -102,6 +102,12 @@
 											WHERE fouille_par = :old'
 											);
 							}
+							else if ($_SESSION['champ'] == 'commentaire') {
+								$query = $bdd->prepare('UPDATE site 
+											SET commentaire = :new
+											WHERE commentaire = :old'
+											);
+							}
 						}
 						
 						$query->execute(array('new' => $_POST['new'],
