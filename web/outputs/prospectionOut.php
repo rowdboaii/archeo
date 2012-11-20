@@ -59,10 +59,10 @@
 						
 					<?php 
 						$query = $bdd->query('SELECT p.identifiant, p.nom, l.nom AS nom_lieu, r.prenom AS prenom_r, r.nom AS nom_r, p.date_prospection
-												FROM prospection p, personne r, lieu l
-												WHERE p.responsable = r.identifiant
-												AND p.lieu = l.identifiant'
-												);
+									FROM prospection p, personne r, lieu l
+									WHERE p.responsable = r.identifiant
+									AND p.lieu = l.identifiant'
+									);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
