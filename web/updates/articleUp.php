@@ -91,6 +91,7 @@
 									<option value = "revue">revue</option>
 									<option value = "sujet">sujet</option>
 									<option value = "langue">langue</option>
+									<option value = "mot_cle">mots clé</option>
 								</select><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
@@ -228,7 +229,22 @@
 									</select> 
 									<a href = "../parameters/langue.php">Ajouter une nouvelle Langue ?</a><br />
 								<?php } ?>
-			
+
+								<?php if ($_SESSION['champ'] == "mot_cle") { ?>
+									<label for = "old">Mots clé</label> : 
+									<select name = "old" id = "old">
+										<option value = "0"></option>
+										<?php
+											$query4->execute();
+											while ($data = $query4->fetch()) {
+												echo '<option value ="' . $data['mot_cle'] . '">' . $data['titre'] . ' : ' . $data['mot_cle'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" width = "30px" height = "5px" /><br />
+								<?php } ?>
+
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
