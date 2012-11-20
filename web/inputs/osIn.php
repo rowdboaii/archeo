@@ -61,13 +61,13 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
-													FROM objet o, objetnature n
-													WHERE o.nature = n.identifiant
-													AND n.nature = \'os\''
-												 	);
+										FROM objet o, objetnature n
+										WHERE o.nature = n.identifiant
+										AND n.nature = \'os\''
+									 	);
 						$query2 = $bdd->prepare('SELECT identifiant, taxon
-													FROM osTaxon'
-													);
+										FROM osTaxon'
+										);
 					?>
 				
 					<p>
@@ -82,7 +82,8 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "objetIn.php">Ajouter un nouvel Objet ?</a><br />
 								<label for = "partie">Partie Animal</label> : <input type = "text" name = "partie" id = "partie" /><br />
 								<label for = "type">Type Os</label> : <input type = "text" name = "type" id = "type" /><br />
 								<label for = "taxon">Taxon</label> : 
@@ -93,7 +94,8 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['taxon'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "../parameters/osTaxon.php">Ajouter un nouveau Taxon d'Os ?</a><br />
 								<label for = "animal">Animal</label> : <input type = "text" name = "animal" id = "animal" /><br />
 								<label for = "type_animal">Type d'Animal</label> : <input type = "text" name = "type_animal" id = "type_animal" /><br />
 								<label for = "forme">Forme</label> : <input type = "text" name = "forme" id = "forme" /><br />
