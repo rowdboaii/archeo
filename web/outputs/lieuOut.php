@@ -59,9 +59,9 @@
 						
 					<?php
 						$query = $bdd->query('SELECT l.identifiant, l.nom, r.nom AS nom_region, l.position_nord, l.position_est, l.altitude, l.commentaire
-												FROM lieu l, region r
-												WHERE l.region = r.identifiant'
-												);
+									FROM lieu l, region r
+									WHERE l.region = r.identifiant'
+									);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
