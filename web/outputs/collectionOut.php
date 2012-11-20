@@ -59,9 +59,9 @@
 						
 					<?php
 						$query = $bdd->query('SELECT c.identifiant, p.prenom, c.nom, p.nom AS nom_personne
-												FROM collection c, personne p
-												WHERE c.proprietaire = p.identifiant'
-												);
+									FROM collection c, personne p
+									WHERE c.proprietaire = p.identifiant'
+									);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
