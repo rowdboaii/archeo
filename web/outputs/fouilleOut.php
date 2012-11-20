@@ -59,10 +59,10 @@
 						
 					<?php
 						$query = $bdd->query('SELECT f.identifiant, f.nom, p.prenom, p.nom AS nom_personne, d.nom AS nom_decapage, f.annee
-												FROM fouille f, personne p, decapage d
-												WHERE f.fouilleur = p.identifiant
-												AND f.decapage = d.identifiant'
-												);
+									FROM fouille f, personne p, decapage d
+									WHERE f.fouilleur = p.identifiant
+									AND f.decapage = d.identifiant'
+									);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
