@@ -59,9 +59,9 @@
 					
 					<?php
 						$query = $bdd->query('SELECT r.identifiant, r.nom, p.nom AS nom_pays
-												FROM region r, pays p
-												WHERE r.pays = p.identifiant'
-												);
+									FROM region r, pays p
+									WHERE r.pays = p.identifiant'
+									);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
