@@ -59,10 +59,10 @@
 						
 					<?php
 						$query = $bdd->query('SELECT o.nom AS nom_objet, g.nom, t.type AS nom_type
-												FROM galet g, galettype t, objet o
-												WHERE g.objet = o.identifiant
-												AND g.type = t.identifiant'
-												);
+									FROM galet g, galettype t, objet o
+									WHERE g.objet = o.identifiant
+									AND g.type = t.identifiant'
+									);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
