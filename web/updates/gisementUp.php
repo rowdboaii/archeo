@@ -82,6 +82,7 @@
 									<option value = "position_nord">position nord</option>
 									<option value = "position_est">position est</option>
 									<option value = "altitude">altitude</option>
+									<option value = "commentaire">commentaires</option>
 								</select><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
@@ -186,7 +187,22 @@
 									<label for = "new"> remplacé par</label>
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
-							
+
+								<?php if ($_SESSION['champ'] == "commentaire") { ?>
+									<label for = "old">Commentaires</label> : 
+									<select name = "old" id = "old">
+										<option value = "0"></option>
+										<?php
+											$query2->execute();
+											while ($data = $query2->fetch()) {
+												echo '<option value ="' . $data['commentaire'] . '">' . $data['nom'] . ' : ' . $data['commentaire'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new"> remplacé par</label> : 
+									<input type = "text" name = "new" id = "new" width = "30px" height = "5px" /><br />
+								<?php } ?>
+
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
