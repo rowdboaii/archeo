@@ -61,14 +61,14 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nom
-													FROM region'
-												 	);
+										FROM region'
+										);
 						$query2 = $bdd->prepare('SELECT identifiant, prenom, nom
-													FROM personne'
-													);
+										FROM personne'
+										);
 						$query3 = $bdd->prepare('SELECT identifiant, type
-													FROM sitetype'
-													);
+										FROM sitetype'
+										);
 					?>
 				
 					<p>
@@ -84,7 +84,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "regionIn.php">Ajouter une nouvelle Région ?</a><br />
 								<label for = "nord">Position Nord</label> : <input type = "text" name = "nord" id = "nord" /><br />
 								<label for = "est">Position Est</label> : <input type = "text" name = "est" id = "est" /><br />
 								<label for = "altitude">Altitude</label> : <input type = "text" name = "altitude" id = "altitude" /><br />
@@ -96,7 +97,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<label for = "fouille">Fouillé par</label> : 
 								<select name = "fouille" id = "fouille">
 									<?php
@@ -105,7 +107,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<label for = "type">Type</label> : 
 								<select name = "type" id = "type">
 									<?php
@@ -114,7 +117,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "../parameters/siteType.php">Ajouter un nouveau Type de Site ?</a><br />
 								<label for = "commentaire">Commentaire</label> :<br />								
 								<textarea name = "commentaire" id = "commentaire" rows = "5" cols = "40"></textarea><br />
 								<input type = "submit" value = "Envoi" />
