@@ -61,8 +61,8 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT p.prenom, p.nom, p.identifiant
-												FROM personne p'
-												);
+									FROM personne p'
+									);
 					?>
 
 					<p>
@@ -78,7 +78,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
