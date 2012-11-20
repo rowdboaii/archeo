@@ -61,16 +61,14 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, type
-													FROM locusType'
-													);
-						
+										FROM locusType'
+										);
 						$query2 = $bdd->prepare('SELECT identifiant, nom
-													FROM site'
-													);
-						
+										FROM site'
+										);
 						$query3 = $bdd->prepare('SELECT identifiant, prenom, nom
-													FROM personne'
-													);
+										FROM personne'
+										);
 					?>
 				
 					<p>
@@ -86,7 +84,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "../parameters/locusType.php">Ajouter un nouveau Type de Locus ?</a><br />
 								<label for = "site">Site</label> : 
 								<select name = "site" id = "site">
 									<?php
@@ -95,7 +94,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "siteIn.php">Ajouter un nouveau Site ?</a><br />
 								<label for = "nord">Position Nord</label> : <input type = "text" name = "nord" id = "nord" /><br />
 								<label for = "est">Position Est</label> : <input type = "text" name = "est" id = "est" /><br />
 								<label for = "altitude">Altitude</label> : <input type = "text" name = "altitude" id = "altitude" /><br />
@@ -107,7 +107,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<label for = "proprietaire">Propriétaire</label> : 
 								<select name = "proprietaire" id = "proprietaire">
 									<?php
@@ -116,7 +117,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
