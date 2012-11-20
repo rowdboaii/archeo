@@ -84,6 +84,12 @@
 											WHERE altitude = :old'
 											);
 							}
+							else if ($_SESSION['champ'] == 'commentaire') {
+								$query = $bdd->prepare('UPDATE lieu
+											SET commentaire = :new
+											WHERE commentaire = :old'
+											);
+							}
 						}
 						
 						$query->execute(array('new' => $_POST['new'],
