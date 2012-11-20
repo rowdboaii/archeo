@@ -61,11 +61,11 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nationalite
-													FROM nationalite'
-												 	);
+										FROM nationalite'
+									 	);
 						$query2 = $bdd->prepare('SELECT identifiant, fonction
-													FROM fonction'
-													);
+										FROM fonction'
+										);
 					?>
 
 					<p>
@@ -82,7 +82,8 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['nationalite'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "../parameters/nationalite.php">Ajouter une nouvelle Nationalité ?</a><br />
 								<label for = "fonction">Fonction</label> : 
 								<select name = "fonction" id = "fonction">
 									<?php
@@ -91,7 +92,8 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['fonction'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "../parameters/fonction.php">Ajouter une nouvelle Fonction ?</a><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
