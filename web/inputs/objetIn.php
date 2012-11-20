@@ -61,26 +61,26 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, type
-													FROM objetType'
-												 	);
+										FROM objetType'
+										);
 						$query2 = $bdd->prepare('SELECT identifiant, nature
-													FROM objetNature'
-													);
+										FROM objetNature'
+										);
 						$query3 = $bdd->prepare('SELECT identifiant, prenom, nom
-													FROM personne'
-													);
+										FROM personne'
+										);
 						$query4 = $bdd->prepare('SELECT identifiant, nom
-													FROM collection'
-													);
+										FROM collection'
+										);
 						$query5 = $bdd->prepare('SELECT identifiant, periode
-													FROM periode'
-													);
+										FROM periode'
+										);
 						$query6 = $bdd->prepare('SELECT identifiant, nom
-													FROM fouille'
-													);
+										FROM fouille'
+										);
 						$query7 = $bdd->prepare('SELECT identifiant, nom
-													FROM prospection'
-													);
+										FROM prospection'
+										);
 					?>
 				
 					<p>
@@ -95,7 +95,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "../parameters/objetType.php">Ajouter un nouveau Type d'Objet ?</a><br />
 								<label for = "nature">nature</label> :
 								<select name = "nature" id = "nature">
 									<?php
@@ -104,7 +105,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nature'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "../parameters/objetNature.php">Ajouter une nouvelle Nature d'Objet ?</a><br />
 								<label for = "poids">Poids</label> : <input type = "text" name = "poids" id = "poids" /><br />
 								<label for = "longueur">Longueur</label> : <input type = "text" name = "longueur" id = "longueur" /><br />
 								<label for = "largeur">Largeur</label> : <input type = "text" name = "largeur" id = "largeur" /><br />
@@ -117,7 +119,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<label for = "collection">Collection</label> :
 								<select name = "collection" id = "collection">
 									<?php
@@ -126,7 +129,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "collectionIn.php">Ajouter une nouvelle Collection ?</a><br />
 								<label for = "periode">Période</label> :
 								<select name = "periode" id = "periode">
 									<?php
@@ -135,7 +139,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['periode'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "../parameters/periode.php">Ajouter une nouvelle Période ?</a><br />
 								Type de Recherche : <input type = "radio" name = "recherche" value = "prospection" id = "prospection" />
 										    <input type = "radio" name = "recherche" value = "fouille" id = "fouille" /><br />
 								<label for = "fouille">Fouille</label> :
@@ -146,7 +151,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "fouilleIn.php">Ajouter une nouvelle Fouille ?</a><br />
 								<label for = "prospection">Prospection</label> :
 								<select name = "prospection" id = "prospection">
 									<?php
@@ -155,7 +161,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "prospectionIn.php">Ajouter une nouvelle Prospection ?</a><br />
 								Tamis : <input type = "radio" name = "tamis" value = "oui" id = "oui" />
 									<input type = "radio" name = "tamis" value = "non" id = "non" /><br />
 								Brulé : <input type = "radio" name = "brule" value = "oui" id = "oui" />
