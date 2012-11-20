@@ -59,29 +59,29 @@
 						
 					<?php
 						$query1 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis, o.fiche, 													o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode, 													f.prenom AS prenom_f, f.nom AS nom_f, c.nom AS nom_collection
-												FROM objet o, objettype t, objetnature n, periode p, personne f, collection c
-												WHERE o.type = t.identifiant
-												AND o.nature = n.identifiant
-												AND o.periode = p.identifiant
-												AND o.trouve_par = f.identifiant
-												AND o.collection = c.identifiant'
-												);
+									FROM objet o, objettype t, objetnature n, periode p, personne f, collection c
+									WHERE o.type = t.identifiant
+									AND o.nature = n.identifiant
+									AND o.periode = p.identifiant
+									AND o.trouve_par = f.identifiant
+									AND o.collection = c.identifiant'
+									);
 						$query2 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis, o.fiche, 													o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode, 													f.prenom AS prenom_f, f.nom AS nom_f, u.nom AS nom_fouille
-												FROM objet o, objettype t, objetnature n, periode p, personne f, fouille u
-												WHERE o.type = t.identifiant
-												AND o.nature = n.identifiant
-												AND o.periode = p.identifiant
-												AND o.trouve_par = f.identifiant
-												AND o.fouille = u.identifiant'
-												);
+									FROM objet o, objettype t, objetnature n, periode p, personne f, fouille u
+									WHERE o.type = t.identifiant
+									AND o.nature = n.identifiant
+									AND o.periode = p.identifiant
+									AND o.trouve_par = f.identifiant
+									AND o.fouille = u.identifiant'
+									);
 						$query3 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis, o.fiche, 													o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode, 													f.prenom AS prenom_f, f.nom AS nom_f, r.nom AS nom_prospection
-												FROM objet o, objettype t, objetnature n, periode p, personne f, prospection r
-												WHERE o.type = t.identifiant
-												AND o.nature = n.identifiant
-												AND o.periode = p.identifiant
-												AND o.trouve_par = f.identifiant
-												AND o.prospection = r.identifiant'
-												);
+									FROM objet o, objettype t, objetnature n, periode p, personne f, prospection r
+									WHERE o.type = t.identifiant
+									AND o.nature = n.identifiant
+									AND o.periode = p.identifiant
+									AND o.trouve_par = f.identifiant
+									AND o.prospection = r.identifiant'
+									);
 					?>
 					
 					<!-- Tableau d'affichage de la table. -->
