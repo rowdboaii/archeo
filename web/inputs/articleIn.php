@@ -62,14 +62,14 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, prenom, nom
-													FROM personne'
-												 	);
+										FROM personne'
+									 	);
 						$query2 = $bdd->prepare('SELECT identifiant, nom
-													FROM locus'
-													);
+										FROM locus'
+										);
 						$query3 = $bdd->prepare('SELECT identifiant, langue
-													FROM langue'
-													);
+										FROM langue'
+										);
 					?>
 
 					<p>
@@ -85,7 +85,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<label for = "revue">Revue</label> : <input type = "text" name = "revue" id = "revue" /><br />
 								<label for = "sujet">Sujet</label> : 
 								<select name = "sujet" id = "sujet">
@@ -95,7 +96,8 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "locusIn.php">Ajouter un nouveau Locus ?</a><br />
 								<label for = "annee">Année</label> : <input type = "text" name = "annee" id = "annee" /><br />
 								<label for = "langue">Langue</label> : 
 								<select name = "langue" id = "langue">
@@ -105,7 +107,8 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['langue'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "../parameters/langue.php">Ajouter une nouvelle Langue ?</a><br />
 								<label for = "mots_cle">Mots clé</label> :<br />
 								<textarea name = "mots_cle" id = "mots_cle" rows = "5" cols = "40"></textarea><br />
 								<input type = "submit" value = "Envoi" />
