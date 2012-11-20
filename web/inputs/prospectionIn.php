@@ -61,11 +61,11 @@
 					
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nom
-													FROM lieu'
-												 	);
+										FROM lieu'
+									 	);
 						$query2 = $bdd->prepare('SELECT identifiant, prenom, nom
-													FROM personne'
-													);
+										FROM personne'
+										);
 					?>
 
 					<p>
@@ -82,7 +82,8 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "lieuIn.php">Ajouter un nouveau Lieu ?</a><br />
 								<label for = "responsable">Responsable</label> : 
 								<select name = "responsable" id = "responsable">
 									<?php
@@ -91,7 +92,8 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select><br />
+								</select> 
+								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
