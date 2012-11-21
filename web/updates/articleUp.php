@@ -71,10 +71,16 @@
 										FROM langue'
 										);
 						$query4 = $bdd->prepare('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, a.sujet,
-										l.langue AS nom_langue, a.auteur, a.langue
+										l.langue AS nom_langue, a.auteur, a.langue, a.type_sujet
 										FROM article a, personne p, langue l
 										WHERE a.auteur = p.identifiant
 										AND a.langue = l.identifiant'
+										);
+						$query5 = $bdd->prepare('SELECT identifiant, nom
+										FROM region'
+										);
+						$query6 = $bdd->prepare('SELECT identifiant, nom
+										FROM site'
 										);
 					?>
 
@@ -90,6 +96,7 @@
 									<option value = "annee">année</option>
 									<option value = "revue">revue</option>
 									<option value = "sujet">sujet</option>
+									<option value = "type_sujet">Type de sujet</option>
 									<option value = "langue">langue</option>
 									<option value = "mot_cle">mots clé</option>
 								</select><br />
@@ -199,13 +206,42 @@
 										<?php
 											$query2->execute();
 											while ($data = $query2->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+												echo '<option value = "' . $data['identifiant'] . '">' . 'Locus ' . $data['nom'] . '</option>';
+											}
+											$query5->execute();
+											while ($data = $query2->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . 'Région ' . $data['nom'] . '</option>';
+											}
+											$query6->execute();
+											while ($data = $query2->fetch()) {
+												echo '<option value = "' . $data['identifiant'] . '">' . 'Site ' . $data['nom'] . '</option>';
 											}
 										?>
 									</select> 
-									<a href = "../inputs/locusIn.php">Ajouter un nouveau Locus ?</a><br />
+									<a href = "../inputs/locusIn.php">Ajouter un nouveau Locus ?</a> 
+									<a href = "../inputs/regionIn.php">une nouvelle Région ?</a> 
+									<a href = "../inputs/siteIn.php">un nouveau Site ?</a><br />
 								<?php } ?>
-						
+
+								<?php if ($_SESSION['champ'] == "type_sujet") { ?>
+									<label for = "old">Type de Sujet</label> : 
+									<select name = "old" id = "old">
+										<option value = "0"></option>
+										<?php
+											$query4->execute();
+											while ($data = $query4->fetch()) {
+												echo '<option value = "' . $data['type_sujet'] . '">' . $data['titre'] . $data['type_sujet'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
+										<option value = "locus">locus</option>
+										<option value = "region">région</option>
+										<option value = "site">site</option>
+									</select><br />
+								<?php } ?>
+
 								<?php if ($_SESSION['champ'] == "langue") { ?>
 									<label for = "old">Langue</label> : 
 									<select name = "old" id = "old">
