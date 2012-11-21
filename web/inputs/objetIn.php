@@ -141,8 +141,12 @@
 									?>
 								</select> 
 								<a href = "../parameters/periode.php">Ajouter une nouvelle Période ?</a><br />
-								Type de Recherche : <input type = "radio" name = "recherche" value = "prospection" id = "prospection" />
-										    <input type = "radio" name = "recherche" value = "fouille" id = "fouille" /><br />
+								<label for = "type_recherche">Type de Recherche</label> : 
+								<select name = "type_recherche" id = "type_recherche">
+									<option value = ""></option>
+									<option value = "prospection">prospection</option>
+									<option value = "fouille">fouille</option>
+								</select><br />
 								<label for = "fouille">Fouille</label> :
 								<select name = "fouille" id = "fouille">
 									<?php
@@ -163,10 +167,10 @@
 									?>
 								</select> 
 								<a href = "prospectionIn.php">Ajouter une nouvelle Prospection ?</a><br />
-								Tamis : <input type = "radio" name = "tamis" value = "oui" id = "oui" />
-									<input type = "radio" name = "tamis" value = "non" id = "non" /><br />
-								Brulé : <input type = "radio" name = "brule" value = "oui" id = "oui" />
-									<input type = "radio" name = "brule" value = "non" id = "non" /><br />
+								Tamis : <input type = "radio" name = "tamis" value = "oui" id = "true" />
+									<input type = "radio" name = "tamis" value = "non" id = "false" /><br />
+								Brulé : <input type = "radio" name = "brule" value = "oui" id = "true" />
+									<input type = "radio" name = "brule" value = "non" id = "false" /><br />
 								<label for = "fiche">Fiche</label> : <input type = "text" name = "fiche" id = "fiche" /><br />
 								<label for = "commentaire">Commentaire</label> :<br />
 								<input type = "text" name = "commentaire" id = "commentaire" width = "30px" height = "5px" /><br />
