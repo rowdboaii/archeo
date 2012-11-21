@@ -8,6 +8,13 @@ CREATE DATABASE archeo owner jehu;
 
 /****************************************************************************************/
 
+CREATE TYPE enum_type_sujet AS ENUM
+(
+	'region', 'locus', 'site'
+);
+
+/****************************************************************************************/
+
 /* Création de la table OsTaxon. */
 CREATE TABLE osTaxon
 (
@@ -144,7 +151,8 @@ CREATE TABLE article
 	annee DATE NOT NULL,
 	revue VARCHAR(100) NOT NULL,
 	langue INTEGER REFERENCES langue(identifiant),
-	sujet VARCHAR(50) NOT NULL -- Faire un trigger pour vérifier que le sujet est soit un site, soit une région ou soit une locus.
+	sujet INTEGER NOT NULL,
+	type_sujet enum_type_sujet NOT NULL
 );
 
 /* Création de la table collection. */
