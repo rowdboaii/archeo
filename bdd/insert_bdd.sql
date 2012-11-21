@@ -148,11 +148,14 @@ VALUES ('lieu1', 1, 3, 1, 3, 'choucroute');
 INSERT INTO lieu (nom, region, position_nord, position_est, altitude, commentaire)
 VALUES ('lieu2', 2, 76, 8, 5, 'patate');
 
-INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet)
-VALUES ('titre1', 2, 'mot1 mot2', '01/12/2012', 'revue1', 4, 'site1');
+INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet, type_sujet)
+VALUES ('titre1', 2, 'mot1 mot2', '01/12/2012', 'revue1', 4, 1, 'site');
 
-INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet)
-VALUES ('titre2', 1, 'mot4', '23/01/2010', 'revue3', 1, 'site2');
+INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet, type_sujet)
+VALUES ('titre2', 1, 'mot4', '23/01/2010', 'revue3', 1, 2, 'region');
+
+INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet, type_sujet)
+VALUES ('titre3', 2, 'mot5', '02/01/2010', 'rev&',3, 1, 'site');
 
 INSERT INTO gisement (nom, region, position_nord, position_est, altitude, commentaire)
 VALUES ('gisement1', 2, 43, 5, 21, '11111111111111');
