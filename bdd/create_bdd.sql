@@ -8,9 +8,16 @@ CREATE DATABASE archeo owner jehu;
 
 /****************************************************************************************/
 
+/* Création d'une énumération pour le Type de Sujet. */
 CREATE TYPE enum_type_sujet AS ENUM
 (
 	'region', 'locus', 'site'
+);
+
+/* Création d'une énumération pour le Type de Recherche pour un Objet. */
+CREATE TYPE enum_type_recherche AS ENUM
+(
+	'prospection', 'fouille'
 );
 
 /****************************************************************************************/
@@ -239,8 +246,8 @@ CREATE TABLE objet
 	tamis BOOLEAN NOT NULL DEFAULT FALSE,
 	trouve_par INTEGER REFERENCES personne(identifiant),
 	collection INTEGER REFERENCES collection(identifiant),
-	fouille INTEGER REFERENCES fouille(identifiant),
-	prospection INTEGER REFERENCES prospection(identifiant),
+	type_recherche enum_type_recherche NOT NULL,
+	recherche INTEGER,
 	fiche VARCHAR(50), -- Changer le VARCHAR pour avec des points 3D.
 	commentaire VARCHAR(200)
 );
