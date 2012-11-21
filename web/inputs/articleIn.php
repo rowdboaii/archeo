@@ -70,6 +70,12 @@
 						$query3 = $bdd->prepare('SELECT identifiant, langue
 										FROM langue'
 										);
+						$query4 = $bdd->prepare('SELECT identifiant, nom
+										FROM lieu'
+										);
+						$query5 = $bdd->prepare('SELECT identifiant, nom
+										FROM site'
+										);
 					?>
 
 					<p>
@@ -88,17 +94,33 @@
 								</select> 
 								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<label for = "revue">Revue</label> : <input type = "text" name = "revue" id = "revue" /><br />
+								<label for = "type_sujet">Type de sujet</label> : 
+								<select name = "type_sujet" id = "type_sujet">
+									<option value = "locus">locus</option>
+									<option value = "lieu">lieu</option>
+									<option value = "site">site</option>
+								</select><br />
 								<label for = "sujet">Sujet</label> : 
 								<select name = "sujet" id = "sujet">
 									<?php
 										$query2->execute();
 										while ($data = $query2->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+											echo '<option value = "' . $data['identifiant'] . '">' . 'Locus ' . $data['nom'] . '</option>';
+										}
+										$query4->execute();
+										while ($data = $query4->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . 'Lieu ' . $data['nom'] . '</option>';
+										}
+										$query5->execute();
+										while ($data = $query5->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . 'Site ' . $data['nom'] . '</option>';
 										}
 									?>
 								</select> 
-								<a href = "locusIn.php">Ajouter un nouveau Locus ?</a><br />
-								<label for = "annee">Année</label> : <input type = "text" name = "annee" id = "annee" /><br />
+								<a href = "locusIn.php">Ajouter un nouveau Locus ?</a> 
+								<a href = "lieuIn.php">un nouveau Lieu ?</a> 
+								<a href = "siteIn.php">un nouveau site ?</a><br />
+								<label for = "annee">Année</label> : <input type = "date" name = "annee" id = "annee" /><br />
 								<label for = "langue">Langue</label> : 
 								<select name = "langue" id = "langue">
 									<?php
