@@ -84,6 +84,12 @@
 											WHERE sujet = :old'
 											);
 							}
+							else if ($_SESSION['champ'] == 'type_sujet') {
+								$query = $bdd->prepare('UPDATE article
+											SET type_sujet = :new
+											WHERE type_sujet = :old'
+											);
+							}
 							else if ($_SESSION['champ'] == 'langue') {
 								$query = $bdd->prepare('UPDATE article
 											SET langue = :new
