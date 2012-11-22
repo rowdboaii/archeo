@@ -96,7 +96,6 @@
 									<option value = "annee">année</option>
 									<option value = "revue">revue</option>
 									<option value = "sujet">sujet</option>
-									<option value = "type_sujet">Type de sujet</option>
 									<option value = "langue">langue</option>
 									<option value = "mot_cle">mots clé</option>
 								</select><br />
@@ -190,13 +189,29 @@
 								<?php } ?>
 							
 								<?php if ($_SESSION['champ'] == "sujet") { ?>
+									<label for = "old_type">Type de Sujet</label> : 
+									<select name = "old_type" id = "old_type">
+										<option value = "0"></option>
+										<?php
+											$query4->execute();
+											while ($data = $query4->fetch()) {
+												echo '<option value = "' . $data['type_sujet'] . '">' . $data['titre'] . $data['type_sujet'] . '</option>';
+											}
+										?>
+									</select>
+									<label for = "new"> remplacé par</label> : 
+									<select name = "new" id = "new">
+										<option value = "locus">locus</option>
+										<option value = "region">région</option>
+										<option value = "site">site</option>
+									</select><br />
 									<label for = "old">Sujet</label> : 
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
 											$query4->execute();
 											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['sujet'] . '">' . $data['titre'] . ' : ' . $data['sujet'] . '</option>';
+												echo '<option value = "' . $data['sujet'] . '">' . $data['titre'] . ' : ' . $data['type_sujet'] . ' ' . $data['sujet'] . '</option>';
 											}
 										?>
 									</select>
@@ -221,25 +236,6 @@
 									<a href = "../inputs/locusIn.php">Ajouter un nouveau Locus ?</a> 
 									<a href = "../inputs/regionIn.php">une nouvelle Région ?</a> 
 									<a href = "../inputs/siteIn.php">un nouveau Site ?</a><br />
-								<?php } ?>
-
-								<?php if ($_SESSION['champ'] == "type_sujet") { ?>
-									<label for = "old">Type de Sujet</label> : 
-									<select name = "old" id = "old">
-										<option value = "0"></option>
-										<?php
-											$query4->execute();
-											while ($data = $query4->fetch()) {
-												echo '<option value = "' . $data['type_sujet'] . '">' . $data['titre'] . $data['type_sujet'] . '</option>';
-											}
-										?>
-									</select>
-									<label for = "new"> remplacé par</label> : 
-									<select name = "new" id = "new">
-										<option value = "locus">locus</option>
-										<option value = "region">région</option>
-										<option value = "site">site</option>
-									</select><br />
 								<?php } ?>
 
 								<?php if ($_SESSION['champ'] == "langue") { ?>
