@@ -110,6 +110,7 @@
 									<option value = "largeur">largeur</option>
 									<option value = "hauteur">hauteur</option>
 									<option value = "nature">nature</option>
+									<option value = "recherche">recherche</option>
 									<option value = "periode">période</option>
 									<option value = "trouve_par">trouvé par</option>
 									<option value = "commentaire">commentaires</option>
