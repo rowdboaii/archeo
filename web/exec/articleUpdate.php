@@ -54,59 +54,64 @@
 					<?php
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
-							if ($_SESSION['champ'] == 'titre') {
-								$query = $bdd->prepare('UPDATE article
-											SET titre = :new
-											WHERE titre = :old'
-											);
-							}
-							else if ($_SESSION['champ'] == 'auteur') {
-								$query = $bdd->prepare('UPDATE article
-											SET auteur = :new
-											WHERE auteur = :old'
-											);
-							}
-							else if ($_SESSION['champ'] == 'annee') {
-								$query = $bdd->prepare('UPDATE article
-											SET annee = :new
-											WHERE annee = :old'
-											);
-							}
-							else if ($_SESSION['champ'] == 'revue') {
-								$query = $bdd->prepare('UPDATE article
-											SET revue = :new
-											WHERE revue = :old'
-											);
-							}
-							else if ($_SESSION['champ'] == 'sujet') {
+							if ($_SESSION['champ'] == 'sujet' AND isset($_POST['old_type']) AND isset($_POST['new_type']))) {
 								$query = $bdd->prepare('UPDATE article
 											SET sujet = :new
 											WHERE sujet = :old'
 											);
-							}
-							else if ($_SESSION['champ'] == 'type_sujet') {
+								$query->execute(array('new' => $_POST['new'],
+											'old' => $_POST['old']
+											));
 								$query = $bdd->prepare('UPDATE article
 											SET type_sujet = :new
 											WHERE type_sujet = :old'
 											);
+								$query->execute(array('new' => $_POST['new_type'],
+											'old' => $_POST['old_type']
+											));
 							}
-							else if ($_SESSION['champ'] == 'langue') {
-								$query = $bdd->prepare('UPDATE article
-											SET langue = :new
-											WHERE langue = :old'
-											);
-							}
-							else if ($_SESSION['champ'] == 'mot_cle') {
-								$query = $bdd->prepare('UPDATE article
-											SET mot_cle = :new
-											WHERE mot_cle = :old'
-											);
+							else {
+								if ($_SESSION['champ'] == 'titre') {
+									$query = $bdd->prepare('UPDATE article
+												SET titre = :new
+												WHERE titre = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'auteur') {
+									$query = $bdd->prepare('UPDATE article
+												SET auteur = :new
+												WHERE auteur = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'annee') {
+									$query = $bdd->prepare('UPDATE article
+												SET annee = :new
+												WHERE annee = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'revue') {
+									$query = $bdd->prepare('UPDATE article
+												SET revue = :new
+												WHERE revue = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'langue') {
+									$query = $bdd->prepare('UPDATE article
+												SET langue = :new
+												WHERE langue = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'mot_cle') {
+									$query = $bdd->prepare('UPDATE article
+												SET mot_cle = :new
+												WHERE mot_cle = :old'
+												);
+								}
+								$query->execute(array('new' => $_POST['new'],
+											'old' => $_POST['old']
+											));
 							}
 						}
-						
-						$query->execute(array('new' => $_POST['new'],
-									'old' => $_POST['old']
-									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
