@@ -151,9 +151,7 @@
 						
 							<!-- Corps du tableau. -->
 							<tbody>			
-								<?php
-									$data = $query5->fetch();
-								?>
+								<?php $data = $query5->fetch(); ?>
 
 								<tr>
 									<td><?php echo $data['nom']; ?></td>
