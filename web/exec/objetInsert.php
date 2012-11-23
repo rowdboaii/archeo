@@ -52,8 +52,8 @@
 				<div id = "">	
 	
 					<?php
-						$query = $bdd->prepare('INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, brule, periode, tamis, trouve_par, collection, fouille, prospection, fiche, commentaire)
-									VALUES (:nom, :type, :poids, :longueur, :largeur, :hauteur, :nature, :brule, :periode, :tamis, :trouve_par, :collection, :fouille, :prospection, :fiche, :commentaire)'
+						$query = $bdd->prepare('INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, brule, periode, tamis, trouve_par, collection, type_recherche, recherche, fiche, commentaire)
+									VALUES (:nom, :type, :poids, :longueur, :largeur, :hauteur, :nature, :brule, :periode, :tamis, :trouve_par, :collection, :type_recherche, :recherche, :fiche, :commentaire)'
 									);
 						$query->execute(array('nom' => $_POST['nom'],
 									'type' => $_POST['type'],
@@ -67,8 +67,8 @@
 									'tamis' => $_POST['tamis'],
 									'trouve_par' => $_POST['trouve'],
 									'collection' => $_POST['collection'],
-									'fouille' => $_POST['fouille'],
-									'prospection' => $_POST['prospection'],
+									'type_recherche' => $_POST['type_recherche'],
+									'recherche' => $_POST['recherche'],
 									'fiche' => $_POST['fiche'],
 									'commentaire' => $_POST['commentaire'],
 								)) or die('Error');
