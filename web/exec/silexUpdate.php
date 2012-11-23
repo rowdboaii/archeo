@@ -52,30 +52,27 @@
 				<div id = "">	
 
 					<?php
-						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
+						if (isset($_SESSION['champ']) AND isset($_SESSION['updating']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
-							if ($_SESSION['champ'] == 'objet')
-								$query = $bdd->prepare('UPDATE silex
-											SET objet = :new
-											WHERE objet = :old'
-											);
-							}
 							else if ($_SESSION['champ'] == 'provenance')
 								$query = $bdd->prepare('UPDATE silex
 											SET provenance = :new
-											WHERE provenance = :old'
+											WHERE provenance = :old
+											AND objet = :objet'
 											);
 							}
 							else if ($_SESSION['champ'] == 'couleur')
 								$query = $bdd->prepare('UPDATE silex
 											SET couleur = :new
-											WHERE couleur = :old'
+											WHERE couleur = :old
+											AND objet = :objet'
 											);
 							}
 						}
 						
 						$query->execute(array('new' => $_POST['new'],
-									'old' => $_POST['old']
+									'old' => $_POST['old'],
+									'objet' => $_SESSION['updating']
 									));
 
 						if (!$query) {
