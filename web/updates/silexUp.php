@@ -74,16 +74,95 @@
 										WHERE s.provenance = g.identifiant
 										AND s.objet = o.identifiant'
 										);
+						$query4 = $bdd->prepare('SELECT o.nom AS nom_objet, g.nom AS nom_gisement, s.couleur,
+										FROM silex s, gisement g, objet o
+										WHERE s.provenance = g.identifiant
+										AND s.objet = o.identifiant
+										AND s.objet = :objet'
+										);
 					?>
 
 					<p>
+						<!-- Formulaire sur le choix du Silex à modifier. -->
+						<form method = "post" action = "silexUp.php">
+							<p>
+								<label for = "updating">Silex à modifier</label> : 
+								<select name = "updating" id = "updating">
+									<option value = "0"></option>
+									<?php
+										$query3->execute();
+										while ($data = $query3->fetch()) {
+											echo '<option value = "' . $data['objet'] . '">' . $data['nom_objet'] . '</option>';
+										}
+									?>
+								</select><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+
+					<?php
+						/* Récupération du Silex à modifier. */
+						if (isset($_POST['updating'])) {	
+							$_SESSION['updating'] = $_POST['updating'];
+							$_SESSION['temp'] = $_SESSION['updating'];
+						}
+						else {
+							if (isset($_SESSION['temp'])) {
+								$_SESSION['updating'] = $_SESSION['temp'];
+							}
+							else {
+								$_SESSION['updating'] = 0;
+							}
+						}
+						
+						/* Affichage du Silex souhaité. */
+						if ($_SESSION['updating'] != '0') {
+							
+							$query4->execute(array('objet' => $_SESSION['updating']));
+					?>
+
+					<p>
+						<!-- Tableau d'affichage de la table. -->
+						<table>
+							<caption>SILEX</caption>
+						
+							<!-- Entête du tableau. -->
+							<thead>
+								<tr>
+									<th>objet</th>
+									<th>provenance</th>
+									<th>couleur</th>
+								</tr>
+							</thead>
+						
+							<!-- Corps du tableau. -->
+							<tbody>			
+								<?php
+									while ($data = $query4->fetch())
+									{
+								?>
+
+								<tr>
+									<td><?php echo $data['nom_objet']; ?></td>
+									<td><?php echo $data['nom_gisement']; ?></td>
+									<td><?php echo $data['couleur']; ?></td>
+								</tr>
+								
+								<?php } ?>
+
+							</tbody>
+						</table>
+					</p>
+
+					<p>
 						<!-- Formulaire sur le choix du champ à modifier. -->
+						<h1>Update</h1>
 						<form method = "post" action = "silexUp.php">
 							<p>
 								<label for = "champ">Champ à modifier</label> : 
 								<select name = "champ" id = "champ">
 									<option value = "0"></option>
-									<option value = "objet">objet</option>
 									<option value = "provenance">provenance</option>
 									<option value = "couleur">couleur</option>
 								</select><br />
@@ -94,11 +173,12 @@
 					
 					<?php
 						/* Récupération du champ à modifier. */
-						$_SESSION['champ'] = 0;
 						if (isset($_POST['champ'])) {	
 							$_SESSION['champ'] = $_POST['champ'];
 						}
-						
+						else {
+							$_SESSION['champ'] = 0;
+						}
 						/* Affichage du champ souhaité. */
 						if ($_SESSION['champ'] != '0') {
 					?>
@@ -107,67 +187,31 @@
 						<!-- Formulaire pour l'Update d'un Silex. -->
 						<form method = "post" action = "../exec/silexUpdate.php">
 							<p>
-								<?php if ($_SESSION['champ'] == "objet") { ?>
-									<label for = "old">Objet</label> : 
-									<select name = "old" id = "old">
-										<option value = "0"></option>
-										<?php
-											$query3->execute();
-											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['objet'] . '">' . $data['nom_objet'] . '</option>';
-											}
-										?>
-									</select>
-									<label for = "new"> remplacé par</label> : 
-									<select name = "new" id = "new">
-										<option value = "0"></option>
-										<?php
-											$query1->execute();
-											while ($data = $query1->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-											}
-										?>
-									</select> 
-									<a href = "../inputs/objetIn.php">Ajouter un nouvel objet ?</a><br />
+								<?php 
+									if ($_SESSION['champ'] == "provenance") { 
+										$data = $query4->fetch()
+										echo 'Provenance : ' . $data['nom_gisement'];
+								?>
+								<label for = "new"> remplacé par</label> : 
+								<select name = "new" id = "new">
+									<option value = "0"></option>
+									<?php
+										$query2->execute();
+										while ($data = $query2->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+										}
+									?>
+								</select> 
+								<a href = "../inputs/gisementIn.php">Ajouter un nouveau Gisement ?</a><br />
 								<?php } ?>
 								
-								<?php if ($_SESSION['champ'] == "provenance") { ?>
-									<label for = "old">Provenance</label> : 
-									<select name = "old" id = "old">
-										<option value = "0"></option>
-										<?php
-											$query3->execute();
-											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['provenance'] . '">' . $data['nom_objet'] . ' : ' . $data['nom_gisement'] . '</option>';
-											}
-										?>
-									</select>
-									<label for = "new"> remplacé par</label> : 
-									<select name = "new" id = "new">
-										<option value = "0"></option>
-										<?php
-											$query2->execute();
-											while ($data = $query2->fetch()) {
-												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
-											}
-										?>
-									</select> 
-									<a href = "../inputs/gisementIn.php">Ajouter un nouveau Gisement ?</a><br />
-								<?php } ?>
-								
-								<?php if ($_SESSION['champ'] == "couleur") { ?>
-									<label for = "old">Couleur</label> : 
-									<select name = "old" id = "old">
-										<option value = "0"></option>
-										<?php
-											$query3->execute();
-											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['couleur'] . '">' . $data['nom_objet'] . ' : ' . $data['couleur'] . '</option>';
-											}
-										?>
-									</select>
-									<label for = "new"> remplacé par</label> : 
-									<input type = "text" name = "new" id = "new" /><br />
+								<?php
+									if ($_SESSION['champ'] == "couleur") {
+										$data = $query4->fetch()
+										echo 'Couleur : ' . $data['couleur'];
+								?>
+								<label for = "new"> remplacé par</label> : 
+								<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 							
 								<input type = "submit" value = "Envoi" />
@@ -175,11 +219,13 @@
 						</form>
 					</p>
 					<?php } ?>
+					<?php } ?>
 					
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
 						$query3->closeCursor();
+						$query4->closeCursor();
 					?>
 				
 				</div>
