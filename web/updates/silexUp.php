@@ -138,18 +138,13 @@
 						
 							<!-- Corps du tableau. -->
 							<tbody>			
-								<?php
-									while ($data = $query4->fetch())
-									{
-								?>
+								<?php $data = $query4->fetch(); ?>
 
 								<tr>
 									<td><?php echo $data['nom_objet']; ?></td>
 									<td><?php echo $data['nom_gisement']; ?></td>
 									<td><?php echo $data['couleur']; ?></td>
-								</tr>
-								
-								<?php } ?>
+								</tr>					
 
 							</tbody>
 						</table>
