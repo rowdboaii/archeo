@@ -54,71 +54,92 @@
 					<?php
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
-							if ($_SESSION['champ'] == 'nom') {
+							if ($_SESSION['champ'] == 'recherche' AND isset($_POST['old_type']) AND isset($_POST['new_type'])) {
+
 								$query = $bdd->prepare('UPDATE objet
-											SET nom = :new
-											WHERE nom = :old'
+											SET recherche = :new
+											WHERE recherche = :old'
 											);
-							}
-							else if ($_SESSION['champ'] == 'type') {
+
+								$query->execute(array('new' => $_POST['new'],
+											'old' => $_POST['old']
+											));
+
 								$query = $bdd->prepare('UPDATE objet
-											SET type = :new
-											WHERE type = :old'
+											SET type_recherche = :new
+											WHERE type_recherche = :old'
 											);
+
+								$query->execute(array('new_type' => $_POST['new_type'],
+											'old_type' => $_POST['old_type']
+											));
 							}
-							else if ($_SESSION['champ'] == 'poids') {
-								$query = $bdd->prepare('UPDATE objet
-											SET poids = :new
-											WHERE poids = :old'
-											);
-							}
-							else if ($_SESSION['champ'] == 'longueur') {
-								$query = $bdd->prepare('UPDATE objet
-											SET longueur = :new
-											WHERE longueur = :old'
-											);
-							}
-							else if ($_SESSION['champ'] == 'largeur') {
-								$query = $bdd->prepare('UPDATE objet
-											SET largeur = :new
-											WHERE largeur = :old'
-											);
-							}
-							else if ($_SESSION['champ'] == 'hauteur') {
-								$query = $bdd->prepare('UPDATE objet
-											SET hauteur = :new
-											WHERE hauteur = :old'
-											);
-							}
-							else if ($_SESSION['champ'] == 'nature') {
-								$query = $bdd->prepare('UPDATE objet
-											SET nature = :new
-											WHERE nature = :old'
-											);
-							}
-							else if ($_SESSION['champ'] == 'periode') {
-								$query = $bdd->prepare('UPDATE objet
-											SET periode = :new
-											WHERE periode = :old'
-											);
-							}
-							else if ($_SESSION['champ'] == 'trouve_par') {
-								$query = $bdd->prepare('UPDATE objet
-											SET trouve_par = :new
-											WHERE trouve_par = :old'
-											);
-							}
-							else if ($_SESSION['champ'] == 'commentaire') {
-								$query = $bdd->prepare('UPDATE objet
-											SET commentaire = :new
-											WHERE commentaire = :old'
-											);
-							}
-						}
-						
-						$query->execute(array('new' => $_POST['new'],
+							else {
+								if ($_SESSION['champ'] == 'nom') {
+									$query = $bdd->prepare('UPDATE objet
+												SET nom = :new
+												WHERE nom = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'type') {
+									$query = $bdd->prepare('UPDATE objet
+												SET type = :new
+												WHERE type = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'poids') {
+									$query = $bdd->prepare('UPDATE objet
+												SET poids = :new
+												WHERE poids = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'longueur') {
+									$query = $bdd->prepare('UPDATE objet
+												SET longueur = :new
+												WHERE longueur = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'largeur') {
+									$query = $bdd->prepare('UPDATE objet
+												SET largeur = :new
+												WHERE largeur = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'hauteur') {
+									$query = $bdd->prepare('UPDATE objet
+												SET hauteur = :new
+												WHERE hauteur = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'nature') {
+									$query = $bdd->prepare('UPDATE objet
+												SET nature = :new
+												WHERE nature = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'periode') {
+									$query = $bdd->prepare('UPDATE objet
+												SET periode = :new
+												WHERE periode = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'trouve_par') {
+									$query = $bdd->prepare('UPDATE objet
+												SET trouve_par = :new
+												WHERE trouve_par = :old'
+												);
+								}
+								else if ($_SESSION['champ'] == 'commentaire') {
+									$query = $bdd->prepare('UPDATE objet
+												SET commentaire = :new
+												WHERE commentaire = :old'
+												);
+								}
+							$query->execute(array('new' => $_POST['new'],
 									'old' => $_POST['old']
 									));
+							}
+						}
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
