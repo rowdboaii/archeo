@@ -78,7 +78,98 @@
 										AND s.trouve_par = p.identifiant
 										AND s.fouille_par = f.identifiant'
 										);
+						$query5 = $bdd->prepare('SELECT s.identifiant, s.nom, r.nom AS nom_region, t.type AS nom_type, s.position_nord, s.position_est, s.altitude, s.trouve_par, s.fouille_par,
+										p.prenom AS prenom_p, p.nom AS nom_p, f.prenom AS prenom_f, f.nom AS nom_f, s.commentaire, s.region, s.type
+										FROM site s, region r, sitetype t, personne p, personne f
+										WHERE s.region = r.identifiant
+										AND s.type = t.identifiant
+										AND s.trouve_par = p.identifiant
+										AND s.fouille_par = f.identifiant
+										AND s.nom = :nom'
+										);
 					?>
+
+					<p>
+						<!-- Formulaire sur le choix du Site à modifier. -->
+						<form method = "post" action = "siteUp.php">
+							<p>
+								<label for = "updating">Site à modifier</label> : 
+								<select name = "updating" id = "updating">
+									<option value = "0"></option>
+									<?php
+										$query3->execute();
+										while ($data = $query4->fetch()) {
+											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+										}
+									?>
+								</select><br />
+								<input type = "submit" value = "Envoi" />
+							</p>
+						</form>
+					</p>
+
+					<?php
+						/* Récupération du Site à modifier. */
+						if (isset($_POST['updating'])) {	
+							$_SESSION['updating'] = $_POST['updating'];
+							$_SESSION['temp'] = $_SESSION['updating'];
+						}
+						else {
+							if (isset($_SESSION['temp'])) {
+								$_SESSION['updating'] = $_SESSION['temp'];
+							}
+							else {
+								$_SESSION['updating'] = 0;
+							}
+						}
+
+						/* Affichage du Site souhaité. */
+						if ($_SESSION['updating'] != '0') {
+
+							$query5->execute(array('nom' => $_SESSION['updating']));
+					?>
+
+					<p>
+						<!-- Tableau d'affichage de la table. -->
+						<table>
+							<caption>SITE</caption>
+						
+							<!-- Entête du tableau. -->
+							<thead>
+								<tr>
+									<th>nom</th>
+									<th>région</th>
+									<th>type</th>
+									<th>position Nord</th>
+									<th>position Est</th>
+									<th>altitude</th>
+									<th>trouvé par</th>
+									<th>fouille par</th>
+									<th>commentaire</th>
+								</tr>
+							</thead>
+						
+							<!-- Corps du tableau. -->
+							<tbody>			
+								<?php
+									$data = $query5->fetch();
+								?>
+
+								<tr>
+									<td><?php echo $data['nom']; ?></td>
+									<td><?php echo $data['nom_region']; ?></td>
+									<td><?php echo $data['nom_type']; ?></td>
+									<td><?php echo $data['position_nord']; ?></td>
+									<td><?php echo $data['position_est']; ?></td>
+									<td><?php echo $data['altitude']; ?></td>
+									<td><?php echo $data['prenom_p'] . ' ' . $data['nom_p']; ?></td>
+									<td><?php echo $data['prenom_f'] . ' ' . $data['nom_f']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</p>
 
 					<p>
 						<!-- Formulaire sur le choix du champ à modifier. -->
@@ -118,17 +209,7 @@
 						<form method = "post" action = "../exec/siteUpdate.php">
 							<p>
 								<?php if ($_SESSION['champ'] == "nom") { ?>
-									<label for = "old">Nom</label> : 
-									<select name = "old" id = "old">
-										<option value = "0"></option>
-										<?php
-											$query3->execute();
-											while ($data = $query3->fetch()) {
-												echo '<option value = "' . $data['nom'] . '">' . $data['nom'] . '</option>';
-											}
-										?>
-									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> </label> : 
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
 								
