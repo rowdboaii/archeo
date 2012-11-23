@@ -52,66 +52,76 @@
 				<div id = "">	
 
 					<?php
-						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
+						if (isset($_SESSION['champ']) AND isset($_SESSION['updating']) AND isset($_POST['old']) AND isset($_POST['new'])) {
 							
 							if ($_SESSION['champ'] == 'nom') {
 								$query = $bdd->prepare('UPDATE site 
 											SET nom = :new
-											WHERE nom = :old'
+											WHERE nom = :old
+											AND identifiant = :identifiant'
 											);
 							}
 							else if ($_SESSION['champ'] == 'region') {
 								$query = $bdd->prepare('UPDATE site 
 											SET region = :new
-											WHERE region = :old'
+											WHERE region = :old
+											AND identifiant = :identifiant'
 											);
 							}
 							else if ($_SESSION['champ'] == 'type') {
 								$query = $bdd->prepare('UPDATE site 
 											SET type = :new
-											WHERE type = :old'
+											WHERE type = :old
+											AND identifiant = :identifiant'
 											);
 							}
 							else if ($_SESSION['champ'] == 'position_nord') {
 								$query = $bdd->prepare('UPDATE site 
 											SET position_nord = :new
-											WHERE position_nord = :old'
+											WHERE position_nord = :old
+											AND identifiant = :identifiant'
 											);
 							}
 							else if ($_SESSION['champ'] == 'position_est') {
 								$query = $bdd->prepare('UPDATE site 
 											SET position_est = :new
-											WHERE position_est = :old'
+											WHERE position_est = :old
+											AND identifiant = :identifiant'
 											);
 							}
 							else if ($_SESSION['champ'] == 'altitude') {
 								$query = $bdd->prepare('UPDATE site 
 											SET altitude = :new
-											WHERE altitude = :old'
+											WHERE altitude = :old
+											AND identifiant = :identifiant'
 											);
 							}
 							else if ($_SESSION['champ'] == 'trouve_par') {
 								$query = $bdd->prepare('UPDATE site 
 											SET trouve_par = :new
-											WHERE trouve_par = :old'
+											WHERE trouve_par = :old
+											AND identifiant = :identifiant'
 											);
 							}
 							else if ($_SESSION['champ'] == 'fouille_par') {
 								$query = $bdd->prepare('UPDATE site 
 											SET fouille_par = :new
-											WHERE fouille_par = :old'
+											WHERE fouille_par = :old
+											AND identifiant = :identifiant'
 											);
 							}
 							else if ($_SESSION['champ'] == 'commentaire') {
 								$query = $bdd->prepare('UPDATE site 
 											SET commentaire = :new
-											WHERE commentaire = :old'
+											WHERE commentaire = :old
+											AND identifiant = :identifiant'
 											);
 							}
 						}
 						
 						$query->execute(array('new' => $_POST['new'],
-									'old' => $_POST['old']
+									'old' => $_POST['old'],
+									'identifiant' => $_SESSION['updating']
 									));
 
 						if (!$query) {
