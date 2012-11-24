@@ -255,7 +255,6 @@ CREATE TABLE objet
 /* Création de la table Galet. */
 CREATE TABLE galet
 (
-	identifiant SERIAL PRIMARY KEY,
 	objet INTEGER REFERENCES objet(identifiant),
 	nom VARCHAR(50) NOT NULL,
 	type INTEGER REFERENCES galetType(identifiant)
