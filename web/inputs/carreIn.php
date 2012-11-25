@@ -68,7 +68,8 @@
 						<!-- Formulaire pour un Carré. -->
 						</p><form method = "post" action = "../exec/carreInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom"><br>
+								<label for = "nom">Nom</label> : 
+								<input type = "text" name = "nom" id = "nom"><br>
 								<label for = "locus">Locus</label> : 
 								<select name = "locus" id = "locus">
 									<?php

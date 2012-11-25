@@ -86,7 +86,8 @@
 					<p>
 						<form method = "post" action = "../exec/objetInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+								<label for = "nom">Nom</label> : 
+								<input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "type">Type</label> :
 								<select name = "type" id = "type">
 									<?php
@@ -107,10 +108,14 @@
 									?>
 								</select> 
 								<a href = "../parameters/objetNature.php">Ajouter une nouvelle Nature d'Objet ?</a><br />
-								<label for = "poids">Poids</label> : <input type = "text" name = "poids" id = "poids" /><br />
-								<label for = "longueur">Longueur</label> : <input type = "text" name = "longueur" id = "longueur" /><br />
-								<label for = "largeur">Largeur</label> : <input type = "text" name = "largeur" id = "largeur" /><br />
-								<label for = "hauteur">Hauteur</label> : <input type = "text" name = "hauteur" id = "hauteur" /><br />
+								<label for = "poids">Poids</label> : 
+								<input type = "text" name = "poids" id = "poids" /> (number)<br />
+								<label for = "longueur">Longueur</label> : 
+								<input type = "text" name = "longueur" id = "longueur" /> (number)<br />
+								<label for = "largeur">Largeur</label> : 
+								<input type = "text" name = "largeur" id = "largeur" /> (number)<br />
+								<label for = "hauteur">Hauteur</label> : 
+								<input type = "text" name = "hauteur" id = "hauteur" /> (number)<br />
 								<label for = "trouve">Trouvé par</label> :
 								<select name = "trouve" id = "trouve">
 									<?php
@@ -167,13 +172,16 @@
 									?>
 								</select> 
 								<a href = "prospectionIn.php">Ajouter une nouvelle Prospection ?</a><br />
-								Tamis : <input type = "radio" name = "tamis" value = "oui" id = "true" />
-									<input type = "radio" name = "tamis" value = "non" id = "false" /><br />
-								Brulé : <input type = "radio" name = "brule" value = "oui" id = "true" />
-									<input type = "radio" name = "brule" value = "non" id = "false" /><br />
-								<label for = "fiche">Fiche</label> : <input type = "text" name = "fiche" id = "fiche" /><br />
+								Tamis : 
+								oui <input type = "radio" name = "tamis" value = "true" id = "true" />
+								non <input type = "radio" name = "tamis" value = "false" id = "false" /><br />
+								Brulé : 
+								oui <input type = "radio" name = "brule" value = "true" id = "true" />
+								non <input type = "radio" name = "brule" value = "false" id = "false" /><br />
+								<label for = "fiche">Fiche</label> : 
+								<input type = "text" name = "fiche" id = "fiche" /><br />
 								<label for = "commentaire">Commentaire</label> :<br />
-								<input type = "text" name = "commentaire" id = "commentaire" width = "30px" height = "5px" /><br />
+								<input type = "text" name = "commentaire" id = "commentaire" style = "width:500px; height:100px" /><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

@@ -84,8 +84,10 @@
 									?>
 								</select> 
 								<a href = "objetIn.php">Ajouter un nouvel Objet ?</a><br />
-								<label for = "partie">Partie Animal</label> : <input type = "text" name = "partie" id = "partie" /><br />
-								<label for = "type">Type Os</label> : <input type = "text" name = "type" id = "type" /><br />
+								<label for = "partie">Partie Animal</label> : 
+								<input type = "text" name = "partie" id = "partie" /><br />
+								<label for = "type">Type Os</label> : 
+								<input type = "text" name = "type" id = "type" /><br />
 								<label for = "taxon">Taxon</label> : 
 								<select name = "taxon" id = "taxon">
 									<?php
@@ -96,11 +98,18 @@
 									?>
 								</select> 
 								<a href = "../parameters/osTaxon.php">Ajouter un nouveau Taxon d'Os ?</a><br />
-								<label for = "animal">Animal</label> : <input type = "text" name = "animal" id = "animal" /><br />
-								<label for = "type_animal">Type d'Animal</label> : <input type = "text" name = "type_animal" id = "type_animal" /><br />
-								<label for = "forme">Forme</label> : <input type = "text" name = "forme" id = "forme" /><br />
-								Dissolution : <input type = "radio" name = "dissolution" value = "oui" id = "oui" /><br />
-								Morsure : <input type = "radio" name = "morsure" value = "oui" id = "oui" /><br />
+								<label for = "animal">Animal</label> : 
+								<input type = "text" name = "animal" id = "animal" /><br />
+								<label for = "type_animal">Type d'Animal</label> : 
+								<input type = "text" name = "type_animal" id = "type_animal" /><br />
+								<label for = "forme">Forme</label> : 
+								<input type = "text" name = "forme" id = "forme" /><br />
+								Dissolution : 
+								oui <input type = "radio" name = "dissolution" value = "true" id = "oui" />
+								non <input type = "radio" name = "dissolution" value = "false" id = "non" /><br />
+								Morsure : 
+								oui <input type = "radio" name = "morsure" value = "true" id = "oui" />
+								non <input type = "radio" name = "morsure" value = "false" id = "non" /><br />
 								<label for = "conservation">Conservation</label> : 
 								<select name = "conservation" id = "conservation">
 									<option value = "0">0</option>
@@ -115,7 +124,8 @@
 									<option value = "9">9</option>
 									<option value = "10">10</option>
 								</select><br />
-								<label for = "date">Datation</label> : <input type = "text" name = "date" id = "date" /><br />
+								<label for = "date">Datation</label> : 
+								<input type = "text" name = "date" id = "date" /> (jj/mm/aaaa)<br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

@@ -69,7 +69,8 @@
 						<!-- Formulaire pour une Région. -->
 						<form method = "post" action = "../exec/regionInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+								<label for = "nom">Nom</label> : 
+								<input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "pays">Pays</label> : 
 								<select name = "pays" id = "pays">
 									<?php

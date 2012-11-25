@@ -74,6 +74,8 @@
 						<!-- Formulaire pour un Galet. -->
 						<form method = "post" action = "../exec/galetInsert.php">
 							<p>
+								<label for = "nom">Nom</label> : 
+								<input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "objet">Objet</label> : 
 								<select name = "objet" id = "objet">
 									<?php
@@ -84,7 +86,6 @@
 									?>
 								</select> 
 								<a href = "objetIn.php">Ajouter un nouvel Objet ?</a><br />
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "type">Type</label> : 
 								<select name = "type" id = "type">
 									<?php

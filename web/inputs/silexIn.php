@@ -84,7 +84,8 @@
 									?>
 								</select> 
 								<a href = "objetIn.php">Ajouter un nouvel objet ?</a><br />
-								<label for = "couleur">Couleur</label> : <input type = "text" name = "couleur" id = "couleur" /><br />
+								<label for = "couleur">Couleur</label> : 
+								<input type = "text" name = "couleur" id = "couleur" /><br />
 								<label for = "provenance">Provenance</label> : 
 								<select name = "provenance" id = "provenance">
 									<?php

@@ -72,8 +72,10 @@
 						<!-- Formulaire pour une Prospection. -->
 						<form method = "post" action = "../exec/prospectionInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
-								<label for = "date">Date Prospection</label> : <input type = "text" name = "date" id = "date" /><br />
+								<label for = "nom">Nom</label> : 
+								<input type = "text" name = "nom" id = "nom" /><br />
+								<label for = "date">Date Prospection</label> : 
+								<input type = "date" name = "date" id = "date" /> (jj/mm/aaaa)<br />
 								<label for = "lieu">Lieu</label> : 
 								<select name = "lieu" id = "lieu">
 									<?php

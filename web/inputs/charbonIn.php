@@ -80,7 +80,8 @@
 									?>
 								</select> 
 								<a href = "objetIn.php">Ajouter un nouvel Objet ?</a><br />
-								<label for = "datation">Datation</label> : <input type = "text" name = "datation" id = "datation" /><br />
+								<label for = "datation">Datation</label> : 
+								<input type = "date" name = "datation" id = "datation" /> (jj/mm/aaaa)<br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

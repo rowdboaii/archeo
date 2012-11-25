@@ -75,7 +75,8 @@
 						<!-- Formulaire pour un Site. -->
 						<form method = "post" action = "../exec/siteInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+								<label for = "nom">Nom</label> : 
+								<input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "region">Région</label> : 
 								<select name = "region" id = "region">
 									<?php
@@ -86,9 +87,12 @@
 									?>
 								</select> 
 								<a href = "regionIn.php">Ajouter une nouvelle Région ?</a><br />
-								<label for = "nord">Position Nord</label> : <input type = "text" name = "nord" id = "nord" /><br />
-								<label for = "est">Position Est</label> : <input type = "text" name = "est" id = "est" /><br />
-								<label for = "altitude">Altitude</label> : <input type = "text" name = "altitude" id = "altitude" /><br />
+								<label for = "nord">Position Nord</label> : 
+								<input type = "text" name = "nord" id = "nord" /> (number)<br />
+								<label for = "est">Position Est</label> : 
+								<input type = "text" name = "est" id = "est" /> (number)<br />
+								<label for = "altitude">Altitude</label> : 
+								<input type = "text" name = "altitude" id = "altitude" /> (number)<br />
 								<label for = "trouve">Trouvé par</label> : 
 								<select name = "trouve" id = "trouve">
 									<?php
@@ -120,7 +124,7 @@
 								</select> 
 								<a href = "../parameters/siteType.php">Ajouter un nouveau Type de Site ?</a><br />
 								<label for = "commentaire">Commentaire</label> :<br />								
-								<input type = "text" name = "commentaire" id = "commentaire" width = "30px" height = "5px" /><br />
+								<input type = "text" name = "commentaire" id = "commentaire" style = "width:500px; height:100px" /><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

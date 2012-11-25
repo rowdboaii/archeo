@@ -68,7 +68,8 @@
 						<!-- Formulaire pour un Décapage. -->
 						</p><form method = "post" action = "../exec/decapageInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom"><br />
+								<label for = "nom">Nom</label> : 
+								<input type = "text" name = "nom" id = "nom"><br />
 								<label for = "carre">Carré</label> : 
 								<select name = "carre" id = "carre">
 									<?php

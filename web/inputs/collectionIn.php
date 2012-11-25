@@ -69,7 +69,8 @@
 						<!-- Formulaire pour une Collection. -->
 						<form method = "post" action = "../exec/collectionInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+								<label for = "nom">Nom</label> : 
+								<input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "proprietaire">Propriétaire</label> : 
 								<select name = "proprietaire" id = "proprietaire">
 									<?php

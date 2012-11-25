@@ -82,7 +82,10 @@
 						<!-- Formulaire pour un Article. -->
 						<form method = "post" action = "../exec/articleInsert.php">
 							<p>
-								<label for = "titre">Titre</label> : <input type = "text" name = "titre" id = "titre" /><br />
+								<label for = "titre">Titre</label> : 
+								<input type = "text" name = "titre" id = "titre" /><br />
+								<label for = "revue">Revue</label> : 
+								<input type = "text" name = "revue" id = "revue" /><br />
 								<label for = "auteur">Auteur</label> : 
 								<select name = "auteur" id = "auteur">
 									<?php
@@ -93,7 +96,6 @@
 									?>
 								</select> 
 								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
-								<label for = "revue">Revue</label> : <input type = "text" name = "revue" id = "revue" /><br />
 								<label for = "type_sujet">Type de sujet</label> : 
 								<select name = "type_sujet" id = "type_sujet">
 									<option value = "locus">locus</option>
@@ -120,7 +122,8 @@
 								<a href = "locusIn.php">Ajouter un nouveau Locus ?</a> 
 								<a href = "regionIn.php">une nouvelle Région ?</a> 
 								<a href = "siteIn.php">un nouveau site ?</a><br />
-								<label for = "annee">Année</label> : <input type = "date" name = "annee" id = "annee" /><br />
+								<label for = "annee">Année</label> : 
+								<input type = "date" name = "annee" id = "annee" /> (jj/mm/aaaa)<br />
 								<label for = "langue">Langue</label> : 
 								<select name = "langue" id = "langue">
 									<?php
@@ -132,7 +135,7 @@
 								</select> 
 								<a href = "../parameters/langue.php">Ajouter une nouvelle Langue ?</a><br />
 								<label for = "mots_cle">Mots clé</label> :<br />
-								<input type = "text" name = "mots_cle" id = "mots_cle" width = "30px" height = "5" /><br />
+								<input type = "text" name = "mots_cle" id = "mots_cle" style = "width:500px; height:100px" /><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

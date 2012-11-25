@@ -34,7 +34,7 @@
 				<div id = "">
 				
 					<!-- Menu principal. -->
-					<?php include('../includes/MenuMain.php'); ?>
+					<?php include('../includes/menuMain.php'); ?>
 
 				</div>
 			</nav>
@@ -71,7 +71,8 @@
 						<!-- Formulaire pour une Fouille. -->
 						</p><form method = "post" action = "../exec/fouilleInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom"><br>
+								<label for = "nom">Nom</label> : 
+								<input type = "text" name = "nom" id = "nom"><br>
 								<label for = "decapage">Décapage</label> : 
 								<select name = "decapage" id = "decapage">
 									<?php
@@ -92,7 +93,8 @@
 									?>
 								</select> 
 								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br>
-								<label for = "annee">Année</label> : <input type = "date" name = "annee" id = "annee"><br>
+								<label for = "annee">Année</label> : 
+								<input type = "date" name = "annee" id = "annee"> (jj/mm/aaaa)<br>
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

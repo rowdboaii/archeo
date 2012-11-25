@@ -75,7 +75,8 @@
 						<!-- Formulaire pour un Locus. -->
 						<form method = "post" action = "../exec/locusInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : <input type = "text" name = "nom" id = "nom" /><br />
+								<label for = "nom">Nom</label> : 
+								<input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "type">Type</label> : 
 								<select name = "type" id = "type">
 									<?php
@@ -96,9 +97,12 @@
 									?>
 								</select> 
 								<a href = "siteIn.php">Ajouter un nouveau Site ?</a><br />
-								<label for = "nord">Position Nord</label> : <input type = "text" name = "nord" id = "nord" /><br />
-								<label for = "est">Position Est</label> : <input type = "text" name = "est" id = "est" /><br />
-								<label for = "altitude">Altitude</label> : <input type = "text" name = "altitude" id = "altitude" /><br />
+								<label for = "nord">Position Nord</label> : 
+								<input type = "text" name = "nord" id = "nord" /> (number)<br />
+								<label for = "est">Position Est</label> : 
+								<input type = "text" name = "est" id = "est" /> (number)<br />
+								<label for = "altitude">Altitude</label> : 
+								<input type = "text" name = "altitude" id = "altitude" /> (number)<br />
 								<label for = "trouve">Trouvé par</label> : 
 								<select name = "trouve" id = "trouve">
 									<?php
