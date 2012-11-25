@@ -1,6 +1,6 @@
-<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
+﻿<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : objetNatureDel.php -->
+<!-- Fichier : galetDelete.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
 <?php session_start(); ?>
@@ -16,7 +16,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>ObjetNatureDelete</title>
+		<title>GaletDelete</title>
 	</head>
 
 	<body>
@@ -52,16 +52,16 @@
 				<div id = "">	
 
 					<?php
-						$query = $bdd->prepare('DELETE FROM objetnature
-									WHERE nature = :delete'
+						$query1 = $bdd->prepare('DELETE FROM galet
+									WHERE identifiant = :delete'
 									);
-						$query->execute(array('delete' => $_POST['delete'])) or die("error");
+						$query1->execute(array('delete' => $_POST['delete'])) or die("error");
 						echo 'Champ supprimé de la base.';
 					?>
 				
 					<!-- Lien de retour. -->
 					<p>
-						<a href = "../parameters/objetNature.php">Revenir</a>
+						<a href = "../deletes/galetDel.php">Revenir</a>
 					</p>
 	
 				</div>

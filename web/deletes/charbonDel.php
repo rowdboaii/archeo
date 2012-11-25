@@ -1,6 +1,6 @@
-<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
+﻿<!-- Sujet : Projet de base de données pour des fouilles archéogiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : charbonIn.php -->
+<!-- Fichier : CharbonDel.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
 <?php session_start(); ?>
@@ -16,7 +16,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>CharbonIn</title>
+		<title>CharbonDel</title>
 	</head>
 
 	<body>
@@ -44,58 +44,58 @@
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
 				
-					<!-- Menu pour les inputs. -->
-					<?php include('../includes/menuIn.php'); ?>
+					<!-- Menu pour les Deletes. -->
+					<?php include('../includes/menuDel.php'); ?>
 				
 				</div>
 			</aside>
 
 			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
+			
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
 
 					<?php
-						/* Connexion à la base de données. */
+						/* Connexion à base de données. */
 						include('../includes/connexionBDD.php');
-					
+
 						/* Récupération des données pour le formulaire. */
-						$query = $bdd->prepare('SELECT o.identifiant, o.nom
-										FROM objet o, objetnature n
-										WHERE o.nature = n.identifiant
-										AND n.nature = \'charbon\''
-								 	);
+						$query = $bdd->prepare('SELECT c.objet, o.nom
+												FROM charbon c, objet o
+												WHERE c.objet = o.identifiant'
+												);
 					?>
 
 					<p>
-						<!-- Formulaire pour un Charbon. -->
-						<form method = "post" action = "../exec/charbonInsert.php">
+						<!-- Formulaire pour le Delete d'un Charbon. -->
+						<form method = "post" action = "../exec/charbonDelete.php">
 							<p>
-								<label for = "objet">Objet</label> : 
-								<select name = "objet" id = "objet">
+								<label for = "delete">Charbon à supprimer</label> : 
+								<select name = "delete" id = "delete">
+									<option value = "0"></option>
 									<?php
 										$query->execute();
 										while ($data = $query->fetch()) {
-											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
+											echo '<option value = "' . $data['objet'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
-								<a href = "objetIn.php">Ajouter un nouvel Objet ?</a><br />
-								<label for = "datation">Datation</label> : 
-								<input type = "date" name = "datation" id = "datation" /> (jj/mm/aaaa)<br />
+								</select><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
-	
-					<?php $query->closeCursor(); ?>
-	
+					
+					<?php
+						$query->closeCursor();
+					?>
+				
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-			
+				
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
 			

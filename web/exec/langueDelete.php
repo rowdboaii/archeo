@@ -55,14 +55,8 @@
 						$query = $bdd->prepare('DELETE FROM langue
 									WHERE langue = :delete'
 									);
-						$query->execute(array('delete' => $_POST['delete']));
-
-						if (!$query) {
-							die("Erreur dans l'insertion : " . pg_last_error());
-						}
-						else {
-							echo 'Champ supprimé de la base.';
-						}
+						$query->execute(array('delete' => $_POST['delete'])) or die("error");
+						echo 'Champ supprimé de la base.';
 					?>
 				
 					<!-- Lien de retour. -->

@@ -57,12 +57,8 @@
 									);
 						$query->execute(array('objet' => $_POST['objet'],
 									'datation' => $_POST['datation']
-									));
-						if (!$query) {
-							die("Erreur dans l'insertion : " . pg_last_error());
-						}
-						else {
-							echo 'Champ ajouté à la base.';
+									)) or die('Error');
+						echo 'Champ ajouté à la base.';
 					?>
 				
 					<!-- Lien de retour vers la page des inputs. -->

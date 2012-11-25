@@ -60,7 +60,7 @@
 						/* Connexion à base de données. */
 						include('../includes/connexionBDD.php');
 
-						/* Répération des données pour le formulaire. */
+						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT o.identifiant, o.nom
 												FROM objet o'
 												);
@@ -70,7 +70,7 @@
 						<!-- Formulaire pour le Delete d'un Objet. -->
 						<form method = "post" action = "../exec/objetDelete.php">
 							<p>
-								<label for = "delete">Personne à supprimer</label> : 
+								<label for = "delete">Objet à supprimer</label> : 
 								<select name = "delete" id = "delete">
 									<option value = "0"></option>
 									<?php

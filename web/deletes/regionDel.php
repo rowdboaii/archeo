@@ -1,6 +1,6 @@
 ﻿<!-- Sujet : Projet de base de données pour des fouilles archéogiques. -->
 <!-- Auteur : Xavier Muth & Antoine Hars -->
-<!-- Fichier : regionDel.php -->
+<!-- Fichier : prospectionDel.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
 <?php session_start(); ?>
@@ -16,7 +16,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>RégionDel</title>
+		<title>ProspectionDel</title>
 	</head>
 
 	<body>
@@ -60,17 +60,17 @@
 						/* Connexion à base de données. */
 						include('../includes/connexionBDD.php');
 
-						/* Répération des données pour le formulaire. */
-						$query = $bdd->prepare('SELECT r.identifiant, r.nom
-												FROM region r'
+						/* Récupération des données pour le formulaire. */
+						$query = $bdd->prepare('SELECT p.identifiant, p.nom
+												FROM region p'
 												);
 					?>
 
 					<p>
-						<!-- Formulaire pour le Delete d'une Région. -->
+						<!-- Formulaire pour le Delete d'une Prospection. -->
 						<form method = "post" action = "../exec/regionDelete.php">
 							<p>
-								<label for = "delete">Région à supprimer</label> : 
+								<label for = "delete">Prospection à supprimer</label> : 
 								<select name = "delete" id = "delete">
 									<option value = "0"></option>
 									<?php

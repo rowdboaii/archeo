@@ -52,17 +52,11 @@
 				<div id = "">	
 
 					<?php
-						$query = $bdd->prepare('DELETE FROM objet
+						$query1 = $bdd->prepare('DELETE FROM objet
 									WHERE identifiant = :delete'
 									);
-						$query->execute(array('delete' => $_POST['delete']));
-
-						if (!$query) {
-							die("Erreur dans l'insertion : " . pg_last_error());
-						}
-						else {
-							echo 'Champ supprimé de la base.';
-						}
+						$query1->execute(array('delete' => $_POST['delete'])) or die("error");
+						echo 'Champ supprimé de la base.';
 					?>
 				
 					<!-- Lien de retour. -->

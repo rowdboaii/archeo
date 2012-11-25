@@ -60,7 +60,7 @@
 						/* Connexion à base de données. */
 						include('../includes/connexionBDD.php');
 
-						/* Répération des données pour le formulaire. */
+						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT p.identifiant, p.nom
 												FROM prospection p'
 												);
