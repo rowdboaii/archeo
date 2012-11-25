@@ -135,7 +135,7 @@
 								</select> 
 								<a href = "../parameters/langue.php">Ajouter une nouvelle Langue ?</a><br />
 								<label for = "mots_cle">Mots clé</label> :<br />
-								<input type = "text" name = "mots_cle" id = "mots_cle" style = "width:500px; height:100px" /><br />
+								<textarea name = "mots_cle" id = "mots_cle" rows = "10" cols = "80"></textarea><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>

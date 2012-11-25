@@ -88,7 +88,7 @@
 								<label for = "altitude">Altitude</label> : 
 								<input type = "text" name = "altitude" id = "altitude" /> (number)<br />
 								<label for = "commentaire">Commentaire</label> :<br />
-								<input type = "text" name = "commentaire" id = "commentaire" style = "width:500px; height:100px" /><br />
+								<textarea name = "commentaire" id = "commentaire" rows = "10" cols = "80"></textarea><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
