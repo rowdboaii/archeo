@@ -266,16 +266,14 @@ CREATE TABLE galet
 (
 	objet INTEGER REFERENCES objet(identifiant),
 	nom VARCHAR(50) NOT NULL,
-	type INTEGER REFERENCES galetType(identifiant),
-	commentaire VARCHAR(500)
+	type INTEGER REFERENCES galetType(identifiant)
 );
 
 /* Création de la table Charbon. */
 CREATE TABLE charbon
 (
 	objet INTEGER REFERENCES objet(identifiant),
-	datation DATE NOT NULL,
-	commentaire VARCHAR(500)
+	datation DATE NOT NULL
 );
 
 /* Création de la table Os. */
@@ -291,8 +289,7 @@ CREATE TABLE os
 	dissous BOOLEAN NOT NULL DEFAULT FALSE,
 	morsure BOOLEAN NOT NULL DEFAULT FALSE,
 	conservation INTEGER NOT NULL,
-	datation DATE NOT NULL,
-	commentaire VARCHAR(500)
+	datation DATE NOT NULL
 );
 
 /* Création de la table Silex. */
@@ -300,7 +297,6 @@ CREATE TABLE silex
 (
 	objet INTEGER REFERENCES objet(identifiant),
 	provenance INTEGER REFERENCES gisement(identifiant),
-	couleur VARCHAR(50) NOT NULL,
-	commentaire VARCHAR(500)
+	couleur VARCHAR(50) NOT NULL
 );
 
