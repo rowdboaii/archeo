@@ -29,7 +29,7 @@ V1:
 - Ajout d'un super utilisateur pour modifier les données de la base. (DONE)
 - Ajout d'un utilisateur normal avec accès à la lecture seule. (DONE)
 - Modification des valeurs des champs des tables de la base.
-- Suppression des champs des tables de la base.
+- Suppression des champs des tables de la base. (DONE)
 
 
 V2:
@@ -43,9 +43,7 @@ V2:
 
 V3:
 - Sécuriser le transit de données en utilisant des RegExp.
-- Affichage de données en fonction d'un critère.
-- Modification de données en fonction d'un critère.
-- Suppression de données en fonction d'un critère.
+- Ajout recherche d'articles en fonction de mots clé.
 
 
 V4:
