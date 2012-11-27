@@ -81,6 +81,8 @@
 									?>
 								</select> 
 								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
+								<label for = "commentaire">Commentaires</label> :<br />
+								<textarea name = "commentaire" id = "commentaire" rows = "10" cols = "80"></textarea><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
