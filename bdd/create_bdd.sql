@@ -106,7 +106,8 @@ CREATE TABLE region
 (
 	identifiant SERIAL PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
-	pays INTEGER REFERENCES pays(identifiant)
+	pays INTEGER REFERENCES pays(identifiant),
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Personne. */
@@ -116,7 +117,8 @@ CREATE TABLE personne
 	nom VARCHAR(50) NOT NULL,
 	prenom VARCHAR(50) NOT NULL,
 	nationalite INTEGER REFERENCES nationalite(identifiant),
-	fonction INTEGER REFERENCES fonction(identifiant)
+	fonction INTEGER REFERENCES fonction(identifiant),
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Site. */
@@ -145,7 +147,8 @@ CREATE TABLE locus
 	position_est FLOAT NOT NULL,
 	altitude FLOAT NOT NULL,
 	trouve_par INTEGER REFERENCES personne(identifiant),
-	appartient_a INTEGER REFERENCES personne(identifiant)
+	appartient_a INTEGER REFERENCES personne(identifiant),
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Article. */
@@ -159,7 +162,8 @@ CREATE TABLE article
 	revue VARCHAR(100) NOT NULL,
 	langue INTEGER REFERENCES langue(identifiant),
 	sujet INTEGER NOT NULL,
-	type_sujet enum_type_sujet NOT NULL
+	type_sujet enum_type_sujet NOT NULL,
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table collection. */
@@ -168,6 +172,7 @@ CREATE TABLE collection
 	identifiant SERIAL PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
 	proprietaire INTEGER REFERENCES personne(identifiant)
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Gisement. */
@@ -179,7 +184,7 @@ CREATE TABLE gisement
 	position_nord FLOAT NOT NULL,
 	position_est FLOAT NOT NULL,
 	altitude FLOAT NOT NULL,
-	commentaire VARCHAR(200)
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Carré. */
@@ -187,7 +192,8 @@ CREATE TABLE carre
 (
 	identifiant SERIAL PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
-	locus INTEGER REFERENCES locus(identifiant)
+	locus INTEGER REFERENCES locus(identifiant),
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Décapage. */
@@ -195,7 +201,8 @@ CREATE TABLE decapage
 (
 	identifiant SERIAL PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
-	carre INTEGER REFERENCES carre(identifiant)
+	carre INTEGER REFERENCES carre(identifiant),
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Fouille. */
@@ -203,9 +210,10 @@ CREATE TABLE fouille
 (
 	identifiant SERIAL PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
-	annee DATE NOT NULL,  -- Vérification du type DATE.
+	annee DATE NOT NULL,
 	fouilleur INTEGER REFERENCES personne(identifiant),
-	decapage INTEGER REFERENCES decapage(identifiant)
+	decapage INTEGER REFERENCES decapage(identifiant),
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Lieu. */
@@ -217,7 +225,7 @@ CREATE TABLE lieu
 	position_nord FLOAT NOT NULL,
 	position_est FLOAT NOT NULL,
 	altitude FLOAT NOT NULL,
-	commentaire VARCHAR(200)
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Prospection. */
@@ -227,7 +235,8 @@ CREATE TABLE prospection
 	nom VARCHAR(50) NOT NULL,
 	date_prospection DATE NOT NULL,
 	responsable INTEGER REFERENCES personne(identifiant),
-	lieu INTEGER REFERENCES lieu(identifiant)
+	lieu INTEGER REFERENCES lieu(identifiant),
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Objet. */
@@ -245,11 +254,11 @@ CREATE TABLE objet
 	periode INTEGER REFERENCES periode(identifiant),
 	tamis BOOLEAN NOT NULL DEFAULT FALSE,
 	trouve_par INTEGER REFERENCES personne(identifiant),
-	collection INTEGER REFERENCES collection(identifiant),
+	collection INTEGER,
 	type_recherche enum_type_recherche NOT NULL,
 	recherche INTEGER,
 	fiche VARCHAR(50), -- Changer le VARCHAR pour avec des points 3D.
-	commentaire VARCHAR(200)
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Galet. */
@@ -257,14 +266,16 @@ CREATE TABLE galet
 (
 	objet INTEGER REFERENCES objet(identifiant),
 	nom VARCHAR(50) NOT NULL,
-	type INTEGER REFERENCES galetType(identifiant)
+	type INTEGER REFERENCES galetType(identifiant),
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Charbon. */
 CREATE TABLE charbon
 (
 	objet INTEGER REFERENCES objet(identifiant),
-	datation DATE NOT NULL
+	datation DATE NOT NULL,
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Os. */
@@ -280,7 +291,8 @@ CREATE TABLE os
 	dissous BOOLEAN NOT NULL DEFAULT FALSE,
 	morsure BOOLEAN NOT NULL DEFAULT FALSE,
 	conservation INTEGER NOT NULL,
-	datation DATE NOT NULL-- Vérifier le type DATE correspond.
+	datation DATE NOT NULL,
+	commentaire VARCHAR(500)
 );
 
 /* Création de la table Silex. */
@@ -288,6 +300,7 @@ CREATE TABLE silex
 (
 	objet INTEGER REFERENCES objet(identifiant),
 	provenance INTEGER REFERENCES gisement(identifiant),
-	couleur VARCHAR(50) NOT NULL
+	couleur VARCHAR(50) NOT NULL,
+	commentaire VARCHAR(500)
 );
 
