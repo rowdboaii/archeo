@@ -52,8 +52,8 @@
 				<div id = "">	
 	
 					<?php
-						$query = $bdd->prepare('INSERT INTO locus (nom, type, site, position_nord, position_est, altitude, trouve_par, appartient_a)
-									VALUES (:nom, :type, :site, :position_nord, :position_est, :altitude, :trouve_par, :appartient_a)'
+						$query = $bdd->prepare('INSERT INTO locus (nom, type, site, position_nord, position_est, altitude, trouve_par, appartient_a, commentaire)
+									VALUES (:nom, :type, :site, :position_nord, :position_est, :altitude, :trouve_par, :appartient_a, :commentaire)'
 									);
 						$query->execute(array('nom' => $_POST['nom'],
 									'type' => $_POST['type'],
@@ -62,7 +62,8 @@
 									'position_est' => $_POST['est'],
 									'altitude' => $_POST['altitude'],
 									'trouve_par' => $_POST['trouve'],
-									'appartient_a' => $_POST['proprietaire']
+									'appartient_a' => $_POST['proprietaire'],
+									'commentaire' => $_POST['commentaire']
 								)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
