@@ -52,11 +52,12 @@
 				<div id = "">	
 	
 					<?php
-						$query = $bdd->prepare('INSERT INTO region (nom, pays)
-									VALUES (:nom, :pays)'
+						$query = $bdd->prepare('INSERT INTO region (nom, pays, commentaire)
+									VALUES (:nom, :pays, :commentaire)'
 									);
 						$query->execute(array('nom' => $_POST['nom'],
 									'pays' => $_POST['pays'],
+									'commentaire' => $_POST['commentaire']
 								)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
