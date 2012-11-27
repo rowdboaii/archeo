@@ -52,11 +52,12 @@
 				<div id = "">
 	
 					<?php
-						$query = $bdd->prepare('INSERT INTO carre (nom, locus)
-									VALUES (:nom, :locus)'
+						$query = $bdd->prepare('INSERT INTO carre (nom, locus, commentaire)
+									VALUES (:nom, :locus, :commentaire)'
 									);
 						$query->execute(array('nom' => $_POST['nom'],
-									'locus' => $_POST['locus']
+									'locus' => $_POST['locus'],
+									'commentaire' => $_POST['commentaire']
 									));
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
