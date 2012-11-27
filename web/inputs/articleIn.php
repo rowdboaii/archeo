@@ -136,6 +136,8 @@
 								<a href = "../parameters/langue.php">Ajouter une nouvelle Langue ?</a><br />
 								<label for = "mots_cle">Mots clé</label> :<br />
 								<textarea name = "mots_cle" id = "mots_cle" rows = "10" cols = "80"></textarea><br />
+								<label for = "commentaire">Commentaires</label> :<br />
+								<textarea name = "commentaire" id = "commentaire" rows = "10" cols = "80"></textarea><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
