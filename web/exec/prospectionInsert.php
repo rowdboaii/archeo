@@ -52,13 +52,14 @@
 				<div id = "">	
 	
 					<?php
-						$query = $bdd->prepare('INSERT INTO prospection (nom, responsable, lieu, date_prospection)
-									VALUES (:nom, :responsable, :lieu, :date_prospection)'
+						$query = $bdd->prepare('INSERT INTO prospection (nom, responsable, lieu, date_prospection, commentaire)
+									VALUES (:nom, :responsable, :lieu, :date_prospection, :commentaire)'
 									);
 						$query->execute(array('nom' => $_POST['nom'],
 									'responsable' => $_POST['responsable'],
 									'lieu' => $_POST['lieu'],
 									'date_prospection' => $_POST['date'],
+									'commentaire' => $_POST['commentaire']
 								)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
