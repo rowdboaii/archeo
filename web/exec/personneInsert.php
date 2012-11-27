@@ -52,13 +52,14 @@
 				<div id = "">	
 	
 					<?php
-						$query = $bdd->prepare('INSERT INTO personne (nom, prenom, nationalite, fonction)
-									VALUES (:nom, :prenom, :nationalite, :fonction)'
+						$query = $bdd->prepare('INSERT INTO personne (nom, prenom, nationalite, fonction, commentaire)
+									VALUES (:nom, :prenom, :nationalite, :fonction, :commentaire)'
 									);
 						$query->execute(array('nom' => $_POST['nom'],
 									'prenom' => $_POST['prenom'],
 									'nationalite' => $_POST['nationalite'],
-									'fonction' => $_POST['fonction']
+									'fonction' => $_POST['fonction'],
+									'commentaire' => $_POST['commentaire']
 								)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
