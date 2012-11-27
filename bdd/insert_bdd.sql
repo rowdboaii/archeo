@@ -118,44 +118,44 @@ VALUES ('France');
 INSERT INTO pays (nom)
 VALUES ('Allemagne');
 
-INSERT INTO personne (nom, prenom, nationalite, fonction)
-VALUES ('bob', 'patrick', 2, 2);
+INSERT INTO personne (nom, prenom, nationalite, fonction, commentaire)
+VALUES ('bob', 'patrick', 2, 2, 'commentaire');
 
-INSERT INTO personne (nom, prenom, nationalite, fonction)
-VALUES ('muth', 'xavier', 1, 1);
+INSERT INTO personne (nom, prenom, nationalite, fonction, commentaire)
+VALUES ('muth', 'xavier', 1, 1, 'commentaire');
 
-INSERT INTO region (nom, pays)
-VALUES ('region1', 1);
+INSERT INTO region (nom, pays, commentaire)
+VALUES ('region1', 1, 'commentaire');
 
-INSERT INTO region (nom, pays)
-VALUES ('region2', 2);
-
-INSERT INTO site (nom, region, position_nord, position_est, altitude, trouve_par, fouille_par, type, commentaire)
-VALUES ('site1', 2, 32, 6, 23, 2, 1, 1, 'magnifique');
+INSERT INTO region (nom, pays, commentaire)
+VALUES ('region2', 2, 'commentaire');
 
 INSERT INTO site (nom, region, position_nord, position_est, altitude, trouve_par, fouille_par, type, commentaire)
-VALUES ('site2', 1, 12, 4, 66, 1, 2, 2, 'chanmé');
+VALUES ('site1', 2, 32, 6, 23, 2, 1, 1, 'commentaire');
 
-INSERT INTO locus (nom, site, type, position_nord, position_est, altitude, trouve_par, appartient_a)
-VALUES ('locus1', 1, 1, 3, 5, 7, 1, 2);
+INSERT INTO site (nom, region, position_nord, position_est, altitude, trouve_par, fouille_par, type, commentaire)
+VALUES ('site2', 1, 12, 4, 66, 1, 2, 2, 'commentaire');
 
-INSERT INTO locus (nom, site, type, position_nord, position_est, altitude, trouve_par, appartient_a)
-VALUES ('locus2', 2, 2, 4, 5, 6, 2, 1);
+INSERT INTO locus (nom, site, type, position_nord, position_est, altitude, trouve_par, appartient_a, commentaire)
+VALUES ('locus1', 1, 1, 3, 5, 7, 1, 2, 'commentaire');
+
+INSERT INTO locus (nom, site, type, position_nord, position_est, altitude, trouve_par, appartient_a, commentaire)
+VALUES ('locus2', 2, 2, 4, 5, 6, 2, 1, 'commentaire');
 
 INSERT INTO lieu (nom, region, position_nord, position_est, altitude, commentaire)
-VALUES ('lieu1', 1, 3, 1, 3, 'choucroute');
+VALUES ('lieu1', 1, 3, 1, 3, 'commentaire');
 
 INSERT INTO lieu (nom, region, position_nord, position_est, altitude, commentaire)
-VALUES ('lieu2', 2, 76, 8, 5, 'patate');
+VALUES ('lieu2', 2, 76, 8, 5, 'commentaire');
 
-INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet, type_sujet)
-VALUES ('titre1', 2, 'mot1 mot2', '01/12/2012', 'revue1', 4, 1, 'site');
+INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet, type_sujet, commentaire)
+VALUES ('titre1', 2, 'mot1 mot2', '01/12/2012', 'revue1', 4, 1, 'site', 'commentaire');
 
-INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet, type_sujet)
-VALUES ('titre2', 1, 'mot4', '23/01/2010', 'revue3', 1, 2, 'region');
+INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet, type_sujet, commentaire)
+VALUES ('titre2', 1, 'mot4', '23/01/2010', 'revue3', 1, 2, 'region', 'commentaire');
 
-INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet, type_sujet)
-VALUES ('titre3', 2, 'mot5', '02/01/2010', 'rev&',3, 1, 'site');
+INSERT INTO article (titre, auteur, mot_cle, annee, revue, langue, sujet, type_sujet, commentaire)
+VALUES ('titre3', 2, 'mot5', '02/01/2010', 'rev&',3, 1, 'site', 'commentaire');
 
 INSERT INTO gisement (nom, region, position_nord, position_est, altitude, commentaire)
 VALUES ('gisement1', 2, 43, 5, 21, 'commentaire');
@@ -163,53 +163,53 @@ VALUES ('gisement1', 2, 43, 5, 21, 'commentaire');
 INSERT INTO gisement (nom, region, position_nord, position_est, altitude, commentaire)
 VALUES ('gisement2', 1, 43, 55, 777, 'commentaire');
 
-INSERT INTO prospection (nom, date_prospection, responsable, lieu)
-VALUES ('11', '12/12/2012', 2, 1);
+INSERT INTO prospection (nom, date_prospection, responsable, lieu, commentaire)
+VALUES ('11', '12/12/2012', 2, 1, 'commentaire');
 
-INSERT INTO prospection (nom, date_prospection, responsable, lieu)
-VALUES ('22', '30/03/400', 1, 2);
+INSERT INTO prospection (nom, date_prospection, responsable, lieu, commentaire)
+VALUES ('22', '30/03/400', 1, 2, 'commentaire');
 
-INSERT INTO carre (nom, locus)
-VALUES ('carre1', 2);
+INSERT INTO carre (nom, locus, commentaire)
+VALUES ('carre1', 2, 'commentaire');
 
-INSERT INTO carre (nom, locus)
-VALUES ('carre2', 1);
+INSERT INTO carre (nom, locus, commentaire)
+VALUES ('carre2', 1, 'commentaire');
 
-INSERT INTO decapage (nom, carre)
-VALUES ('decapage4', 1);
+INSERT INTO decapage (nom, carre, commentaire)
+VALUES ('decapage4', 1, 'commentaire');
 
-INSERT INTO decapage (nom, carre)
-VALUES ('decapage2', 2);
+INSERT INTO decapage (nom, carre, commentaire)
+VALUES ('decapage2', 2, 'commentaire');
 
-INSERT INTO fouille (fouilleur, nom, annee, decapage)
-VALUES (1, 'fouille3', '12/12/400', 1);
+INSERT INTO fouille (fouilleur, nom, annee, decapage, commentaire)
+VALUES (1, 'fouille3', '12/12/400', 1, 'commentaire');
 
-INSERT INTO fouille (fouilleur, nom, annee, decapage)
-VALUES (2, 'fouille5', '2/2/1990', 2);
+INSERT INTO fouille (fouilleur, nom, annee, decapage, commentaire)
+VALUES (2, 'fouille5', '2/2/1990', 2, 'commentaire');
 
-INSERT INTO collection (nom, proprietaire)
-VALUES ('nom1', 2);
+INSERT INTO collection (nom, proprietaire, commentaire)
+VALUES ('nom1', 2, 'commentaire');
 
-INSERT INTO collection (nom, proprietaire)
-VALUES ('nom2', 2);
-
-INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, fiche, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet1', 1, 3, 4, 76, 4, 1, 2, 'fouille', 2, 'fiche', TRUE, 1, FALSE, 1, 'commentaire');
+INSERT INTO collection (nom, proprietaire, commentaire)
+VALUES ('nom2', 2, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, fiche, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet2', 2, 3, 4, 76, 4, 1, 2, 'prospection', 2, 'fiche', FALSE, 1, FALSE, 1, 'commentaire');
+VALUES ('objet1', 1, 3, 4, 76, 4, 1, 2, 'fouille', 0, 'fiche', TRUE, 1, FALSE, 1, 'commentaire');
+
+INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, fiche, brule, periode, tamis, trouve_par, commentaire)
+VALUES ('objet2', 2, 3, 4, 76, 4, 1, 2, 'prospection', 1, 'fiche', FALSE, 1, FALSE, 1, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, fiche, brule, periode, tamis, trouve_par, commentaire)
 VALUES ('objet3', 2, 4, 4, 76, 4, 2, 1, 'fouille', 2, 'fiche', TRUE, 1, FALSE, 2, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, fiche, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet4', 2, 3, 4, 76, 4, 1, 1, 'prospection', 2, 'fiche', FALSE, 1, TRUE, 1, 'commentaire');
+VALUES ('objet4', 2, 3, 4, 76, 4, 1, 1, 'prospection', 0, 'fiche', FALSE, 1, TRUE, 1, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, fiche, brule, periode, tamis, trouve_par, commentaire)
 VALUES ('objet5', 2, 3, 4, 76, 4, 5, 2, 'fouille', 2, 'fiche', TRUE, 1, TRUE, 1, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, fiche, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet6', 2, 3, 4, 76, 4, 5, 2, 'prospection', 2, 'fiche', FALSE, 1, FALSE, 2, 'commentaire');
+VALUES ('objet6', 2, 3, 4, 76, 4, 5, 2, 'prospection', 0, 'fiche', FALSE, 1, FALSE, 2, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, fiche, brule, periode, tamis, trouve_par, commentaire)
 VALUES ('objet7', 2, 4, 4, 76, 4, 6, 1, 'fouille', 1, 'fiche', TRUE, 1, TRUE, 2, 'commentaire');
