@@ -180,7 +180,7 @@
 								non <input type = "radio" name = "brule" value = "false" id = "false" /><br />
 								<label for = "fiche">Fiche</label> : 
 								<input type = "text" name = "fiche" id = "fiche" /><br />
-								<label for = "commentaire">Commentaire</label> :<br />
+								<label for = "commentaire">Commentaires</label> :<br />
 								<textarea name = "commentaire" id = "commentaire" rows = "10" cols = "80"></textarea><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
