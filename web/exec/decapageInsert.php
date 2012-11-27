@@ -53,11 +53,12 @@
 				<div id = "">
 	
 					<?php
-						$query = $bdd->prepare('INSERT INTO decapage (nom, carre)
-									VALUES (:nom, :carre)'
+						$query = $bdd->prepare('INSERT INTO decapage (nom, carre, commentaire)
+									VALUES (:nom, :carre, :commentaire)'
 									);
 						$query->execute(array('nom' => $_POST['nom'],
-									'carre' => $_POST['carre']
+									'carre' => $_POST['carre'],
+									'commentaire' => $_POST['commentaire']
 								)) or die('Error');
 						echo 'Champ ajouté à la base.';
 					?>
