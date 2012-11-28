@@ -58,7 +58,7 @@
 				<div id = "">
 						
 					<?php
-						$query = $bdd->query('SELECT c.identifiant, p.prenom, c.nom, p.nom AS nom_personne
+						$query = $bdd->query('SELECT c.identifiant, p.prenom, c.nom, p.nom AS nom_personne, c.commentaire
 									FROM collection c, personne p
 									WHERE c.proprietaire = p.identifiant'
 									);
@@ -73,6 +73,7 @@
 							<tr>
 								<th>nom</th>
 								<th>propriétaire</th>
+								<th>commentaires</th>
 							</tr>
 						</thead>
 			
@@ -81,6 +82,7 @@
 							<tr>
 								<th>nom</th>
 								<th>propriétaire</th>
+								<th>commentaires</th>
 							</tr>
 						</tfoot>
 						
@@ -95,6 +97,7 @@
 								<tr>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['prenom'] . ' ' . $data['nom_personne']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 								
 							<?php
