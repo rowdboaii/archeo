@@ -58,7 +58,7 @@
 				<div id = "">
 						
 					<?php
-						$query = $bdd->query('SELECT d.identifiant, d.nom, c.nom AS nom_carre
+						$query = $bdd->query('SELECT d.identifiant, d.nom, c.nom AS nom_carre, d.commentaire
 									FROM decapage d, carre c
 									WHERE d.carre = c.identifiant'
 									);
@@ -73,6 +73,7 @@
 							<tr>
 								<th>nom</th>
 								<th>carré</th>
+								<th>commentaires</th>
 							</tr>
 						</thead>
 			
@@ -81,6 +82,7 @@
 							<tr>
 								<th>nom</th>
 								<th>carré</th>
+								<th>commentaires</th>
 							</tr>
 						</tfoot>
 						
@@ -95,6 +97,7 @@
 								<tr>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['nom_carre']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 								
 							<?php
