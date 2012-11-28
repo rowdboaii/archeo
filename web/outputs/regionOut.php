@@ -58,7 +58,7 @@
 				<div id = "">
 					
 					<?php
-						$query = $bdd->query('SELECT r.identifiant, r.nom, p.nom AS nom_pays
+						$query = $bdd->query('SELECT r.identifiant, r.nom, p.nom AS nom_pays, r.commentaire
 									FROM region r, pays p
 									WHERE r.pays = p.identifiant'
 									);
@@ -73,6 +73,7 @@
 							<tr>
 								<th>nom</th>
 								<th>pays</th>
+								<th>commentaires</th>
 							</tr>
 						</thead>
 			
@@ -81,6 +82,7 @@
 							<tr>
 								<th>nom</th>
 								<th>pays</th>
+								<th>commentaires</th>
 							</tr>
 						</tfoot>
 						
@@ -95,6 +97,7 @@
 								<tr>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['nom_pays']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 								
 							<?php
