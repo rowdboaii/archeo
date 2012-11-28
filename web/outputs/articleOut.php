@@ -58,7 +58,7 @@
 				<div id = "">
 					
 					<?php
-						$query = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, a.sujet, l.langue AS nom_langue
+						$query = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, a.sujet, l.langue AS nom_langue, a.commentaire
 									FROM article a, personne p, langue l
 									WHERE a.auteur = p.identifiant
 									AND a.langue = l.identifiant'
@@ -79,6 +79,7 @@
 								<th>langue</th>
 								<th>année</th>
 								<th>mots clé</th>
+								<th>commentaires</th>
 							</tr>
 						</thead>
 			
@@ -92,6 +93,7 @@
 								<th>langue</th>
 								<th>année</th>
 								<th>mots clé</th>
+								<th>commentaires</th>
 							</tr>
 						</tfoot>
 						
@@ -110,6 +112,7 @@
 									<td><?php echo $data['nom_langue']; ?></td>
 									<td><?php echo $data['annee']; ?></td>
 									<td><?php echo $data['mot_cle']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 								
 							<?php
