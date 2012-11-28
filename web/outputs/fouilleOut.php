@@ -58,7 +58,7 @@
 				<div id = "">
 						
 					<?php
-						$query = $bdd->query('SELECT f.identifiant, f.nom, p.prenom, p.nom AS nom_personne, d.nom AS nom_decapage, f.annee
+						$query = $bdd->query('SELECT f.identifiant, f.nom, p.prenom, p.nom AS nom_personne, d.nom AS nom_decapage, f.annee, f.commentaire
 									FROM fouille f, personne p, decapage d
 									WHERE f.fouilleur = p.identifiant
 									AND f.decapage = d.identifiant'
@@ -76,6 +76,7 @@
 								<th>fouilleur</th>
 								<th>decapage</th>
 								<th>année</th>
+								<th>commentaires</th>
 							</tr>
 						</thead>
 			
@@ -86,6 +87,7 @@
 								<th>fouilleur</th>
 								<th>decapage</th>
 								<th>année</th>
+								<th>commentaires</th>
 							</tr>
 						</tfoot>
 						
@@ -102,6 +104,7 @@
 									<td><?php echo $data['prenom'] . ' ' . $data['nom_personne']; ?></td>
 									<td><?php echo $data['nom_decapage']; ?></td>
 									<td><?php echo $data['annee']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 								
 							<?php
