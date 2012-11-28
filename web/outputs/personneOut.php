@@ -60,7 +60,7 @@
 				<div id = "">
 						
 					<?php
-						$query = $bdd->query('SELECT p.identifiant, p.prenom, p.nom, n.nationalite, f.fonction
+						$query = $bdd->query('SELECT p.identifiant, p.prenom, p.nom, n.nationalite, f.fonction, p.commentaire
 									FROM personne p, nationalite n, fonction f
 									WHERE p.nationalite = n.identifiant
 									AND p.fonction = f.identifiant'
@@ -78,6 +78,7 @@
 								<th>nom</th>
 								<th>nationalité</th>
 								<th>fonction</th>
+								<th>commentaires</th>
 							</tr>
 						</thead>
 			
@@ -87,7 +88,8 @@
 								<th>prénom</th>
 								<th>nom</th>
 								<th>nationalité</th>
-								<th>fonction</th>			
+								<th>fonction</th>
+								<th>commentaires</th>
 							</tr>
 						</tfoot>
 						
@@ -104,6 +106,7 @@
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['nationalite']; ?></td>
 									<td><?php echo $data['fonction']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 								
 							<?php
