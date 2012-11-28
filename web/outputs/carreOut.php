@@ -58,7 +58,7 @@
 				<div id = "">
 						
 					<?php
-						$query = $bdd->query('SELECT c.identifiant, c.nom, l.nom AS locus
+						$query = $bdd->query('SELECT c.identifiant, c.nom, l.nom AS locus, c.commentaire
 									FROM carre c, locus l
 									WHERE c.locus = l.identifiant'
 									);
@@ -73,6 +73,7 @@
 							<tr>
 								<th>nom</th>
 								<th>locus</th>
+								<th>commentaires</th>
 							</tr>
 						</thead>
 			
@@ -81,6 +82,7 @@
 							<tr>
 								<th>nom</th>
 								<th>locus</th>
+								<th>commentaires</th>
 							</tr>
 						</tfoot>
 						
@@ -95,6 +97,7 @@
 								<tr>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['locus']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 								
 							<?php
