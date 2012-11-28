@@ -58,7 +58,7 @@
 				<div id = "">
 						
 					<?php
-						$query = $bdd->query('SELECT l.identifiant, l.nom, s.nom AS nom_site, t.type AS nom_type, l.position_nord,
+						$query = $bdd->query('SELECT l.identifiant, l.nom, s.nom AS nom_site, t.type AS nom_type, l.position_nord, l.commentaire
 									l.position_est, l.altitude, f.prenom AS prenom_f, f.nom AS nom_f, p.prenom AS prenom_p, p.nom AS nom_p
 									FROM locus l, site s, locustype t, personne p, personne f
 									WHERE l.site = s.identifiant
@@ -83,6 +83,7 @@
 								<th>altitude</th>
 								<th>trouvé par</th>
 								<th>appartient à</th>
+								<th>commentaires</th>
 							</tr>
 						</thead>
 			
@@ -97,6 +98,7 @@
 								<th>altitude</th>
 								<th>trouvé par</th>
 								<th>appartient à</th>
+								<th>commentaires</th>
 							</tr>
 						</tfoot>
 						
@@ -117,6 +119,7 @@
 									<td><?php echo $data['altitude']; ?></td>
 									<td><?php echo $data['prenom_f'] . ' ' . $data['nom_f']; ?></td>
 									<td><?php echo $data['prenom_p'] . ' ' . $data['nom_p']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 								
 							<?php
