@@ -59,10 +59,14 @@
 						
 					<?php
 						$query = $bdd->query('SELECT o.nom AS nom_objet, s.partie, s.type, t.taxon AS nom_taxon, s.animal, s.type_animal,
-									s.forme, s.dissous, s.morsure, s.conservation, s.datation, o.commentaire
-									FROM os s, objet o, ostaxon t
+									s.forme, s.dissous, s.morsure, s.conservation, s.datation, o.commentaire, o.poids,
+									o.longueur, o.largeur, o.hauteur, o.brule, o.tamis, o.fiche, u.type AS nom_type,
+									p.periode AS nom_periode, f.prenom AS prenom_f, f.nom AS nom_f
+									FROM os s, objet o, ostaxon t, objettype u, periode p, personne f
 									WHERE s.objet = o.identifiant
-									AND s.taxon = t.identifiant'
+									AND s.taxon = t.identifiant
+									AND o.type = u.identifiant
+									AND o.trouve_par = f.identifiant'
 									);
 					?>
 					
@@ -74,7 +78,8 @@
 						<thead>
 							<tr>
 								<th>nom</th>
-								<th>type</th>
+								<th>type objet</th>
+								<th>type os</th>
 								<th>poids</th>
 								<th>longueur</th>
 								<th>largeur</th>
@@ -105,7 +110,8 @@
 						<tfoot>
 							<tr>
 								<th>nom</th>
-								<th>type</th>
+								<th>type objet</th>
+								<th>type os</th>
 								<th>poids</th>
 								<th>longueur</th>
 								<th>largeur</th>
@@ -141,31 +147,32 @@
 							?>
 								
 								<tr>
-									<td><?php echo $data['nom_objet']; ?></td>	<th>nom</th>
-									<td><?php echo $data['type']; ?></td>		<th>type</th>
-									<td><?php echo $data['']; ?></td>		<th>poids</th>
-									<td><?php echo $data['']; ?></td>		<th>longueur</th>
-									<td><?php echo $data['']; ?></td>		<th>largeur</th>
-									<td><?php echo $data['']; ?></td>		<th>hauteur</th>
-									<td><?php echo $data['partie']; ?></td>		<th>partie</th>
-									<td><?php echo $data['type']; ?></td>		<th>type</th>
-									<td><?php echo $data['nom_taxon']; ?></td>	<th>taxon</th>
-									<td><?php echo $data['animal']; ?></td>		<th>animal</th>
-									<td><?php echo $data['type_animal']; ?></td>	<th>type d'animal</th>
-									<td><?php echo $data['forme']; ?></td>		<th>forme</th>
-									<td><?php echo $data['dissous']; ?></td>	<th>dissous</th>
-									<td><?php echo $data['morsure']; ?></td>	<th>morsure</th>
-									<td><?php echo $data['conservation']; ?></td>	<th>conservation</th>
-									<td><?php echo $data['datation']; ?></td>	<th>datation</th>
-									<td><?php echo $data['']; ?></td>		<th>brulé</th>
-									<td><?php echo $data['']; ?></td>		<th>période</th>
-									<td><?php echo $data['']; ?></td>		<th>trouvé par</th>
-									<td><?php echo $data['']; ?></td>		<th>collection</th>
-									<td><?php echo $data['']; ?></td>		<th>tamis</th>
-									<td><?php echo $data['']; ?></td>		<th>type recherche</th>
-									<td><?php echo $data['']; ?></td>		<th>recherche</th>
-									<td><?php echo $data['']; ?></td>		<th>fiche</th>
-									<td><?php echo $data['commentaire']; ?></td>	<th>commentaires</th>
+									<td><?php echo $data['nom_objet']; ?></td>
+									<td><?php echo $data['nom_type']; ?></td>
+									<td><?php echo $data['type']; ?></td>
+									<td><?php echo $data['poids']; ?></td>
+									<td><?php echo $data['longueur']; ?></td>
+									<td><?php echo $data['largeur']; ?></td>
+									<td><?php echo $data['hauteur']; ?></td>
+									<td><?php echo $data['partie']; ?></td>
+									<td><?php echo $data['type']; ?></td>
+									<td><?php echo $data['nom_taxon']; ?></td>
+									<td><?php echo $data['animal']; ?></td>
+									<td><?php echo $data['type_animal']; ?></td>
+									<td><?php echo $data['forme']; ?></td>
+									<td><?php echo $data['dissous']; ?></td>
+									<td><?php echo $data['morsure']; ?></td>
+									<td><?php echo $data['conservation']; ?></td>
+									<td><?php echo $data['datation']; ?></td>
+									<td><?php echo $data['brule']; ?></td>
+									<td><?php echo $data['nom_periode']; ?></td>
+									<td><?php echo $data['prenom_f'] . ' ' . $data['nom_f']; ?></td>
+									<td><?php echo $data['']; ?></td>
+									<td><?php echo $data['tamis']; ?></td>
+									<td><?php echo $data['']; ?></td>
+									<td><?php echo $data['']; ?></td>
+									<td><?php echo $data['fiche']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
 									
 								</tr>
 								
