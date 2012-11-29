@@ -17,7 +17,7 @@ CREATE TYPE enum_type_sujet AS ENUM
 /* Création d'une énumération pour le Type de Recherche pour un Objet. */
 CREATE TYPE enum_type_recherche AS ENUM
 (
-	'prospection', 'fouille'
+	' ', 'prospection', 'fouille'
 );
 
 /****************************************************************************************/
