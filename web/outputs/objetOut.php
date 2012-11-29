@@ -58,29 +58,41 @@
 				<div id = "">
 						
 					<?php
-						$query1 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis, o.fiche, 													o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode, 													f.prenom AS prenom_f, f.nom AS nom_f, c.nom AS nom_collection
+						/* Objets trouvés sans recherches. */
+						$query1 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis,
+									o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode,
+									f.prenom AS prenom_f, f.nom AS nom_f, c.nom AS nom_collection, o.fiche, o.type_recherche
 									FROM objet o, objettype t, objetnature n, periode p, personne f, collection c
 									WHERE o.type = t.identifiant
 									AND o.nature = n.identifiant
 									AND o.periode = p.identifiant
 									AND o.trouve_par = f.identifiant
-									AND o.collection = c.identifiant'
+									AND o.collection = c.identifiant
+									AND o.type_recherche = \' \''
 									);
-						$query2 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis, o.fiche, 													o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode, 													f.prenom AS prenom_f, f.nom AS nom_f, u.nom AS nom_fouille
+						/* Objets trouvés en fouillant. */
+						$query2 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis,
+									o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode,
+									f.prenom AS prenom_f, f.nom AS nom_f, u.nom AS nom_fouille, o.fiche, o.type_recherche
 									FROM objet o, objettype t, objetnature n, periode p, personne f, fouille u
 									WHERE o.type = t.identifiant
 									AND o.nature = n.identifiant
 									AND o.periode = p.identifiant
 									AND o.trouve_par = f.identifiant
-									AND o.fouille = u.identifiant'
+									AND o.recherche = u.identifiant
+									AND o.type_recherche = \'fouille\''
 									);
-						$query3 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis, o.fiche, 													o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode, 													f.prenom AS prenom_f, f.nom AS nom_f, r.nom AS nom_prospection
+						/* Objets trouvés en prospectant. */
+						$query3 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis,
+									o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode,
+									f.prenom AS prenom_f, f.nom AS nom_f, r.nom AS nom_prospection, o.fiche, o.type_recherche
 									FROM objet o, objettype t, objetnature n, periode p, personne f, prospection r
 									WHERE o.type = t.identifiant
 									AND o.nature = n.identifiant
 									AND o.periode = p.identifiant
 									AND o.trouve_par = f.identifiant
-									AND o.prospection = r.identifiant'
+									AND o.recherche = r.identifiant
+									AND o.type_recherche = \'prospection\''
 									);
 					?>
 					
