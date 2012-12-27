@@ -168,7 +168,7 @@ CREATE TABLE collection
 (
 	identifiant SERIAL PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
-	proprietaire INTEGER REFERENCES personne(identifiant)
+	proprietaire INTEGER REFERENCES personne(identifiant),
 	commentaire VARCHAR(500)
 );
 
@@ -295,4 +295,6 @@ CREATE TABLE silex
 	provenance INTEGER REFERENCES gisement(identifiant),
 	couleur VARCHAR(50) NOT NULL
 );
+
+/****************************************************************************************/
 
