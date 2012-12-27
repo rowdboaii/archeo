@@ -3,9 +3,6 @@
  * Fichier : create_bdd.sql
  */
 
-/* Création de la database. */
-CREATE DATABASE archeo owner jehu;
-
 /****************************************************************************************/
 
 /* Création d'une énumération pour le Type de Sujet. */
