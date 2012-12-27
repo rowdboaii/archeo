@@ -1,5 +1,5 @@
 /* Sujet : Projet de base de données pour des fouilles archéologiques.
- * Auteurs : Xavier Muth & Antoine Hars
+ * Auteur : Antoine Hars
  * Fichier : create_bdd.sql
  */
 
@@ -257,7 +257,6 @@ CREATE TABLE objet
 	collection INTEGER,
 	type_recherche enum_type_recherche NOT NULL,
 	recherche INTEGER,
-	fiche VARCHAR(50), -- Changer le VARCHAR pour avec des points 3D.
 	commentaire VARCHAR(500)
 );
 

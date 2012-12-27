@@ -1,5 +1,5 @@
 /* Sujet : Projet de base de données pour des fouilles archéologiques.
- * Auteurs : Xavier Muth & Antoine Hars
+ * Auteur : Antoine Hars
  * Fichier : insert_bdd.sql
  */
 
