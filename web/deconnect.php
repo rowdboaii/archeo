@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : deconnect.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -36,23 +36,23 @@
 				<div id = "">
 
 					<h2>Déconnexion</h2>
-					
+
 					<!-- Destruction des données de la session. -->
 					<?php session_destroy(); ?>
-					
+
 					<p>
 						<br />
 						<a href = "index.php">Connexion</a>
 					</p>
-	
+
 				</div>
 			</section>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : index.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -21,7 +21,7 @@
 
 	<body>
 		<!-- Corps de la page. -->
-		<div id = "bodyLogin">	
+		<div id = "bodyLogin">
 
 			<header>
 				<!-- Header de la page. -->
@@ -33,8 +33,8 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "sectionLogin">
-			
-					<!-- Formulaire pour le login et le mdp. -->	
+
+					<!-- Formulaire pour le login et le mdp. -->
 					<form class = "login" method = "post" action = "mainPage.php">
 						<h1>Login</h1>
 						<p>
@@ -49,18 +49,18 @@
 							<input type = "submit" value = "Continue" />
 						</p>
 					</form>
-				
+
 				</div>
 			</section>
-			
+
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>
 	</body>
-	
+
 </html>

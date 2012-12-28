@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : delete.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -33,10 +33,10 @@
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
 			
@@ -53,15 +53,15 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-	
+
 				</div>
 			</section>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

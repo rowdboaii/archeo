@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : mainPage.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,7 +26,7 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
@@ -37,15 +37,15 @@
 					$_SESSION['pseudo'] = $_POST['pseudo'];
 					$_SESSION['mdp'] = $_POST['mdp'];
 				}
-				
+
 				/* S'il n'y a pas d'identifiants. */
 				if (isset($_SESSION['pseudo']) AND isset($_SESSION['mdp']))
 				{
 					/* Si les identifiants sont corrects. */
 					if (($_SESSION['pseudo'] == "sudo" AND $_SESSION['mdp'] == "password") OR ($_SESSION['pseudo'] == "user" AND $_SESSION['mdp'] == "password"))
 					{
-			?>			
-				
+			?>
+
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
@@ -56,7 +56,7 @@
 				</div>
 			</nav>
 
-			<aside>				
+			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
 
@@ -74,7 +74,7 @@
 
 				</div>
 			</section>
-						
+
 			<?php
 					}
 					else
@@ -89,12 +89,12 @@
 					echo '<br /><br /><a href = "index.php">Page de connexion</a>';
 				}
 			?>
-			
+
 			<footer>
-			
+
 				<!-- Pied de la page. -->
-				<?php include('includes/piedPage.php'); ?>				
-			
+				<?php include('includes/piedPage.php'); ?>
+
 			</footer>
 
 		</div>
