@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : menuMain.php -->
 
 <!-- Menu principal du site. -->
@@ -15,7 +15,7 @@
 	<li class = "buttonLeft"><a href = "../delete.php">Suppression</a></li>
 	<li class = "buttonLeft"><a href = "../parameter.php">Paramètres</a></li>
 	<?php } ?>
-	
+
 	<li class = "buttonRight"><a href = "../contact.php">Contacts</a></li>
 	<li class = "buttonRight"><a href = "../deconnect.php">Déconnexion</a></li>
 </ul>
