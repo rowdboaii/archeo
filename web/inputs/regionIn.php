@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : regionIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,27 +26,27 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les inputs. -->
 					<?php include('../includes/menuIn.php'); ?>
-				
+
 				</div>
 			</aside>
 
@@ -54,11 +54,11 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-				
+
 					<?php
 						/* Connexion à la base de données. */
 						include('../includes/connexionBDD.php');
-					
+
 						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT identifiant, nom
 									FROM pays'
@@ -69,9 +69,9 @@
 						<!-- Formulaire pour une Région. -->
 						<form method = "post" action = "../exec/regionInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : 
+								<label for = "nom">Nom</label> :
 								<input type = "text" name = "nom" id = "nom" /><br />
-								<label for = "pays">Pays</label> : 
+								<label for = "pays">Pays</label> :
 								<select name = "pays" id = "pays">
 									<?php
 										$query->execute();
@@ -87,18 +87,18 @@
 							</p>
 						</form>
 					</p>
-					
+
 					<?php $query->closeCursor(); ?>
-	
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

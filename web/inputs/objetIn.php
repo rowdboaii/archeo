@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : objetIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,27 +26,27 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les inputs. -->
 					<?php include('../includes/menuIn.php'); ?>
-				
+
 				</div>
 			</aside>
 
@@ -54,11 +54,11 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-				
+
 					<?php
 						/* Connexion à la base de données. */
 						include('../includes/connexionBDD.php');
-					
+
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, type
 										FROM objetType'
@@ -82,11 +82,11 @@
 										FROM prospection'
 										);
 					?>
-				
+
 					<p>
 						<form method = "post" action = "../exec/objetInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : 
+								<label for = "nom">Nom</label> :
 								<input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "type">Type</label> :
 								<select name = "type" id = "type">
@@ -96,7 +96,7 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "../parameters/objetType.php">Ajouter un nouveau Type d'Objet ?</a><br />
 								<label for = "nature">nature</label> :
 								<select name = "nature" id = "nature">
@@ -106,15 +106,15 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nature'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "../parameters/objetNature.php">Ajouter une nouvelle Nature d'Objet ?</a><br />
-								<label for = "poids">Poids</label> : 
+								<label for = "poids">Poids</label> :
 								<input type = "text" name = "poids" id = "poids" /> (number)<br />
-								<label for = "longueur">Longueur</label> : 
+								<label for = "longueur">Longueur</label> :
 								<input type = "text" name = "longueur" id = "longueur" /> (number)<br />
-								<label for = "largeur">Largeur</label> : 
+								<label for = "largeur">Largeur</label> :
 								<input type = "text" name = "largeur" id = "largeur" /> (number)<br />
-								<label for = "hauteur">Hauteur</label> : 
+								<label for = "hauteur">Hauteur</label> :
 								<input type = "text" name = "hauteur" id = "hauteur" /> (number)<br />
 								<label for = "trouve">Trouvé par</label> :
 								<select name = "trouve" id = "trouve">
@@ -124,7 +124,7 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<label for = "collection">Collection</label> :
 								<select name = "collection" id = "collection">
@@ -134,7 +134,7 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "collectionIn.php">Ajouter une nouvelle Collection ?</a><br />
 								<label for = "periode">Période</label> :
 								<select name = "periode" id = "periode">
@@ -144,9 +144,9 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['periode'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "../parameters/periode.php">Ajouter une nouvelle Période ?</a><br />
-								<label for = "type_recherche">Type de Recherche</label> : 
+								<label for = "type_recherche">Type de Recherche</label> :
 								<select name = "type_recherche" id = "type_recherche">
 									<option value = ""></option>
 									<option value = "prospection">prospection</option>
@@ -160,7 +160,7 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "fouilleIn.php">Ajouter une nouvelle Fouille ?</a><br />
 								<label for = "prospection">Prospection</label> :
 								<select name = "prospection" id = "prospection">
@@ -170,15 +170,15 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "prospectionIn.php">Ajouter une nouvelle Prospection ?</a><br />
-								Tamis : 
+								Tamis :
 								oui <input type = "radio" name = "tamis" value = "true" id = "true" />
 								non <input type = "radio" name = "tamis" value = "false" id = "false" /><br />
-								Brulé : 
+								Brulé :
 								oui <input type = "radio" name = "brule" value = "true" id = "true" />
 								non <input type = "radio" name = "brule" value = "false" id = "false" /><br />
-								<label for = "fiche">Fiche</label> : 
+								<label for = "fiche">Fiche</label> :
 								<input type = "text" name = "fiche" id = "fiche" /><br />
 								<label for = "commentaire">Commentaires</label> :<br />
 								<textarea name = "commentaire" id = "commentaire" rows = "10" cols = "80"></textarea><br />
@@ -186,7 +186,7 @@
 							</p>
 						</form>
 					</p>
-					
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
@@ -196,16 +196,16 @@
 						$query6->closeCursor();
 						$query7->closeCursor();
 					?>
-					
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('..includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

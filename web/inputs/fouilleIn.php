@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : fouilleIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -32,7 +32,7 @@
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
 
@@ -42,7 +42,7 @@
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les inputs. -->
 					<?php include('../includes/menuIn.php'); ?>
 
@@ -57,7 +57,7 @@
 					<?php
 						/* Connexion à la base de données. */
 						include('../includes/connexionBDD.php');
-					
+
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT d.identifiant, d.nom
 										FROM decapage d'
@@ -71,9 +71,9 @@
 						<!-- Formulaire pour une Fouille. -->
 						</p><form method = "post" action = "../exec/fouilleInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : 
+								<label for = "nom">Nom</label> :
 								<input type = "text" name = "nom" id = "nom"><br>
-								<label for = "decapage">Décapage</label> : 
+								<label for = "decapage">Décapage</label> :
 								<select name = "decapage" id = "decapage">
 									<?php
 										$query1->execute();
@@ -83,7 +83,7 @@
 									?>
 								</select> 
 								<a href = "decapageIn.php">Ajouter un nouveau Décapage ?</a><br>
-								<label for = "fouilleur">Fouilleur</label> : 
+								<label for = "fouilleur">Fouilleur</label> :
 								<select name = "fouilleur" id = "fouilleur">
 									<?php
 										$query2->execute();
@@ -93,7 +93,7 @@
 									?>
 								</select> 
 								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br>
-								<label for = "annee">Année</label> : 
+								<label for = "annee">Année</label> :
 								<input type = "date" name = "annee" id = "annee"> (jj/mm/aaaa)<br>
 								<label for = "commentaire">Commentaires</label> :<br />
 								<textarea name = "commentaire" id = "commentaire" rows = "10" cols = "80"></textarea><br />
@@ -101,7 +101,7 @@
 							</p>
 						</form>
 					</p>
-					
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
@@ -112,10 +112,10 @@
 			<?php } ?>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : articleIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,32 +26,32 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les inputs. -->
 					<?php include('../includes/menuIn.php'); ?>
-				
+
 				</div>
 			</aside>
 
 			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
-			
+
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
@@ -59,7 +59,7 @@
 					<?php
 						/* Connexion à la base de données. */
 						include('../includes/connexionBDD.php');
-					
+
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, prenom, nom
 										FROM personne'
@@ -82,11 +82,11 @@
 						<!-- Formulaire pour un Article. -->
 						<form method = "post" action = "../exec/articleInsert.php">
 							<p>
-								<label for = "titre">Titre</label> : 
+								<label for = "titre">Titre</label> :
 								<input type = "text" name = "titre" id = "titre" /><br />
-								<label for = "revue">Revue</label> : 
+								<label for = "revue">Revue</label> :
 								<input type = "text" name = "revue" id = "revue" /><br />
-								<label for = "auteur">Auteur</label> : 
+								<label for = "auteur">Auteur</label> :
 								<select name = "auteur" id = "auteur">
 									<?php
 										$query1->execute();
@@ -94,15 +94,15 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
-								<label for = "type_sujet">Type de sujet</label> : 
+								<label for = "type_sujet">Type de sujet</label> :
 								<select name = "type_sujet" id = "type_sujet">
 									<option value = "locus">locus</option>
 									<option value = "region">region</option>
 									<option value = "site">site</option>
 								</select><br />
-								<label for = "sujet">Sujet</label> : 
+								<label for = "sujet">Sujet</label> :
 								<select name = "sujet" id = "sujet">
 									<?php
 										$query2->execute();
@@ -118,13 +118,13 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . 'Site ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
-								<a href = "locusIn.php">Ajouter un nouveau Locus ?</a> 
-								<a href = "regionIn.php">une nouvelle Région ?</a> 
+								</select>
+								<a href = "locusIn.php">Ajouter un nouveau Locus ?</a>
+								<a href = "regionIn.php">une nouvelle Région ?</a>
 								<a href = "siteIn.php">un nouveau site ?</a><br />
-								<label for = "annee">Année</label> : 
+								<label for = "annee">Année</label> :
 								<input type = "date" name = "annee" id = "annee" /> (jj/mm/aaaa)<br />
-								<label for = "langue">Langue</label> : 
+								<label for = "langue">Langue</label> :
 								<select name = "langue" id = "langue">
 									<?php
 										$query3->execute();
@@ -132,7 +132,7 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['langue'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "../parameters/langue.php">Ajouter une nouvelle Langue ?</a><br />
 								<label for = "mots_cle">Mots clé</label> :<br />
 								<textarea name = "mots_cle" id = "mots_cle" rows = "10" cols = "80"></textarea><br />
@@ -142,22 +142,22 @@
 							</p>
 						</form>
 					</p>
-					
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
 						$query3->closeCursor();
 					?>
-				
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-				
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

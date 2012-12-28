@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : locusIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,27 +26,27 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les inputs. -->
 					<?php include('../includes/menuIn.php'); ?>
-				
+
 				</div>
 			</aside>
 
@@ -54,11 +54,11 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-				
+
 					<?php
 						/* Connexion à la base de données. */
 						include('../includes/connexionBDD.php');
-					
+
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, type
 										FROM locusType'
@@ -70,14 +70,14 @@
 										FROM personne'
 										);
 					?>
-				
+
 					<p>
 						<!-- Formulaire pour un Locus. -->
 						<form method = "post" action = "../exec/locusInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : 
+								<label for = "nom">Nom</label> :
 								<input type = "text" name = "nom" id = "nom" /><br />
-								<label for = "type">Type</label> : 
+								<label for = "type">Type</label> :
 								<select name = "type" id = "type">
 									<?php
 										$query1->execute();
@@ -85,9 +85,9 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "../parameters/locusType.php">Ajouter un nouveau Type de Locus ?</a><br />
-								<label for = "site">Site</label> : 
+								<label for = "site">Site</label> :
 								<select name = "site" id = "site">
 									<?php
 										$query2->execute();
@@ -95,15 +95,15 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "siteIn.php">Ajouter un nouveau Site ?</a><br />
-								<label for = "nord">Position Nord</label> : 
+								<label for = "nord">Position Nord</label> :
 								<input type = "text" name = "nord" id = "nord" /> (number)<br />
-								<label for = "est">Position Est</label> : 
+								<label for = "est">Position Est</label> :
 								<input type = "text" name = "est" id = "est" /> (number)<br />
-								<label for = "altitude">Altitude</label> : 
+								<label for = "altitude">Altitude</label> :
 								<input type = "text" name = "altitude" id = "altitude" /> (number)<br />
-								<label for = "trouve">Trouvé par</label> : 
+								<label for = "trouve">Trouvé par</label> :
 								<select name = "trouve" id = "trouve">
 									<?php
 										$query3->execute();
@@ -111,9 +111,9 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
-								<label for = "proprietaire">Propriétaire</label> : 
+								<label for = "proprietaire">Propriétaire</label> :
 								<select name = "proprietaire" id = "proprietaire">
 									<?php
 										$query3->execute();
@@ -135,16 +135,16 @@
 						$query2->closeCursor();
 						$query3->closeCursor();
 					?>
-					
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

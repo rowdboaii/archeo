@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : charbonIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,27 +26,27 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les inputs. -->
 					<?php include('../includes/menuIn.php'); ?>
-				
+
 				</div>
 			</aside>
 
@@ -58,12 +58,12 @@
 					<?php
 						/* Connexion à la base de données. */
 						include('../includes/connexionBDD.php');
-					
+
 						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT o.identifiant, o.nom
-										FROM objet o, objetnature n
-										WHERE o.nature = n.identifiant
-										AND n.nature = \'charbon\''
+									FROM objet o, objetnature n
+									WHERE o.nature = n.identifiant
+									AND n.nature = \'charbon\''
 								 	);
 					?>
 
@@ -71,7 +71,7 @@
 						<!-- Formulaire pour un Charbon. -->
 						<form method = "post" action = "../exec/charbonInsert.php">
 							<p>
-								<label for = "objet">Objet</label> : 
+								<label for = "objet">Objet</label> :
 								<select name = "objet" id = "objet">
 									<?php
 										$query->execute();
@@ -87,18 +87,18 @@
 							</p>
 						</form>
 					</p>
-	
+
 					<?php $query->closeCursor(); ?>
-	
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

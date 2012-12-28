@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : personneIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,27 +26,27 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-					
+
 					<!-- Menu pour les inputs. -->
 					<?php include('../includes/menuIn.php'); ?>
-					
+
 				</div>
 			</aside>
 
@@ -58,7 +58,7 @@
 					<?php
 						/* Connexion à la base de données. */
 						include('../includes/connexionBDD.php');
-					
+
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nationalite
 										FROM nationalite'
@@ -72,11 +72,11 @@
 						<!-- Formulaire pour une Personne. -->
 						<form method = "post" action = "../exec/personneInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : 
+								<label for = "nom">Nom</label> :
 								<input type = "text" name = "nom" id = "nom" /><br />
-								<label for = "prenom">Prénom</label> : 
+								<label for = "prenom">Prénom</label> :
 								<input type = "text" name = "prenom" id = "prenom" /><br />
-								<label for = "nationalite">Nationalité</label> : 
+								<label for = "nationalite">Nationalité</label> :
 								<select name = "nationalite" id = "nationalite">
 									<?php
 										$query1->execute();
@@ -84,9 +84,9 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['nationalite'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "../parameters/nationalite.php">Ajouter une nouvelle Nationalité ?</a><br />
-								<label for = "fonction">Fonction</label> : 
+								<label for = "fonction">Fonction</label> :
 								<select name = "fonction" id = "fonction">
 									<?php
 										$query2->execute();
@@ -94,7 +94,7 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['fonction'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "../parameters/fonction.php">Ajouter une nouvelle Fonction ?</a><br />
 								<label for = "commentaire">Commentaires</label> :<br />
 								<textarea name = "commentaire" id = "commentaire" rows = "10" cols = "80"></textarea><br />
@@ -102,21 +102,21 @@
 							</p>
 						</form>
 					</p>
-					
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
 					?>
-	
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

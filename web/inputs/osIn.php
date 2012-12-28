@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : osIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,27 +26,27 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-	
+
 					<!-- Menu pour les inputs. -->
 					<?php include('../includes/menuIn.php'); ?>
-					
+
 				</div>
 			</aside>
 
@@ -54,11 +54,11 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-				
+
 					<?php
 						/* Connexion à la base de données. */
 						include('../includes/connexionBDD.php');
-					
+
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
 										FROM objet o, objetnature n
@@ -69,12 +69,12 @@
 										FROM osTaxon'
 										);
 					?>
-				
+
 					<p>
 						<!-- Formulaire pour un Os. -->
 						<form method = "post" action = "../exec/osInsert.php">
 							<p>
-								<label for = "objet">Objet</label> : 
+								<label for = "objet">Objet</label> :
 								<select name = "objet" id = "objet">
 									<?php
 										$query1->execute();
@@ -82,13 +82,13 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "objetIn.php">Ajouter un nouvel Objet ?</a><br />
-								<label for = "partie">Partie Animal</label> : 
+								<label for = "partie">Partie Animal</label> :
 								<input type = "text" name = "partie" id = "partie" /><br />
-								<label for = "type">Type Os</label> : 
+								<label for = "type">Type Os</label> :
 								<input type = "text" name = "type" id = "type" /><br />
-								<label for = "taxon">Taxon</label> : 
+								<label for = "taxon">Taxon</label> :
 								<select name = "taxon" id = "taxon">
 									<?php
 										$query2->execute();
@@ -96,21 +96,21 @@
 											echo '<option value ="' . $data['identifiant'] . '">' . $data['taxon'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "../parameters/osTaxon.php">Ajouter un nouveau Taxon d'Os ?</a><br />
-								<label for = "animal">Animal</label> : 
+								<label for = "animal">Animal</label> :
 								<input type = "text" name = "animal" id = "animal" /><br />
-								<label for = "type_animal">Type d'Animal</label> : 
+								<label for = "type_animal">Type d'Animal</label> :
 								<input type = "text" name = "type_animal" id = "type_animal" /><br />
-								<label for = "forme">Forme</label> : 
+								<label for = "forme">Forme</label> :
 								<input type = "text" name = "forme" id = "forme" /><br />
-								Dissolution : 
+								Dissolution :
 								oui <input type = "radio" name = "dissolution" value = "true" id = "oui" />
 								non <input type = "radio" name = "dissolution" value = "false" id = "non" /><br />
-								Morsure : 
+								Morsure :
 								oui <input type = "radio" name = "morsure" value = "true" id = "oui" />
 								non <input type = "radio" name = "morsure" value = "false" id = "non" /><br />
-								<label for = "conservation">Conservation</label> : 
+								<label for = "conservation">Conservation</label> :
 								<select name = "conservation" id = "conservation">
 									<option value = "0">0</option>
 									<option value = "1">1</option>
@@ -124,27 +124,27 @@
 									<option value = "9">9</option>
 									<option value = "10">10</option>
 								</select><br />
-								<label for = "date">Datation</label> : 
+								<label for = "date">Datation</label> :
 								<input type = "text" name = "date" id = "date" /> (jj/mm/aaaa)<br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
-					
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
 					?>
-	
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-		
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-		
+
 			</footer>
 
 		</div>

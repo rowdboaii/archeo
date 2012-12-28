@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : siteIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,27 +26,27 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les inputs. -->
 					<?php include('../includes/menuIn.php'); ?>
-				
+
 				</div>
 			</aside>
 
@@ -54,11 +54,11 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-				
+
 					<?php
 						/* Connexion à la base de données. */
 						include('../includes/connexionBDD.php');
-					
+
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT identifiant, nom
 										FROM region'
@@ -70,14 +70,14 @@
 										FROM sitetype'
 										);
 					?>
-				
+
 					<p>
 						<!-- Formulaire pour un Site. -->
 						<form method = "post" action = "../exec/siteInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : 
+								<label for = "nom">Nom</label> :
 								<input type = "text" name = "nom" id = "nom" /><br />
-								<label for = "region">Région</label> : 
+								<label for = "region">Région</label> :
 								<select name = "region" id = "region">
 									<?php
 										$query1->execute();
@@ -85,15 +85,15 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "regionIn.php">Ajouter une nouvelle Région ?</a><br />
-								<label for = "nord">Position Nord</label> : 
+								<label for = "nord">Position Nord</label> :
 								<input type = "text" name = "nord" id = "nord" /> (number)<br />
-								<label for = "est">Position Est</label> : 
+								<label for = "est">Position Est</label> :
 								<input type = "text" name = "est" id = "est" /> (number)<br />
-								<label for = "altitude">Altitude</label> : 
+								<label for = "altitude">Altitude</label> :
 								<input type = "text" name = "altitude" id = "altitude" /> (number)<br />
-								<label for = "trouve">Trouvé par</label> : 
+								<label for = "trouve">Trouvé par</label> :
 								<select name = "trouve" id = "trouve">
 									<?php
 										$query2->execute();
@@ -101,9 +101,9 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
-								<label for = "fouille">Fouillé par</label> : 
+								<label for = "fouille">Fouillé par</label> :
 								<select name = "fouille" id = "fouille">
 									<?php
 										$query2->execute();
@@ -111,9 +111,9 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
-								<label for = "type">Type</label> : 
+								<label for = "type">Type</label> :
 								<select name = "type" id = "type">
 									<?php
 										$query3->execute();
@@ -135,16 +135,16 @@
 						$query2->closeCursor();
 						$query3->closeCursor();
 					?>
-					
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

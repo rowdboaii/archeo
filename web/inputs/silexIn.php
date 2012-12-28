@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : silexIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,27 +26,27 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les inputs. -->
 					<?php include('../includes/menuIn.php'); ?>
-				
+
 				</div>
 			</aside>
 
@@ -58,7 +58,7 @@
 					<?php
 						/* Connexion à la base de données. */
 						include('../includes/connexionBDD.php');
-					
+
 						/* Récupération des données pour le formulaire. */
 						$query1 = $bdd->prepare('SELECT o.identifiant, o.nom
 										FROM objet o, objetnature n
@@ -69,12 +69,12 @@
 										FROM gisement'
 										);
 					?>
-					
+
 					<p>
 						<!-- Formulaire pour un Silex. -->
 						<form method = "post" action = "../exec/silexInsert.php">
 							<p>
-								<label for = "objet">Objet</label> : 
+								<label for = "objet">Objet</label> :
 								<select name = "objet" id = "objet">
 									<?php
 										$query1->execute();
@@ -82,11 +82,11 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "objetIn.php">Ajouter un nouvel objet ?</a><br />
-								<label for = "couleur">Couleur</label> : 
+								<label for = "couleur">Couleur</label> :
 								<input type = "text" name = "couleur" id = "couleur" /><br />
-								<label for = "provenance">Provenance</label> : 
+								<label for = "provenance">Provenance</label> :
 								<select name = "provenance" id = "provenance">
 									<?php
 										$query2->execute();
@@ -94,27 +94,27 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "gisementIn.php">Ajouter un nouveau Gisement ?</a><br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
-	
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
 					?>
-	
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

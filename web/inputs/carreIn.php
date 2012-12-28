@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : carreIn.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -32,7 +32,7 @@
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
 
@@ -42,7 +42,7 @@
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les inputs. -->
 					<?php include('../includes/menuIn.php'); ?>
 
@@ -53,11 +53,11 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-				
+
 					<?php
 						/* Connexion à la base de données. */
 						include('../includes/connexionBDD.php');
-					
+
 						/* Récupération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT l.identifiant, l.nom
 									FROM locus l'
@@ -68,9 +68,9 @@
 						<!-- Formulaire pour un Carré. -->
 						</p><form method = "post" action = "../exec/carreInsert.php">
 							<p>
-								<label for = "nom">Nom</label> : 
+								<label for = "nom">Nom</label> :
 								<input type = "text" name = "nom" id = "nom"><br>
-								<label for = "locus">Locus</label> : 
+								<label for = "locus">Locus</label> :
 								<select name = "locus" id = "locus">
 									<?php
 										$query->execute();
@@ -86,7 +86,7 @@
 							</p>
 						</form>
 					</p>
-					
+
 					<?php $query->closeCursor(); ?>
 
 				</div>
@@ -94,7 +94,7 @@
 			<?php } ?>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
 
