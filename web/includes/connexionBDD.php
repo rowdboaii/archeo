@@ -5,7 +5,7 @@
 <?php
 		$archeo = 'pgsql:host=localhost;dbname=archeo';
 		$user = 'jehu';
-		$pass = 'choucroute';
+		$pass = 'jehu';
 
 	try {
 		$bdd = new PDO($archeo, $user, $pass);
