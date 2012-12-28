@@ -1,5 +1,5 @@
 ﻿<!-- Sujet : Projet de base de données pour des fouilles archéogiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : personneDel.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,32 +26,32 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les Deletes. -->
 					<?php include('../includes/menuDel.php'); ?>
-				
+
 				</div>
 			</aside>
 
 			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
-			
+
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
@@ -62,15 +62,15 @@
 
 						/* Répération des données pour le formulaire. */
 						$query = $bdd->prepare('SELECT p.identifiant, p.prenom, p.nom
-												FROM personne p'
-												);
+									FROM personne p'
+									);
 					?>
 
 					<p>
 						<!-- Formulaire pour le Delete d'une Personne. -->
 						<form method = "post" action = "../exec/personneDelete.php">
 							<p>
-								<label for = "delete">Personne à supprimer</label> : 
+								<label for = "delete">Personne à supprimer</label> :
 								<select name = "delete" id = "delete">
 									<option value = "0"></option>
 									<?php
@@ -84,20 +84,20 @@
 							</p>
 						</form>
 					</p>
-					
+
 					<?php
 						$query->closeCursor();
 					?>
-				
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-				
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>
