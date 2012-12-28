@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : galetUpdate.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -29,31 +29,31 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 				</div>
 			</aside>
 			<section>
 
 				<!-- Section de page. -->
-				<div id = "">	
+				<div id = "">
 
 					<?php
 						if (isset($_SESSION['champ']) AND isset($_POST['old']) AND isset($_POST['new'])) {
-							
+
 							if ($_SESSION['champ'] == 'nom') {
 								$query = $bdd->prepare('UPDATE galet
 											SET nom = :new
@@ -73,7 +73,7 @@
 											);
 							}
 						}
-						
+
 						$query->execute(array('new' => $_POST['new'],
 									'old' => $_POST['old']
 									));
@@ -90,16 +90,16 @@
 					<p>
 						<a href = "../updates/galetUp.php">Revenir</a>
 					</p>
-	
+
 				</div>
-				
+
 			</section>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

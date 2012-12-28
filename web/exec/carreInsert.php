@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : carreInsert.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -29,28 +29,28 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 				</div>
 			</aside>
 			<section>
 
 				<!-- Section de page. -->
 				<div id = "">
-	
+
 					<?php
 						$query = $bdd->prepare('INSERT INTO carre (nom, locus, commentaire)
 									VALUES (:nom, :locus, :commentaire)'
@@ -66,20 +66,20 @@
 							echo 'Champ ajouté à la base.';
 						}
 					?>
-				
+
 					<!-- Lien de retour vers la page des inputs. -->
 					<p>
 						<a href = "../input.php">Revenir</a>
 					</p>
-	
+
 				</div>
 			</section>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

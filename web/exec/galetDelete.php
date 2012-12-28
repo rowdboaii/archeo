@@ -1,5 +1,5 @@
 ﻿<!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : galetDelete.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -29,49 +29,49 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 				</div>
 			</aside>
 			<section>
 
 				<!-- Section de page. -->
-				<div id = "">	
+				<div id = "">
 
 					<?php
-						$query1 = $bdd->prepare('DELETE FROM galet
+						$query = $bdd->prepare('DELETE FROM galet
 									WHERE identifiant = :delete'
 									);
-						$query1->execute(array('delete' => $_POST['delete'])) or die("error");
+						$query->execute(array('delete' => $_POST['delete'])) or die("error");
 						echo 'Champ supprimé de la base.';
 					?>
-				
+
 					<!-- Lien de retour. -->
 					<p>
 						<a href = "../deletes/galetDel.php">Revenir</a>
 					</p>
-	
+
 				</div>
 			</section>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>
