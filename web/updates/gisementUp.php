@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : gisementUp.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,32 +26,32 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les Updates. -->
 					<?php include('../includes/menuUp.php'); ?>
-				
+
 				</div>
 			</aside>
 
 			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
-			
+
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
@@ -74,7 +74,7 @@
 						<!-- Formulaire sur le choix du champ à modifier. -->
 						<form method = "post" action = "gisementUp.php">
 							<p>
-								<label for = "champ">Champ à modifier</label> : 
+								<label for = "champ">Champ à modifier</label> :
 								<select name = "champ" id = "champ">
 									<option value = "0"></option>
 									<option value = "nom">nom</option>
@@ -92,10 +92,10 @@
 					<?php
 						/* Récupération du champ à modifier. */
 						$_SESSION['champ'] = 0;
-						if (isset($_POST['champ'])) {	
+						if (isset($_POST['champ'])) {
 							$_SESSION['champ'] = $_POST['champ'];
 						}
-						
+
 						/* Affichage du champ souhaité. */
 						if ($_SESSION['champ'] != '0') {
 					?>
@@ -105,7 +105,7 @@
 						<form method = "post" action = "../exec/gisementUpdate.php">
 							<p>
 								<?php if ($_SESSION['champ'] == "nom") { ?>
-									<label for = "old">Nom</label> : 
+									<label for = "old">Nom</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -115,12 +115,12 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
-								
+
 								<?php if ($_SESSION['champ'] == "region") { ?>
-									<label for = "old">Region</label> : 
+									<label for = "old">Region</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -130,7 +130,7 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
@@ -139,12 +139,12 @@
 												echo '<option value ="' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select> 
+									</select>
 									<a href = "../inputs/regionIn.php">Ajouter une nouvelle Région ?</a><br />
 								<?php } ?>
-								
+
 								<?php if ($_SESSION['champ'] == "position_nord") { ?>
-									<label for = "old">Position Nord</label> : 
+									<label for = "old">Position Nord</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -154,12 +154,12 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
-								
+
 								<?php if ($_SESSION['champ'] == "position_est") { ?>
-									<label for = "old">Position Est</label> : 
+									<label for = "old">Position Est</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -169,12 +169,12 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
-								
+
 								<?php if ($_SESSION['champ'] == "altitude") { ?>
-									<label for = "old">Altitude</label> : 
+									<label for = "old">Altitude</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -189,7 +189,7 @@
 								<?php } ?>
 
 								<?php if ($_SESSION['champ'] == "commentaire") { ?>
-									<label for = "old">Commentaires</label> : 
+									<label for = "old">Commentaires</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -199,7 +199,7 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<input type = "text" name = "new" id = "new" width = "30px" height = "5px" /><br />
 								<?php } ?>
 
@@ -208,21 +208,21 @@
 						</form>
 					</p>
 					<?php } ?>
-					
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
 					?>
-				
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-				
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

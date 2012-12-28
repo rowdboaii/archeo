@@ -1,5 +1,5 @@
 ﻿<!-- Sujet : Projet de base de données pour des fouilles archéogiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : siteUp.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,32 +26,32 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les Updates. -->
 					<?php include('../includes/menuUp.php'); ?>
-				
+
 				</div>
 			</aside>
 
 			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
-			
+
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
@@ -93,7 +93,7 @@
 						<!-- Formulaire sur le choix du Site à modifier. -->
 						<form method = "post" action = "siteUp.php">
 							<p>
-								<label for = "updating">Site à modifier</label> : 
+								<label for = "updating">Site à modifier</label> :
 								<select name = "updating" id = "updating">
 									<option value = "0"></option>
 									<?php
@@ -110,7 +110,7 @@
 
 					<?php
 						/* Récupération du Site à modifier. */
-						if (isset($_POST['updating'])) {	
+						if (isset($_POST['updating'])) {
 							$_SESSION['updating'] = $_POST['updating'];
 							$_SESSION['temp'] = $_SESSION['updating'];
 						}
@@ -133,7 +133,7 @@
 						<!-- Tableau d'affichage de la table. -->
 						<table>
 							<caption>SITE</caption>
-						
+
 							<!-- Entête du tableau. -->
 							<thead>
 								<tr>
@@ -148,9 +148,9 @@
 									<th>commentaire</th>
 								</tr>
 							</thead>
-						
+
 							<!-- Corps du tableau. -->
-							<tbody>			
+							<tbody>
 								<?php $data = $query5->fetch(); ?>
 
 								<tr>
@@ -173,7 +173,7 @@
 						<!-- Formulaire sur le choix du champ à modifier. -->
 						<form method = "post" action = "siteUp.php">
 							<p>
-								<label for = "champ">Champ à modifier</label> : 
+								<label for = "champ">Champ à modifier</label> :
 								<select name = "champ" id = "champ">
 									<option value = "0"></option>
 									<option value = "nom">nom</option>
@@ -190,29 +190,29 @@
 							</p>
 						</form>
 					</p>
-					
+
 					<?php
 						/* Récupération du champ à modifier. */
 						$_SESSION['champ'] = 0;
-						if (isset($_POST['champ'])) {	
+						if (isset($_POST['champ'])) {
 							$_SESSION['champ'] = $_POST['champ'];
 						}
-						
+
 						/* Affichage du champ souhaité. */
 						if ($_SESSION['champ'] != '0') {
 					?>
-					
+
 					<p>
 						<!-- Formulaire pour l'Update d'un Site. -->
 						<form method = "post" action = "../exec/siteUpdate.php">
 							<p>
 								<?php if ($_SESSION['champ'] == "nom") { ?>
-									<label for = "new"> </label> : 
+									<label for = "new"> </label> :
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
-								
+
 								<?php if ($_SESSION['champ'] == "region") { ?>
-									<label for = "old">Région</label> : 
+									<label for = "old">Région</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -222,7 +222,7 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
@@ -231,12 +231,12 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select> 
+									</select>
 									<a href = "../inputs/regionIn.php">Ajouter une nouvelle Région ?</a><br />
 								<?php } ?>
-								
+
 								<?php if ($_SESSION['champ'] == "type") { ?>
-									<label for = "old">Type</label> : 
+									<label for = "old">Type</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -246,7 +246,7 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
@@ -255,12 +255,12 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
 											}
 										?>
-									</select> 
+									</select>
 									<a href = "../parameters/siteType.php">Ajouter un nouveau Type de Site ?</a><br />
 								<?php } ?>
-								
+
 								<?php if ($_SESSION['champ'] == "position_nord") { ?>
-									<label for = "old">Position Nord</label> : 
+									<label for = "old">Position Nord</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -270,12 +270,12 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
-								
+
 								<?php if ($_SESSION['champ'] == "position_est") { ?>
-									<label for = "old">Position Est</label> : 
+									<label for = "old">Position Est</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -285,12 +285,12 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
-								
+
 								<?php if ($_SESSION['champ'] == "altitude") { ?>
-									<label for = "old">Altitude</label> : 
+									<label for = "old">Altitude</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -300,12 +300,12 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
-								
+
 								<?php if ($_SESSION['champ'] == "trouve_par") { ?>
-									<label for = "old">Trouvé par</label> : 
+									<label for = "old">Trouvé par</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -315,7 +315,7 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
@@ -324,12 +324,12 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
-									</select> 
+									</select>
 									<a href = "../inputs/personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<?php } ?>
-								
+
 								<?php if ($_SESSION['champ'] == "fouille_par") { ?>
-									<label for = "old">Fouillé par</label> : 
+									<label for = "old">Fouillé par</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -339,7 +339,7 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
@@ -348,12 +348,12 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
-									</select> 
+									</select>
 									<a href = "../inputs/personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<?php } ?>
 
 								<?php if ($_SESSION['champ'] == "commentaire") { ?>
-									<label for = "old">Commentaires</label> : 
+									<label for = "old">Commentaires</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -363,7 +363,7 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<input type = "text" name = "new" id = "new" width = "30px" height = "5px" /><br />
 								<?php } ?>
 
@@ -372,23 +372,23 @@
 						</form>
 					</p>
 					<?php } ?>
-					
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
 						$query3->closeCursor();
 						$query4->closeCursor();
 					?>
-				
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-				
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

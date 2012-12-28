@@ -1,5 +1,5 @@
 ﻿<!-- Sujet : Projet de base de données pour des fouilles archéogiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : regionUp.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,32 +26,32 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les Updates. -->
 					<?php include('../includes/menuUp.php'); ?>
-				
+
 				</div>
 			</aside>
 
 			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
-			
+
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
@@ -74,7 +74,7 @@
 						<!-- Formulaire sur le choix du champ à modifier. -->
 						<form method = "post" action = "regionUp.php">
 							<p>
-								<label for = "champ">Champ à modifier</label> : 
+								<label for = "champ">Champ à modifier</label> :
 								<select name = "champ" id = "champ">
 									<option value = "0"></option>
 									<option value = "nom">nom</option>
@@ -84,25 +84,25 @@
 							</p>
 						</form>
 					</p>
-					
+
 					<?php
-					
+
 						/* Récupération du champ à modifier. */
 						$_SESSION['champ'] = 0;
-						if (isset($_POST['champ'])) {	
+						if (isset($_POST['champ'])) {
 							$_SESSION['champ'] = $_POST['champ'];
 						}
-						
+
 						/* Affichage du champ souhaité. */
 						if ($_SESSION['champ'] != '0') {
 					?>
-					
+
 					<p>
 						<!-- Formulaire pour l'Update d'une Région. -->
 						<form method = "post" action = "../exec/regionUpdate.php">
 							<p>
 								<?php if ($_SESSION['champ'] == "nom") { ?>
-									<label for = "old">Nom</label> : 
+									<label for = "old">Nom</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -112,12 +112,12 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<input type = "text" name = "new" id = "new_nom" /><br />
 								<?php } ?>
-								
+
 								<?php if ($_SESSION['champ'] == "pays") { ?>
-									<label for = "old">Pays</label> : 
+									<label for = "old">Pays</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -127,7 +127,7 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
@@ -136,30 +136,30 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 											}
 										?>
-									</select> 
+									</select>
 									<a href = "../parameters/pays.php">Ajouter un nouveau Pays ?</a><br />
 								<?php } ?>
-							
+
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
 					<?php } ?>
-					
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
 					?>
-				
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-				
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : paysUp.php -->
 
 <!DOCTYPE html>
@@ -26,36 +26,36 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 				</div>
 			</aside>
 			<section>
 
 				<!-- Section de page. -->
-				<div id = "">	
+				<div id = "">
 
 					<?php
 						$query = $bdd->prepare('UPDATE pays
-																		SET nom = :new
-																		WHERE nom = :old'
-																		);
+									SET nom = :new
+									WHERE nom = :old'
+									);
 						$query->execute(array('new' => $_POST['new'],
-																	'old' => $_POST['old']
-																	));
+									'old' => $_POST['old']
+									));
 
 						if (!$query) {
 							die("Erreur dans l'insertion : " . pg_last_error());
@@ -64,20 +64,20 @@
 							echo 'Champ modifié à la base.';
 						}
 					?>
-				
+
 					<!-- Lien de retour. -->
 					<p>
 						<a href = "../parameters/pays.php">Revenir</a>
 					</p>
-	
+
 				</div>
 			</section>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

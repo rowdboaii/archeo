@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : articleUp.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,32 +26,32 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les Updates. -->
 					<?php include('../includes/menuUp.php'); ?>
-				
+
 				</div>
 			</aside>
 
 			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
-			
+
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
@@ -88,7 +88,7 @@
 						<!-- Formulaire sur le choix du champ à modifier. -->
 						<form method = "post" action = "articleUp.php">
 							<p>
-								<label for = "champ">Champ à modifier</label> : 
+								<label for = "champ">Champ à modifier</label> :
 								<select name = "champ" id = "champ">
 									<option value = "0"></option>
 									<option value = "titre">titre</option>
@@ -107,20 +107,20 @@
 					<?php
 						/* Récupération du champ à modifier. */
 						$_SESSION['champ'] = 0;
-						if (isset($_POST['champ'])) {	
+						if (isset($_POST['champ'])) {
 							$_SESSION['champ'] = $_POST['champ'];
 						}
-	
+
 						/* Affichage du champ souhaité. */
 						if ($_SESSION['champ'] != '0') {
 					?>
-					
+
 					<p>
 						<!-- Formulaire pour l'Update d'un article. -->
 						<form method = "post" action = "../exec/articleUpdate.php">
 							<p>
 								<?php if ($_SESSION['champ'] == "titre") { ?>
-									<label for = "old">Titre</label> : 
+									<label for = "old">Titre</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -133,9 +133,9 @@
 									<label for = "new"> remplacé par</label> :
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
-					
+
 								<?php if ($_SESSION['champ'] == "auteur") { ?>
-									<label for = "old">Auteur</label> : 
+									<label for = "old">Auteur</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -145,7 +145,7 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
@@ -154,12 +154,12 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 											}
 										?>
-									</select> 
+									</select>
 									<a href = "../inputs/personneIn.php">Ajouter un nouvelle Personne ?</a><br />
 								<?php } ?>
-					
+
 								<?php if ($_SESSION['champ'] == "annee") { ?>
-									<label for = "old">Année</label> : 
+									<label for = "old">Année</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -169,12 +169,12 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<input type = "date" name = "new" id = "new" /> (jj/mm/aaaa)<br />
 								<?php } ?>
-					
+
 								<?php if ($_SESSION['champ'] == "revue") { ?>
-									<label for = "old">Revue</label> : 
+									<label for = "old">Revue</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -184,12 +184,12 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
-							
+
 								<?php if ($_SESSION['champ'] == "sujet") { ?>
-									<label for = "old_type">Type de Sujet</label> : 
+									<label for = "old_type">Type de Sujet</label> :
 									<select name = "old_type" id = "old_type">
 										<option value = "0"></option>
 										<?php
@@ -199,13 +199,13 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<select name = "new" id = "new">
 										<option value = "locus">locus</option>
 										<option value = "region">région</option>
 										<option value = "site">site</option>
 									</select><br />
-									<label for = "old">Sujet</label> : 
+									<label for = "old">Sujet</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -215,7 +215,7 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
@@ -232,14 +232,14 @@
 												echo '<option value = "' . $data['identifiant'] . '">' . 'Site ' . $data['nom'] . '</option>';
 											}
 										?>
-									</select> 
-									<a href = "../inputs/locusIn.php">Ajouter un nouveau Locus ?</a> 
-									<a href = "../inputs/regionIn.php">une nouvelle Région ?</a> 
+									</select>
+									<a href = "../inputs/locusIn.php">Ajouter un nouveau Locus ?</a>
+									<a href = "../inputs/regionIn.php">une nouvelle Région ?</a>
 									<a href = "../inputs/siteIn.php">un nouveau Site ?</a><br />
 								<?php } ?>
 
 								<?php if ($_SESSION['champ'] == "langue") { ?>
-									<label for = "old">Langue</label> : 
+									<label for = "old">Langue</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -249,7 +249,7 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<select name = "new" id = "new">
 										<option value = "0"></option>
 										<?php
@@ -258,12 +258,12 @@
 												echo '<option value ="' . $data['identifiant'] . '">' . $data['langue'] . '</option>';
 											}
 										?>
-									</select> 
+									</select>
 									<a href = "../parameters/langue.php">Ajouter une nouvelle Langue ?</a><br />
 								<?php } ?>
 
 								<?php if ($_SESSION['champ'] == "mot_cle") { ?>
-									<label for = "old">Mots clé</label> : 
+									<label for = "old">Mots clé</label> :
 									<select name = "old" id = "old">
 										<option value = "0"></option>
 										<?php
@@ -273,7 +273,7 @@
 											}
 										?>
 									</select>
-									<label for = "new"> remplacé par</label> : 
+									<label for = "new"> remplacé par</label> :
 									<input type = "text" name = "new" id = "new" width = "30px" height = "5px" /><br />
 								<?php } ?>
 
@@ -289,16 +289,16 @@
 						$query3->closeCursor();
 						$query4->closeCursor();
 					?>
-				
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-				
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

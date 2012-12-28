@@ -1,5 +1,5 @@
 ﻿<!-- Sujet : Projet de base de données pour des fouilles archéogiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : silexUp.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -26,32 +26,32 @@
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
-				
+
 				</div>
 			</header>
 
 			<nav>
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
-				
+
 					<!-- Menu principal. -->
 					<?php include('../includes/menuMain.php'); ?>
-				
+
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 					<!-- Menu pour les Updates. -->
 					<?php include('../includes/menuUp.php'); ?>
-				
+
 				</div>
 			</aside>
 
 			<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
-			
+
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
@@ -86,7 +86,7 @@
 						<!-- Formulaire sur le choix du Silex à modifier. -->
 						<form method = "post" action = "silexUp.php">
 							<p>
-								<label for = "updating">Silex à modifier</label> : 
+								<label for = "updating">Silex à modifier</label> :
 								<select name = "updating" id = "updating">
 									<option value = "0"></option>
 									<?php
@@ -103,7 +103,7 @@
 
 					<?php
 						/* Récupération du Silex à modifier. */
-						if (isset($_POST['updating'])) {	
+						if (isset($_POST['updating'])) {
 							$_SESSION['updating'] = $_POST['updating'];
 							$_SESSION['temp'] = $_SESSION['updating'];
 						}
@@ -115,10 +115,10 @@
 								$_SESSION['updating'] = 0;
 							}
 						}
-						
+
 						/* Affichage du Silex souhaité. */
 						if ($_SESSION['updating'] != '0') {
-							
+
 							$query4->execute(array('objet' => $_SESSION['updating']));
 					?>
 
@@ -126,7 +126,7 @@
 						<!-- Tableau d'affichage de la table. -->
 						<table>
 							<caption>SILEX</caption>
-						
+
 							<!-- Entête du tableau. -->
 							<thead>
 								<tr>
@@ -135,16 +135,16 @@
 									<th>couleur</th>
 								</tr>
 							</thead>
-						
+
 							<!-- Corps du tableau. -->
-							<tbody>			
+							<tbody>
 								<?php $data = $query4->fetch(); ?>
 
 								<tr>
 									<td><?php echo $data['nom_objet']; ?></td>
 									<td><?php echo $data['nom_gisement']; ?></td>
 									<td><?php echo $data['couleur']; ?></td>
-								</tr>					
+								</tr>
 
 							</tbody>
 						</table>
@@ -155,7 +155,7 @@
 						<h1>Update</h1>
 						<form method = "post" action = "silexUp.php">
 							<p>
-								<label for = "champ">Champ à modifier</label> : 
+								<label for = "champ">Champ à modifier</label> :
 								<select name = "champ" id = "champ">
 									<option value = "0"></option>
 									<option value = "provenance">provenance</option>
@@ -165,10 +165,10 @@
 							</p>
 						</form>
 					</p>
-					
+
 					<?php
 						/* Récupération du champ à modifier. */
-						if (isset($_POST['champ'])) {	
+						if (isset($_POST['champ'])) {
 							$_SESSION['champ'] = $_POST['champ'];
 						}
 						else {
@@ -177,17 +177,17 @@
 						/* Affichage du champ souhaité. */
 						if ($_SESSION['champ'] != '0') {
 					?>
-					
+
 					<p>
 						<!-- Formulaire pour l'Update d'un Silex. -->
 						<form method = "post" action = "../exec/silexUpdate.php">
 							<p>
-								<?php 
-									if ($_SESSION['champ'] == "provenance") { 
+								<?php
+									if ($_SESSION['champ'] == "provenance") {
 										$data = $query4->fetch()
 										echo 'Provenance : ' . $data['nom_gisement'];
 								?>
-								<label for = "new"> remplacé par</label> : 
+								<label for = "new"> remplacé par</label> :
 								<select name = "new" id = "new">
 									<option value = "0"></option>
 									<?php
@@ -196,42 +196,42 @@
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
-								</select> 
+								</select>
 								<a href = "../inputs/gisementIn.php">Ajouter un nouveau Gisement ?</a><br />
 								<?php } ?>
-								
+
 								<?php
 									if ($_SESSION['champ'] == "couleur") {
 										$data = $query4->fetch()
 										echo 'Couleur : ' . $data['couleur'];
 								?>
-								<label for = "new"> remplacé par</label> : 
+								<label for = "new"> remplacé par</label> :
 								<input type = "text" name = "new" id = "new" /><br />
 								<?php } ?>
-							
+
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
 					</p>
 					<?php } ?>
 					<?php } ?>
-					
+
 					<?php
 						$query1->closeCursor();
 						$query2->closeCursor();
 						$query3->closeCursor();
 						$query4->closeCursor();
 					?>
-				
+
 				</div>
 			</section>
 			<?php } ?>
 
 			<footer>
-				
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>
