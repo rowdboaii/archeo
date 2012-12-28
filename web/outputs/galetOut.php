@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : galetOut.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -25,7 +25,7 @@
 
 			<!-- Connexion à la base de données. -->
 			<?php include('../includes/connexionBDD.php'); ?>
-			
+
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
@@ -56,7 +56,7 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-						
+
 					<?php
 						$query = $bdd->query('SELECT o.nom AS nom_objet, g.nom, t.type AS nom_type
 									FROM galet g, galettype t, objet o
@@ -64,11 +64,11 @@
 									AND g.type = t.identifiant'
 									);
 					?>
-					
+
 					<!-- Tableau d'affichage de la table. -->
 					<table>
 						<caption>GALET</caption>
-						
+
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
@@ -77,7 +77,7 @@
 								<th>type</th>
 							</tr>
 						</thead>
-			
+
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
@@ -86,26 +86,26 @@
 								<th>type</th>
 							</tr>
 						</tfoot>
-						
+
 						<!-- Corps du tableau. -->
 						<tbody>
-						
+
 							<?php
 								while ($data = $query->fetch())
 								{
 							?>
-								
+
 								<tr>
 									<td><?php echo $data['nom_objet']; ?></td>
 									<td><?php echo $data['nom']; ?></td>
 									<td><?php echo $data['nom_type']; ?></td>
 								</tr>
-								
+
 							<?php
 								}
 								$query->closeCursor();
 							?>
-							
+
 						</tbody>
 					</table>
 
@@ -113,10 +113,10 @@
 			</section>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>

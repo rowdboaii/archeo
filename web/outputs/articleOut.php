@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : articleOut.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -25,7 +25,7 @@
 
 			<!-- Connexion à la base de données. -->
 			<?php include('../includes/connexionBDD.php'); ?>
-			
+
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
@@ -56,7 +56,7 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-					
+
 					<?php
 						$query = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, a.sujet, l.langue AS nom_langue, a.commentaire
 									FROM article a, personne p, langue l
@@ -64,11 +64,11 @@
 									AND a.langue = l.identifiant'
 									);
 					?>
-					
+
 					<!-- Tableau d'affichage de la table. -->
 					<table>
 						<caption>ARTICLE</caption>
-						
+
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
@@ -82,7 +82,7 @@
 								<th>commentaires</th>
 							</tr>
 						</thead>
-			
+
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
@@ -96,14 +96,14 @@
 								<th>commentaires</th>
 							</tr>
 						</tfoot>
-						
+
 						<!-- Corps du tableau. -->
 						<tbody>
-						
+
 							<?php
 								while ($data = $query->fetch()) {
 							?>
-								
+
 								<tr>
 									<td><?php echo $data['titre']; ?></td>
 									<td><?php echo $data['prenom'] . ' ' . $data['nom']; ?></td>
@@ -114,12 +114,12 @@
 									<td><?php echo $data['mot_cle']; ?></td>
 									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
-								
+
 							<?php
 								}
 								$query->closeCursor();
 							?>
-							
+
 						</tbody>
 					</table>
 

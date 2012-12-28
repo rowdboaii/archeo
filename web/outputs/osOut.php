@@ -1,5 +1,5 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
-<!-- Auteur : Xavier Muth & Antoine Hars -->
+<!-- Auteur : Antoine Hars -->
 <!-- Fichier : osOut.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
@@ -25,7 +25,7 @@
 
 			<!-- Connexion à la base de données. -->
 			<?php include('../includes/connexionBDD.php'); ?>
-			
+
 			<header>
 				<!-- Header de la page. -->
 				<div id = "">
@@ -56,8 +56,8 @@
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
-						
-					<?php
+
+				<?php
 						$query = $bdd->query('SELECT o.nom AS nom_objet, s.partie, s.type, t.taxon AS nom_taxon, s.animal, s.type_animal,
 									s.forme, s.dissous, s.morsure, s.conservation, s.datation, o.commentaire, o.poids,
 									o.longueur, o.largeur, o.hauteur, o.brule, o.tamis, o.fiche, u.type AS nom_type,
@@ -69,11 +69,11 @@
 									AND o.trouve_par = f.identifiant'
 									);
 					?>
-					
+
 					<!-- Tableau d'affichage de la table. -->
 					<table>
 						<caption>OS</caption>
-						
+
 						<!-- Entête du tableau. -->
 						<thead>
 							<tr>
@@ -105,7 +105,7 @@
 								<th>commentaires</th>
 							</tr>
 						</thead>
-			
+
 						<!-- Pied du tableau. -->
 						<tfoot>
 							<tr>
@@ -137,15 +137,15 @@
 								<th>commentaires</th>
 							</tr>
 						</tfoot>
-						
+
 						<!-- Corps du tableau. -->
 						<tbody>
-						
+
 							<?php
 								while ($data = $query->fetch())
 								{
 							?>
-								
+
 								<tr>
 									<td><?php echo $data['nom_objet']; ?></td>
 									<td><?php echo $data['nom_type']; ?></td>
@@ -173,14 +173,14 @@
 									<td><?php echo $data['']; ?></td>
 									<td><?php echo $data['fiche']; ?></td>
 									<td><?php echo $data['commentaire']; ?></td>
-									
+
 								</tr>
-								
+
 							<?php
 								}
 								$query->closeCursor();
 							?>
-							
+
 						</tbody>
 					</table>
 
@@ -188,10 +188,10 @@
 			</section>
 
 			<footer>
-			
+
 				<!-- Pied de la page. -->
 				<?php include('../includes/piedPage.php'); ?>
-			
+
 			</footer>
 
 		</div>
