@@ -17,6 +17,18 @@ CREATE TYPE enum_type_recherche AS ENUM
 	' ', 'prospection', 'fouille'
 );
 
+/* Création d'une énumération pour les Booleans. */
+CREATE TYPE enum_bool AS ENUM
+(
+	'vrai', 'faux'
+);
+
+/* Création d'une énumération pour les Types d'Objet. */
+CREATE TYPE enum_type_objet AS ENUM
+(
+	'CO', 'FR'
+);
+
 /****************************************************************************************/
 
 /* Création de la table OsTaxon. */
@@ -241,15 +253,15 @@ CREATE TABLE objet
 (
 	identifiant SERIAL PRIMARY KEY,
 	nom VARCHAR(50) NOT NULL,
-	type INTEGER REFERENCES objetType(identifiant),
+	type enum_type_objet NOT NULL,
 	poids FLOAT NOT NULL,
 	longueur FLOAT NOT NULL,
 	largeur FLOAT NOT NULL,
 	hauteur FLOAT NOT NULL,
 	nature INTEGER REFERENCES objetNature(identifiant),
-	brule BOOLEAN NOT NULL DEFAULT FALSE,
+	brule enum_bool NOT NULL,
 	periode INTEGER REFERENCES periode(identifiant),
-	tamis BOOLEAN NOT NULL DEFAULT FALSE,
+	tamis enum_bool NOT NULL,
 	trouve_par INTEGER REFERENCES personne(identifiant),
 	collection INTEGER,
 	type_recherche enum_type_recherche NOT NULL,
@@ -282,8 +294,8 @@ CREATE TABLE os
 	animal VARCHAR(50),
 	type_animal VARCHAR(50),
 	forme VARCHAR(50) NOT NULL,
-	dissous BOOLEAN NOT NULL DEFAULT FALSE,
-	morsure BOOLEAN NOT NULL DEFAULT FALSE,
+	dissous enum_bool NOT NULL,
+	morsure enum_bool NOT NULL,
 	conservation INTEGER NOT NULL,
 	datation DATE NOT NULL
 );

@@ -46,12 +46,6 @@ VALUES ('chercheur');
 INSERT INTO fonction (fonction)
 VALUES ('fouilleur');
 
-INSERT INTO objetType (type)
-VALUES ('FR');
-
-INSERT INTO objetType (type)
-VALUES ('CO');
-
 INSERT INTO objetNature (nature)
 VALUES ('silex');
 
@@ -194,28 +188,28 @@ INSERT INTO collection (nom, proprietaire, commentaire)
 VALUES ('nom2', 2, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet1', 1, 3, 4, 76, 4, 1, 2, 'fouille', 0, TRUE, 1, FALSE, 1, 'commentaire');
+VALUES ('objet1', 'FR', 3, 4, 76, 4, 1, 2, 'fouille', 0, 'vrai', 1, 'faux', 1, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet2', 2, 3, 4, 76, 4, 1, 2, 'prospection', 1, FALSE, 1, FALSE, 1, 'commentaire');
+VALUES ('objet2', 'CO', 3, 4, 76, 4, 1, 2, 'prospection', 1, 'faux', 1, 'faux', 1, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet3', 2, 4, 4, 76, 4, 2, 1, 'fouille', 2, TRUE, 1, FALSE, 2, 'commentaire');
+VALUES ('objet3', 'CO', 4, 4, 76, 4, 2, 1, 'fouille', 2, 'vrai', 1, 'faux', 2, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet4', 2, 3, 4, 76, 4, 1, 1, ' ', 0, FALSE, 1, TRUE, 1, 'commentaire');
+VALUES ('objet4', 'FR', 3, 4, 76, 4, 1, 1, ' ', 0, 'faux', 1, 'vrai', 1, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet5', 2, 3, 4, 76, 4, 5, 2, 'fouille', 2, TRUE, 1, TRUE, 1, 'commentaire');
+VALUES ('objet5', 'CO', 3, 4, 76, 4, 5, 2, 'fouille', 2, 'vrai', 1, 'vrai', 1, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet6', 2, 3, 4, 76, 4, 5, 2, 'prospection', 0, FALSE, 1, FALSE, 2, 'commentaire');
+VALUES ('objet6', 'CO', 3, 4, 76, 4, 5, 2, 'prospection', 0, 'faux', 1, 'faux', 2, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet7', 2, 4, 4, 76, 4, 6, 1, ' ', 1, TRUE, 1, TRUE, 2, 'commentaire');
+VALUES ('objet7', 'CO', 4, 4, 76, 4, 6, 1, ' ', 1, 'vrai', 1, 'vrai', 2, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet8', 1, 3, 4, 76, 4, 6, 1, 'prospection', 1, FALSE, 1, FALSE, 1, 'commentaire');
+VALUES ('objet8', 'FR', 3, 4, 76, 4, 6, 1, 'prospection', 1, 'faux', 1, 'faux', 1, 'commentaire');
 
 INSERT INTO charbon (datation, objet)
 VALUES ('2/2/500', 5);
@@ -230,10 +224,10 @@ INSERT INTO galet (nom, objet, type)
 VALUES ('galet2', 8, 2);
 
 INSERT INTO os (objet, partie, type, taxon, animal, type_animal, forme, dissous, morsure, conservation, datation)
-VALUES (4, 'cul', 'type1', 1, 'truie', 'ta soeur', 'ovale', FALSE, FALSE, 6, '12/23/90');
+VALUES (4, 'épaule', 'type1', 1, 'rat', 'rat', 'ovale', 'faux', 'faux', 6, '12/23/90');
 
 INSERT INTO os (objet, partie, type, taxon, animal, type_animal, forme, dissous, morsure, conservation, datation)
-VALUES (3, 'tete', 'type2', 2, 'rat', 'ta mere', 'sinusoidale', TRUE, TRUE, 4, '1/1/1');
+VALUES (3, 'tete', 'type2', 2, 'poisson', 'poiscaille', 'sinusoidale', 'vrai', 'vrai', 4, '1/1/1');
 
 INSERT INTO silex (objet, provenance, couleur)
 VALUES (2, 1, 'black');
