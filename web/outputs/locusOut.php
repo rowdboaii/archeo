@@ -38,7 +38,7 @@
 				<div id = "">
 
 					<!-- Menu principal. -->
-					<?php include('../includes/menuMain.php'); ?>
+					<?php include('../includes/menuMain2.php'); ?>
 
 				</div>
 			</nav>
@@ -58,8 +58,7 @@
 				<div id = "">
 
 					<?php
-						$query = $bdd->query('SELECT l.identifiant, l.nom, s.nom AS nom_site, t.type AS nom_type, l.position_nord, l.commentaire
-									l.position_est, l.altitude, f.prenom AS prenom_f, f.nom AS nom_f, p.prenom AS prenom_p, p.nom AS nom_p
+						$query = $bdd->query('SELECT l.identifiant, l.nom, s.nom AS nom_site, t.type AS nom_type, l.position_nord, l.commentaire, l.position_est, l.altitude, f.prenom AS prenom_f, f.nom AS nom_f, p.prenom AS prenom_p, p.nom AS nom_p
 									FROM locus l, site s, locustype t, personne p, personne f
 									WHERE l.site = s.identifiant
 									AND l.type = t.identifiant
@@ -121,7 +120,7 @@
 									<td><?php echo $data['prenom_p'] . ' ' . $data['nom_p']; ?></td>
 									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
-								
+
 							<?php
 								}
 								$query->closeCursor();

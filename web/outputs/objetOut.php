@@ -38,7 +38,7 @@
 				<div id = "">
 
 					<!-- Menu principal. -->
-					<?php include('../includes/menuMain.php'); ?>
+					<?php include('../includes/menuMain2.php'); ?>
 
 				</div>
 			</nav>
@@ -59,41 +59,37 @@
 
 					<?php
 						/* Objets trouvés sans recherches. */
-						$query1 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis,
-									o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode,
-									f.prenom AS prenom_f, f.nom AS nom_f, c.nom AS nom_collection, o.fiche, o.type_recherche
-									FROM objet o, objettype t, objetnature n, periode p, personne f, collection c
-									WHERE o.type = t.identifiant
+						$query1 = $bdd->query('SELECT o.nom, t.type, o.longueur, o.poids, o.largeur, o.hauteur, n.nature, o.brule, p.periode, e.prenom AS pfouilleur, e.nom AS nfouilleur, o.collection, o.tamis, o.commentaire
+									FROM objet o, objettype t, objetnature n, periode p, personne e
+									WHERE o.type_recherche = \' \'
+									AND o.type = t.identifiant
 									AND o.nature = n.identifiant
 									AND o.periode = p.identifiant
-									AND o.trouve_par = f.identifiant
-									AND o.collection = c.identifiant
-									AND o.type_recherche = \' \''
+									AND o.trouve_par = e.identifiant'
 									);
+
 						/* Objets trouvés en fouillant. */
-						$query2 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis,
-									o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode,
-									f.prenom AS prenom_f, f.nom AS nom_f, u.nom AS nom_fouille, o.fiche, o.type_recherche
-									FROM objet o, objettype t, objetnature n, periode p, personne f, fouille u
-									WHERE o.type = t.identifiant
+						$query2 = $bdd->query('SELECT o.nom, t.type, o.longueur, o.poids, o.largeur, o.hauteur, n.nature, o.brule, p.periode, e.prenom AS pfouilleur, e.nom AS nfouilleur, o.collection, o.tamis, o.commentaire, o.type_recherche, f.nom AS fouille
+									FROM objet o, objettype t, objetnature n, periode p, personne e, fouille f
+									WHERE o.type_recherche = \'fouille\'
+									AND o.type = t.identifiant
 									AND o.nature = n.identifiant
 									AND o.periode = p.identifiant
-									AND o.trouve_par = f.identifiant
-									AND o.recherche = u.identifiant
-									AND o.type_recherche = \'fouille\''
+									AND o.trouve_par = e.identifiant
+									AND o.recherche = f.identifiant'
 									);
+
 						/* Objets trouvés en prospectant. */
-						$query3 = $bdd->query('SELECT o.identifiant, o.nom, o.poids, o.longueur, o.largeur, o.hauteur, o.brule, o.tamis,
-									o.commentaire, t.type AS nom_type, n.nature AS nom_nature, p.periode AS nom_periode,
-									f.prenom AS prenom_f, f.nom AS nom_f, r.nom AS nom_prospection, o.fiche, o.type_recherche
-									FROM objet o, objettype t, objetnature n, periode p, personne f, prospection r
-									WHERE o.type = t.identifiant
+						$query3 = $bdd->query('SELECT o.nom, t.type, o.longueur, o.poids, o.largeur, o.hauteur, n.nature, o.brule, p.periode, e.prenom AS pfouilleur, e.nom AS nfouilleur, o.collection, o.tamis, o.commentaire, o.type_recherche, r.nom AS prospection
+									FROM objet o, objettype t, objetnature n, periode p, personne e, prospection r
+									WHERE o.type_recherche = \'prospection\'
+									AND o.type = t.identifiant
 									AND o.nature = n.identifiant
 									AND o.periode = p.identifiant
-									AND o.trouve_par = f.identifiant
-									AND o.recherche = r.identifiant
-									AND o.type_recherche = \'prospection\''
+									AND o.trouve_par = e.identifiant
+									AND o.recherche = r.identifiant'
 									);
+
 					?>
 
 					<!-- Tableau d'affichage de la table. -->
@@ -110,14 +106,13 @@
 								<th>largeur</th>
 								<th>hauteur</th>
 								<th>nature</th>
-								<th>fiche</th>
 								<th>brulé</th>
 								<th>période</th>
 								<th>trouvé par</th>
 								<th>collection</th>
 								<th>tamis</th>
-								<th>prospection</th>
-								<th>fouille</th>
+								<th>type recherche</th>
+								<th>recherche</th>
 								<th>commentaires</th>
 							</tr>
 						</thead>
@@ -132,14 +127,13 @@
 								<th>largeur</th>
 								<th>hauteur</th>
 								<th>nature</th>
-								<th>fiche</th>
 								<th>brulé</th>
 								<th>période</th>
 								<th>trouvé par</th>
 								<th>collection</th>
 								<th>tamis</th>
-								<th>prospection</th>
-								<th>fouille</th>
+								<th>type recherche</th>
+								<th>recherche</th>
 								<th>commentaires</th>
 							</tr>
 						</tfoot>
@@ -154,17 +148,16 @@
 
 								<tr>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['nom_type']; ?></td>
+									<td><?php echo $data['type']; ?></td>
 									<td><?php echo $data['poids']; ?></td>
 									<td><?php echo $data['longueur']; ?></td>
 									<td><?php echo $data['largeur']; ?></td>
 									<td><?php echo $data['hauteur']; ?></td>
-									<td><?php echo $data['nom_nature']; ?></td>
-									<td><?php echo $data['fiche']; ?></td>
+									<td><?php echo $data['nature']; ?></td>
 									<td><?php echo $data['brule']; ?></td>
-									<td><?php echo $data['nom_periode']; ?></td>
-									<td><?php echo $data['prenom_f'] . ' ' . $data['nom_f']; ?></td>
-									<td><?php echo $data['nom_collection']; ?></td>
+									<td><?php echo $data['periode']; ?></td>
+									<td><?php echo $data['pfouilleur'] . ' ' . $data['nfouilleur']; ?></td>
+									<td><?php echo $data['collection']; ?></td>
 									<td><?php echo $data['tamis']; ?></td>
 									<td></td>
 									<td></td>
@@ -181,20 +174,19 @@
 
 								<tr>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['nom_type']; ?></td>
+									<td><?php echo $data['type']; ?></td>
 									<td><?php echo $data['poids']; ?></td>
 									<td><?php echo $data['longueur']; ?></td>
 									<td><?php echo $data['largeur']; ?></td>
 									<td><?php echo $data['hauteur']; ?></td>
-									<td><?php echo $data['nom_nature']; ?></td>
-									<td><?php echo $data['fiche']; ?></td>
+									<td><?php echo $data['nature']; ?></td>
 									<td><?php echo $data['brule']; ?></td>
-									<td><?php echo $data['nom_periode']; ?></td>
-									<td><?php echo $data['prenom_f'] . ' ' . $data['nom_f']; ?></td>
-									<td></td>
+									<td><?php echo $data['periode']; ?></td>
+									<td><?php echo $data['pfouilleur'] . ' ' . $data['nfouilleur']; ?></td>
+									<td><?php echo $data['collection']; ?></td>
 									<td><?php echo $data['tamis']; ?></td>
-									<td></td>
-									<td><?php echo $data['nom_fouille']; ?></td>
+									<td><?php echo $data['type_recherche']; ?></td>
+									<td><?php echo $data['fouille']; ?></td>
 									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 
@@ -208,20 +200,19 @@
 
 								<tr>
 									<td><?php echo $data['nom']; ?></td>
-									<td><?php echo $data['nom_type']; ?></td>
+									<td><?php echo $data['type']; ?></td>
 									<td><?php echo $data['poids']; ?></td>
 									<td><?php echo $data['longueur']; ?></td>
 									<td><?php echo $data['largeur']; ?></td>
 									<td><?php echo $data['hauteur']; ?></td>
-									<td><?php echo $data['nom_nature']; ?></td>
-									<td><?php echo $data['fiche']; ?></td>
+									<td><?php echo $data['nature']; ?></td>
 									<td><?php echo $data['brule']; ?></td>
-									<td><?php echo $data['nom_periode']; ?></td>
-									<td><?php echo $data['prenom_f'] . ' ' . $data['nom_f']; ?></td>
-									<td></td>
+									<td><?php echo $data['periode']; ?></td>
+									<td><?php echo $data['pfouilleur'] . ' ' . $data['nfouilleur']; ?></td>
+									<td><?php echo $data['collection']; ?></td>
 									<td><?php echo $data['tamis']; ?></td>
-									<td><?php echo $data['nom_prospection']; ?></td>
-									<td></td>
+									<td><?php echo $data['type_recherche']; ?></td>
+									<td><?php echo $data['prospection']; ?></td>
 									<td><?php echo $data['commentaire']; ?></td>
 								</tr>
 
@@ -229,6 +220,7 @@
 								}
 								$query3->closeCursor();
 							?>
+
 
 						</tbody>
 					</table>

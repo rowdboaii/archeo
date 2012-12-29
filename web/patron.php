@@ -34,16 +34,13 @@
 				<!-- Principaux liens de navigation de la page. -->
 				<div id = "">
 
-					<!-- Menu principal. -->
-					<?php include('includes/menuMain.php'); ?>
-
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
+
 				</div>
 			</aside>
 

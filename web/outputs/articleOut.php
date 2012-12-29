@@ -38,7 +38,7 @@
 				<div id = "">
 
 					<!-- Menu principal. -->
-					<?php include('../includes/menuMain.php'); ?>
+					<?php include('../includes/menuMain2.php'); ?>
 
 				</div>
 			</nav>
@@ -58,10 +58,23 @@
 				<div id = "">
 
 					<?php
-						$query = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, a.sujet, l.langue AS nom_langue, a.commentaire
-									FROM article a, personne p, langue l
+						$query1 = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, r.nom AS nom_region, l.langue AS nom_langue, a.commentaire, a.type_sujet, a.sujet
+									FROM article a, personne p, langue l, region r
 									WHERE a.auteur = p.identifiant
-									AND a.langue = l.identifiant'
+									AND a.langue = l.identifiant
+									AND a.sujet = r.identifiant'
+									);
+						$query2 = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, s.nom AS nom_site, l.langue AS nom_langue, a.commentaire, a.type_sujet, a.sujet
+									FROM article a, personne p, langue l, site s
+									WHERE a.auteur = p.identifiant
+									AND a.langue = l.identifiant
+									AND a.sujet = s.identifiant'
+									);
+						$query3 = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, o.nom AS nom_locus, l.langue AS nom_langue, a.commentaire, a.type_sujet, a.sujet
+									FROM article a, personne p, langue l, locus o
+									WHERE a.auteur = p.identifiant
+									AND a.langue = l.identifiant
+									AND a.sujet = o.identifiant'
 									);
 					?>
 
@@ -76,6 +89,7 @@
 								<th>auteur</th>
 								<th>revue</th>
 								<th>sujet</th>
+								<th>type sujet</th>
 								<th>langue</th>
 								<th>année</th>
 								<th>mots clé</th>
@@ -90,6 +104,7 @@
 								<th>auteur</th>
 								<th>revue</th>
 								<th>sujet</th>
+								<th>type sujet</th>
 								<th>langue</th>
 								<th>année</th>
 								<th>mots clé</th>
@@ -101,14 +116,33 @@
 						<tbody>
 
 							<?php
-								while ($data = $query->fetch()) {
+								while ($data = $query1->fetch()) {
 							?>
 
 								<tr>
 									<td><?php echo $data['titre']; ?></td>
 									<td><?php echo $data['prenom'] . ' ' . $data['nom']; ?></td>
 									<td><?php echo $data['revue']; ?></td>
-									<td><?php echo $data['sujet']; ?></td>
+									<td><?php echo $data['nom_region']; ?></td>
+									<td><?php echo $data['type_sujet']; ?></td>
+									<td><?php echo $data['nom_langue']; ?></td>
+									<td><?php echo $data['annee']; ?></td>
+									<td><?php echo $data['mot_cle']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
+								</tr>
+
+							<?php
+								}
+								$query1->closeCursor();
+								while ($data = $query2->fetch()) {
+							?>
+
+								<tr>
+									<td><?php echo $data['titre']; ?></td>
+									<td><?php echo $data['prenom'] . ' ' . $data['nom']; ?></td>
+									<td><?php echo $data['revue']; ?></td>
+									<td><?php echo $data['nom_site']; ?></td>
+									<td><?php echo $data['type_sujet']; ?></td>
 									<td><?php echo $data['nom_langue']; ?></td>
 									<td><?php echo $data['annee']; ?></td>
 									<td><?php echo $data['mot_cle']; ?></td>
@@ -118,6 +152,24 @@
 							<?php
 								}
 								$query->closeCursor();
+								while ($data = $query3->fetch()) {
+							?>
+
+								<tr>
+									<td><?php echo $data['titre']; ?></td>
+									<td><?php echo $data['prenom'] . ' ' . $data['nom']; ?></td>
+									<td><?php echo $data['revue']; ?></td>
+									<td><?php echo $data['nom_locus']; ?></td>
+									<td><?php echo $data['type_sujet']; ?></td>
+									<td><?php echo $data['nom_langue']; ?></td>
+									<td><?php echo $data['annee']; ?></td>
+									<td><?php echo $data['mot_cle']; ?></td>
+									<td><?php echo $data['commentaire']; ?></td>
+								</tr>
+
+							<?php
+								}
+								$query3->closeCursor();
 							?>
 
 						</tbody>

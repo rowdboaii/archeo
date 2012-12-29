@@ -38,7 +38,7 @@
 				<div id = "">
 
 					<!-- Menu principal. -->
-					<?php include('../includes/menuMain.php'); ?>
+					<?php include('../includes/menuMain2.php'); ?>
 
 				</div>
 			</nav>

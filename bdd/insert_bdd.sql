@@ -203,7 +203,7 @@ INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherc
 VALUES ('objet3', 2, 4, 4, 76, 4, 2, 1, 'fouille', 2, TRUE, 1, FALSE, 2, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet4', 2, 3, 4, 76, 4, 1, 1, 'prospection', 0, FALSE, 1, TRUE, 1, 'commentaire');
+VALUES ('objet4', 2, 3, 4, 76, 4, 1, 1, ' ', 0, FALSE, 1, TRUE, 1, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, brule, periode, tamis, trouve_par, commentaire)
 VALUES ('objet5', 2, 3, 4, 76, 4, 5, 2, 'fouille', 2, TRUE, 1, TRUE, 1, 'commentaire');
@@ -212,7 +212,7 @@ INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherc
 VALUES ('objet6', 2, 3, 4, 76, 4, 5, 2, 'prospection', 0, FALSE, 1, FALSE, 2, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, brule, periode, tamis, trouve_par, commentaire)
-VALUES ('objet7', 2, 4, 4, 76, 4, 6, 1, 'fouille', 1, TRUE, 1, TRUE, 2, 'commentaire');
+VALUES ('objet7', 2, 4, 4, 76, 4, 6, 1, ' ', 1, TRUE, 1, TRUE, 2, 'commentaire');
 
 INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, recherche, type_recherche, collection, brule, periode, tamis, trouve_par, commentaire)
 VALUES ('objet8', 1, 3, 4, 76, 4, 6, 1, 'prospection', 1, FALSE, 1, FALSE, 1, 'commentaire');
