@@ -105,7 +105,7 @@
 					<h2>Ajout</h2>
 					<p>
 						<!-- Formulaire pour une Fonction. -->
-						<form method = "post" action = "../inserts/fonctionInsert.php">
+						<form method = "post" action = "../exec/fonctionInsert.php">
 							<p>
 								<label for = "fonction">Fonction</label> :
 								<input type = "text" name = "fonction" id = "fonction"><br />

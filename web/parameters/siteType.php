@@ -105,7 +105,7 @@
 					<h2>Ajout</h2>
 					<p>
 						<!-- Formulaire pour un Type de Site. -->
-						<form method = "post" action = "../inserts/siteTypeInsert.php">
+						<form method = "post" action = "../exec/siteTypeInsert.php">
 							<p>
 								<label for = "type">Type</label> :
 								<input type = "text" name = "type" id = "type"><br />

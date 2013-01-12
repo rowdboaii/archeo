@@ -105,7 +105,7 @@
 					<h2>Ajout</h2>
 					<p>
 						<!-- Formulaire pour une Langue. -->
-						<form method = "post" action = "../inserts/langueInsert.php">
+						<form method = "post" action = "../exec/langueInsert.php">
 							<p>
 								<label for = "langue">Langue</label> :
 								<input type = "text" name = "langue" id = "langue"><br />

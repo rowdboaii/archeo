@@ -105,7 +105,7 @@
 					<h2>Ajout</h2>
 					<p>
 						<!-- Formulaire pour une Nature d'un Objet. -->
-						<form method = "post" action = "../inserts/objetNatureInsert.php">
+						<form method = "post" action = "../exec/objetNatureInsert.php">
 							<p>
 								<label for = "nature">Nature</label> :
 								<input type = "text" name = "nature" id = "nature"><br />

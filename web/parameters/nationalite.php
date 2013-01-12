@@ -105,7 +105,7 @@
 					<h2>Ajout</h2>
 					<p>
 						<!-- Formulaire pour une Nationalité. -->
-						<form method = "post" action = "../inserts/nationaliteInsert.php">
+						<form method = "post" action = "../exec/nationaliteInsert.php">
 							<p>
 								<label for = "nationalite">Nationalité</label> :
 								<input type = "text" name = "nationalite" id = "nationalite"><br />

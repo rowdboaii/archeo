@@ -105,7 +105,7 @@
 					<h2>Ajout</h2>
 					<p>
 						<!-- Formulaire pour un Type de Galet. -->
-						<form method = "post" action = "../inserts/galetTypeInsert.php">
+						<form method = "post" action = "../exec/galetTypeInsert.php">
 							<p>
 								<label for = "fonction">Type</label> :
 								<input type = "text" name = "type" id = "type"><br />

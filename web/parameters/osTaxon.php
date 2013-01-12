@@ -105,7 +105,7 @@
 					<h2>Ajout</h2>
 					<p>
 						<!-- Formulaire pour un Taxon d'un Os. -->
-						<form method = "post" action = "../inserts/osTaxonInsert.php">
+						<form method = "post" action = "../exec/osTaxonInsert.php">
 							<p>
 								<label for = "taxon">Taxon</label> :
 								<input type = "text" name = "taxon" id = "taxon"><br />

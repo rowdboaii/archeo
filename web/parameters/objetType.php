@@ -105,7 +105,7 @@
 					<h2>Ajout</h2>
 					<p>
 						<!-- Formulaire pour un Type d'un Objet. -->
-						<form method = "post" action = "../inserts/objetTypeInsert.php">
+						<form method = "post" action = "../exec/objetTypeInsert.php">
 							<p>
 								<label for = "type">Type</label> :
 								<input type = "text" name = "type" id = "type"><br />

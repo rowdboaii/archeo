@@ -105,7 +105,7 @@
 					<h2>Ajout</h2>
 					<p>
 						<!-- Formulaire pour une Période. -->
-						<form method = "post" action = "../inserts/periodeInsert.php">
+						<form method = "post" action = "../exec/periodeInsert.php">
 							<p>
 								<label for = "periode">Période</label> :
 								<input type = "text" name = "periode" id = "periode"><br />
