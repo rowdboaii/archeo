@@ -59,8 +59,8 @@
 						include('../includes/connexionBDD.php');
 
 						/* Récupération des données pour le formulaire. */
-						$query = $bdd->prepare('SELECT l.identifiant, l.nom
-									FROM locus l'
+						$query = $bdd->prepare('SELECT c.identifiant, c.nom
+									FROM carre c'
 									);
 					?>
 

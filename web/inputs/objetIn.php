@@ -60,25 +60,22 @@
 						include('../includes/connexionBDD.php');
 
 						/* Récupération des données pour le formulaire. */
-						$query1 = $bdd->prepare('SELECT identifiant, type
-										FROM objetType'
-										);
-						$query2 = $bdd->prepare('SELECT identifiant, nature
+						$query1 = $bdd->prepare('SELECT identifiant, nature
 										FROM objetNature'
 										);
-						$query3 = $bdd->prepare('SELECT identifiant, prenom, nom
+						$query2 = $bdd->prepare('SELECT identifiant, prenom, nom
 										FROM personne'
 										);
-						$query4 = $bdd->prepare('SELECT identifiant, nom
+						$query3 = $bdd->prepare('SELECT identifiant, nom
 										FROM collection'
 										);
-						$query5 = $bdd->prepare('SELECT identifiant, periode
+						$query4 = $bdd->prepare('SELECT identifiant, periode
 										FROM periode'
 										);
-						$query6 = $bdd->prepare('SELECT identifiant, nom
+						$query5 = $bdd->prepare('SELECT identifiant, nom
 										FROM fouille'
 										);
-						$query7 = $bdd->prepare('SELECT identifiant, nom
+						$query6 = $bdd->prepare('SELECT identifiant, nom
 										FROM prospection'
 										);
 					?>
@@ -90,19 +87,14 @@
 								<input type = "text" name = "nom" id = "nom" /><br />
 								<label for = "type">Type</label> :
 								<select name = "type" id = "type">
-									<?php
-										$query1->execute();
-										while ($data = $query1->fetch()) {
-											echo '<option value = "' . $data['identifiant'] . '">' . $data['type'] . '</option>';
-										}
-									?>
-								</select>
-								<a href = "../parameters/objetType.php">Ajouter un nouveau Type d'Objet ?</a><br />
+									<option value = "CO">CO</option>
+									<option value = "FR">FR</option>
+								</select><br />
 								<label for = "nature">nature</label> :
 								<select name = "nature" id = "nature">
 									<?php
-										$query2->execute();
-										while ($data = $query2->fetch()) {
+										$query1->execute();
+										while ($data = $query1->fetch()) {
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nature'] . '</option>';
 										}
 									?>
@@ -116,11 +108,11 @@
 								<input type = "text" name = "largeur" id = "largeur" /> (number)<br />
 								<label for = "hauteur">Hauteur</label> :
 								<input type = "text" name = "hauteur" id = "hauteur" /> (number)<br />
-								<label for = "trouve">Trouvé par</label> :
-								<select name = "trouve" id = "trouve">
+								<label for = "trouve_par">Trouvé par</label> :
+								<select name = "trouve_par" id = "trouve_par">
 									<?php
-										$query3->execute();
-										while ($data = $query3->fetch()) {
+										$query2->execute();
+										while ($data = $query2->fetch()) {
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['prenom'] . ' ' . $data['nom'] . '</option>';
 										}
 									?>
@@ -128,9 +120,10 @@
 								<a href = "personneIn.php">Ajouter une nouvelle Personne ?</a><br />
 								<label for = "collection">Collection</label> :
 								<select name = "collection" id = "collection">
+									<option value = "0"></option>
 									<?php
-										$query4->execute();
-										while ($data = $query4->fetch()) {
+										$query3->execute();
+										while ($data = $query3->fetch()) {
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
@@ -139,8 +132,8 @@
 								<label for = "periode">Période</label> :
 								<select name = "periode" id = "periode">
 									<?php
-										$query5->execute();
-										while ($data = $query5->fetch()) {
+										$query4->execute();
+										while ($data = $query4->fetch()) {
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['periode'] . '</option>';
 										}
 									?>
@@ -148,15 +141,15 @@
 								<a href = "../parameters/periode.php">Ajouter une nouvelle Période ?</a><br />
 								<label for = "type_recherche">Type de Recherche</label> :
 								<select name = "type_recherche" id = "type_recherche">
-									<option value = ""></option>
+									<option value = " "></option>
 									<option value = "prospection">prospection</option>
 									<option value = "fouille">fouille</option>
 								</select><br />
 								<label for = "fouille">Fouille</label> :
 								<select name = "fouille" id = "fouille">
 									<?php
-										$query6->execute();
-										while ($data = $query6->fetch()) {
+										$query5->execute();
+										while ($data = $query5->fetch()) {
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
@@ -165,21 +158,19 @@
 								<label for = "prospection">Prospection</label> :
 								<select name = "prospection" id = "prospection">
 									<?php
-										$query7->execute();
-										while ($data = $query7->fetch()) {
+										$query6->execute();
+										while ($data = $query6->fetch()) {
 											echo '<option value = "' . $data['identifiant'] . '">' . $data['nom'] . '</option>';
 										}
 									?>
 								</select>
 								<a href = "prospectionIn.php">Ajouter une nouvelle Prospection ?</a><br />
 								Tamis :
-								oui <input type = "radio" name = "tamis" value = "true" id = "true" />
-								non <input type = "radio" name = "tamis" value = "false" id = "false" /><br />
+								oui <input type = "radio" name = "tamis" value = "vrai" id = "vrai" />
+								non <input type = "radio" name = "tamis" value = "faux" id = "faux" /><br />
 								Brulé :
-								oui <input type = "radio" name = "brule" value = "true" id = "true" />
-								non <input type = "radio" name = "brule" value = "false" id = "false" /><br />
-								<label for = "fiche">Fiche</label> :
-								<input type = "text" name = "fiche" id = "fiche" /><br />
+								oui <input type = "radio" name = "brule" value = "vrai" id = "vrai" />
+								non <input type = "radio" name = "brule" value = "faux" id = "faux" /><br />
 								<label for = "commentaire">Commentaires</label> :<br />
 								<textarea name = "commentaire" id = "commentaire" rows = "10" cols = "80"></textarea><br />
 								<input type = "submit" value = "Envoi" />
@@ -194,7 +185,6 @@
 						$query4->closeCursor();
 						$query5->closeCursor();
 						$query6->closeCursor();
-						$query7->closeCursor();
 					?>
 
 				</div>

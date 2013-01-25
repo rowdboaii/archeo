@@ -1,6 +1,6 @@
 <!-- Sujet : Projet de base de données pour des fouilles archéologiques. -->
 <!-- Auteur : Antoine Hars -->
-<!-- Fichier : objetInsertInsert.php -->
+<!-- Fichier : objetInsert.php -->
 
 <!-- Démarrage de la session pour les identifiants. -->
 <?php session_start(); ?>
@@ -52,27 +52,77 @@
 				<div id = "">
 
 					<?php
-						$query = $bdd->prepare('INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, brule, periode, tamis, trouve_par, collection, type_recherche, recherche, fiche, commentaire)
-									VALUES (:nom, :type, :poids, :longueur, :largeur, :hauteur, :nature, :brule, :periode, :tamis, :trouve_par, :collection, :type_recherche, :recherche, :fiche, :commentaire)'
-									);
-						$query->execute(array('nom' => $_POST['nom'],
-									'type' => $_POST['type'],
-									'poids' => $_POST['poids'],
-									'longueur' => $_POST['longueur'],
-									'largeur' => $_POST['largeur'],
-									'hauteur' => $_POST['hauteur'],
-									'nature' => $_POST['nature'],
-									'brule' => $_POST['brule'],
-									'periode' => $_POST['periode'],
-									'tamis' => $_POST['tamis'],
-									'trouve_par' => $_POST['trouve'],
-									'collection' => $_POST['collection'],
-									'type_recherche' => $_POST['type_recherche'],
-									'recherche' => $_POST['recherche'],
-									'fiche' => $_POST['fiche'],
-									'commentaire' => $_POST['commentaire'],
-								)) or die('Error');
-						echo 'Champ ajouté à la base.';
+						if ($_POST['type_recherche'] == ' ') {
+
+							$query = $bdd->prepare('INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, brule, periode, tamis, trouve_par, collection, type_recherche, commentaire)
+										VALUES (:nom, :type, :poids, :longueur, :largeur, :hauteur, :nature, :brule, :periode, :tamis, :trouve_par, :collection, :type_recherche, :commentaire)'
+										);
+						
+							$query->execute(array('nom' => $_POST['nom'],
+										'type' => $_POST['type'],
+										'poids' => $_POST['poids'],
+										'longueur' => $_POST['longueur'],
+										'largeur' => $_POST['largeur'],
+										'hauteur' => $_POST['hauteur'],
+										'nature' => $_POST['nature'],
+										'brule' => $_POST['brule'],
+										'periode' => $_POST['periode'],
+										'tamis' => $_POST['tamis'],
+										'trouve_par' => $_POST['trouve_par'],
+										'collection' => $_POST['collection'],
+										'type_recherche' => $_POST['type_recherche'],
+										'commentaire' => $_POST['commentaire']
+									)) or die('Error');
+							echo 'Champ ajouté à la base.';
+						}
+						else {
+							$query = $bdd->prepare('INSERT INTO objet (nom, type, poids, longueur, largeur, hauteur, nature, brule, periode, tamis, trouve_par, collection, type_recherche, recherche, commentaire)
+										VALUES (:nom, :type, :poids, :longueur, :largeur, :hauteur, :nature, :brule, :periode, :tamis, :trouve_par, :collection, :type_recherche, :recherche, :commentaire)'
+										);
+
+							if ($_POST['type_recherche'] == 'prospection') {
+								$query->execute(array('nom' => $_POST['nom'],
+											'type' => $_POST['type'],
+											'poids' => $_POST['poids'],
+											'longueur' => $_POST['longueur'],
+											'largeur' => $_POST['largeur'],
+											'hauteur' => $_POST['hauteur'],
+											'nature' => $_POST['nature'],
+											'brule' => $_POST['brule'],
+											'periode' => $_POST['periode'],
+											'tamis' => $_POST['tamis'],
+											'trouve_par' => $_POST['trouve_par'],
+											'collection' => $_POST['collection'],
+											'type_recherche' => $_POST['type_recherche'],
+											'recherche' => $_POST['prospection'],
+											'commentaire' => $_POST['commentaire']
+										)) or die('Error');
+								echo 'Champ ajouté à la base.';
+							}
+							else {
+								$query->execute(array('nom' => $_POST['nom'],
+											'type' => $_POST['type'],
+											'poids' => $_POST['poids'],
+											'longueur' => $_POST['longueur'],
+											'largeur' => $_POST['largeur'],
+											'hauteur' => $_POST['hauteur'],
+											'nature' => $_POST['nature'],
+											'brule' => $_POST['brule'],
+											'periode' => $_POST['periode'],
+											'tamis' => $_POST['tamis'],
+											'trouve_par' => $_POST['trouve_par'],
+											'collection' => $_POST['collection'],
+											'type_recherche' => $_POST['type_recherche'],
+											'recherche' => $_POST['fouille'],
+											'commentaire' => $_POST['commentaire']
+										)) or die('Error');
+								echo 'Champ ajouté à la base.';
+							}
+						}
+
+
+
+
 					?>
 
 					<!-- Lien de retour vers la page des inputs. -->

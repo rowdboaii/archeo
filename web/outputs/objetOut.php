@@ -59,20 +59,18 @@
 
 					<?php
 						/* Objets trouvés sans recherches. */
-						$query1 = $bdd->query('SELECT o.nom, t.type, o.longueur, o.poids, o.largeur, o.hauteur, n.nature, o.brule, p.periode, e.prenom AS pfouilleur, e.nom AS nfouilleur, o.collection, o.tamis, o.commentaire
-									FROM objet o, objettype t, objetnature n, periode p, personne e
+						$query1 = $bdd->query('SELECT o.nom, o.type, o.longueur, o.poids, o.largeur, o.hauteur, n.nature, o.brule, p.periode, e.prenom AS pfouilleur, e.nom AS nfouilleur, o.collection, o.tamis, o.commentaire
+									FROM objet o, objetnature n, periode p, personne e
 									WHERE o.type_recherche = \' \'
-									AND o.type = t.identifiant
 									AND o.nature = n.identifiant
 									AND o.periode = p.identifiant
 									AND o.trouve_par = e.identifiant'
 									);
 
 						/* Objets trouvés en fouillant. */
-						$query2 = $bdd->query('SELECT o.nom, t.type, o.longueur, o.poids, o.largeur, o.hauteur, n.nature, o.brule, p.periode, e.prenom AS pfouilleur, e.nom AS nfouilleur, o.collection, o.tamis, o.commentaire, o.type_recherche, f.nom AS fouille
-									FROM objet o, objettype t, objetnature n, periode p, personne e, fouille f
+						$query2 = $bdd->query('SELECT o.nom, o.type, o.longueur, o.poids, o.largeur, o.hauteur, n.nature, o.brule, p.periode, e.prenom AS pfouilleur, e.nom AS nfouilleur, o.collection, o.tamis, o.commentaire, o.type_recherche, f.nom AS fouille
+									FROM objet o, objetnature n, periode p, personne e, fouille f
 									WHERE o.type_recherche = \'fouille\'
-									AND o.type = t.identifiant
 									AND o.nature = n.identifiant
 									AND o.periode = p.identifiant
 									AND o.trouve_par = e.identifiant
@@ -80,16 +78,20 @@
 									);
 
 						/* Objets trouvés en prospectant. */
-						$query3 = $bdd->query('SELECT o.nom, t.type, o.longueur, o.poids, o.largeur, o.hauteur, n.nature, o.brule, p.periode, e.prenom AS pfouilleur, e.nom AS nfouilleur, o.collection, o.tamis, o.commentaire, o.type_recherche, r.nom AS prospection
-									FROM objet o, objettype t, objetnature n, periode p, personne e, prospection r
+						$query3 = $bdd->query('SELECT o.nom, o.type, o.longueur, o.poids, o.largeur, o.hauteur, n.nature, o.brule, p.periode, e.prenom AS pfouilleur, e.nom AS nfouilleur, o.collection, o.tamis, o.commentaire, o.type_recherche, r.nom AS prospection
+									FROM objet o, objetnature n, periode p, personne e, prospection r
 									WHERE o.type_recherche = \'prospection\'
-									AND o.type = t.identifiant
 									AND o.nature = n.identifiant
 									AND o.periode = p.identifiant
 									AND o.trouve_par = e.identifiant
 									AND o.recherche = r.identifiant'
 									);
-
+									
+						/* Récupération du nom des Collections. */
+						$query4 = $bdd->prepare('SELECT c.identifiant, c.nom
+										FROM collection c
+										WHERE c.identifiant = :collection'
+										);
 					?>
 
 					<!-- Tableau d'affichage de la table. -->
@@ -157,7 +159,16 @@
 									<td><?php echo $data['brule']; ?></td>
 									<td><?php echo $data['periode']; ?></td>
 									<td><?php echo $data['pfouilleur'] . ' ' . $data['nfouilleur']; ?></td>
-									<td><?php echo $data['collection']; ?></td>
+									<?php
+										if ($data['collection'] != 0) {
+											$query4->execute(array('collection' => $data['collection']));
+											$collection = $query4->fetch();
+											echo '<td>' . $collection['nom'] . '</td>';
+										}
+										else {
+											echo '<td></td>';
+										}
+									?>
 									<td><?php echo $data['tamis']; ?></td>
 									<td></td>
 									<td></td>
@@ -183,7 +194,16 @@
 									<td><?php echo $data['brule']; ?></td>
 									<td><?php echo $data['periode']; ?></td>
 									<td><?php echo $data['pfouilleur'] . ' ' . $data['nfouilleur']; ?></td>
-									<td><?php echo $data['collection']; ?></td>
+									<?php
+										if ($data['collection'] != 0) {
+											$query4->execute(array('collection' => $data['collection']));
+											$collection = $query4->fetch();
+											echo '<td>' . $collection['nom'] . '</td>';
+										}
+										else {
+											echo '<td></td>';
+										}
+									?>
 									<td><?php echo $data['tamis']; ?></td>
 									<td><?php echo $data['type_recherche']; ?></td>
 									<td><?php echo $data['fouille']; ?></td>
@@ -209,7 +229,17 @@
 									<td><?php echo $data['brule']; ?></td>
 									<td><?php echo $data['periode']; ?></td>
 									<td><?php echo $data['pfouilleur'] . ' ' . $data['nfouilleur']; ?></td>
-									<td><?php echo $data['collection']; ?></td>
+									<?php
+										if ($data['collection'] != 0) {
+											$query4->execute(array('collection' => $data['collection']));
+											$collection = $query4->fetch();
+											echo '<td>' . $collection['nom'] . '</td>';
+											$query4->closeCursor();
+										}
+										else {
+											echo '<td></td>';
+										}
+									?>
 									<td><?php echo $data['tamis']; ?></td>
 									<td><?php echo $data['type_recherche']; ?></td>
 									<td><?php echo $data['prospection']; ?></td>
