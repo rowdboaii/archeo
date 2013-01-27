@@ -125,7 +125,7 @@
 									<option value = "10">10</option>
 								</select><br />
 								<label for = "date">Datation</label> :
-								<input type = "text" name = "date" id = "date" /> (jj/mm/aaaa)<br />
+								<input type = "date" name = "date" id = "date" /> (jj/mm/aaaa)<br />
 								<input type = "submit" value = "Envoi" />
 							</p>
 						</form>
