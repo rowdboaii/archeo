@@ -16,7 +16,7 @@
 		<!--[if lt IE9]>
 			<script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<title>Suppression</title>
+		<title>SDelpression</title>
 	</head>
 
 	<body>
@@ -39,20 +39,41 @@
 
 				</div>
 			</nav>
-			
+
 			<aside>
 				<!-- Menu latéral spécifique au lien visité. -->
 				<div id = "">
-				
-					<!-- Menu pour les deletes. -->
-					<?php include('includes/menuDel.php'); ?>
-				
+
 				</div>
 			</aside>
 
 			<section>
 				<!-- Section de page. -->
 				<div id = "">
+
+					<!-- Vérification du type d'utilisateur. -->
+					<?php if ($_SESSION['pseudo'] == 'sudo') { ?>
+
+					<!-- Menu Pour l'affichage des tables. -->
+					<p>
+						<ul>
+							<li><a href = "deletes/articleDel.php">Article</a></li>
+							<li><a href = "deletes/carreDel.php">Carré</a></li>
+							<li><a href = "deletes/collectionDel.php">Collection</a></li>
+							<li><a href = "deletes/decapageDel.php">Décapage</a></li>
+							<li><a href = "deletes/fouilleDel.php">Fouille</a></li>
+							<li><a href = "deletes/gisementDel.php">Gisement</a></li>
+							<li><a href = "deletes/lieuDel.php">Lieu</a></li>
+							<li><a href = "deletes/locusDel.php">Locus</a></li>
+							<li><a href = "deletes/objetDel.php">Objet</a></li>
+							<li><a href = "deletes/personneDel.php">Personne</a></li>
+							<li><a href = "deletes/prospectionDel.php">Prospection</a></li>
+							<li><a href = "deletes/regionDel.php">Région</a></li>
+							<li><a href = "deletes/siteDel.php">Site</a></li>
+						</ul>
+					</p>
+
+					<?php } ?>
 
 				</div>
 			</section>
