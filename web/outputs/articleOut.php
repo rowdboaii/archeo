@@ -62,18 +62,21 @@
 									FROM article a, personne p, langue l, region r
 									WHERE a.auteur = p.identifiant
 									AND a.langue = l.identifiant
+									AND a.type_sujet = \'region\'
 									AND a.sujet = r.identifiant'
 									);
 						$query2 = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, s.nom AS nom_site, l.langue AS nom_langue, a.commentaire, a.type_sujet, a.sujet
 									FROM article a, personne p, langue l, site s
 									WHERE a.auteur = p.identifiant
 									AND a.langue = l.identifiant
+									AND a.type_sujet = \'site\'
 									AND a.sujet = s.identifiant'
 									);
 						$query3 = $bdd->query('SELECT a.identifiant, a.titre, a.auteur, p.prenom, p.nom, a.mot_cle, a.annee, a.revue, o.nom AS nom_locus, l.langue AS nom_langue, a.commentaire, a.type_sujet, a.sujet
 									FROM article a, personne p, langue l, locus o
 									WHERE a.auteur = p.identifiant
 									AND a.langue = l.identifiant
+									AND a.type_sujet = \'locus\'
 									AND a.sujet = o.identifiant'
 									);
 					?>
